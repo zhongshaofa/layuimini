@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>layuiMini 后台布局</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header" lay-filter="demo1">
+        <div class="layui-logo">layuiMini 后台布局</div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
+                    贤心
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <!--<li class="layui-nav-item"><a href="">退了</a></li>-->
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <!--layui-nav-itemed 添加该属性默认展开-->
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">所有商品</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">列表一</a></dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="javascript:;">列表三</a></dd>
+                        <dd><a class="site-demo-active" data-type="tabAdd" href="javascript:;" target="_self">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">解决方案</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">列表一</a></dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">云市场</a></li>
+                <li class="layui-nav-item"><a href="">发布商品</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div class="layui-tab" lay-filter="demo" lay-allowclose="true" style="width: 100%;height: 100%">
+            <ul class="layui-tab-title">
+                <li class="layui-this" lay-allowclose="false">首页</li>
+            </ul>
+            <div class="layui-tab-content" style="width: 100%;height: 100%">
+                <iframe width="100%" height="90%" frameborder="0"  scrolling=="auto" src="https://www.baidu.com"></iframe>
+                <!--<div class="layui-tab-item layui-show">首页内容</div>-->
+            </div>
+        </div>
+        <!--<div class="site-demo-button" style="margin-bottom: 0;">-->
+            <!--<button class="layui-btn site-demo-active" data-type="tabAdd">新增Tab项</button>-->
+            <!--<button class="layui-btn site-demo-active" data-type="tabDelete">删除：商品管理</button>-->
+            <!--<button class="layui-btn site-demo-active" data-type="tabChange">切换到：用户管理</button>-->
+        <!--</div>-->
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © layuiMini - 底部固定区域
+    </div>
+</div>
+<script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var $ = layui.jquery,
+            element = layui.element;
+
+        //触发事件
+        var active = {
+
+            tabAdd: function () {
+                //新增一个Tab项
+                var tabId = new Date().getTime();
+                element.tabAdd('demo', {
+                    title: '新选项' + tabId //用于演示
+                    , content: '<iframe width="100%" height="90%" frameborder="0"  scrolling=="auto" src="https://www.baidu.com"></iframe>'
+                    , id: tabId //实际使用一般是规定好的id，这里以时间戳模拟下
+                })
+                element.tabChange('demo', tabId)
+            }
+            , tabDelete: function (othis) {
+                //删除指定Tab项
+                element.tabDelete('demo', '44'); //删除：“商品管理”
+
+
+                othis.addClass('layui-btn-disabled');
+            }
+            , tabChange: function () {
+                //切换到指定Tab项
+                element.tabChange('demo', '22'); //切换到：用户管理
+            }
+        };
+
+
+        $('.site-demo-active').on('click', function(){
+            console.log('执行tab add')
+            var othis = $(this), type = othis.data('type');
+            console.log(othis)
+            console.log(type)
+            active[type] ? active[type].call(this, othis) : '';
+        });
+
+
+    });
+</script>
+<script>
+
+</script>
+</body>
+</html>
