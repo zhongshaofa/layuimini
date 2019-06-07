@@ -11,10 +11,20 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+    <style>
+        .layui-tab-item {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .layui-body {
+            bottom: 0px !important;
+        }
+    </style>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
-    <div class="layui-header" lay-filter="demo1">
+    <div class="layui-header">
         <div class="layui-logo">layuiMini 后台布局</div>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -42,7 +52,7 @@
                         <dd><a href="javascript:;">列表一</a></dd>
                         <dd><a href="javascript:;">列表二</a></dd>
                         <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a class="site-demo-active" data-type="tabAdd" href="javascript:;" target="_self">超链接</a></dd>
+                        <dd><a data-type="tabAdd" data-id="1" data-tab="page/table.html" target="_self">静态表格</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -61,26 +71,22 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div class="layui-tab" lay-filter="demo" lay-allowclose="true" style="width: 100%;height: 100%">
+        <div class="layui-tab layui-tab-card" lay-filter="layuiminiTab" lay-allowclose="true" style="width: 100%;height: 90%">
             <ul class="layui-tab-title">
                 <li class="layui-this" lay-allowclose="false">首页</li>
             </ul>
-            <div class="layui-tab-content" style="width: 100%;height: 100%">
-                <iframe width="100%" height="90%" frameborder="0"  scrolling=="auto" src="https://www.baidu.com"></iframe>
-                <!--<div class="layui-tab-item layui-show">首页内容</div>-->
+            <div class="layui-tab-content" style="width: 100%;height: 100%;">
+                <div class="layui-tab-item layui-show" style="width: 100%;height: 100%">
+                    <iframe width="100%" height="100%" frameborder="0" src="https://www.baidu.com/"></iframe>
+                </div>
             </div>
         </div>
-        <!--<div class="site-demo-button" style="margin-bottom: 0;">-->
-            <!--<button class="layui-btn site-demo-active" data-type="tabAdd">新增Tab项</button>-->
-            <!--<button class="layui-btn site-demo-active" data-type="tabDelete">删除：商品管理</button>-->
-            <!--<button class="layui-btn site-demo-active" data-type="tabChange">切换到：用户管理</button>-->
-        <!--</div>-->
     </div>
 
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © layuiMini - 底部固定区域
-    </div>
+    <!--<div class="layui-footer">-->
+    <!--&lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+    <!--© layuiMini - 底部固定区域-->
+    <!--</div>-->
 </div>
 <script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
 <script>
@@ -95,33 +101,68 @@
             tabAdd: function () {
                 //新增一个Tab项
                 var tabId = new Date().getTime();
-                element.tabAdd('demo', {
+                element.tabAdd('layuiminiTab', {
                     title: '新选项' + tabId //用于演示
-                    , content: '<iframe width="100%" height="90%" frameborder="0"  scrolling=="auto" src="https://www.baidu.com"></iframe>'
+                    , content: '<iframe width="100%" height="100%" frameborder="0"  src="https://product.pconline.com.cn/itbk/software/dnwt/1504/6294277.html"></iframe>'
                     , id: tabId //实际使用一般是规定好的id，这里以时间戳模拟下
                 })
-                element.tabChange('demo', tabId)
+                element.tabChange('layuiminiTab', tabId)
             }
             , tabDelete: function (othis) {
                 //删除指定Tab项
-                element.tabDelete('demo', '44'); //删除：“商品管理”
+                element.tabDelete('layuiminiTab', '44'); //删除：“商品管理”
 
 
                 othis.addClass('layui-btn-disabled');
             }
             , tabChange: function () {
                 //切换到指定Tab项
-                element.tabChange('demo', '22'); //切换到：用户管理
+                element.tabChange('layuiminiTab', '22'); //切换到：用户管理
             }
         };
 
+        /**
+         * 打开新窗口
+         */
+        $('body').on('click', '[data-tab]', function () {
+            var tabId = $(this).attr('data-tab'),
+                href = $(this).attr('data-tab'),
+                title = $(this).text();
+            if (tabId == null || tabId == undefined) {
+                tabId = new Date().getTime();
+            }
 
-        $('.site-demo-active').on('click', function(){
-            console.log('执行tab add')
-            var othis = $(this), type = othis.data('type');
-            console.log(othis)
-            console.log(type)
-            active[type] ? active[type].call(this, othis) : '';
+            // 判断该窗口是否已经打开过
+            var checkTab = sessionStorage.getItem("layuiminiTab" + tabId);
+            console.log(checkTab)
+
+            if (!checkTab) {
+                console.log('未打开过' + tabId);
+                // 新增tab窗口
+                element.tabAdd('layuiminiTab', {
+                    title: title + tabId //用于演示
+                    , content: '<iframe width="100%" height="100%" frameborder="0"  src="' + href + '"></iframe>'
+                    , id: tabId //实际使用一般是规定好的id，这里以时间戳模拟下
+                });
+
+                // 保存tab记录
+                sessionStorage.setItem("layuiminiTab" + tabId, true);
+            } else {
+                console.log('已打开过' + tabId);
+            }
+            // 切换tab到当前打开
+            var tabChange = element.tabChange('layuiminiTab', tabId);
+            console.log('tabChange:' + tabChange);
+        });
+
+        sessionStorage.clear();
+
+        //Hash地址的定位
+        var layid = location.hash.replace(/^#layuiminiTab=/, '');
+        element.tabChange('layuiminiTab', layid);
+
+        element.on('tab(layuiminiTab)', function (elem) {
+            location.hash = 'layuiminiTab=' + $(this).attr('lay-id');
         });
 
 
