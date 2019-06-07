@@ -49,10 +49,10 @@
                 <li class="layui-nav-item">
                     <a class="" href="javascript:;">所有商品</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a data-type="tabAdd" data-id="1" data-tab="page/table.html" target="_self">静态表格</a></dd>
+                        <dd><a data-type="tabAdd" data-tab="page/button.html" target="_self">按钮</a></dd>
+                        <dd><a data-type="tabAdd" data-tab="page/form.html" target="_self">表单</a></dd>
+                        <dd><a data-type="tabAdd" data-tab="page/layer.html" target="_self">弹出层</a></dd>
+                        <dd><a data-type="tabAdd" data-tab="page/table.html" target="_self">静态表格</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -73,7 +73,7 @@
         <!-- 内容主体区域 -->
         <div class="layui-tab layui-tab-card" lay-filter="layuiminiTab" lay-allowclose="true" style="width: 100%;height: 90%">
             <ul class="layui-tab-title">
-                <li class="layui-this" lay-allowclose="false">首页</li>
+                <li lay-id="https://www.baidu.com" class="layui-this" lay-allowclose="false">首页</li>
             </ul>
             <div class="layui-tab-content" style="width: 100%;height: 100%;">
                 <div class="layui-tab-item layui-show" style="width: 100%;height: 100%">
@@ -132,6 +132,11 @@
                 tabId = new Date().getTime();
             }
 
+            var list = $(".layui-tab-title li").each(function () {
+                test = $(this).attr('lay-id');
+                console.log('遍历元素:' + test);
+            });
+
             // 判断该窗口是否已经打开过
             var checkTab = sessionStorage.getItem("layuiminiTab" + tabId);
             console.log(checkTab)
@@ -157,12 +162,29 @@
 
         sessionStorage.clear();
 
+        var url = window.location.href;
+        var urlArr = url.split("#");
+        if (urlArr.length >= 2) {
+            tabId = urlArr.pop();
+            title = tabId;
+            href = urlArr.pop();
+            console.log('执行');
+            console.log(tabId);
+            console.log(href);
+            element.tabAdd('layuiminiTab', {
+                title: title + tabId //用于演示
+                , content: '<iframe width="100%" height="100%" frameborder="0"  src="' + href + '"></iframe>'
+                , id: tabId //实际使用一般是规定好的id，这里以时间戳模拟下
+            });
+            element.tabChange('layuiminiTab', tabId);
+        }
+
         //Hash地址的定位
-        var layid = location.hash.replace(/^#layuiminiTab=/, '');
-        element.tabChange('layuiminiTab', layid);
+        var layId = location.hash.replace(/^#/, '');
+        element.tabChange('layuiminiTab', layId);
 
         element.on('tab(layuiminiTab)', function (elem) {
-            location.hash = 'layuiminiTab=' + $(this).attr('lay-id');
+            location.hash = $(this).attr('lay-id');
         });
 
 
