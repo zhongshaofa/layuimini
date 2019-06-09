@@ -71,22 +71,17 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div class="layui-tab layui-tab-card" lay-filter="layuiminiTab" lay-allowclose="true" style="width: 100%;height: 90%">
+        <div class="layui-tab layui-tab-card" lay-filter="layuiminiTab" style="width: 100%;height: 90%">
             <ul class="layui-tab-title">
-                <li lay-id="https://www.baidu.com" class="layui-this" lay-allowclose="false">首页</li>
+                <li class="layui-this">首页</li>
             </ul>
             <div class="layui-tab-content" style="width: 100%;height: 100%;">
                 <div class="layui-tab-item layui-show" style="width: 100%;height: 100%">
-                    <iframe width="100%" height="100%" frameborder="0" src="https://www.baidu.com/"></iframe>
+                    <iframe width="100%" height="100%" frameborder="0" src="page/welcome.html"></iframe>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--<div class="layui-footer">-->
-    <!--&lt;!&ndash; 底部固定区域 &ndash;&gt;-->
-    <!--© layuiMini - 底部固定区域-->
-    <!--</div>-->
 </div>
 <script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
 <script>
@@ -95,31 +90,133 @@
         var $ = layui.jquery,
             element = layui.element;
 
-        //触发事件
-        var active = {
+        // 选项卡方法
+        LayuiTab = new function () {
 
-            tabAdd: function () {
-                //新增一个Tab项
-                var tabId = new Date().getTime();
+            /**
+             * 初始化选项卡方法
+             **/
+            this.init = function () {
+                console.log('===============init=================');
+
+                var layuiminiTabInfo = JSON.parse(sessionStorage.getItem("layuiminiTabInfo"));
+                if (layuiminiTabInfo == null) {
+                    layuiminiTabInfo = {};
+                }
+                $.each(layuiminiTabInfo, function (tabId, layuiminiTab) {
+                    LayuiTab.add(tabId, layuiminiTab.href, layuiminiTab.title, false);
+                });
+
+                var locationHref = window.location.href;
+                var urlArr = locationHref.split("#");
+                if (urlArr.length >= 2) {
+                    href = urlArr.pop();
+                    check = LayuiTab.check(href);
+                    if (!check) {
+                        var title = href,
+                            tabId = href;
+                        $(".layui-nav-tree a").each(function () {
+                            checkTabId = $(this).attr('data-tab');
+                            if (checkTabId == href) {
+                                title = $(this).text();
+                            }
+                        });
+                        LayuiTab.add(tabId, href, title, true);
+                        LayuiTab.change(tabId);
+                    }
+                }
+            }
+
+            /**
+             * 判断窗口是否已打开
+             * @param tabId
+             **/
+            this.check = function (tabId) {
+
+                // 判断选项卡上是否有
+                var checkTab = false;
+                $(".layui-tab-title li").each(function () {
+                    checkTabId = $(this).attr('lay-id');
+                    if (checkTabId != null && checkTabId == tabId) {
+                        checkTab = true;
+                    }
+                });
+                if (checkTab == false) {
+                    return false;
+                }
+
+                // 判断sessionStorage是否有
+                var layuiminiTabInfo = JSON.parse(sessionStorage.getItem("layuiminiTabInfo"));
+                if (layuiminiTabInfo == null) {
+                    layuiminiTabInfo = {};
+                }
+                var check = layuiminiTabInfo[tabId];
+                if (check == undefined || check == null) {
+                    return false;
+                }
+                return true;
+            }
+
+            /**
+             * 打开新窗口
+             * @param tabId
+             * @param href
+             * @param title
+             */
+            this.add = function (tabId, href, title, addSession) {
+                if (addSession == undefined || addSession == true) {
+                    var layuiminiTabInfo = JSON.parse(sessionStorage.getItem("layuiminiTabInfo"));
+                    if (layuiminiTabInfo == null) {
+                        layuiminiTabInfo = {};
+                    }
+                    layuiminiTabInfo[tabId] = {href: href, title: title}
+                    sessionStorage.setItem("layuiminiTabInfo", JSON.stringify(layuiminiTabInfo));
+                }
+
                 element.tabAdd('layuiminiTab', {
-                    title: '新选项' + tabId //用于演示
-                    , content: '<iframe width="100%" height="100%" frameborder="0"  src="https://product.pconline.com.cn/itbk/software/dnwt/1504/6294277.html"></iframe>'
-                    , id: tabId //实际使用一般是规定好的id，这里以时间戳模拟下
-                })
-                element.tabChange('layuiminiTab', tabId)
+                    title: title + '<i data-tab-close="" class="layui-icon layui-unselect layui-tab-close">ဆ</i>' //用于演示
+                    , content: '<iframe width="100%" height="100%" frameborder="0"  src="' + href + '"></iframe>'
+                    , id: tabId
+                });
             }
-            , tabDelete: function (othis) {
-                //删除指定Tab项
-                element.tabDelete('layuiminiTab', '44'); //删除：“商品管理”
 
-
-                othis.addClass('layui-btn-disabled');
+            /**
+             * 删除窗口
+             * @param tabId
+             */
+            this.del = function (tabId) {
+                var layuiminiTabInfo = JSON.parse(sessionStorage.getItem("layuiminiTabInfo"));
+                if (layuiminiTabInfo != null) {
+                    delete layuiminiTabInfo[tabId];
+                    sessionStorage.setItem("layuiminiTabInfo", JSON.stringify(layuiminiTabInfo))
+                }
+                element.tabDelete('layuiminiTab', tabId);
             }
-            , tabChange: function () {
-                //切换到指定Tab项
-                element.tabChange('layuiminiTab', '22'); //切换到：用户管理
+
+            /**
+             * 切换选项卡
+             **/
+            this.change = function (tabId) {
+                element.tabChange('layuiminiTab', tabId);
             }
         };
+
+        LayuiTab.init();
+
+
+        /**
+         * 关闭选项卡
+         **/
+        $('body').on('click', '[data-tab-close]', function () {
+            $parent = $(this).parent();
+            tabId = $parent.attr('lay-id');
+            if (tabId != undefined || tabId != null) {
+                // 执行关闭
+                console.log('==========执行关闭=======');
+                console.log(tabId);
+                LayuiTab.del(tabId);
+            }
+        });
 
         /**
          * 打开新窗口
@@ -132,52 +229,18 @@
                 tabId = new Date().getTime();
             }
 
-            var list = $(".layui-tab-title li").each(function () {
-                test = $(this).attr('lay-id');
-                console.log('遍历元素:' + test);
-            });
-
             // 判断该窗口是否已经打开过
-            var checkTab = sessionStorage.getItem("layuiminiTab" + tabId);
-            console.log(checkTab)
+            check = LayuiTab.check(tabId);
 
-            if (!checkTab) {
+            if (!check) {
                 console.log('未打开过' + tabId);
-                // 新增tab窗口
-                element.tabAdd('layuiminiTab', {
-                    title: title + tabId //用于演示
-                    , content: '<iframe width="100%" height="100%" frameborder="0"  src="' + href + '"></iframe>'
-                    , id: tabId //实际使用一般是规定好的id，这里以时间戳模拟下
-                });
-
-                // 保存tab记录
-                sessionStorage.setItem("layuiminiTab" + tabId, true);
+                LayuiTab.add(tabId, href, title, true);
             } else {
                 console.log('已打开过' + tabId);
             }
-            // 切换tab到当前打开
-            var tabChange = element.tabChange('layuiminiTab', tabId);
-            console.log('tabChange:' + tabChange);
-        });
 
-        sessionStorage.clear();
-
-        var url = window.location.href;
-        var urlArr = url.split("#");
-        if (urlArr.length >= 2) {
-            tabId = urlArr.pop();
-            title = tabId;
-            href = urlArr.pop();
-            console.log('执行');
-            console.log(tabId);
-            console.log(href);
-            element.tabAdd('layuiminiTab', {
-                title: title + tabId //用于演示
-                , content: '<iframe width="100%" height="100%" frameborder="0"  src="' + href + '"></iframe>'
-                , id: tabId //实际使用一般是规定好的id，这里以时间戳模拟下
-            });
             element.tabChange('layuiminiTab', tabId);
-        }
+        });
 
         //Hash地址的定位
         var layId = location.hash.replace(/^#/, '');
