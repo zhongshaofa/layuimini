@@ -22,31 +22,17 @@
             <div class="layui-logo">后台管理系统</div>
         </a>
         <!-- 头部区域（可配合layui已有的水平导航） -->
-        <!--        <ul class="layui-nav layui-layout-left">-->
-        <!--            <li class="layui-nav-item">-->
-        <!--                <a href="/">返回前台</a>-->
-        <!--            </li>-->
-        <!--            <li class="layui-nav-item">-->
-        <!--                <a href="">商品管理</a>-->
-        <!--            </li>-->
-        <!--            <li class="layui-nav-item">-->
-        <!--                <a href="">用户</a>-->
-        <!--            </li>-->
-        <!--            <li class="layui-nav-item">-->
-        <!--                <a href="javascript:;">其它系统</a>-->
-        <!--                <dl class="layui-nav-child">-->
-        <!--                    <dd>-->
-        <!--                        <a href="">邮件管理</a>-->
-        <!--                    </dd>-->
-        <!--                    <dd>-->
-        <!--                        <a href="">消息管理</a>-->
-        <!--                    </dd>-->
-        <!--                    <dd>-->
-        <!--                        <a href="">授权管理</a>-->
-        <!--                    </dd>-->
-        <!--                </dl>-->
-        <!--            </li>-->
-        <!--        </ul>-->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item layui-this" data-menu="ceshi">
+                <a href="javascript:;">测试管理</a>
+            </li>
+            <li class="layui-nav-item" data-menu="other">
+                <a href="javascript:;">其它管理</a>
+            </li>
+            <li class="layui-nav-item" data-menu="setting">
+                <a href="javascript:;">系统设置</a>
+            </li>
+        </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
@@ -66,7 +52,7 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+            <ul class="layui-nav layui-nav-tree layui-this" id="ceshi">
                 <!--layui-nav-itemed 添加该属性默认展开-->
                 <li class="layui-nav-item">
                     <a class="" href="javascript:;">所有商品</a>
@@ -80,7 +66,69 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">解决方案</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
+                        <dd><a href="javascript:;">列表一</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="javascript:;">列表一</a></dd>
+                                <dd><a href="javascript:;">列表二</a></dd>
+                                <dd><a href="">超链接</a></dd>
+                            </dl>
+                        </dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">云市场</a></li>
+                <li class="layui-nav-item"><a href="">发布商品</a></li>
+            </ul>
+            <ul class="layui-nav layui-nav-tree layui-hide" id="setting">
+                <!--layui-nav-itemed 添加该属性默认展开-->
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">所有商品setting</a>
+                    <dl class="layui-nav-child">
+                        <dd><a data-type="tabAdd" data-tab="page/button.html" target="_self">按钮</a></dd>
+                        <dd><a data-type="tabAdd" data-tab="page/form.html" target="_self">表单</a></dd>
+                        <dd><a data-type="tabAdd" data-tab="page/layer.html" target="_self">弹出层</a></dd>
+                        <dd><a data-type="tabAdd" data-tab="page/table.html" target="_self">静态表格</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">解决方案</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">列表一</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="javascript:;">列表一</a></dd>
+                                <dd><a href="javascript:;">列表二</a></dd>
+                                <dd><a href="">超链接</a></dd>
+                            </dl>
+                        </dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">云市场</a></li>
+                <li class="layui-nav-item"><a href="">发布商品</a></li>
+            </ul>
+            <ul class="layui-nav layui-nav-tree layui-hide" id="other">
+                <!--layui-nav-itemed 添加该属性默认展开-->
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">所有商品other</a>
+                    <dl class="layui-nav-child">
+                        <dd><a data-type="tabAdd" data-tab="page/button.html" target="_self">按钮</a></dd>
+                        <dd><a data-type="tabAdd" data-tab="page/form.html" target="_self">表单</a></dd>
+                        <dd><a data-type="tabAdd" data-tab="page/layer.html" target="_self">弹出层</a></dd>
+                        <dd><a data-type="tabAdd" data-tab="page/table.html" target="_self">静态表格</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">解决方案</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">列表一</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="javascript:;">列表一</a></dd>
+                                <dd><a href="javascript:;">列表二</a></dd>
+                                <dd><a href="">超链接</a></dd>
+                            </dl>
+                        </dd>
                         <dd><a href="javascript:;">列表二</a></dd>
                         <dd><a href="">超链接</a></dd>
                     </dl>
@@ -111,6 +159,14 @@
     layui.use('element', function () {
         var $ = layui.jquery,
             element = layui.element;
+
+        LayuiMenu = new function () {
+
+            // 初始化菜单栏
+            this.init = function () {
+
+            }
+        }
 
         // 选项卡方法
         LayuiTab = new function () {
@@ -255,6 +311,18 @@
             }
 
             element.tabChange('layuiminiTab', tabId);
+        });
+
+        /**
+         * 左侧菜单的切换
+         */
+        $('body').on('click', '[data-menu]', function () {
+            $parent = $(this).parent();
+            menuId = $(this).attr('data-menu');
+            $(".layui-nav.layui-nav-tree.layui-this").addClass('layui-hide');
+            $(".layui-nav.layui-nav-tree.layui-this.layui-hide").removeClass('layui-this');
+            $("#" + menuId).removeClass('layui-hide');
+            $("#" + menuId).addClass('layui-this');
         });
 
         //Hash地址的定位

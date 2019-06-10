@@ -1,0 +1,98 @@
+{
+  "contentManagement": [
+    {
+      "title": "文章列表",
+      "icon": "icon-text",
+      "href": "page/news/newsList.html",
+      "target": "_self"
+    },
+    {
+      "title": "图片管理",
+      "icon": "&#xe634;",
+      "href": "page/img/images.html",
+      "target": "_self"
+    },
+    {
+      "title": "其他页面",
+      "icon": "&#xe630;",
+      "href": "",
+      "target": "_self",
+      "children": [
+        {
+          "title": "404页面",
+          "icon": "&#xe61c;",
+          "href": "page/404.html",
+          "target": "_self"
+        },
+        {
+          "title": "登录",
+          "icon": "&#xe609;",
+          "href": "page/login/login.html",
+          "target": "_blank"
+        }
+      ]
+    }
+  ],
+  "memberCenter": [
+    {
+      "title": "用户中心",
+      "icon": "&#xe612;",
+      "href": "page/user/userList.html",
+      "target": "_self"
+    },
+    {
+      "title": "会员等级",
+      "icon": "icon-vip",
+      "href": "page/user/userGrade.html",
+      "target": "_self"
+    }
+  ],
+  "systemeSttings": [
+    {
+      "title": "系统基本参数",
+      "icon": "&#xe631;",
+      "href": "page/systemSetting/basicParameter.html",
+      "target": "_self"
+    },
+    {
+      "title": "系统日志",
+      "icon": "icon-log",
+      "href": "page/systemSetting/logs.html",
+      "target": "_self"
+    },
+    {
+      "title": "友情链接",
+      "icon": "&#xe64c;",
+      "href": "page/systemSetting/linkList.html",
+      "target": "_self"
+    },
+    {
+      "title": "图标管理",
+      "icon": "&#xe857;",
+      "href": "page/systemSetting/icons.html",
+      "target": "_self"
+    }
+  ],
+  "seraphApi": [
+    {
+      "title": "三级联动模块",
+      "icon": "icon-mokuai",
+      "href": "page/doc/addressDoc.html",
+      "target": "_self"
+    },
+    {
+      "title": "bodyTab模块",
+      "icon": "icon-mokuai",
+      "href": "page/doc/bodyTabDoc.html",
+      "target": "_self"
+    },
+    {
+      "title": "三级菜单",
+      "icon": "icon-mokuai",
+      "href": "page/doc/navDoc.html",
+      "target": "_self"
+    }
+  ]
+}
+
+
