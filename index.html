@@ -145,7 +145,7 @@
             this.addAll = function (data) {
                 var headheaderMenuHtml = '',
                     treeMenuHtml = '',
-                    isDefault = true;
+                    checkDefault = 'layui-this';
 
                 $.each(data, function (key, val) {
                     console.log('========api/menu.php=========');
@@ -153,13 +153,19 @@
                     console.log(val);
 
                     // 默认选中
-                    if (isDefault == true) {
-                        headheaderMenuHtml += '<li class="layui-nav-item layui-this" data-menu="' + key + '"> <a href="javascript:;">'+val.title+'</a> </li>\n';
-                    }else {
-                        headheaderMenuHtml += '<li class="layui-nav-item" data-menu="' + key + '"> <a href="javascript:;">'+val.title+'</a> </li>';
-                    }
+                    headheaderMenuHtml += '<li class="layui-nav-item ' + checkDefault + '" data-menu="' + key + '"> <a href="javascript:;">' + val.title + '</a> </li>\n';
+                    menuList = val.list;
+                    $.each(menuList, function (index, menu) {
+                        console.log('========menu=========');
+                        console.log(menu);
+                        if (menu.children != undefined && menu.children != []) {
+                            console.log('========menu.children========');
+                            console.log(menu.children);
+                        }
+                    });
 
-                    isDefault = false;
+
+                    checkDefault = '';
                 });
 
 
