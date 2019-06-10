@@ -2,14 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>layuiMini 后台布局</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
     <style>
         .layui-tab-item {
@@ -25,19 +18,48 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">layuiMini 后台布局</div>
+        <a href="">
+            <div class="layui-logo">后台管理系统</div>
+        </a>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <!--        <ul class="layui-nav layui-layout-left">-->
+        <!--            <li class="layui-nav-item">-->
+        <!--                <a href="/">返回前台</a>-->
+        <!--            </li>-->
+        <!--            <li class="layui-nav-item">-->
+        <!--                <a href="">商品管理</a>-->
+        <!--            </li>-->
+        <!--            <li class="layui-nav-item">-->
+        <!--                <a href="">用户</a>-->
+        <!--            </li>-->
+        <!--            <li class="layui-nav-item">-->
+        <!--                <a href="javascript:;">其它系统</a>-->
+        <!--                <dl class="layui-nav-child">-->
+        <!--                    <dd>-->
+        <!--                        <a href="">邮件管理</a>-->
+        <!--                    </dd>-->
+        <!--                    <dd>-->
+        <!--                        <a href="">消息管理</a>-->
+        <!--                    </dd>-->
+        <!--                    <dd>-->
+        <!--                        <a href="">授权管理</a>-->
+        <!--                    </dd>-->
+        <!--                </dl>-->
+        <!--            </li>-->
+        <!--        </ul>-->
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
-                    贤心
-                </a>
+                    <img src="https://gitee.com/uploads/66/890966_Leytton.png?1512991922" class="layui-nav-img"> Leytton </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
+                    <dd>
+                        <a href="javascript:;" onclick="addTab(this);" tab_url="http://www.llqqww.com">基本资料</a>
+                    </dd>
+                    <dd>
+                        <a href="">安全设置</a>
+                    </dd>
                 </dl>
             </li>
-            <!--<li class="layui-nav-item"><a href="">退了</a></li>-->
         </ul>
     </div>
 
@@ -73,7 +95,7 @@
         <!-- 内容主体区域 -->
         <div class="layui-tab layui-tab-card" lay-filter="layuiminiTab" style="width: 100%;height: 90%">
             <ul class="layui-tab-title">
-                <li class="layui-this">首页</li>
+                <li class="layui-this" id='layuiminiHomeTab' lay-id="page/welcome.html">首页</li>
             </ul>
             <div class="layui-tab-content" style="width: 100%;height: 100%;">
                 <div class="layui-tab-item layui-show" style="width: 100%;height: 100%">
@@ -97,16 +119,6 @@
              * 初始化选项卡方法
              **/
             this.init = function () {
-                console.log('===============init=================');
-
-                var layuiminiTabInfo = JSON.parse(sessionStorage.getItem("layuiminiTabInfo"));
-                if (layuiminiTabInfo == null) {
-                    layuiminiTabInfo = {};
-                }
-                $.each(layuiminiTabInfo, function (tabId, layuiminiTab) {
-                    LayuiTab.add(tabId, layuiminiTab.href, layuiminiTab.title, false);
-                });
-
                 var locationHref = window.location.href;
                 var urlArr = locationHref.split("#");
                 if (urlArr.length >= 2) {
@@ -121,8 +133,11 @@
                                 title = $(this).text();
                             }
                         });
-                        LayuiTab.add(tabId, href, title, true);
-                        LayuiTab.change(tabId);
+                        layuiminiHomeTab = $('#layuiminiHomeTab').attr('lay-id');
+                        if (layuiminiHomeTab != href) {
+                            LayuiTab.add(tabId, href, title, true);
+                            LayuiTab.change(tabId);
+                        }
                     }
                 }
             }
