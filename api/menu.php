@@ -22,7 +22,7 @@ $listList = [
                     'href'     => '',
                     'icon'     => '&#xe634;',
                     'target'   => '',
-                    'children' => [
+                    'child' => [
                         [
                             'title'  => '按钮',
                             'href'   => 'page/button.html',
@@ -54,19 +54,19 @@ $listList = [
                     'href'     => '',
                     'icon'     => '&#xe634;',
                     'target'   => '',
-                    'children' => [
+                    'child' => [
                         [
                             'title'    => '按钮1',
                             'href'     => 'page/button.html',
                             'icon'     => '&#xe634;',
                             'target'   => '_self',
-                            'children' => [
+                            'child' => [
                                 [
                                     'title'    => '按钮2',
                                     'href'     => 'page/button.html',
                                     'icon'     => '&#xe634;',
                                     'target'   => '_self',
-                                    'children' => [
+                                    'child' => [
                                         [
                                             'title'  => '按钮3',
                                             'href'   => 'page/button.html',
@@ -114,7 +114,7 @@ $listList = [
                     'href'     => '',
                     'icon'     => '&#xe634;',
                     'target'   => '',
-                    'children' => [
+                    'child' => [
                         [
                             'title'  => '按钮',
                             'href'   => 'page/button.html',
@@ -146,19 +146,19 @@ $listList = [
                     'href'     => '',
                     'icon'     => '&#xe634;',
                     'target'   => '',
-                    'children' => [
+                    'child' => [
                         [
                             'title'    => '按钮1',
                             'href'     => 'page/button.html',
                             'icon'     => '&#xe634;',
                             'target'   => '_self',
-                            'children' => [
+                            'child' => [
                                 [
                                     'title'    => '按钮2',
                                     'href'     => 'page/button.html',
                                     'icon'     => '&#xe634;',
                                     'target'   => '_self',
-                                    'children' => [
+                                    'child' => [
                                         [
                                             'title'  => '按钮3',
                                             'href'   => 'page/button.html',
