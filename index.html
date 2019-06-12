@@ -43,96 +43,6 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll layuimini-menu">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree layui-this" id="ceshi">
-                <li class="layui-nav-item">
-                    <a href="javascript:;" data-type="tabAdd" data-tab="page/button.html" target="_self">按钮列表</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">UI管理</a><dl class="layui-nav-child">
-                    <dd>
-                        <a href="javascript:;" data-type="tabAdd" data-tab="page/button.html" target="_self">按钮</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" data-type="tabAdd" data-tab="page/form.html" target="_self">表单</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" data-type="tabAdd" data-tab="page/layer.html" target="_self">弹出层</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" data-type="tabAdd" data-tab="page/table.html" target="_self">静态表格</a>
-                    </dd>
-                </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">测试无限层</a><dl class="layui-nav-child">
-                    <dd>
-                        <a href="javascript:;">按钮1</a><dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;">按钮2</a><dl class="layui-nav-child">
-                            <dd>
-                                <a href="javascript:;" data-type="tabAdd" data-tab="page/button.html" target="_self">按钮3</a>
-                            </dd>
-                            <dd>
-                                <a href="javascript:;" data-type="tabAdd" data-tab="page/form.html" target="_self">表单4</a>
-                            </dd>
-                        </dl>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-type="tabAdd" data-tab="page/form.html" target="_self">表单5</a>
-                        </dd>
-                    </dl>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" data-type="tabAdd" data-tab="page/form.html" target="_self">表单6</a>
-                    </dd>
-                </dl>
-                </li>
-            </ul>
-            <ul class="layui-nav layui-nav-tree layui-this" id="setting">
-                <li class="layui-nav-item">
-                    <a href="javascript:;" data-type="tabAdd" data-tab="page/button.html" target="_self">按钮列表【setting】</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">UI管理【setting】</a><dl class="layui-nav-child">
-                    <dd>
-                        <a href="javascript:;" data-type="tabAdd" data-tab="page/button.html" target="_self">按钮</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" data-type="tabAdd" data-tab="page/form.html" target="_self">表单</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" data-type="tabAdd" data-tab="page/layer.html" target="_self">弹出层</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" data-type="tabAdd" data-tab="page/table.html" target="_self">静态表格</a>
-                    </dd>
-                </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">测试无限层【setting】</a><dl class="layui-nav-child">
-                    <dd>
-                        <a href="javascript:;">按钮1</a><dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;">按钮2</a><dl class="layui-nav-child">
-                            <dd>
-                                <a href="javascript:;" data-type="tabAdd" data-tab="page/button.html" target="_self">按钮3</a>
-                            </dd>
-                            <dd>
-                                <a href="javascript:;" data-type="tabAdd" data-tab="page/form.html" target="_self">表单4</a>
-                            </dd>
-                        </dl>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-type="tabAdd" data-tab="page/form.html" target="_self">表单5</a>
-                        </dd>
-                    </dl>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" data-type="tabAdd" data-tab="page/form.html" target="_self">表单6</a>
-                    </dd>
-                </dl>
-                </li>
-            </ul>
         </div>
     </div>
 
@@ -177,9 +87,11 @@
              * 新增菜单
              **/
             this.addAll = function (data) {
-                var headheaderMenuHtml = '',
+                var headerMenuHtml = '',
                     treeMenuHtml = '',
-                    checkDefault = 'layui-this';
+                    headerCheckDefault = 'layui-this',
+                    menuCheckDefault = 'layui-this';
+
 
                 $.each(data, function (key, val) {
                     console.log('========api/menu.php=========');
@@ -187,9 +99,9 @@
                     console.log(val);
 
                     // 默认选中
-                    headheaderMenuHtml += '<li class="layui-nav-item ' + checkDefault + '" data-menu="' + key + '"> <a href="javascript:;">' + val.title + '</a> </li>\n';
+                    headerMenuHtml += '<li class="layui-nav-item ' + headerCheckDefault + '" data-menu="' + key + '"> <a href="javascript:;">' + val.title + '</a> </li>\n';
 
-                    treeMenuHtml += '<ul class="layui-nav layui-nav-tree layui-this" id="' + key + '">\n';
+                    treeMenuHtml += '<ul class="layui-nav layui-nav-tree '+menuCheckDefault+'" id="' + key + '">\n';
                     menuList = val.list;
                     $.each(menuList, function (index, menu) {
                         console.log('========menu=========');
@@ -197,7 +109,7 @@
 
                         treeMenuHtml += '<li class="layui-nav-item">\n';
                         if (menu.child != undefined && menu.child != []) {
-                            treeMenuHtml += '<a href="javascript:;">' + menu.title + '<span class="layui-nav-more"></span></a>';
+                            treeMenuHtml += '<a href="javascript:;">' + menu.title + '</a>';
 
 
                             buildChildHtml = function (html, child) {
@@ -206,7 +118,7 @@
                                 $.each(child, function (childIndex, childMenu) {
                                     html += '<dd>\n';
                                     if (childMenu.child != undefined && childMenu.child != []) {
-                                        html += '<a href="javascript:;">' + childMenu.title + '<span class="layui-nav-more"></span></a>';
+                                        html += '<a href="javascript:;">' + childMenu.title + '</a>';
                                         html = buildChildHtml(html, childMenu.child);
                                     } else {
                                         html += '<a href="javascript:;" data-type="tabAdd" data-tab="' + childMenu.href + '" target="' + childMenu.target + '">' + childMenu.title + '</a>\n';
@@ -233,21 +145,19 @@
                     treeMenuHtml += '</ul>\n';
 
 
-                    checkDefault = '';
+                    headerCheckDefault = '';
+                    menuCheckDefault = 'layui-hide';
                 });
 
-
                 // 插入html
-                $('.layui-header-menu').html(headheaderMenuHtml);
-                $('.layuimini-menu').html(treeMenuHtml);
+                $('.layui-header-menu').append(headerMenuHtml);
+                $('.layuimini-menu').append(treeMenuHtml);
+
 
                 console.log('========treeMenuHtml==========');
                 console.log(treeMenuHtml);
             }
 
-            this.addChild = function (list) {
-
-            }
         }
 
         // 选项卡方法
@@ -355,6 +265,7 @@
         };
 
         LayuiMenu.init();
+        layui.use(['element', 'layer'], function () {});
         LayuiTab.init();
 
 
