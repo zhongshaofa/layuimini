@@ -1,4 +1,3 @@
-
 layui.define(["element", "jquery"], function (exports) {
     var element = layui.element,
         $ = layui.$,
@@ -16,8 +15,8 @@ layui.define(["element", "jquery"], function (exports) {
                     return layer.msg('暂无菜单信息');
                 }
                 layuimini.initHome(data.homeInfo);
-                menuListObj = layuimini.initMenu(data.moduleInfo);
-                layuimini.initTab(menuListObj);
+                layuimini.initMenu(data.moduleInfo);
+                layuimini.initTab();
             }).fail(function () {
                 return layer.msg('菜单接口有误！');
             });
@@ -38,7 +37,7 @@ layui.define(["element", "jquery"], function (exports) {
          * @param data
          */
         this.initMenu = function (data) {
-            var menuListObj ={},
+            var menuListObj = {},
                 headerMenuHtml = '',
                 leftMenuHtml = '',
                 headerMenuCheckDefault = 'layui-this',
@@ -59,7 +58,6 @@ layui.define(["element", "jquery"], function (exports) {
                                     html += '<a href="javascript:;">' + childMenu.title + '</a>';
                                     html = buildChildHtml(html, childMenu.child);
                                 } else {
-                                    menuListObj[childMenu.href] = {title: childMenu.title, href: childMenu.href, icon: childMenu.icon, target: childMenu.target};
                                     html += '<a href="javascript:;" data-type="tabAdd" data-tab="' + childMenu.href + '" target="' + childMenu.target + '">' + childMenu.title + '</a>\n';
                                 }
                                 html += '</dd>\n';
@@ -69,7 +67,6 @@ layui.define(["element", "jquery"], function (exports) {
                         };
                         leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
                     } else {
-                        menuListObj[menu.href] = {title: menu.title, href: menu.href, icon: menu.icon, target: menu.target};
                         leftMenuHtml += '<a href="javascript:;" data-type="tabAdd" data-tab="' + menu.href + '" target="' + menu.target + '">' + menu.title + '</a>\n';
                     }
                     leftMenuHtml += '</li>\n';
@@ -81,14 +78,13 @@ layui.define(["element", "jquery"], function (exports) {
             $('.layui-header-menu').html(headerMenuHtml);
             $('.layui-left-menu').html(leftMenuHtml);
             element.init();
-            return menuListObj;
         };
 
         /**
          * 初始化选项卡
          * @param menuListObj
          */
-        this.initTab = function (menuListObj) {
+        this.initTab = function () {
             var locationHref = window.location.href;
             var urlArr = locationHref.split("#");
             if (urlArr.length >= 2) {
@@ -97,9 +93,26 @@ layui.define(["element", "jquery"], function (exports) {
                 if (!check) {
                     var title = href,
                         tabId = href;
-                    if (menuListObj[tabId] != undefined && menuListObj[tabId] != null) {
-                        title = menuListObj[tabId].title;
-                    }
+                    $("[data-tab]").each(function () {
+                        if ($(this).attr("data-tab") == tabId) {
+                            title = $(this).text();
+                            // 自动展开菜单栏
+                            var addMenuClass = function ($element, type) {
+                                if (type == 1) {
+                                    $element.addClass('layui-this');
+                                    if ($element.attr('class') != 'layui-nav-item layui-this' ) {
+                                        addMenuClass($element.parent().parent(),2);
+                                    }
+                                }else {
+                                    $element.addClass('layui-nav-itemed');
+                                    if ($element.attr('class') != 'layui-nav-item layui-nav-itemed' ) {
+                                        addMenuClass($element.parent().parent(),2);
+                                    }
+                                }
+                            };
+                            addMenuClass($(this).parent(), 1);
+                        }
+                    });
                     layuiminiHomeTab = $('#layuiminiHomeTab').attr('lay-id');
                     if (layuiminiHomeTab != href) {
                         layuimini.addTab(tabId, href, title, true);
