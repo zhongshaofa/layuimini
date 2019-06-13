@@ -5,6 +5,7 @@
     <title>layuiMini 后台布局</title>
     <link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
     <link rel="stylesheet" href="css/layuimini.css" media="all">
+    <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -17,8 +18,13 @@
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="https://gitee.com/uploads/66/890966_Leytton.png?1512991922" class="layui-nav-img"> Leytton </a>
+                <a href="javascript:;"  data-clear="清理"><i class="fa fa-trash-o"></i></a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;"><img src="https://gitee.com/uploads/66/890966_Leytton.png?1512991922" class="layui-nav-img"> Leytton </a>
                 <dl class="layui-nav-child">
                     <dd>
                         <a href="javascript:;" onclick="addTab(this);" tab_url="http://www.llqqww.com">基本资料</a>
@@ -43,7 +49,7 @@
             </ul>
             <!--选项卡内容列表-->
             <div class="layui-tab-content layui-width-height">
-                <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show" >
+                <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show">
                 </div>
             </div>
         </div>

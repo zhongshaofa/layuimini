@@ -265,5 +265,21 @@ layui.define(["element", "jquery"], function (exports) {
         $("#" + menuId).addClass('layui-this');
     });
 
+    /**
+     * 清理
+     */
+    $('body').on('click', '[data-clear]', function () {
+        sessionStorage.clear();
+        layer.msg('清除缓存成功');
+    });
+
+    /**
+     * 刷新
+     */
+    $('body').on('click', '[data-refresh]', function () {
+        $(".layui-tab-item.layui-show").find("iframe")[0].contentWindow.location.reload();
+        layer.msg('刷新成功');
+    });
+
     exports("layuimini", layuimini);
 });
