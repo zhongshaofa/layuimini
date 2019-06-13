@@ -1,3 +1,4 @@
+
 layui.define(["element", "jquery"], function (exports) {
     var element = layui.element,
         $ = layui.$,
@@ -15,11 +16,11 @@ layui.define(["element", "jquery"], function (exports) {
                     return layer.msg('暂无菜单信息');
                 }
                 layuimini.initHome(data.homeInfo);
-                layuimini.initMenu(data.moduleInfo);
+                menuListObj = layuimini.initMenu(data.moduleInfo);
+                layuimini.initTab(menuListObj);
             }).fail(function () {
                 return layer.msg('菜单接口有误！');
             });
-            layuimini.initTab();
         };
 
         /**
@@ -27,7 +28,6 @@ layui.define(["element", "jquery"], function (exports) {
          * @param data
          */
         this.initHome = function (data) {
-            console.log(data);
             $('#layuiminiHomeTabId').text(data.title);
             $('#layuiminiHomeTabId').attr('lay-id', data.href);
             $('#layuiminiHomeTabIframe').html('<iframe width="100%" height="100%" frameborder="0"  src="' + data.href + '"></iframe>');
@@ -38,7 +38,8 @@ layui.define(["element", "jquery"], function (exports) {
          * @param data
          */
         this.initMenu = function (data) {
-            var headerMenuHtml = '',
+            var menuListObj ={},
+                headerMenuHtml = '',
                 leftMenuHtml = '',
                 headerMenuCheckDefault = 'layui-this',
                 leftMenuCheckDefault = 'layui-this';
@@ -58,6 +59,7 @@ layui.define(["element", "jquery"], function (exports) {
                                     html += '<a href="javascript:;">' + childMenu.title + '</a>';
                                     html = buildChildHtml(html, childMenu.child);
                                 } else {
+                                    menuListObj[childMenu.href] = {title: childMenu.title, href: childMenu.href, icon: childMenu.icon, target: childMenu.target};
                                     html += '<a href="javascript:;" data-type="tabAdd" data-tab="' + childMenu.href + '" target="' + childMenu.target + '">' + childMenu.title + '</a>\n';
                                 }
                                 html += '</dd>\n';
@@ -67,6 +69,7 @@ layui.define(["element", "jquery"], function (exports) {
                         };
                         leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
                     } else {
+                        menuListObj[menu.href] = {title: menu.title, href: menu.href, icon: menu.icon, target: menu.target};
                         leftMenuHtml += '<a href="javascript:;" data-type="tabAdd" data-tab="' + menu.href + '" target="' + menu.target + '">' + menu.title + '</a>\n';
                     }
                     leftMenuHtml += '</li>\n';
@@ -78,12 +81,14 @@ layui.define(["element", "jquery"], function (exports) {
             $('.layui-header-menu').html(headerMenuHtml);
             $('.layui-left-menu').html(leftMenuHtml);
             element.init();
+            return menuListObj;
         };
 
         /**
          * 初始化选项卡
-         **/
-        this.initTab = function () {
+         * @param menuListObj
+         */
+        this.initTab = function (menuListObj) {
             var locationHref = window.location.href;
             var urlArr = locationHref.split("#");
             if (urlArr.length >= 2) {
@@ -92,12 +97,9 @@ layui.define(["element", "jquery"], function (exports) {
                 if (!check) {
                     var title = href,
                         tabId = href;
-                    $(".layui-nav-tree a").each(function () {
-                        checkTabId = $(this).attr('data-tab');
-                        if (checkTabId == href) {
-                            title = $(this).text();
-                        }
-                    });
+                    if (menuListObj[tabId] != undefined && menuListObj[tabId] != null) {
+                        title = menuListObj[tabId].title;
+                    }
                     layuiminiHomeTab = $('#layuiminiHomeTab').attr('lay-id');
                     if (layuiminiHomeTab != href) {
                         layuimini.addTab(tabId, href, title, true);
