@@ -41,8 +41,7 @@
     </div>
 
     <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll layuimini-menu">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+        <div class="layui-side-scroll layui-left-menu">
         </div>
     </div>
 
@@ -70,9 +69,10 @@
 
         LayuiMenu = new function () {
 
-            // 初始化菜单栏
+            /**
+             * 初始化菜单栏
+             **/
             this.init = function () {
-                console.log('==========LayuiMenu.init=============');
                 $.getJSON("api/menu.php", function (data, status) {
                     if (data == null) {
                         return layer.msg('暂无菜单信息');
@@ -88,33 +88,19 @@
              **/
             this.addAll = function (data) {
                 var headerMenuHtml = '',
-                    treeMenuHtml = '',
-                    headerCheckDefault = 'layui-this',
-                    menuCheckDefault = 'layui-this';
-
-
+                    leftMenuHtml = '',
+                    headerMenuCheckDefault = 'layui-this',
+                    leftMenuCheckDefault = 'layui-this';
                 $.each(data, function (key, val) {
-                    console.log('========api/menu.php=========');
-                    console.log(key);
-                    console.log(val);
-
-                    // 默认选中
-                    headerMenuHtml += '<li class="layui-nav-item ' + headerCheckDefault + '" data-menu="' + key + '"> <a href="javascript:;">' + val.title + '</a> </li>\n';
-
-                    treeMenuHtml += '<ul class="layui-nav layui-nav-tree '+menuCheckDefault+'" id="' + key + '">\n';
-                    menuList = val.list;
+                    headerMenuHtml += '<li class="layui-nav-item ' + headerMenuCheckDefault + '" data-menu="' + key + '"> <a href="javascript:;">' + val.title + '</a> </li>\n';
+                    leftMenuHtml += '<ul class="layui-nav layui-nav-tree ' + leftMenuCheckDefault + '" id="' + key + '">\n';
+                    var menuList = val.list;
                     $.each(menuList, function (index, menu) {
-                        console.log('========menu=========');
-                        console.log(menu);
-
-                        treeMenuHtml += '<li class="layui-nav-item">\n';
+                        leftMenuHtml += '<li class="layui-nav-item">\n';
                         if (menu.child != undefined && menu.child != []) {
-                            treeMenuHtml += '<a href="javascript:;">' + menu.title + '</a>';
-
-
-                            buildChildHtml = function (html, child) {
+                            leftMenuHtml += '<a href="javascript:;">' + menu.title + '</a>';
+                            var buildChildHtml = function (html, child) {
                                 html += '<dl class="layui-nav-child">\n';
-
                                 $.each(child, function (childIndex, childMenu) {
                                     html += '<dd>\n';
                                     if (childMenu.child != undefined && childMenu.child != []) {
@@ -124,41 +110,25 @@
                                         html += '<a href="javascript:;" data-type="tabAdd" data-tab="' + childMenu.href + '" target="' + childMenu.target + '">' + childMenu.title + '</a>\n';
                                     }
                                     html += '</dd>\n';
-
                                 });
-
                                 html += '</dl>\n';
                                 return html;
-                            }
-
-                            treeMenuHtml = buildChildHtml(treeMenuHtml, menu.child);
-
-
-                            console.log('========menu.child========');
-                            console.log(menu.child);
+                            };
+                            leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
                         } else {
-                            treeMenuHtml += '<a href="javascript:;" data-type="tabAdd" data-tab="' + menu.href + '" target="' + menu.target + '">' + menu.title + '</a>\n';
+                            leftMenuHtml += '<a href="javascript:;" data-type="tabAdd" data-tab="' + menu.href + '" target="' + menu.target + '">' + menu.title + '</a>\n';
                         }
-                        treeMenuHtml += '</li>\n';
-
+                        leftMenuHtml += '</li>\n';
                     });
-                    treeMenuHtml += '</ul>\n';
-
-
-                    headerCheckDefault = '';
-                    menuCheckDefault = 'layui-hide';
+                    leftMenuHtml += '</ul>\n';
+                    headerMenuCheckDefault = '';
+                    leftMenuCheckDefault = 'layui-hide';
                 });
-
-                // 插入html
-                $('.layui-header-menu').append(headerMenuHtml);
-                $('.layuimini-menu').append(treeMenuHtml);
-
-
-                console.log('========treeMenuHtml==========');
-                console.log(treeMenuHtml);
+                $('.layui-header-menu').html(headerMenuHtml);
+                $('.layui-left-menu').html(leftMenuHtml);
+                element.init();
             }
-
-        }
+        };
 
         // 选项卡方法
         LayuiTab = new function () {
@@ -265,7 +235,6 @@
         };
 
         LayuiMenu.init();
-        layui.use(['element', 'layer'], function () {});
         LayuiTab.init();
 
 
@@ -276,9 +245,6 @@
             $parent = $(this).parent();
             tabId = $parent.attr('lay-id');
             if (tabId != undefined || tabId != null) {
-                // 执行关闭
-                console.log('==========执行关闭=======');
-                console.log(tabId);
                 LayuiTab.del(tabId);
             }
         });
@@ -293,17 +259,11 @@
             if (tabId == null || tabId == undefined) {
                 tabId = new Date().getTime();
             }
-
             // 判断该窗口是否已经打开过
             check = LayuiTab.check(tabId);
-
             if (!check) {
-                console.log('未打开过' + tabId);
                 LayuiTab.add(tabId, href, title, true);
-            } else {
-                console.log('已打开过' + tabId);
             }
-
             element.tabChange('layuiminiTab', tabId);
         });
 
