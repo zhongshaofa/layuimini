@@ -38,8 +38,7 @@ layui.define(["element", "jquery"], function (exports) {
          * @param data
          */
         this.initMenu = function (data) {
-            var menuListObj = {},
-                headerMenuHtml = '',
+            var headerMenuHtml = '',
                 leftMenuHtml = '',
                 headerMenuCheckDefault = 'layui-this',
                 leftMenuCheckDefault = 'layui-this';
@@ -98,7 +97,6 @@ layui.define(["element", "jquery"], function (exports) {
 
         /**
          * 初始化选项卡
-         * @param menuListObj
          */
         this.initTab = function () {
             var locationHref = window.location.href;
