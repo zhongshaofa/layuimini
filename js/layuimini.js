@@ -43,7 +43,7 @@ layui.define(["element", "jquery"], function (exports) {
                 headerMenuCheckDefault = 'layui-this',
                 leftMenuCheckDefault = 'layui-this';
             $.each(data, function (key, val) {
-                headerMenuHtml += '<li class="layui-nav-item ' + headerMenuCheckDefault + '" data-menu="' + key + '"> <a href="javascript:;">' + val.title + '</a> </li>\n';
+                headerMenuHtml += '<li class="layui-nav-item ' + headerMenuCheckDefault + '" id="' + key + 'HeaderId" data-menu="' + key + '"> <a href="javascript:;">' + val.title + '</a> </li>\n';
                 leftMenuHtml += '<ul class="layui-nav layui-nav-tree ' + leftMenuCheckDefault + '" id="' + key + '">\n';
                 var menuList = val.list;
                 $.each(menuList, function (index, menu) {
@@ -94,6 +94,7 @@ layui.define(["element", "jquery"], function (exports) {
                     var title = href,
                         tabId = href;
                     $("[data-tab]").each(function () {
+                        console.log($(this).attr("data-tab"));
                         if ($(this).attr("data-tab") == tabId) {
                             title = $(this).text();
                             // 自动展开菜单栏
@@ -102,11 +103,23 @@ layui.define(["element", "jquery"], function (exports) {
                                     $element.addClass('layui-this');
                                     if ($element.attr('class') != 'layui-nav-item layui-this' ) {
                                         addMenuClass($element.parent().parent(),2);
+                                    }else {
+                                        var moduleId = $element.parent().attr('id');
+                                        $(".layui-header-menu li").attr('class','layui-nav-item');
+                                        $("#"+moduleId+"HeaderId").addClass("layui-this");
+                                        $(".layui-left-menu ul").attr('class','layui-nav layui-nav-tree layui-hide');
+                                        $("#"+moduleId).attr('class','layui-nav layui-nav-tree layui-this');
                                     }
                                 }else {
                                     $element.addClass('layui-nav-itemed');
                                     if ($element.attr('class') != 'layui-nav-item layui-nav-itemed' ) {
                                         addMenuClass($element.parent().parent(),2);
+                                    }else {
+                                        var moduleId = $element.parent().attr('id');
+                                        $(".layui-header-menu li").attr('class','layui-nav-item');
+                                        $("#"+moduleId+"HeaderId").addClass("layui-this");
+                                        $(".layui-left-menu ul").attr('class','layui-nav layui-nav-tree layui-hide');
+                                        $("#"+moduleId).attr('class','layui-nav layui-nav-tree layui-this');
                                     }
                                 }
                             };
