@@ -45,14 +45,15 @@ layui.define(["element", "jquery"], function (exports) {
             window.menuParameId = 1;
 
             // 缩放菜单
-            // leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-nav-top">\n' +
-            //     '<li class="layui-nav-item">\n' +
-            //     '<a class="text-center">\n' +
-            //     '<i class="layui-icon layui-icon-spread-left">\n' +
-            //     '</i>\n' +
-            //     '</a>\n' +
-            //     '</li>\n' +
-            //     '</ul>';
+            leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-nav-top" data-side-fold="1">\n' +
+                '<li class="layui-nav-item">\n' +
+                '<a class="text-center">\n' +
+                '<i class="fa fa-navicon">\n' +
+                '</i>\n' +
+                '</a>\n' +
+                '</li>\n' +
+                '</ul>';
+            // leftMenuHtml += ' <div title="菜单缩放" class="kit-side-fold" data-side-fold="缩放"><i class="fa fa-navicon" aria-hidden="true"></i></div>';
 
             $.each(data, function (key, val) {
                 headerMenuHtml += '<li class="layui-nav-item ' + headerMenuCheckDefault + '" id="' + key + 'HeaderId" data-menu="' + key + '"> <a href="javascript:;"><i class="' + val.icon + '"></i> ' + val.title + '</a> </li>\n';
@@ -61,16 +62,16 @@ layui.define(["element", "jquery"], function (exports) {
                 $.each(menuList, function (index, menu) {
                     leftMenuHtml += '<li class="layui-nav-item">\n';
                     if (menu.child != undefined && menu.child != []) {
-                        leftMenuHtml += '<a href="javascript:;"><i class="' + menu.icon + '"></i> ' + menu.title + '</a>';
+                        leftMenuHtml += '<a href="javascript:;"><i class="' + menu.icon + '"></i><span> ' + menu.title + '</span> </a>';
                         var buildChildHtml = function (html, child, menuParameId) {
                             html += '<dl class="layui-nav-child">\n';
                             $.each(child, function (childIndex, childMenu) {
                                 html += '<dd>\n';
                                 if (childMenu.child != undefined && childMenu.child != []) {
-                                    html += '<a href="javascript:;"><i class="' + childMenu.icon + '"></i> ' + childMenu.title + '</a>';
+                                    html += '<a href="javascript:;"><i class="' + childMenu.icon + '"></i><span> ' + childMenu.title + '</span></a>';
                                     html = buildChildHtml(html, childMenu.child, menuParameId);
                                 } else {
-                                    html += '<a href="javascript:;" data-type="tabAdd"  data-tab-mpi="m-p-i-' + menuParameId + '" data-tab="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i> ' + childMenu.title + '</a>\n';
+                                    html += '<a href="javascript:;" data-type="tabAdd"  data-tab-mpi="m-p-i-' + menuParameId + '" data-tab="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span> ' + childMenu.title + '</span></a>\n';
                                     menuParameId++;
                                     window.menuParameId = menuParameId;
                                 }
@@ -81,7 +82,7 @@ layui.define(["element", "jquery"], function (exports) {
                         };
                         leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child, menuParameId);
                     } else {
-                        leftMenuHtml += '<a href="javascript:;" data-type="tabAdd" data-tab-mpi="m-p-i-' + menuParameId + '" data-tab="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i> ' + menu.title + '</a>\n';
+                        leftMenuHtml += '<a href="javascript:;" data-type="tabAdd" data-tab-mpi="m-p-i-' + menuParameId + '" data-tab="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span> ' + menu.title + '</span></a>\n';
                         menuParameId++;
                     }
                     leftMenuHtml += '</li>\n';
@@ -108,11 +109,11 @@ layui.define(["element", "jquery"], function (exports) {
                     var title = href,
                         tabId = href;
                     $("[data-tab]").each(function () {
-                        var checkHref=$(this).attr("data-tab");
+                        var checkHref = $(this).attr("data-tab");
                         // 判断是否带参数了
                         if (href.indexOf("mpi=") > -1) {
                             var menuParameId = $(this).attr('data-tab-mpi');
-                            if(checkHref.indexOf("?")>-1){
+                            if (checkHref.indexOf("?") > -1) {
                                 checkHref = checkHref + '&mpi=' + menuParameId;
                             } else {
                                 checkHref = checkHref + '?mpi=' + menuParameId;
@@ -313,6 +314,48 @@ layui.define(["element", "jquery"], function (exports) {
     $('body').on('click', '[data-refresh]', function () {
         $(".layui-tab-item.layui-show").find("iframe")[0].contentWindow.location.reload();
         layer.msg('刷新成功');
+    });
+
+    /**
+     * 菜单栏缩放
+     */
+    $('body').on('click', '[data-side-fold]', function () {
+        var isShow = $(this).attr('data-side-fold');
+        $('.layui-nav-top li').attr('class', 'layui-nav-item');
+        //选择出所有的span，并判断是不是hidden
+        $('.layui-nav-item span').each(function () {
+            if(isShow == 1){
+                $(this).attr('style', 'display: none;');
+            }else {
+                $(this).attr('style', '');
+            }
+        });
+        //判断isshow的状态
+        if (isShow == 1) {
+            $('.layui-side.layui-bg-black').width(60); //设置宽度
+            $('.layui-side-scroll.layui-left-menu').width(60);
+            $('.layui-nav-top li i').css('margin-right', '90%');  //修改图标的位置
+            //将footer和body的宽度修改
+            $('.layui-body').css('left', 60 + 'px');
+            $('.layui-footer').css('left', 60 + 'px');
+            //将二级导航栏隐藏
+            $('dd span').each(function () {
+                $(this).hide();
+            });
+            //修改标志位
+            $(this).attr('data-side-fold', 0);
+        } else {
+            $('.layui-side.layui-bg-black').attr('style', ''); //设置宽度
+            $('.layui-side-scroll.layui-left-menu').attr('style', '');
+            $('.layui-nav-top li i').attr('style', '');   //修改图标的位置
+            //将footer和body的宽度修改
+            $('.layui-body').attr('style', '');
+            $('.layui-footer').attr('style', '');
+            $('dd span').each(function () {
+                $(this).show();
+            });
+            $(this).attr('data-side-fold', 1);
+        }
     });
 
     exports("layuimini", layuimini);
