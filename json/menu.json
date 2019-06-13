@@ -1,98 +1,157 @@
 {
-  "contentManagement": [
-    {
-      "title": "文章列表",
-      "icon": "icon-text",
-      "href": "page/news/newsList.html",
-      "target": "_self"
-    },
-    {
-      "title": "图片管理",
+  "homeInfo": {
+    "title": "首页1",
+    "icon": "&#xe634;",
+    "href": "page/welcome.html?t=1"
+  },
+  "moduleInfo": {
+    "ceshi": {
+      "title": "测试管理",
       "icon": "&#xe634;",
-      "href": "page/img/images.html",
-      "target": "_self"
-    },
-    {
-      "title": "其他页面",
-      "icon": "&#xe630;",
-      "href": "",
-      "target": "_self",
-      "children": [
-        {
-          "title": "404页面",
-          "icon": "&#xe61c;",
-          "href": "page/404.html",
+      "list": [{
+        "title": "按钮列表",
+        "href": "page\/button.html?t=2",
+        "icon": "&#xe634;",
+        "target": "_self"
+      }, {
+        "title": "UI管理",
+        "href": "",
+        "icon": "&#xe634;",
+        "target": "",
+        "child": [{
+          "title": "按钮",
+          "href": "page\/button.html?t=3",
+          "icon": "&#xe634;",
           "target": "_self"
-        },
-        {
-          "title": "登录",
-          "icon": "&#xe609;",
-          "href": "page/login/login.html",
-          "target": "_blank"
-        }
-      ]
+        }, {
+          "title": "表单",
+          "href": "page\/form.html?t=4",
+          "icon": "&#xe634;",
+          "target": "_self"
+        }, {
+          "title": "弹出层",
+          "href": "page\/layer.html?t=5",
+          "icon": "&#xe634;",
+          "target": "_self"
+        }, {
+          "title": "静态表格",
+          "href": "page\/table.html?t=6",
+          "icon": "&#xe634;",
+          "target": "_self"
+        }]
+      }, {
+        "title": "测试无限层",
+        "href": "",
+        "icon": "&#xe634;",
+        "target": "",
+        "child": [{
+          "title": "按钮1",
+          "href": "page\/button.html?t=7",
+          "icon": "&#xe634;",
+          "target": "_self",
+          "child": [{
+            "title": "按钮2",
+            "href": "page\/button.html?t=8",
+            "icon": "&#xe634;",
+            "target": "_self",
+            "child": [{
+              "title": "按钮3",
+              "href": "page\/button.html?t=9",
+              "icon": "&#xe634;",
+              "target": "_self"
+            }, {
+              "title": "表单4",
+              "href": "page\/form.html?t=10",
+              "icon": "&#xe634;",
+              "target": "_self"
+            }]
+          }, {
+            "title": "表单5",
+            "href": "page\/form.html?t=11",
+            "icon": "&#xe634;",
+            "target": "_self"
+          }]
+        }, {
+          "title": "表单6",
+          "href": "page\/form.html?t=12",
+          "icon": "&#xe634;",
+          "target": "_self"
+        }]
+      }]
+    },
+    "setting": {
+      "title": "设置管理",
+      "icon": "&#xe634;",
+      "list": [{
+        "title": "按钮列表【setting】",
+        "href": "page\/button.html?t=13",
+        "icon": "&#xe634;",
+        "target": "_self"
+      }, {
+        "title": "UI管理【setting】",
+        "href": "",
+        "icon": "&#xe634;",
+        "target": "",
+        "child": [{
+          "title": "按钮",
+          "href": "page\/button.html?t=14",
+          "icon": "&#xe634;",
+          "target": "_self"
+        }, {
+          "title": "表单",
+          "href": "page\/form.html?t=15",
+          "icon": "&#xe634;",
+          "target": "_self"
+        }, {
+          "title": "弹出层",
+          "href": "page\/layer.html?t=16",
+          "icon": "&#xe634;",
+          "target": "_self"
+        }, {
+          "title": "静态表格",
+          "href": "page\/table.html?t=17",
+          "icon": "&#xe634;",
+          "target": "_self"
+        }]
+      }, {
+        "title": "测试无限层【setting】",
+        "href": "",
+        "icon": "&#xe634;",
+        "target": "",
+        "child": [{
+          "title": "按钮1",
+          "href": "page\/button.html?t=18",
+          "icon": "&#xe634;",
+          "target": "_self",
+          "child": [{
+            "title": "按钮2",
+            "href": "page\/button.html?t=19",
+            "icon": "&#xe634;",
+            "target": "_self",
+            "child": [{
+              "title": "按钮3",
+              "href": "page\/button.html?t=20",
+              "icon": "&#xe634;",
+              "target": "_self"
+            }, {
+              "title": "表单4",
+              "href": "page\/form.html?t=21",
+              "icon": "&#xe634;",
+              "target": "_self"
+            }]
+          }, {
+            "title": "表单5",
+            "href": "page\/form.html?t=22",
+            "icon": "&#xe634;",
+            "target": "_self"
+          }]
+        }, {
+          "title": "表单6",
+          "href": "page\/form.html?t=23",
+          "icon": "&#xe634;",
+          "target": "_self"
+        }]
+      }]
     }
-  ],
-  "memberCenter": [
-    {
-      "title": "用户中心",
-      "icon": "&#xe612;",
-      "href": "page/user/userList.html",
-      "target": "_self"
-    },
-    {
-      "title": "会员等级",
-      "icon": "icon-vip",
-      "href": "page/user/userGrade.html",
-      "target": "_self"
-    }
-  ],
-  "systemeSttings": [
-    {
-      "title": "系统基本参数",
-      "icon": "&#xe631;",
-      "href": "page/systemSetting/basicParameter.html",
-      "target": "_self"
-    },
-    {
-      "title": "系统日志",
-      "icon": "icon-log",
-      "href": "page/systemSetting/logs.html",
-      "target": "_self"
-    },
-    {
-      "title": "友情链接",
-      "icon": "&#xe64c;",
-      "href": "page/systemSetting/linkList.html",
-      "target": "_self"
-    },
-    {
-      "title": "图标管理",
-      "icon": "&#xe857;",
-      "href": "page/systemSetting/icons.html",
-      "target": "_self"
-    }
-  ],
-  "seraphApi": [
-    {
-      "title": "三级联动模块",
-      "icon": "icon-mokuai",
-      "href": "page/doc/addressDoc.html",
-      "target": "_self"
-    },
-    {
-      "title": "bodyTab模块",
-      "icon": "icon-mokuai",
-      "href": "page/doc/bodyTabDoc.html",
-      "target": "_self"
-    },
-    {
-      "title": "三级菜单",
-      "icon": "icon-mokuai",
-      "href": "page/doc/navDoc.html",
-      "target": "_self"
-    }
-  ]
+  }
 }
-
-

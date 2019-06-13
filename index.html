@@ -49,11 +49,10 @@
         <!-- 内容主体区域 -->
         <div class="layui-tab layui-tab-card" lay-filter="layuiminiTab" style="width: 100%;height: 90%">
             <ul class="layui-tab-title">
-                <li class="layui-this" id='layuiminiHomeTab' lay-id="page/welcome.html">首页</li>
+                <li class="layui-this" id='layuiminiHomeTabId' lay-id="">首页</li>
             </ul>
             <div class="layui-tab-content" style="width: 100%;height: 100%;">
-                <div class="layui-tab-item layui-show" style="width: 100%;height: 100%">
-                    <iframe width="100%" height="100%" frameborder="0" src="page/welcome.html"></iframe>
+                <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show" style="width: 100%;height: 100%">
                 </div>
             </div>
         </div>
@@ -72,7 +71,7 @@
             layer = layui.layer;
 
         // 初始化layuimini
-        layuimini.init('api/menu.php');
+        layuimini.init('json/menu.json');
     });
 </script>
 <script>

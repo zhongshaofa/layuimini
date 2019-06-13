@@ -10,30 +10,34 @@ layui.define(["element", "jquery"], function (exports) {
          * @param url
          */
         this.init = function (url) {
-            layuimini.initMenu(url);
-            layuimini.initTab();
-        };
-
-        /**
-         * 初始化菜单栏
-         * @param url
-         */
-        this.initMenu = function (url) {
             $.getJSON(url, function (data, status) {
                 if (data == null) {
                     return layer.msg('暂无菜单信息');
                 }
-                layuimini.addMenuAll(data.moduleInfo);
+                layuimini.initHome(data.homeInfo);
+                layuimini.initMenu(data.moduleInfo);
             }).fail(function () {
-                layer.msg('菜单接口有误！');
+                return layer.msg('菜单接口有误！');
             });
+            layuimini.initTab();
         };
 
         /**
-         * 新增所有菜单
+         * 初始化首页信息
          * @param data
          */
-        this.addMenuAll = function (data) {
+        this.initHome = function (data) {
+            console.log(data);
+            $('#layuiminiHomeTabId').text(data.title);
+            $('#layuiminiHomeTabId').attr('lay-id', data.href);
+            $('#layuiminiHomeTabIframe').html('<iframe width="100%" height="100%" frameborder="0"  src="' + data.href + '"></iframe>');
+        };
+
+        /**
+         * 初始化菜单栏
+         * @param data
+         */
+        this.initMenu = function (data) {
             var headerMenuHtml = '',
                 leftMenuHtml = '',
                 headerMenuCheckDefault = 'layui-this',
