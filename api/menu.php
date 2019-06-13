@@ -3,48 +3,48 @@
 $listList = [
     'homeInfo'   => [
         'title' => '首页',
-        'icon'  => '&#xe634;',
-        'href'  => 'page/welcome.html?t=1',
+        'icon'  => '',
+        'href'  => 'page/welcome.html',
     ],
     'moduleInfo' => [
         'ceshi'   => [
             'title' => '测试管理',
-            'icon'  => '&#xe634;',
+            'icon'  => 'fa fa-address-book',
             'list'  => [
                 [
-                    'title'  => '按钮列表',
-                    'href'   => 'page/button.html?t=2',
-                    'icon'   => '&#xe634;',
+                    'title'  => 'icon列表',
+                    'href'   => 'page/icon.html',
+                    'icon'   => 'fa fa-dot-circle-o',
                     'target' => '_self',
                 ],
                 [
                     'title'    => 'UI管理',
                     'href'     => '',
-                    'icon'     => '&#xe634;',
+                    'icon'     => 'fa fa-snowflake-o',
                     'target'   => '',
                     'child' => [
                         [
                             'title'  => '按钮',
-                            'href'   => 'page/button.html?t=3',
-                            'icon'   => '&#xe634;',
+                            'href'   => 'page/button.html',
+                            'icon'   => '',
                             'target' => '_self',
                         ],
                         [
                             'title'  => '表单',
-                            'href'   => 'page/form.html?t=4',
-                            'icon'   => '&#xe634;',
+                            'href'   => 'page/form.html',
+                            'icon'   => 'fa fa-calendar',
                             'target' => '_self',
                         ],
                         [
                             'title'  => '弹出层',
-                            'href'   => 'page/layer.html?t=5',
-                            'icon'   => '&#xe634;',
+                            'href'   => 'page/layer.html',
+                            'icon'   => '',
                             'target' => '_self',
                         ],
                         [
                             'title'  => '静态表格',
-                            'href'   => 'page/table.html?t=6',
-                            'icon'   => '&#xe634;',
+                            'href'   => 'page/table.html',
+                            'icon'   => '',
                             'target' => '_self',
                         ],
                     ],
@@ -52,48 +52,36 @@ $listList = [
                 [
                     'title'    => '测试无限层',
                     'href'     => '',
-                    'icon'     => '&#xe634;',
+                    'icon'     => 'fa fa-meetup',
                     'target'   => '',
                     'child' => [
                         [
                             'title'    => '按钮1',
-                            'href'     => 'page/button.html?t=7',
-                            'icon'     => '&#xe634;',
+                            'href'     => 'page/button.html',
+                            'icon'     => 'fa fa-calendar',
                             'target'   => '_self',
                             'child' => [
                                 [
                                     'title'    => '按钮2',
-                                    'href'     => 'page/button.html?t=8',
-                                    'icon'     => '&#xe634;',
+                                    'href'     => 'page/button.html',
+                                    'icon'     => '',
                                     'target'   => '_self',
                                     'child' => [
                                         [
                                             'title'  => '按钮3',
-                                            'href'   => 'page/button.html?t=9',
-                                            'icon'   => '&#xe634;',
+                                            'href'   => 'page/button.html',
+                                            'icon'   => '',
                                             'target' => '_self',
                                         ],
                                         [
                                             'title'  => '表单4',
-                                            'href'   => 'page/form.html?t=10',
-                                            'icon'   => '&#xe634;',
+                                            'href'   => 'page/form.html',
+                                            'icon'   => 'fa fa-calendar',
                                             'target' => '_self',
                                         ],
                                     ],
                                 ],
-                                [
-                                    'title'  => '表单5',
-                                    'href'   => 'page/form.html?t=11',
-                                    'icon'   => '&#xe634;',
-                                    'target' => '_self',
-                                ],
                             ],
-                        ],
-                        [
-                            'title'  => '表单6',
-                            'href'   => 'page/form.html?t=12',
-                            'icon'   => '&#xe634;',
-                            'target' => '_self',
                         ],
                     ],
                 ],
@@ -101,93 +89,19 @@ $listList = [
         ],
         'setting' => [
             'title' => '设置管理',
-            'icon'  => '&#xe634;',
+            'icon'  => 'fa fa-gears',
             'list'  => [
                 [
-                    'title'  => '按钮列表【setting】',
-                    'href'   => 'page/button.html?t=13',
-                    'icon'   => '&#xe634;',
+                    'title'  => 'icon列表 [setting]',
+                    'href'   => 'page/icon.html',
+                    'icon'   => 'fa fa-dot-circle-o',
                     'target' => '_self',
                 ],
                 [
-                    'title'    => 'UI管理【setting】',
-                    'href'     => '',
-                    'icon'     => '&#xe634;',
-                    'target'   => '',
-                    'child' => [
-                        [
-                            'title'  => '按钮',
-                            'href'   => 'page/button.html?t=14',
-                            'icon'   => '&#xe634;',
-                            'target' => '_self',
-                        ],
-                        [
-                            'title'  => '表单',
-                            'href'   => 'page/form.html?t=15',
-                            'icon'   => '&#xe634;',
-                            'target' => '_self',
-                        ],
-                        [
-                            'title'  => '弹出层',
-                            'href'   => 'page/layer.html?t=16',
-                            'icon'   => '&#xe634;',
-                            'target' => '_self',
-                        ],
-                        [
-                            'title'  => '静态表格',
-                            'href'   => 'page/table.html?t=17',
-                            'icon'   => '&#xe634;',
-                            'target' => '_self',
-                        ],
-                    ],
-                ],
-                [
-                    'title'    => '测试无限层【setting】',
-                    'href'     => '',
-                    'icon'     => '&#xe634;',
-                    'target'   => '',
-                    'child' => [
-                        [
-                            'title'    => '按钮1',
-                            'href'     => 'page/button.html?t=18',
-                            'icon'     => '&#xe634;',
-                            'target'   => '_self',
-                            'child' => [
-                                [
-                                    'title'    => '按钮2',
-                                    'href'     => 'page/button.html?t=19',
-                                    'icon'     => '&#xe634;',
-                                    'target'   => '_self',
-                                    'child' => [
-                                        [
-                                            'title'  => '按钮3',
-                                            'href'   => 'page/button.html?t=20',
-                                            'icon'   => '&#xe634;',
-                                            'target' => '_self',
-                                        ],
-                                        [
-                                            'title'  => '表单4',
-                                            'href'   => 'page/form.html?t=21',
-                                            'icon'   => '&#xe634;',
-                                            'target' => '_self',
-                                        ],
-                                    ],
-                                ],
-                                [
-                                    'title'  => '表单5',
-                                    'href'   => 'page/form.html?t=22',
-                                    'icon'   => '&#xe634;',
-                                    'target' => '_self',
-                                ],
-                            ],
-                        ],
-                        [
-                            'title'  => '表单6',
-                            'href'   => 'page/form.html?t=23',
-                            'icon'   => '&#xe634;',
-                            'target' => '_self',
-                        ],
-                    ],
+                    'title'  => '按钮列表 [setting]',
+                    'href'   => 'page/button.html',
+                    'icon'   => 'fa fa-caret-square-o-left',
+                    'target' => '_self',
                 ],
             ],
         ],
