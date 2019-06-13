@@ -27,6 +27,7 @@ layui.define(["element", "jquery"], function (exports) {
          * @param data
          */
         this.initHome = function (data) {
+            sessionStorage.setItem('layuiminiHomeHref', data.href);
             $('#layuiminiHomeTabId').text(data.title);
             $('#layuiminiHomeTabId').attr('lay-id', data.href);
             $('#layuiminiHomeTabIframe').html('<iframe width="100%" height="100%" frameborder="0"  src="' + data.href + '"></iframe>');
@@ -94,32 +95,31 @@ layui.define(["element", "jquery"], function (exports) {
                     var title = href,
                         tabId = href;
                     $("[data-tab]").each(function () {
-                        console.log($(this).attr("data-tab"));
                         if ($(this).attr("data-tab") == tabId) {
                             title = $(this).text();
                             // 自动展开菜单栏
                             var addMenuClass = function ($element, type) {
                                 if (type == 1) {
                                     $element.addClass('layui-this');
-                                    if ($element.attr('class') != 'layui-nav-item layui-this' ) {
-                                        addMenuClass($element.parent().parent(),2);
-                                    }else {
+                                    if ($element.attr('class') != 'layui-nav-item layui-this') {
+                                        addMenuClass($element.parent().parent(), 2);
+                                    } else {
                                         var moduleId = $element.parent().attr('id');
-                                        $(".layui-header-menu li").attr('class','layui-nav-item');
-                                        $("#"+moduleId+"HeaderId").addClass("layui-this");
-                                        $(".layui-left-menu ul").attr('class','layui-nav layui-nav-tree layui-hide');
-                                        $("#"+moduleId).attr('class','layui-nav layui-nav-tree layui-this');
+                                        $(".layui-header-menu li").attr('class', 'layui-nav-item');
+                                        $("#" + moduleId + "HeaderId").addClass("layui-this");
+                                        $(".layui-left-menu ul").attr('class', 'layui-nav layui-nav-tree layui-hide');
+                                        $("#" + moduleId).attr('class', 'layui-nav layui-nav-tree layui-this');
                                     }
-                                }else {
+                                } else {
                                     $element.addClass('layui-nav-itemed');
-                                    if ($element.attr('class') != 'layui-nav-item layui-nav-itemed' ) {
-                                        addMenuClass($element.parent().parent(),2);
-                                    }else {
+                                    if ($element.attr('class') != 'layui-nav-item layui-nav-itemed') {
+                                        addMenuClass($element.parent().parent(), 2);
+                                    } else {
                                         var moduleId = $element.parent().attr('id');
-                                        $(".layui-header-menu li").attr('class','layui-nav-item');
-                                        $("#"+moduleId+"HeaderId").addClass("layui-this");
-                                        $(".layui-left-menu ul").attr('class','layui-nav layui-nav-tree layui-hide');
-                                        $("#"+moduleId).attr('class','layui-nav layui-nav-tree layui-this');
+                                        $(".layui-header-menu li").attr('class', 'layui-nav-item');
+                                        $("#" + moduleId + "HeaderId").addClass("layui-this");
+                                        $(".layui-left-menu ul").attr('class', 'layui-nav layui-nav-tree layui-hide');
+                                        $("#" + moduleId).attr('class', 'layui-nav layui-nav-tree layui-this');
                                     }
                                 }
                             };
@@ -127,7 +127,8 @@ layui.define(["element", "jquery"], function (exports) {
                         }
                     });
                     layuiminiHomeTab = $('#layuiminiHomeTab').attr('lay-id');
-                    if (layuiminiHomeTab != href) {
+                    layuiminiHomeHref = sessionStorage.getItem('layuiminiHomeHref');
+                    if (layuiminiHomeTab != href && layuiminiHomeHref != href) {
                         layuimini.addTab(tabId, href, title, true);
                         layuimini.changeTab(tabId);
                     }
