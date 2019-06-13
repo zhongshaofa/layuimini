@@ -1,0 +1,21 @@
+.layui-tab-item {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.layui-body {
+    bottom: 0px !important;
+}
+
+.layui-nav-item.layui-this {
+    background-color: #000000;
+}
+
+.layui-width-height {
+    width: 100%;
+    height: 95%;
+}
+
+.layui-tab {
+    margin: 0 0 0 0;
+}

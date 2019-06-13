@@ -4,16 +4,7 @@
     <meta charset="utf-8">
     <title>layuiMini 后台布局</title>
     <link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
-    <style>
-        .layui-tab-item {
-            width: 100% !important;
-            height: 100% !important;
-        }
-
-        .layui-body {
-            bottom: 0px !important;
-        }
-    </style>
+    <link rel="stylesheet" href="css/layuimini.css" media="all">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -21,7 +12,7 @@
         <a href="">
             <div class="layui-logo">后台管理系统</div>
         </a>
-        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <!--头部导航栏-->
         <ul class="layui-nav layui-layout-left layui-header-menu">
         </ul>
         <ul class="layui-nav layui-layout-right">
@@ -39,20 +30,20 @@
             </li>
         </ul>
     </div>
-
     <div class="layui-side layui-bg-black">
+        <!--左侧导航栏-->
         <div class="layui-side-scroll layui-left-menu">
         </div>
     </div>
-
     <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <div class="layui-tab layui-tab-card" lay-filter="layuiminiTab" style="width: 100%;height: 90%">
+        <div class="layui-tab layui-tab-card layui-width-height" lay-filter="layuiminiTab">
+            <!--选项卡列表-->
             <ul class="layui-tab-title">
                 <li class="layui-this" id='layuiminiHomeTabId' lay-id="">首页</li>
             </ul>
-            <div class="layui-tab-content" style="width: 100%;height: 100%;">
-                <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show" style="width: 100%;height: 100%">
+            <!--选项卡内容列表-->
+            <div class="layui-tab-content layui-width-height">
+                <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show" >
                 </div>
             </div>
         </div>
@@ -64,18 +55,14 @@
         base: "js/"
     }).extend({
         "layuimini": "layuimini"
-    })
+    });
     layui.use(['element', 'layer', 'layuimini'], function () {
         var $ = layui.jquery,
             element = layui.element,
             layer = layui.layer;
 
-        // 初始化layuimini
         layuimini.init('json/menu.json');
     });
-</script>
-<script>
-
 </script>
 </body>
 </html>
