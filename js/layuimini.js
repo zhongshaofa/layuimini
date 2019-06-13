@@ -43,6 +43,7 @@ layui.define(["element", "jquery"], function (exports) {
                 headerMenuCheckDefault = 'layui-this',
                 leftMenuCheckDefault = 'layui-this';
             window.menuParameId = 1;
+            window.hoverParameId = 1;
 
             // 缩放菜单
             leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-nav-top" data-side-fold="1">\n' +
@@ -53,7 +54,6 @@ layui.define(["element", "jquery"], function (exports) {
                 '</a>\n' +
                 '</li>\n' +
                 '</ul>';
-            // leftMenuHtml += ' <div title="菜单缩放" class="kit-side-fold" data-side-fold="缩放"><i class="fa fa-navicon" aria-hidden="true"></i></div>';
 
             $.each(data, function (key, val) {
                 headerMenuHtml += '<li class="layui-nav-item ' + headerMenuCheckDefault + '" id="' + key + 'HeaderId" data-menu="' + key + '"> <a href="javascript:;"><i class="' + val.icon + '"></i> ' + val.title + '</a> </li>\n';
@@ -62,28 +62,34 @@ layui.define(["element", "jquery"], function (exports) {
                 $.each(menuList, function (index, menu) {
                     leftMenuHtml += '<li class="layui-nav-item">\n';
                     if (menu.child != undefined && menu.child != []) {
-                        leftMenuHtml += '<a href="javascript:;"><i class="' + menu.icon + '"></i><span> ' + menu.title + '</span> </a>';
-                        var buildChildHtml = function (html, child, menuParameId) {
+                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips tips-id-' + hoverParameId + '" ><i class="' + menu.icon + '"></i><span> ' + menu.title + '</span> </a>';
+                        hoverParameId++;
+                        var buildChildHtml = function (html, child, menuParameId, hoverParameId) {
                             html += '<dl class="layui-nav-child">\n';
                             $.each(child, function (childIndex, childMenu) {
                                 html += '<dd>\n';
                                 if (childMenu.child != undefined && childMenu.child != []) {
-                                    html += '<a href="javascript:;"><i class="' + childMenu.icon + '"></i><span> ' + childMenu.title + '</span></a>';
-                                    html = buildChildHtml(html, childMenu.child, menuParameId);
+                                    html += '<a href="javascript:;" class="layui-menu-tips tips-id-' + hoverParameId + '" ><i class="' + childMenu.icon + '"></i><span> ' + childMenu.title + '</span></a>';
+                                    hoverParameId++;
+                                    window.hoverParameId = hoverParameId;
+                                    html = buildChildHtml(html, childMenu.child, menuParameId, hoverParameId);
                                 } else {
-                                    html += '<a href="javascript:;" data-type="tabAdd"  data-tab-mpi="m-p-i-' + menuParameId + '" data-tab="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span> ' + childMenu.title + '</span></a>\n';
+                                    html += '<a href="javascript:;" class="layui-menu-tips tips-id-' + hoverParameId + '" data-type="tabAdd"  data-tab-mpi="m-p-i-' + menuParameId + '" data-tab="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span> ' + childMenu.title + '</span></a>\n';
                                     menuParameId++;
                                     window.menuParameId = menuParameId;
+                                    hoverParameId++;
+                                    window.hoverParameId = hoverParameId;
                                 }
                                 html += '</dd>\n';
                             });
                             html += '</dl>\n';
                             return html;
                         };
-                        leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child, menuParameId);
+                        leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child, menuParameId, hoverParameId);
                     } else {
-                        leftMenuHtml += '<a href="javascript:;" data-type="tabAdd" data-tab-mpi="m-p-i-' + menuParameId + '" data-tab="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span> ' + menu.title + '</span></a>\n';
+                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips tips-id-' + hoverParameId + '"  data-type="tabAdd" data-tab-mpi="m-p-i-' + menuParameId + '" data-tab="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span> ' + menu.title + '</span></a>\n';
                         menuParameId++;
+                        hoverParameId++;
                     }
                     leftMenuHtml += '</li>\n';
                 });
@@ -324,9 +330,9 @@ layui.define(["element", "jquery"], function (exports) {
         $('.layui-nav-top li').attr('class', 'layui-nav-item');
         //选择出所有的span，并判断是不是hidden
         $('.layui-nav-item span').each(function () {
-            if(isShow == 1){
+            if (isShow == 1) {
                 $(this).attr('style', 'display: none;');
-            }else {
+            } else {
                 $(this).attr('style', '');
             }
         });
@@ -355,6 +361,26 @@ layui.define(["element", "jquery"], function (exports) {
                 $(this).show();
             });
             $(this).attr('data-side-fold', 1);
+        }
+        element.init();
+    });
+
+    /**
+     * 监听提示信息
+     */
+    $("body").on("mouseenter", ".layui-menu-tips", function () {
+        var classInfo = $(this).attr('class'),
+            tips = $(this).children('span').text(),
+            isShow = $('.layui-nav-top').attr('data-side-fold');
+        if(isShow == 0){
+            classInfo = classInfo.replace("layui-menu-tips ", "");
+            openTips = layer.tips(tips, '.' + classInfo, {tips: [1, '#009688'], time: 30000});
+        }
+    });
+    $("body").on("mouseleave", ".layui-menu-tips", function () {
+        var isShow = $('.layui-nav-top').attr('data-side-fold');
+        if(isShow == 0){
+            layer.close(openTips);
         }
     });
 
