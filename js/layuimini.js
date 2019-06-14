@@ -18,13 +18,14 @@ layui.define(["element", "jquery"], function (exports) {
             var loading = layer.load(0, {shade: false, time: 2 * 1000});
             $.getJSON(url, function (data, status) {
                 if (data == null) {
-                    return layer.msg('暂无菜单信息');
+                    layer.msg('暂无菜单信息',{icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+                } else {
+                    layuimini.initHome(data.homeInfo);
+                    layuimini.initMenu(data.moduleInfo);
+                    layuimini.initTab();
                 }
-                layuimini.initHome(data.homeInfo);
-                layuimini.initMenu(data.moduleInfo);
-                layuimini.initTab();
             }).fail(function () {
-                layer.msg('菜单接口有误！');
+                layer.msg('菜单接口有误！',{icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
             });
             layer.close(loading);
         };
@@ -324,7 +325,7 @@ layui.define(["element", "jquery"], function (exports) {
      */
     $('body').on('click', '[data-clear]', function () {
         sessionStorage.clear();
-        layer.msg('清除缓存成功');
+        layer.msg('清除缓存成功', {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
     });
 
     /**
@@ -332,7 +333,7 @@ layui.define(["element", "jquery"], function (exports) {
      */
     $('body').on('click', '[data-refresh]', function () {
         $(".layui-tab-item.layui-show").find("iframe")[0].contentWindow.location.reload();
-        layer.msg('刷新成功');
+        layer.msg('刷新成功', {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
     });
 
     /**
