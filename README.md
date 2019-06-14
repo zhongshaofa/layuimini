@@ -56,13 +56,13 @@ layuimini后台模板
  
  > 二、api地址返回的参数说明
  
- 1、clearInfo是服务端清理缓存信息【clearUrl：服务端清理缓存接口地址，为空则不请求；checkField：检测返回的参数；checkFieldSuccess：检测返回的参数为该值则表示成功；msgField：提示信息字段；】
+ 1、clearInfo是服务端清理缓存信息(clearInfo.clearUrl：服务端清理缓存接口地址，为空则不请求;)
  
- > 返回参数对应的事例
+ > 返回参数对应的事例(code：0，清除缓存失败；code：1，表示清除缓存成功；)
   ``` json
   {
     "code": 1,
-    "msg": "成功"
+    "msg": "清除服务端缓存成功"
   }
    ```
  
@@ -75,10 +75,7 @@ layuimini后台模板
   ``` json
 {
   "clearInfo": {
-    "clearUrl": "api/clear.json",
-    "checkField": "code",
-    "checkFieldSuccess": 1,
-    "msgField": "msg"
+    "clearUrl": "api/clear.json"
   },
   "homeInfo": {
     "title": "首页",

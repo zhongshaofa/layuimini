@@ -1,9 +1,6 @@
 {
   "clearInfo": {
-    "clearUrl": "api/clear.json",
-    "checkField": "code",
-    "checkFieldSuccess": 1,
-    "msgField": "msg"
+    "clearUrl": "api/clear.json"
   },
   "homeInfo": {
     "title": "首页",

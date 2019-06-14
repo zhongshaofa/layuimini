@@ -336,10 +336,10 @@ layui.define(["element", "jquery"], function (exports) {
             if (clearInfo.clearUrl != undefined && clearInfo.clearUrl != '') {
                 $.getJSON(clearInfo.clearUrl, function (data, status) {
                     layer.close(loading);
-                    if (data[clearInfo.checkField] != clearInfo.checkFieldSuccess) {
-                        return layer.msg(data[clearInfo.msgField], {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+                    if (data.code != 1) {
+                        return layer.msg(data.msg, {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
                     } else {
-                        return layer.msg(data[clearInfo.msgField], {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
+                        return layer.msg(data.msg, {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
                     }
                 }).fail(function () {
                     layer.close(loading);
