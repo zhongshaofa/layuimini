@@ -332,18 +332,20 @@ layui.define(["element", "jquery"], function (exports) {
 
         // 判断是否清理服务端
         var clearInfo = window.clearInfo;
-        if (clearInfo.clearUrl != undefined && clearInfo.clearUrl != '') {
-            $.getJSON(clearInfo.clearUrl, function (data, status) {
-                layer.close(loading);
-                if (data[clearInfo.checkField] != clearInfo.checkFieldSuccess) {
-                    return layer.msg(data[clearInfo.msgField], {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
-                }else {
-                    return layer.msg(data[clearInfo.msgField], {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
-                }
-            }).fail(function () {
-                layer.close(loading);
-                return layer.msg('清理缓存接口有误！', {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
-            });
+        if (clearInfo != undefined && clearInfo != '') {
+            if (clearInfo.clearUrl != undefined && clearInfo.clearUrl != '') {
+                $.getJSON(clearInfo.clearUrl, function (data, status) {
+                    layer.close(loading);
+                    if (data[clearInfo.checkField] != clearInfo.checkFieldSuccess) {
+                        return layer.msg(data[clearInfo.msgField], {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+                    } else {
+                        return layer.msg(data[clearInfo.msgField], {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
+                    }
+                }).fail(function () {
+                    layer.close(loading);
+                    return layer.msg('清理缓存接口有误！', {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+                });
+            }
         } else {
             layer.close(loading);
             layer.msg('清除缓存成功', {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
