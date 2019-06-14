@@ -56,14 +56,30 @@ layuimini后台模板
  
  > 二、api地址返回的参数说明
  
- 1、homeInfo是首页信息
+ 1、clearInfo是服务端清理缓存信息【clearUrl：服务端清理缓存接口地址，为空则不请求；checkField：检测返回的参数；checkFieldSuccess：检测返回的参数为该值则表示成功；msgField：提示信息字段；】
  
- 2、moduleInfo是头部模块和左侧菜单对应的信息
+ > 返回参数对应的事例
+  ``` json
+  {
+    "code": 1,
+    "msg": "成功"
+  }
+   ```
  
- 3、module id必须唯一，例如 moduleInfo.ceshi、moduleInfo.setting对应的ceshi和setting就是模块id，他们的值必须唯一，否则模块切换会有冲突。
+ 2、homeInfo是首页信息
+ 
+ 3、moduleInfo是头部模块和左侧菜单对应的信息
+ 
+ 4、module id必须唯一，例如 moduleInfo.ceshi、moduleInfo.setting对应的ceshi和setting就是模块id，他们的值必须唯一，否则模块切换会有冲突。
  
   ``` json
 {
+  "clearInfo": {
+    "clearUrl": "api/clear.json",
+    "checkField": "code",
+    "checkFieldSuccess": 1,
+    "msgField": "msg"
+  },
   "homeInfo": {
     "title": "首页",
     "icon": "fa fa-snowflake-o",

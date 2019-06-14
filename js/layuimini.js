@@ -8,6 +8,8 @@ layui.define(["element", "jquery"], function (exports) {
         return layer.alert("请先将项目部署至web容器（Apache/Tomcat/Nginx/IIS/等），否则部分数据将无法显示");
     }
 
+    window.clearInfo = {};
+
     layuimini = new function () {
 
         /**
@@ -18,14 +20,15 @@ layui.define(["element", "jquery"], function (exports) {
             var loading = layer.load(0, {shade: false, time: 2 * 1000});
             $.getJSON(url, function (data, status) {
                 if (data == null) {
-                    layer.msg('暂无菜单信息',{icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+                    layer.msg('暂无菜单信息', {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
                 } else {
                     layuimini.initHome(data.homeInfo);
                     layuimini.initMenu(data.moduleInfo);
                     layuimini.initTab();
+                    window.clearInfo = data.clearInfo;
                 }
             }).fail(function () {
-                layer.msg('菜单接口有误！',{icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+                layer.msg('菜单接口有误！', {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
             });
             layer.close(loading);
         };
@@ -324,8 +327,27 @@ layui.define(["element", "jquery"], function (exports) {
      * 清理
      */
     $('body').on('click', '[data-clear]', function () {
+        var loading = layer.load(0, {shade: false, time: 2 * 1000});
         sessionStorage.clear();
-        layer.msg('清除缓存成功', {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
+
+        // 判断是否清理服务端
+        var clearInfo = window.clearInfo;
+        if (clearInfo.clearUrl != undefined && clearInfo.clearUrl != '') {
+            $.getJSON(clearInfo.clearUrl, function (data, status) {
+                layer.close(loading);
+                if (data[clearInfo.checkField] != clearInfo.checkFieldSuccess) {
+                    return layer.msg(data[clearInfo.msgField], {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+                }else {
+                    return layer.msg(data[clearInfo.msgField], {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
+                }
+            }).fail(function () {
+                layer.close(loading);
+                return layer.msg('清理缓存接口有误！', {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+            });
+        } else {
+            layer.close(loading);
+            layer.msg('清除缓存成功', {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
+        }
     });
 
     /**
