@@ -1,7 +1,9 @@
 # layuimini
 
-## 介绍
+## 项目介绍
 简洁、易用的layui后台框架模板
+
+> 预览地址：[http://layuimini.99php.cn](http://layuimini.99php.cn)
 
 ## 模板特点
 > 总体预览效果
@@ -19,9 +21,6 @@
 > 4、刷新页面会保留当前的窗口，并且会定位当前窗口对应左侧菜单栏
 
 ![Image text](https://files.gitee.com/group1/M00/08/13/PaAvDF0C-kCAYCfQAAGT3u55Kp0415.png)
-## 演示站点
-![Image text](https://files.gitee.com/group1/M00/08/13/PaAvDF0C-kiANuJ6AAGsoxsVo8g199.png)
-> 预览地址：[http://layuimini.99php.cn](http://layuimini.99php.cn)
 
 ## 使用说明
 
