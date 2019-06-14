@@ -3,6 +3,11 @@ layui.define(["element", "jquery"], function (exports) {
         $ = layui.$,
         layer = layui.layer;
 
+    // 判断是否在web容器中打开
+    if(!/http(s*):\/\//.test(location.href)){
+        return layer.alert("请先将项目部署至web容器（Apache/Tomcat/Nginx/IIS/等），否则部分数据将无法显示");
+    }
+
     layuimini = new function () {
 
         /**
