@@ -23,11 +23,10 @@ layui.define(["element", "jquery"], function (exports) {
                 layuimini.initHome(data.homeInfo);
                 layuimini.initMenu(data.moduleInfo);
                 layuimini.initTab();
-                layer.close(loading);
             }).fail(function () {
-                layer.close(loading);
-                return layer.msg('菜单接口有误！');
+                layer.msg('菜单接口有误！');
             });
+            layer.close(loading);
         };
 
         /**
