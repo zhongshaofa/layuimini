@@ -42,7 +42,9 @@
 /*height: 30px;*/
 /*line-height: 30px;*/
 /*}*/
-
+.layui-nav{
+    padding: 0!important;
+}
 .layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after {
     width: 0 !important;
     height: 0 !important;

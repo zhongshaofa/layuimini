@@ -18,6 +18,7 @@ layui.define(["element", "jquery"], function (exports) {
          */
         this.init = function (url) {
             var loading = layer.load(0, {shade: false, time: 2 * 1000});
+            layuimini.initDevice();
             $.getJSON(url, function (data, status) {
                 if (data == null) {
                     layer.msg('暂无菜单信息', {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
@@ -31,6 +32,18 @@ layui.define(["element", "jquery"], function (exports) {
                 layer.msg('菜单接口有误！', {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
             });
             layer.close(loading);
+        };
+
+        /**
+         * 初始化设备端
+         */
+        this.initDevice = function () {
+            if (layuimini.checkMobile()) {
+                $('.clildFrame').attr('style', 'overflow-y:scroll; overflow-x:hidden;table-layout: fixed;word-wrap:break-word;word-break:break-all;-webkit-overflow-scrolling: touch!important;');
+                $('.layui-layout-left').css('left', 60 + 'px');
+            }else {
+                $('.layui-logo').removeClass('layui-hide');
+            }
         };
 
         /**
@@ -50,6 +63,7 @@ layui.define(["element", "jquery"], function (exports) {
          */
         this.initMenu = function (data) {
             var headerMenuHtml = '',
+                headerMobileMenuHtml = '',
                 leftMenuHtml = '',
                 headerMenuCheckDefault = 'layui-this',
                 leftMenuCheckDefault = 'layui-this';
@@ -60,7 +74,7 @@ layui.define(["element", "jquery"], function (exports) {
             leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-nav-top" data-side-fold="1">\n' +
                 '<li class="layui-nav-item">\n' +
                 '<a class="text-center">\n' +
-                '<i class="fa fa-navicon">\n' +
+                '<i class="nav-top fa fa-outdent">\n' +
                 '</i>\n' +
                 '</a>\n' +
                 '</li>\n' +
@@ -68,6 +82,7 @@ layui.define(["element", "jquery"], function (exports) {
 
             $.each(data, function (key, val) {
                 headerMenuHtml += '<li class="layui-nav-item ' + headerMenuCheckDefault + '" id="' + key + 'HeaderId" data-menu="' + key + '"> <a href="javascript:;"><i class="' + val.icon + '"></i> ' + val.title + '</a> </li>\n';
+                headerMobileMenuHtml += '<dd><a href="javascript:;" id="' + key + 'HeaderId" data-menu="' + key + '"><i class="' + val.icon + '"></i> ' + val.title + '</a></dd>\n';
                 leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-left-nav-tree ' + leftMenuCheckDefault + '" id="' + key + '">\n';
                 var menuList = val.child;
                 $.each(menuList, function (index, menu) {
@@ -108,7 +123,8 @@ layui.define(["element", "jquery"], function (exports) {
                 headerMenuCheckDefault = '';
                 leftMenuCheckDefault = 'layui-hide';
             });
-            $('.layui-header-menu').html(headerMenuHtml);
+            $('.layui-header-menu.layui-hide-xs').html(headerMenuHtml); //电脑
+            $('.mobile-layui-layout-left').html(headerMobileMenuHtml); //手机
             $('.layui-left-menu').html(leftMenuHtml);
             element.init();
         };
@@ -259,6 +275,23 @@ layui.define(["element", "jquery"], function (exports) {
                 location.hash = $(this).attr('lay-id');
             });
         };
+
+        /**
+         * 判断是否为手机
+         */
+        this.checkMobile = function () {
+            var ua = navigator.userAgent.toLocaleLowerCase();
+            var pf = navigator.platform.toLocaleLowerCase();
+            var isAndroid = (/android/i).test(ua) || ((/iPhone|iPod|iPad/i).test(ua) && (/linux/i).test(pf))
+                || (/ucweb.*linux/i.test(ua));
+            var isIOS = (/iPhone|iPod|iPad/i).test(ua) && !isAndroid;
+            var isWinPhone = (/Windows Phone|ZuneWP7/i).test(ua);
+            if (!isAndroid && !isIOS && !isWinPhone) {
+                return false;
+            } else {
+                return true;
+            }
+        }
     };
 
     /**
@@ -384,11 +417,16 @@ layui.define(["element", "jquery"], function (exports) {
             $('.layui-body').css('left', 60 + 'px');
             $('.layui-footer').css('left', 60 + 'px');
             //将二级导航栏隐藏
-            $('dd span').each(function () {
+            $('.layui-left-menu.layui-nav-tree dd span').each(function () {
                 $(this).hide();
             });
             //修改标志位
             $(this).attr('data-side-fold', 0);
+            $('.nav-top.fa.fa-outdent').attr('class', 'nav-top fa fa-indent');
+            if (!layuimini.checkMobile()) {
+                $('.layui-layout-left').css('left', 60 + 'px');
+                $('.layui-logo').addClass('layui-hide');
+            }
         } else {
             $('.layui-side.layui-bg-black').attr('style', ''); //设置宽度
             $('.layui-side-scroll.layui-left-menu').attr('style', '');
@@ -396,10 +434,15 @@ layui.define(["element", "jquery"], function (exports) {
             //将footer和body的宽度修改
             $('.layui-body').attr('style', '');
             $('.layui-footer').attr('style', '');
-            $('dd span').each(function () {
+            $('.layui-left-menu.layui-nav-tree dd span').each(function () {
                 $(this).show();
             });
             $(this).attr('data-side-fold', 1);
+            $('.nav-top.fa.fa-indent').attr('class', 'nav-top fa fa-outdent');
+            if (!layuimini.checkMobile()) {
+                $('.layui-layout-left').css('left', 200 + 'px');
+                $('.layui-logo').removeClass('layui-hide');
+            }
         }
         element.init();
         layer.close(loading);
@@ -413,8 +456,7 @@ layui.define(["element", "jquery"], function (exports) {
             tips = $(this).children('span').text(),
             isShow = $('.layui-nav-top').attr('data-side-fold');
         if (isShow == 0) {
-            classInfo = classInfo.replace("layui-menu-tips ", "");
-            openTips = layer.tips(tips, '.' + classInfo, {tips: [1, '#1E9FFF'], time: 30000});
+            openTips = layer.tips(tips, $(this), {tips: [1, '#1E9FFF'], time: 30000});
         }
     });
     $("body").on("mouseleave", ".layui-menu-tips", function () {

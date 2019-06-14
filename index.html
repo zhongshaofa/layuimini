@@ -3,6 +3,13 @@
 <head>
     <meta charset="utf-8">
     <title>layuimini 后台布局</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
     <link rel="stylesheet" href="css/layuimini.css" media="all">
     <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
@@ -11,10 +18,19 @@
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
         <a href="">
-            <div class="layui-logo">layuimini</div>
+            <div class="layui-logo layui-hide">layuimini</div>
         </a>
         <!--头部导航栏-->
-        <ul class="layui-nav layui-layout-left layui-header-menu">
+        <!--电脑-->
+        <ul class="layui-nav layui-layout-left layui-header-menu mobile layui-hide-xs">
+        </ul>
+        <!--手机-->
+        <ul class="layui-nav layui-layout-left layui-header-menu mobile layui-hide-sm">
+            <li class="layui-nav-item">
+                <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块</a>
+                <dl class="layui-nav-child mobile-layui-layout-left">
+                </dl>
+            </li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -24,7 +40,7 @@
                 <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;"><img src="https://gitee.com/uploads/66/890966_Leytton.png?1512991922" class="layui-nav-img"> Leytton </a>
+                <a href="javascript:;">admin </a>
                 <dl class="layui-nav-child">
                     <dd>
                         <a href="javascript:;" onclick="addTab(this);" tab_url="http://www.llqqww.com">基本资料</a>
