@@ -4,7 +4,7 @@ layui.define(["element", "jquery"], function (exports) {
         layer = layui.layer;
 
     // 判断是否在web容器中打开
-    if(!/http(s*):\/\//.test(location.href)){
+    if (!/http(s*):\/\//.test(location.href)) {
         return layer.alert("请先将项目部署至web容器（Apache/Tomcat/Nginx/IIS/等），否则部分数据将无法显示");
     }
 
@@ -15,6 +15,7 @@ layui.define(["element", "jquery"], function (exports) {
          * @param url
          */
         this.init = function (url) {
+            var loading = layer.load(0, {shade: false, time: 2 * 1000});
             $.getJSON(url, function (data, status) {
                 if (data == null) {
                     return layer.msg('暂无菜单信息');
@@ -22,7 +23,9 @@ layui.define(["element", "jquery"], function (exports) {
                 layuimini.initHome(data.homeInfo);
                 layuimini.initMenu(data.moduleInfo);
                 layuimini.initTab();
+                layer.close(loading);
             }).fail(function () {
+                layer.close(loading);
                 return layer.msg('菜单接口有误！');
             });
         };
@@ -259,17 +262,20 @@ layui.define(["element", "jquery"], function (exports) {
      * 关闭选项卡
      **/
     $('body').on('click', '[data-tab-close]', function () {
+        var loading = layer.load(0, {shade: false, time: 2 * 1000});
         $parent = $(this).parent();
         tabId = $parent.attr('lay-id');
         if (tabId != undefined || tabId != null) {
             layuimini.delTab(tabId);
         }
+        layer.close(loading);
     });
 
     /**
      * 打开新窗口
      */
     $('body').on('click', '[data-tab]', function () {
+        var loading = layer.load(0, {shade: false, time: 2 * 1000});
         var tabId = $(this).attr('data-tab'),
             href = $(this).attr('data-tab'),
             title = $(this).text();
@@ -293,12 +299,14 @@ layui.define(["element", "jquery"], function (exports) {
             layuimini.addTab(tabId, href, title, true);
         }
         element.tabChange('layuiminiTab', tabId);
+        layer.close(loading);
     });
 
     /**
      * 左侧菜单的切换
      */
     $('body').on('click', '[data-menu]', function () {
+        var loading = layer.load(0, {shade: false, time: 2 * 1000});
         $parent = $(this).parent();
         menuId = $(this).attr('data-menu');
         // header
@@ -309,6 +317,7 @@ layui.define(["element", "jquery"], function (exports) {
         $(".layui-nav.layui-nav-tree.layui-this.layui-hide").removeClass('layui-this');
         $("#" + menuId).removeClass('layui-hide');
         $("#" + menuId).addClass('layui-this');
+        layer.close(loading);
     });
 
     /**
@@ -331,6 +340,7 @@ layui.define(["element", "jquery"], function (exports) {
      * 菜单栏缩放
      */
     $('body').on('click', '[data-side-fold]', function () {
+        var loading = layer.load(0, {shade: false, time: 2 * 1000});
         var isShow = $(this).attr('data-side-fold');
         $('.layui-nav-top li').attr('class', 'layui-nav-item');
         //选择出所有的span，并判断是不是hidden
@@ -368,6 +378,7 @@ layui.define(["element", "jquery"], function (exports) {
             $(this).attr('data-side-fold', 1);
         }
         element.init();
+        layer.close(loading);
     });
 
     /**
@@ -377,14 +388,14 @@ layui.define(["element", "jquery"], function (exports) {
         var classInfo = $(this).attr('class'),
             tips = $(this).children('span').text(),
             isShow = $('.layui-nav-top').attr('data-side-fold');
-        if(isShow == 0){
+        if (isShow == 0) {
             classInfo = classInfo.replace("layui-menu-tips ", "");
             openTips = layer.tips(tips, '.' + classInfo, {tips: [1, '#009688'], time: 30000});
         }
     });
     $("body").on("mouseleave", ".layui-menu-tips", function () {
         var isShow = $('.layui-nav-top').attr('data-side-fold');
-        if(isShow == 0){
+        if (isShow == 0) {
             layer.close(openTips);
         }
     });
