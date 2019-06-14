@@ -31,7 +31,7 @@
 
 2、layuimini.init();  方法内的参数请填写动态api地址。（实际应用中建议后端api做缓存）
 
-3、api地址返回的参数可以参考api目录下的menu.json文件
+3、api地址返回的参数可以参考api目录下的menu.json文件或者查看使用说明的第二点的参数说明
 
  ``` js
     layui.config({
