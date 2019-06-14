@@ -390,7 +390,7 @@ layui.define(["element", "jquery"], function (exports) {
             isShow = $('.layui-nav-top').attr('data-side-fold');
         if (isShow == 0) {
             classInfo = classInfo.replace("layui-menu-tips ", "");
-            openTips = layer.tips(tips, '.' + classInfo, {tips: [1, '#009688'], time: 30000});
+            openTips = layer.tips(tips, '.' + classInfo, {tips: [1, '#1E9FFF'], time: 30000});
         }
     });
     $("body").on("mouseleave", ".layui-menu-tips", function () {
