@@ -1,7 +1,9 @@
-# layuimini
-
+layuimini后台模板
+===============
 ## 项目介绍
 简洁、易用的layui后台框架模板
+
+> 项目会不定时进行更新，建议star和fork一份，另外有问题请加QQ群：[763822524](https://jq.qq.com/?_wv=1027&k=5JRGVfe)。
 
 > 预览地址：[http://layuimini.99php.cn](http://layuimini.99php.cn)
 
@@ -14,13 +16,17 @@
 ![Image text](https://files.gitee.com/group1/M00/08/13/PaAvDF0C-kiANuJ6AAGsoxsVo8g199.png)
 > 2、支持左侧菜单缩放，鼠标移动会提示菜单标题
 
-![Image text](https://files.gitee.com/group1/M00/08/13/PaAvDF0C-jKAawDXAAE_NmFsXmI273.png)
+![Image text](https://files.gitee.com/group1/M00/08/14/PaAvDF0DJ0yAQxmPAAE_05sVuVY255.png)
 > 3、url地址hash定位，可以清楚看到当前tab的地址信息
 
 ![Image text](https://files.gitee.com/group1/M00/08/13/PaAvDF0C-jqAPJ1dAAE32WAJ290421.png)
 > 4、刷新页面会保留当前的窗口，并且会定位当前窗口对应左侧菜单栏
 
 ![Image text](https://files.gitee.com/group1/M00/08/13/PaAvDF0C-kCAYCfQAAGT3u55Kp0415.png)
+
+> 5、菜单栏对font-awesome图标库的完美支持
+
+![Image text](https://files.gitee.com/group1/M00/08/14/PaAvDF0DKDKAXP5CAAGGREjHq2o662.png)
 
 ## 使用说明
 
