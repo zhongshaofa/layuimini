@@ -8,7 +8,7 @@
     "ceshi": {
       "title": "测试管理",
       "icon": "fa fa-address-book",
-      "list": [{
+      "child": [{
         "title": "icon列表",
         "href": "page/icon.html",
         "icon": "fa fa-dot-circle-o",
@@ -72,7 +72,7 @@
     "setting": {
       "title": "设置管理",
       "icon": "fa fa-gears",
-      "list": [{
+      "child": [{
         "title": "icon列表 [setting]",
         "href": "page/icon.html",
         "icon": "fa fa-dot-circle-o",

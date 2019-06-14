@@ -59,7 +59,7 @@ layuimini后台模板
  
  2、moduleInfo是头部模块和左侧菜单对应的信息
  
- 3、moduleInfo名称必须唯一，例如 moduleInfo.ceshi 和 moduleInfo.setting，ceshi和setting必须唯一，否则模块切换会有冲突。
+ 3、module id必须唯一，例如 moduleInfo.ceshi、moduleInfo.setting对应的ceshi和setting就是模块id，他们的值必须唯一，否则模块切换会有冲突。
  
   ``` json
 {
@@ -72,7 +72,7 @@ layuimini后台模板
     "ceshi": {
       "title": "测试管理",
       "icon": "fa fa-address-book",
-      "list": [{
+      "child": [{
         "title": "icon列表",
         "href": "page/icon.html",
         "icon": "fa fa-dot-circle-o",
@@ -136,7 +136,7 @@ layuimini后台模板
     "setting": {
       "title": "设置管理",
       "icon": "fa fa-gears",
-      "list": [{
+      "child": [{
         "title": "icon列表 [setting]",
         "href": "page/icon.html",
         "icon": "fa fa-dot-circle-o",

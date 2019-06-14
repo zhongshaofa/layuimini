@@ -1,6 +1,6 @@
 <?php
 
-$listList = [
+$childList = [
     'homeInfo'   => [
         'title' => '首页',
         'icon'  => '',
@@ -10,7 +10,7 @@ $listList = [
         'ceshi'   => [
             'title' => '测试管理',
             'icon'  => 'fa fa-address-book',
-            'list'  => [
+            'child'  => [
                 [
                     'title'  => 'icon列表',
                     'href'   => 'page/icon.html',
@@ -90,7 +90,7 @@ $listList = [
         'setting' => [
             'title' => '设置管理',
             'icon'  => 'fa fa-gears',
-            'list'  => [
+            'child'  => [
                 [
                     'title'  => 'icon列表 [setting]',
                     'href'   => 'page/icon.html',
@@ -108,4 +108,4 @@ $listList = [
     ],
 ];
 
-die(json_encode($listList, JSON_UNESCAPED_UNICODE));
+die(json_encode($childList, JSON_UNESCAPED_UNICODE));
