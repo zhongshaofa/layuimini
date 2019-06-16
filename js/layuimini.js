@@ -286,7 +286,106 @@ layui.define(["element", "jquery"], function (exports) {
             } else {
                 return true;
             }
-        }
+        };
+
+        /**
+         * 选项卡滚动
+         */
+        this.tabRoll = function () {
+            $(window).on("resize", function (event) {
+                console.log('滚动');
+                var topTabsBox = $("#top_tabs_box"),
+                    topTabsBoxWidth = $("#top_tabs_box").width(),
+                    topTabs = $("#top_tabs"),
+                    topTabsWidth = $("#top_tabs").width(),
+                    tabLi = topTabs.find("li.layui-this"),
+                    top_tabs = document.getElementById("top_tabs"),
+                    event = event || window.event;
+
+                if (topTabsWidth > topTabsBoxWidth) {
+                    if (tabLi.position().left > topTabsBoxWidth || tabLi.position().left + topTabsBoxWidth > topTabsWidth) {
+                        topTabs.css("left", topTabsBoxWidth - topTabsWidth);
+                    } else {
+                        topTabs.css("left", -tabLi.position().left);
+                    }
+                    //拖动效果
+                    var flag = false;
+                    var cur = {
+                        x: 0,
+                        y: 0
+                    }
+                    var nx, dx, x;
+
+                    function down(event) {
+                        flag = true;
+                        var touch;
+                        if (event.touches) {
+                            touch = event.touches[0];
+                        } else {
+                            touch = event;
+                        }
+                        cur.x = touch.clientX;
+                        dx = top_tabs.offsetLeft;
+                    }
+
+                    function move(event) {
+                        var self = this;
+                        if (flag) {
+                            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                            var touch;
+                            if (event.touches) {
+                                touch = event.touches[0];
+                            } else {
+                                touch = event;
+                            }
+                            nx = touch.clientX - cur.x;
+                            x = dx + nx;
+                            if (x > 0) {
+                                x = 0;
+                            } else {
+                                if (x < topTabsBoxWidth - topTabsWidth) {
+                                    x = topTabsBoxWidth - topTabsWidth;
+                                } else {
+                                    x = dx + nx;
+                                }
+                            }
+                            top_tabs.style.left = x + "px";
+                            //阻止页面的滑动默认事件
+                            document.addEventListener("touchmove", function () {
+                                event.preventDefault();
+                            }, false);
+                        }
+                    }
+
+                    //鼠标释放时候的函数
+                    function end() {
+                        flag = false;
+                    }
+
+                    //pc端拖动效果
+                    topTabs.on("mousedown", down);
+                    topTabs.on("mousemove", move);
+                    $(document).on("mouseup", end);
+                    //移动端拖动效果
+                    topTabs.on("touchstart", down);
+                    topTabs.on("touchmove", move);
+                    topTabs.on("touchend", end);
+                } else {
+                    //移除pc端拖动效果
+                    topTabs.off("mousedown", down);
+                    topTabs.off("mousemove", move);
+                    topTabs.off("mouseup", end);
+                    //移除移动端拖动效果
+                    topTabs.off("touchstart", down);
+                    topTabs.off("touchmove", move);
+                    topTabs.off("touchend", end);
+                    topTabs.removeAttr("style");
+                    return false;
+                }
+            }).resize();
+        };
+
+
     };
 
     /**
@@ -331,6 +430,7 @@ layui.define(["element", "jquery"], function (exports) {
             layuimini.addTab(tabId, href, title, true);
         }
         element.tabChange('layuiminiTab', tabId);
+        layuimini.tabRoll();
         layer.close(loading);
     });
 
@@ -387,6 +487,29 @@ layui.define(["element", "jquery"], function (exports) {
     $('body').on('click', '[data-refresh]', function () {
         $(".layui-tab-item.layui-show").find("iframe")[0].contentWindow.location.reload();
         layer.msg('刷新成功', {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
+    });
+
+    /**
+     * 选项卡操作
+     */
+    $('body').on('click', '[data-page-close]', function () {
+        var loading = layer.load(0, {shade: false, time: 2 * 1000});
+        var closeType = $(this).attr('data-page-close');
+        $(".layui-tab-title li").each(function () {
+            tabId = $(this).attr('lay-id');
+            var id = $(this).attr('id');
+            if (id != 'layuiminiHomeTabId') {
+                var tabClass = $(this).attr('class');
+                if (closeType == 'all') {
+                    layuimini.delTab(tabId);
+                } else {
+                    if (tabClass != 'layui-this') {
+                        layuimini.delTab(tabId);
+                    }
+                }
+            }
+        });
+        layer.close(loading);
     });
 
     /**

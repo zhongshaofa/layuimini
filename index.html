@@ -58,15 +58,21 @@
         </div>
     </div>
     <div class="layui-body">
-        <div class="layui-tab" lay-filter="layuiminiTab">
-            <ul class="layui-tab-title">
+        <div class="layui-tab top-tabs-box" lay-filter="layuiminiTab" id="top_tabs_box">
+            <!--选项卡列表-->
+            <ul class="layui-tab-title" id="top_tabs">
                 <li class="layui-this" id="layuiminiHomeTabId" lay-id=""></li>
             </ul>
-        <!--<div class="layui-tab layui-tab-card layui-width-height" lay-filter="layuiminiTab">-->
-            <!--&lt;!&ndash;选项卡列表&ndash;&gt;-->
-            <!--<ul class="layui-tab-title">-->
-                <!--<li class="layui-this" id='layuiminiHomeTabId' lay-id="">首页</li>-->
-            <!--</ul>-->
+            <!--选项卡操作-->
+            <ul class="layui-nav closeBox">
+                <li class="layui-nav-item">
+                    <a href="javascript:;"> <i class="fa fa-paper-plane"></i> 页面操作</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-page-close="other"><i class="fa fa-window-close"></i> 关闭其他</a></dd>
+                        <dd><a href="javascript:;" data-page-close="all"><i class="fa fa-window-close-o"></i> 关闭全部</a></dd>
+                    </dl>
+                </li>
+            </ul>
             <!--选项卡内容列表-->
             <div class="layui-tab-content clildFrame">
                 <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show">

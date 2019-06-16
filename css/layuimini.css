@@ -18,12 +18,8 @@
 
 .layui-tab {
     margin: 0 0 0 0;
-    z-index:99999;
+    z-index: 99999;
 }
-
-.layui-tab-title .layui-this{ background-color:#1AA094; color:#fff; }
-.layui-tab-title .layui-this:after{ border:none; }
-.layui-tab-title li cite{ font-style: normal; padding-left:5px; }
 
 .text-center {
     height: 30px !important;
@@ -35,21 +31,10 @@
     border-bottom: 1px solid #333;
 }
 
-/*.layui-nav-top>ul>li {*/
-/*border-bottom: 1px solid #333;*/
-/*}*/
-
-/*.layui-nav-top{*/
-/*height: 30px!important;*/
-/*line-height: 30px!important;*/
-/*}*/
-/*.layui-nav-top>li{*/
-/*height: 30px;*/
-/*line-height: 30px;*/
-/*}*/
-.layui-nav{
-    padding: 0!important;
+.layui-nav {
+    padding: 0 !important;
 }
+
 .layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after {
     width: 0 !important;
     height: 0 !important;
@@ -80,3 +65,73 @@
     width: 100%;
     padding: 0;
 }
+
+.layui-tab-title .layui-this {
+    background-color: #1AA094;
+    color: #fff;
+}
+
+.layui-tab-title .layui-this:after {
+    border: none;
+}
+
+.layui-tab-title li cite {
+    font-style: normal;
+    padding-left: 5px;
+}
+
+#top_tabs_box {
+    padding-right: 138px;
+    height: 40px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+#top_tabs {
+    position: absolute;
+    border-bottom: none;
+}
+
+/*多窗口页面操作下拉*/
+.closeBox {
+    position: absolute;
+    right: 0;
+    background-color: #fff !important;
+    color: #000;
+    border-left: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 0 10px!important;
+}
+
+.closeBox .layui-nav-item {
+    line-height: 40px;
+}
+
+.closeBox .layui-nav-item > a, .closeBox .layui-nav-item > a:hover {
+    color: #000;
+}
+
+.closeBox .layui-nav-child {
+    top: 42px;
+    left: -12px;
+}
+
+.closeBox .layui-nav-bar {
+    display: none;
+}
+
+.closeBox a i.caozuo {
+    font-size: 20px;
+    position: absolute;
+    top: 1px;
+    left: 0;
+}
+
+.closeBox a span.layui-nav-more {
+    border-color: #333 transparent transparent;
+}
+
+.closeBox a span.layui-nav-more.layui-nav-mored {
+    border-color: transparent transparent #333;
+}
+
+* { touch-action: pan-y; }
