@@ -50,7 +50,7 @@ layuimini后台模板
             element = layui.element,
             layer = layui.layer;
 
-        layuimini.init('api/menu.json');
+        layuimini.init('api/init.json');
     });
  ```
  
@@ -68,9 +68,9 @@ layuimini后台模板
  
  2、homeInfo是首页信息
  
- 3、moduleInfo是头部模块和左侧菜单对应的信息
+ 3、menuInfo是头部模块和左侧菜单对应的信息
  
- 4、module id必须唯一，例如 moduleInfo.ceshi、moduleInfo.setting对应的ceshi和setting就是模块id，他们的值必须唯一，否则模块切换会有冲突。
+ 4、module id必须唯一，例如 menuInfo.ceshi、menuInfo.setting对应的ceshi和setting就是模块id，他们的值必须唯一，否则模块切换会有冲突。
  
   ``` json
 {
@@ -82,7 +82,7 @@ layuimini后台模板
     "icon": "fa fa-snowflake-o",
     "href": "page/welcome.html"
   },
-  "moduleInfo": {
+  "menuInfo": {
     "ceshi": {
       "title": "测试管理",
       "icon": "fa fa-address-book",

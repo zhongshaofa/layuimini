@@ -4,10 +4,10 @@
   },
   "homeInfo": {
     "title": "首页",
-    "icon": "fa fa-snowflake-o",
+    "icon": "fa fa-home",
     "href": "page/welcome.html"
   },
-  "moduleInfo": {
+  "menuInfo": {
     "ceshi": {
       "title": "测试管理",
       "icon": "fa fa-address-book",
@@ -17,6 +17,70 @@
           "href": "page/icon.html",
           "icon": "fa fa-dot-circle-o",
           "target": "_self"
+        },
+        {
+          "title": "UI管理",
+          "href": "",
+          "icon": "fa fa-snowflake-o",
+          "target": "",
+          "child": [
+            {
+              "title": "表单",
+              "href": "page/form.html",
+              "icon": "fa fa-calendar",
+              "target": "_self"
+            },
+            {
+              "title": "按钮",
+              "href": "page/button.html",
+              "icon": "fa fa-snowflake-o",
+              "target": "_self"
+            },
+            {
+              "title": "弹出层",
+              "href": "page/layer.html",
+              "icon": "fa fa-snowflake-o",
+              "target": "_self"
+            },
+            {
+              "title": "静态表格",
+              "href": "page/table.html",
+              "icon": "fa fa-snowflake-o",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "UI管理",
+          "href": "",
+          "icon": "fa fa-snowflake-o",
+          "target": "",
+          "child": [
+            {
+              "title": "表单",
+              "href": "page/form.html",
+              "icon": "fa fa-calendar",
+              "target": "_self"
+            },
+            {
+              "title": "按钮",
+              "href": "page/button.html",
+              "icon": "fa fa-snowflake-o",
+              "target": "_self"
+            },
+            {
+              "title": "弹出层",
+              "href": "page/layer.html",
+              "icon": "fa fa-snowflake-o",
+              "target": "_self"
+            },
+            {
+              "title": "静态表格",
+              "href": "page/table.html",
+              "icon": "fa fa-snowflake-o",
+              "target": "_self"
+            }
+          ]
         },
         {
           "title": "UI管理",

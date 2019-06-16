@@ -16,7 +16,7 @@
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
+    <div class="layui-header header">
         <a href="">
             <div class="layui-logo layui-hide">layuimini</div>
         </a>
@@ -58,11 +58,15 @@
         </div>
     </div>
     <div class="layui-body">
-        <div class="layui-tab layui-tab-card layui-width-height" lay-filter="layuiminiTab">
-            <!--选项卡列表-->
+        <div class="layui-tab" lay-filter="layuiminiTab">
             <ul class="layui-tab-title">
-                <li class="layui-this" id='layuiminiHomeTabId' lay-id="">首页</li>
+                <li class="layui-this" id="layuiminiHomeTabId" lay-id=""></li>
             </ul>
+        <!--<div class="layui-tab layui-tab-card layui-width-height" lay-filter="layuiminiTab">-->
+            <!--&lt;!&ndash;选项卡列表&ndash;&gt;-->
+            <!--<ul class="layui-tab-title">-->
+                <!--<li class="layui-this" id='layuiminiHomeTabId' lay-id="">首页</li>-->
+            <!--</ul>-->
             <!--选项卡内容列表-->
             <div class="layui-tab-content clildFrame">
                 <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show">
@@ -83,7 +87,7 @@
             element = layui.element,
             layer = layui.layer;
 
-        layuimini.init('api/menu.json');
+        layuimini.init('api/init.json');
     });
 </script>
 </body>

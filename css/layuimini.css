@@ -18,7 +18,12 @@
 
 .layui-tab {
     margin: 0 0 0 0;
+    z-index:99999;
 }
+
+.layui-tab-title .layui-this{ background-color:#1AA094; color:#fff; }
+.layui-tab-title .layui-this:after{ border:none; }
+.layui-tab-title li cite{ font-style: normal; padding-left:5px; }
 
 .text-center {
     height: 30px !important;
