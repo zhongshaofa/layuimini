@@ -40,13 +40,35 @@
     height: 0 !important;
 }
 
+.layui-header {
+    height: 50px !important;
+}
+
 .layui-header-menu {
-    height: 60px;
+    height: 50px;
 }
 
 .layui-header-menu > .layui-nav-item {
     color: #1b1d21;
-    height: 60px !important;
+    height: 50px !important;
+    line-height: 50px !important;
+}
+
+.layui-header > .layui-layout-right > .layui-nav-item {
+    height: 50px !important;
+    line-height: 50px !important;
+}
+
+.layui-layout-admin .layui-side {
+    top: 50px !important;
+}
+
+.layui-layout-admin .layui-body {
+    top: 50px !important;
+}
+
+.layui-logo {
+    line-height: 50px !important;
 }
 
 .layui-tab-card {
@@ -82,8 +104,24 @@
 
 #top_tabs_box {
     padding-right: 138px;
-    height: 40px;
+    height: 35px;
     border-bottom: 1px solid #e2e2e2;
+}
+
+#top_tabs_box > .layui-tab-title {
+    height: 35px !important;
+}
+
+#top_tabs_box > .layui-tab-title > li {
+    line-height: 35px !important;
+}
+
+#top_tabs_box > .closeBox {
+    height: 35px !important;
+}
+
+#top_tabs_box > .closeBox > li {
+    line-height: 35px !important;
 }
 
 #top_tabs {
@@ -99,7 +137,7 @@
     color: #000;
     border-left: 1px solid #e2e2e2;
     border-bottom: 1px solid #e2e2e2;
-    padding: 0 10px!important;
+    padding: 0 10px !important;
 }
 
 .closeBox .layui-nav-item {
@@ -134,4 +172,6 @@
     border-color: transparent transparent #333;
 }
 
-* { touch-action: pan-y; }
+* {
+    touch-action: pan-y;
+}
