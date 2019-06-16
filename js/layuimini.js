@@ -87,16 +87,16 @@ layui.define(["element", "jquery"], function (exports) {
                 $.each(menuList, function (index, menu) {
                     leftMenuHtml += '<li class="layui-nav-item">\n';
                     if (menu.child != undefined && menu.child != []) {
-                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + menu.icon + '"></i><span> ' + menu.title + '</span> </a>';
+                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span> </a>';
                         var buildChildHtml = function (html, child, menuParameId) {
                             html += '<dl class="layui-nav-child">\n';
                             $.each(child, function (childIndex, childMenu) {
                                 html += '<dd>\n';
                                 if (childMenu.child != undefined && childMenu.child != []) {
-                                    html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span> ' + childMenu.title + '</span></a>';
+                                    html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
                                     html = buildChildHtml(html, childMenu.child, menuParameId);
                                 } else {
-                                    html += '<a href="javascript:;" class="layui-menu-tips" data-type="tabAdd"  data-tab-mpi="m-p-i-' + menuParameId + '" data-tab="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span> ' + childMenu.title + '</span></a>\n';
+                                    html += '<a href="javascript:;" class="layui-menu-tips" data-type="tabAdd"  data-tab-mpi="m-p-i-' + menuParameId + '" data-tab="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
                                     menuParameId++;
                                     window.menuParameId = menuParameId;
                                 }
@@ -107,7 +107,7 @@ layui.define(["element", "jquery"], function (exports) {
                         };
                         leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child, menuParameId);
                     } else {
-                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  data-type="tabAdd" data-tab-mpi="m-p-i-' + menuParameId + '" data-tab="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span> ' + menu.title + '</span></a>\n';
+                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  data-type="tabAdd" data-tab-mpi="m-p-i-' + menuParameId + '" data-tab="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
                         menuParameId++;
                     }
                     leftMenuHtml += '</li>\n';
@@ -293,7 +293,6 @@ layui.define(["element", "jquery"], function (exports) {
          */
         this.tabRoll = function () {
             $(window).on("resize", function (event) {
-                console.log('滚动');
                 var topTabsBox = $("#top_tabs_box"),
                     topTabsBoxWidth = $("#top_tabs_box").width(),
                     topTabs = $("#top_tabs"),
@@ -521,10 +520,12 @@ layui.define(["element", "jquery"], function (exports) {
         $('.layui-nav-top li').attr('class', 'layui-nav-item');
         //选择出所有的span，并判断是不是hidden
         $('.layui-nav-item span').each(function () {
-            if (isShow == 1) {
-                $(this).attr('style', 'display: none;');
-            } else {
-                $(this).attr('style', '');
+            if ($(this).attr('class') == 'layui-left-nav') {
+                if (isShow == 1) {
+                    $(this).attr('style', 'display: none;');
+                } else {
+                    $(this).attr('style', '');
+                }
             }
         });
         //判断isshow的状态
@@ -536,7 +537,7 @@ layui.define(["element", "jquery"], function (exports) {
             $('.layui-body').css('left', 60 + 'px');
             $('.layui-footer').css('left', 60 + 'px');
             //将二级导航栏隐藏
-            $('.layui-left-menu.layui-nav-tree dd span').each(function () {
+            $('.layui-left-menu>.layui-nav-tree >dd >span').each(function () {
                 $(this).hide();
             });
             //修改标志位
@@ -553,7 +554,7 @@ layui.define(["element", "jquery"], function (exports) {
             //将footer和body的宽度修改
             $('.layui-body').attr('style', '');
             $('.layui-footer').attr('style', '');
-            $('.layui-left-menu.layui-nav-tree dd span').each(function () {
+            $('.layui-left-menu>.layui-nav-tree> dd> span').each(function () {
                 $(this).show();
             });
             $(this).attr('data-side-fold', 1);
