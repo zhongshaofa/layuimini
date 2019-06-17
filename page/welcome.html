@@ -6,189 +6,195 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css"  media="all">
-    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
 </head>
+<style>
+    .layui-box{padding: 0 20px 0 20px}
+    .layui-top-box{padding: 40px 20px 20px 20px;color:#fff}
+    .panel{margin-bottom:17px;background-color:#fff;border:1px solid transparent;border-radius:3px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+    .panel-body{padding:15px}
+    .panel-title{margin-top:0;margin-bottom:0;font-size:14px;color:inherit}
+    .label{display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em}
+    .layui-red{color:red}
+</style>
 <body>
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-    <legend>卡片面板</legend>
-</fieldset>
 
-<div style="padding: 20px; background-color: #F2F2F2;">
-    <div class="layui-row layui-col-space15">
-        <div class="layui-col-md6">
-            <div class="layui-card">
-                <div class="layui-card-header">卡片面板</div>
-                <div class="layui-card-body">
-                    卡片式面板面板通常用于非白色背景色的主体内<br>
-                    从而映衬出边框投影
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-md6">
-            <div class="layui-card">
-                <div class="layui-card-header">卡片面板</div>
-                <div class="layui-card-body">
-                    结合 layui 的栅格系统<br>
-                    轻松实现响应式布局
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-md12">
-            <div class="layui-card">
-                <div class="layui-card-header">标题</div>
-                <div class="layui-card-body">
-                    内容
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<div class="layui-top-box">
+    <div class="layui-row layui-col-space10">
 
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-    <legend>常规折叠面板</legend>
-</fieldset>
-<div class="layui-collapse" lay-filter="test">
-    <div class="layui-colla-item">
-        <h2 class="layui-colla-title">为什么JS社区大量采用未发布或者未广泛支持的语言特性？</h2>
-        <div class="layui-colla-content">
-            <p>有不少其他答案说是因为JS太差。我下面的答案已经说了，这不是根本性的原因。但除此之外，我还要纠正一些对JS具体问题的误解。JS当初是被作为脚本语言设计的，所以某些问题并不是JS设计得差或者是JS设计者的失误。比如var的作用域问题，并不是“错误”，而是当时绝大部分脚本语言都是这样的，如perl/php/sh等。模块的问题也是，脚本语言几乎都没有模块/命名空间功能。弱类型、for-in之类的问题也是，只不过现在用那些老的脚本语言的人比较少，所以很多人都误以为是JS才有的坑。另外有人说JS是半残语言，满足不了开发需求，1999年就该死。半残这个嘛，就夸张了。JS虽然有很多问题，但是设计总体还是优秀的。——来自知乎@贺师俊</p>
-        </div>
-    </div>
-    <div class="layui-colla-item">
-        <h2 class="layui-colla-title">为什么前端工程师多不愿意用 Bootstrap 框架？</h2>
-        <div class="layui-colla-content">
-            <p>因为不适合。如果希望开发长期的项目或者制作产品类网站，那么就需要实现特定的设计，为了在维护项目中可以方便地按设计师要求快速修改样式，肯定会逐步编写出各种业务组件、工具类，相当于为项目自行开发一套框架。——来自知乎@Kayo</p>
-        </div>
-    </div>
-    <div class="layui-colla-item">
-        <h2 class="layui-colla-title">layui 更适合哪些开发者？</h2>
-        <div class="layui-colla-content">
-            <p>在前端技术快速变革的今天，layui 仍然坚持语义化的组织模式，甚至于模块理念都是采用类AMD组织形式，并非是有意与时代背道而驰。layui 认为以jQuery为核心的开发方式还没有到完全消亡的时候，而早期市面上基于jQuery的UI都普通做得差强人意，所以需要有一个新的UI去重新为这一领域注入活力，并采用一些更科学的架构方式。
-                <br><br>
-                因此准确地说，layui 更多是面向那些追求开发简单的前端工程师们，以及所有层次的服务端程序员。</p>
-        </div>
-    </div>
-    <div class="layui-colla-item">
-        <h2 class="layui-colla-title">贤心是男是女？</h2>
-        <div class="layui-colla-content">
-            <p>man！ 所以这个问题不要再出现了。。。</p>
-        </div>
-    </div>
-</div>
-
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-    <legend>手风琴折叠</legend>
-</fieldset>
-<div class="layui-collapse" lay-accordion="">
-    <div class="layui-colla-item">
-        <h2 class="layui-colla-title">layui 更适合哪些开发者？</h2>
-        <div class="layui-colla-content layui-show">
-            <p>在前端技术快速变革的今天，layui 仍然坚持语义化的组织模式，甚至于模块理念都是采用类AMD组织形式，并非是有意与时代背道而驰。layui 认为以jQuery为核心的开发方式还没有到完全消亡的时候，而早期市面上基于jQuery的UI都普通做得差强人意，所以需要有一个新的UI去重新为这一领域注入活力，并采用一些更科学的架构方式。
-                <br>
-                因此准确地说，layui 更多是面向那些追求开发简单的前端工程师们，以及所有层次的服务端程序员。</p>
-        </div>
-    </div>
-    <div class="layui-colla-item">
-        <h2 class="layui-colla-title">为什么JS社区大量采用未发布或者未广泛支持的语言特性？</h2>
-        <div class="layui-colla-content">
-            <p>有不少其他答案说是因为JS太差。我下面的答案已经说了，这不是根本性的原因。但除此之外，我还要纠正一些对JS具体问题的误解。JS当初是被作为脚本语言设计的，所以某些问题并不是JS设计得差或者是JS设计者的失误。比如var的作用域问题，并不是“错误”，而是当时绝大部分脚本语言都是这样的，如perl/php/sh等。模块的问题也是，脚本语言几乎都没有模块/命名空间功能。弱类型、for-in之类的问题也是，只不过现在用那些老的脚本语言的人比较少，所以很多人都误以为是JS才有的坑。另外有人说JS是半残语言，满足不了开发需求，1999年就该死。半残这个嘛，就夸张了。JS虽然有很多问题，但是设计总体还是优秀的。——来自知乎@贺师俊</p>
-        </div>
-    </div>
-    <div class="layui-colla-item">
-        <h2 class="layui-colla-title">为什么前端工程师多不愿意用 Bootstrap 框架？</h2>
-        <div class="layui-colla-content">
-            <p>因为不适合。如果希望开发长期的项目或者制作产品类网站，那么就需要实现特定的设计，为了在维护项目中可以方便地按设计师要求快速修改样式，肯定会逐步编写出各种业务组件、工具类，相当于为项目自行开发一套框架。——来自知乎@Kayo</p>
-        </div>
-    </div>
-    <div class="layui-colla-item">
-        <h2 class="layui-colla-title">贤心是男是女？</h2>
-        <div class="layui-colla-content">
-            <p>man！ 所以这个问题不要再出现了。。。</p>
-        </div>
-    </div>
-</div>
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-    <legend>面板嵌套</legend>
-</fieldset>
-<div class="layui-collapse" lay-accordion="">
-    <div class="layui-colla-item">
-        <h2 class="layui-colla-title">文豪</h2>
-        <div class="layui-colla-content layui-show">
-
-            <div class="layui-collapse" lay-accordion="">
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">唐代</h2>
-                    <div class="layui-colla-content layui-show">
-
-                        <div class="layui-collapse" lay-accordion="">
-                            <div class="layui-colla-item">
-                                <h2 class="layui-colla-title">杜甫</h2>
-                                <div class="layui-colla-content layui-show">
-                                    伟大的诗人
-                                </div>
-                            </div>
-                            <div class="layui-colla-item">
-                                <h2 class="layui-colla-title">李白</h2>
-                                <div class="layui-colla-content">
-                                    <p>据说是韩国人</p>
-                                </div>
-                            </div>
-                            <div class="layui-colla-item">
-                                <h2 class="layui-colla-title">王勃</h2>
-                                <div class="layui-colla-content">
-                                    <p>千古绝唱《滕王阁序》</p>
-                                </div>
-                            </div>
+        <div class="layui-col-md3">
+            <div class="col-xs-6 col-md-3">
+                <div class="panel layui-bg-cyan">
+                    <div class="panel-body">
+                        <div class="panel-title">
+                            <span class="label pull-right layui-bg-blue">实时</span>
+                            <h5>用户统计</h5>
                         </div>
+                        <div class="panel-content">
+                            <h1 class="no-margins">1234</h1>
+                            <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i> 1234</div>
+                            <small>当前分类总记录数</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="layui-col-md3">
+            <div class="col-xs-6 col-md-3">
+                <div class="panel layui-bg-blue">
+                    <div class="panel-body">
+                        <div class="panel-title">
+                            <span class="label pull-right layui-bg-cyan">实时</span>
+                            <h5>商品统计</h5>
+                        </div>
+                        <div class="panel-content">
+                            <h1 class="no-margins">1234</h1>
+                            <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i> 1234</div>
+                            <small>当前分类总记录数</small>
+                        </div>
                     </div>
                 </div>
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">宋代</h2>
-                    <div class="layui-colla-content">
-                        <p>比如苏轼、李清照</p>
+            </div>
+        </div>
+
+        <div class="layui-col-md3">
+            <div class="col-xs-6 col-md-3">
+                <div class="panel layui-bg-green">
+                    <div class="panel-body">
+                        <div class="panel-title">
+                            <span class="label pull-right layui-bg-orange">实时</span>
+                            <h5>浏览统计</h5>
+                        </div>
+                        <div class="panel-content">
+                            <h1 class="no-margins">1234</h1>
+                            <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i> 1234</div>
+                            <small>当前分类总记录数</small>
+                        </div>
                     </div>
                 </div>
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">当代</h2>
-                    <div class="layui-colla-content">
-                        <p>比如贤心</p>
+            </div>
+        </div>
+        <div class="layui-col-md3">
+            <div class="col-xs-6 col-md-3">
+                <div class="panel layui-bg-orange">
+                    <div class="panel-body">
+                        <div class="panel-title">
+                            <span class="label pull-right layui-bg-green">实时</span>
+                            <h5>订单统计</h5>
+                        </div>
+                        <div class="panel-content">
+                            <h1 class="no-margins">1234</h1>
+                            <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i> 1234</div>
+                            <small>当前分类总记录数</small>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="layui-colla-item">
-        <h2 class="layui-colla-title">科学家</h2>
-        <div class="layui-colla-content">
-            <p>伟大的科学家</p>
-        </div>
-    </div>
-    <div class="layui-colla-item">
-        <h2 class="layui-colla-title">艺术家</h2>
-        <div class="layui-colla-content">
-            <p>浑身散发着艺术细胞</p>
+</div>
+
+<div class="layui-box">
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote main_btn">
+                <p>本模板基于layui2.5.4以及font-awesome-4.7.0进行实现。layui开发文档地址：<a class="layui-btn layui-btn-xs layui-btn-danger" target="_blank" href="http://www.layui.com/doc">layui文档</a>　技术交流QQ群：<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5JRGVfe"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="layuimini" title="layuimini"></a></p>
+                <p>项目开源地址：<a href="https://gitee.com/zhongshaofa/layuimini"><img src="https://gitee.com/zhongshaofa/layuimini/badge/star.svg?theme=dark" alt="star"></a> <a href="https://gitee.com/zhongshaofa/layuimini"><img src="https://gitee.com/zhongshaofa/layuimini/badge/fork.svg?theme=dark" alt="fork"></a></p>
+                <p class="layui-red">备注：此后台框架永久开源，但请勿进行出售或者上传到任何素材网站，否则将追究相应的责任。</p>
+            </blockquote>
         </div>
     </div>
 </div>
 
-<br>
-<p>支持无限嵌套，应用场景非常多！</p>
-
+<div class="layui-box">
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md6">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>昵称</th>
+                    <th>加入时间</th>
+                    <th>签名</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>贤心</td>
+                    <td>2016-11-29</td>
+                    <td>人生就像是一场修行</td>
+                </tr>
+                <tr>
+                    <td>许闲心</td>
+                    <td>2016-11-28</td>
+                    <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                </tr>
+                <tr>
+                    <td>许闲心</td>
+                    <td>2016-11-28</td>
+                    <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                </tr>
+                <tr>
+                    <td>许闲心</td>
+                    <td>2016-11-28</td>
+                    <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-col-md6">
+            <ul class="layui-timeline">
+                <li class="layui-timeline-item">
+                    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                    <div class="layui-timeline-content layui-text">
+                        <h3 class="layui-timeline-title">8月18日</h3>
+                        <p>
+                            layui 2.0 的一切准备工作似乎都已到位。发布之弦，一触即发。
+                            <br>不枉近百个日日夜夜与之为伴。因小而大，因弱而强。
+                            <br>无论它能走多远，抑或如何支撑？至少我曾倾注全心，无怨无悔 <i class="layui-icon"></i>
+                        </p>
+                    </div>
+                </li>
+                <li class="layui-timeline-item">
+                    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                    <div class="layui-timeline-content layui-text">
+                        <h3 class="layui-timeline-title">8月16日</h3>
+                        <p>杜甫的思想核心是儒家的仁政思想，他有“<em>致君尧舜上，再使风俗淳</em>”的宏伟抱负。个人最爱的名篇有：</p>
+                        <ul>
+                            <li>《登高》</li>
+                            <li>《茅屋为秋风所破歌》</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-timeline-item">
+                    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                    <div class="layui-timeline-content layui-text">
+                        <h3 class="layui-timeline-title">8月15日</h3>
+                        <p>
+                            中国人民抗日战争胜利72周年
+                            <br>常常在想，尽管对这个国家有这样那样的抱怨，但我们的确生在了最好的时代
+                            <br>铭记、感恩
+                            <br>所有为中华民族浴血奋战的英雄将士
+                            <br>永垂不朽
+                        </p>
+                    </div>
+                </li>
+                <li class="layui-timeline-item">
+                    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                    <div class="layui-timeline-content layui-text">
+                        <div class="layui-timeline-title">过去</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 <script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-<script>
-    layui.use(['element', 'layer'], function(){
-        var element = layui.element;
-        var layer = layui.layer;
-
-        //监听折叠
-        element.on('collapse(test)', function(data){
-            layer.msg('展开状态：'+ data.show);
-        });
-    });
-</script>
-
 </body>
 </html>
