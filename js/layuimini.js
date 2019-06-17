@@ -397,6 +397,7 @@ layui.define(["element", "jquery"], function (exports) {
         if (tabId != undefined || tabId != null) {
             layuimini.delTab(tabId);
         }
+        layuimini.tabRoll();
         layer.close(loading);
     });
 
@@ -508,6 +509,7 @@ layui.define(["element", "jquery"], function (exports) {
                 }
             }
         });
+        layuimini.tabRoll();
         layer.close(loading);
     });
 
