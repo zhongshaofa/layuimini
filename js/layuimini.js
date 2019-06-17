@@ -449,6 +449,7 @@ layui.define(["element", "jquery"], function (exports) {
         $(".layui-nav.layui-nav-tree.layui-this.layui-hide").removeClass('layui-this');
         $("#" + menuId).removeClass('layui-hide');
         $("#" + menuId).addClass('layui-this');
+        layuimini.tabRoll();
         layer.close(loading);
     });
 
