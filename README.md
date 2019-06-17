@@ -3,6 +3,10 @@ layuimini后台模板
 ## 项目介绍
 最简洁、清爽、易用的layui后台框架模板。
 
+> 项目会不定时进行更新，建议star和fork一份，另外有问题请加QQ群：[763822524](https://jq.qq.com/?_wv=1027&k=5JRGVfe)。
+
+> 预览地址：[http://layuimini.99php.cn](http://layuimini.99php.cn)
+
 ## 主要特性
 * 界面足够简洁清爽。
 * 一个接口`几行代码而已`直接初始化整个框架，无需复杂操作。
@@ -12,9 +16,6 @@ layuimini后台模板
 * 刷新页面会保留当前的窗口，并且会定位当前窗口对应左侧菜单栏。
 * 移动端的友好支持。
 
-> 项目会不定时进行更新，建议star和fork一份，另外有问题请加QQ群：[763822524](https://jq.qq.com/?_wv=1027&k=5JRGVfe)。
-
-> 预览地址：[http://layuimini.99php.cn](http://layuimini.99php.cn)
 
 ## 效果预览
 > 总体预览
