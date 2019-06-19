@@ -49,11 +49,11 @@ layuimini后台模板
 
 > 一、在index.html文件内进行初始化
 
-1、base: "js/"  填写layuimini.js对应的目录。
+ * base: "js/"  填写layuimini.js对应的目录。
 
-2、layuimini.init();  方法内的参数请填写动态api地址。（实际应用中建议后端api做缓存）
+ * layuimini.init();  方法内的参数请填写动态api地址。（实际应用中建议后端api做缓存）
 
-3、api地址返回的参数可以参考api目录下的init.json文件或者查看使用说明的第二点的参数说明
+ * api地址返回的参数可以参考api目录下的init.json文件或者查看使用说明的第二点的参数说明
 
  ``` js
     layui.config({
@@ -72,21 +72,22 @@ layuimini后台模板
  
  > 二、api地址返回的参数说明
  
- 1、clearInfo是服务端清理缓存信息(clearInfo.clearUrl：服务端清理缓存接口地址，为空则不请求;)
+ * clearInfo是服务端清理缓存信息(clearInfo.clearUrl：服务端清理缓存接口地址，为空则不请求;)
  
- > 返回参数对应的事例(code：0，清除缓存失败；code：1，表示清除缓存成功；)
   ``` json
+  返回参数对应的事例(code：0，清除缓存失败；code：1，表示清除缓存成功；)
+  
   {
     "code": 1,
     "msg": "清除服务端缓存成功"
   }
    ```
  
- 2、homeInfo是首页信息
+ * homeInfo是首页信息
  
- 3、menuInfo是头部模块和左侧菜单对应的信息
+ * menuInfo是头部模块和左侧菜单对应的信息
  
- 4、module id必须唯一，例如 menuInfo.ceshi、menuInfo.setting对应的ceshi和setting就是模块id，他们的值必须唯一，否则模块切换会有冲突。
+ * module id必须唯一，例如 menuInfo.ceshi、menuInfo.setting对应的ceshi和setting就是模块id，他们的值必须唯一，否则模块切换会有冲突。
  
   ``` json
 {
