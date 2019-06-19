@@ -5,7 +5,10 @@ layuimini后台模板
 
 > 项目会不定时进行更新，建议star和fork一份，另外有问题请加QQ群：[763822524](https://jq.qq.com/?_wv=1027&k=5JRGVfe)。
 
-> 预览地址：[http://layuimini.99php.cn](http://layuimini.99php.cn)
+## 代码仓库
+ * 在线预览地址：[http://layuimini.99php.cn](http://layuimini.99php.cn)
+ * GitHub仓库地址：[https://github.com/zhongshaofa/layuimini](https://github.com/zhongshaofa/layuimini)
+ * Gitee仓库地址：[https://gitee.com/zhongshaofa/layuimini](https://gitee.com/zhongshaofa/layuimini)
 
 ## 主要特性
 * 界面足够简洁清爽。
@@ -32,7 +35,7 @@ layuimini后台模板
 ![Image text](https://files.gitee.com/group1/M00/08/1B/PaAvDF0HLCqAGGizAAHu_4gyQug790.png)
 > 4、url地址hash定位
 
-![Image text](https://files.gitee.com/group1/M00/08/13/PaAvDF0C-jqAPJ1dAAE32WAJ290421.png)
+![Image text](https://files.gitee.com/group1/M00/08/1B/PaAvDF0HLAeAVF4_AAFEMLR6XoQ511.png)
 > 5、刷新保留窗口，并对应菜单栏
 
 ![Image text](https://files.gitee.com/group1/M00/08/1B/PaAvDF0HLCOAZCrkAAHWtRZZWSI386.png)
