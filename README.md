@@ -3,7 +3,9 @@ layuimini后台模板
 ## 项目介绍
 最简洁、清爽、易用的layui后台框架模板。
 
-> 项目会不定时进行更新，建议star和fork一份，另外有问题请加QQ群：[763822524](https://jq.qq.com/?_wv=1027&k=5JRGVfe)。
+项目会不定时进行更新，建议star和fork一份。
+
+技术交流QQ群：[763822524](https://jq.qq.com/?_wv=1027&k=5JRGVfe) `加群请备注来源：如gitee、github、官网等`。
 
 ## 代码仓库
  * 在线预览地址：[http://layuimini.99php.cn](http://layuimini.99php.cn)
