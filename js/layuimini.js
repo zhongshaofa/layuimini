@@ -408,7 +408,12 @@ layui.define(["element", "jquery"], function (exports) {
         var loading = layer.load(0, {shade: false, time: 2 * 1000});
         var tabId = $(this).attr('data-tab'),
             href = $(this).attr('data-tab'),
-            title = $(this).html();
+            title = $(this).html(),
+            target = $(this).attr('target');
+        if(target == '_blank'){
+            window.open(href, "_blank");
+            return false;
+        }
         title = title.replace('style="display: none;"', '');
 
         // 拼接参数
