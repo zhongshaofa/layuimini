@@ -411,6 +411,7 @@ layui.define(["element", "jquery"], function (exports) {
             title = $(this).html(),
             target = $(this).attr('target');
         if(target == '_blank'){
+            layer.close(loading);
             window.open(href, "_blank");
             return false;
         }
