@@ -12,295 +12,134 @@
 <body>
 <div class="layuimini-container">
     <div class="layuimini-main">
-        <blockquote class="layui-elem-quote">
-            本页面只是演示静态表格，如果你需要的是数据表格，可前往：1
-            <a class="layui-btn layui-btn-normal" href="table.html" target="_blank">表格模块示例</a>
-        </blockquote>
 
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>默认表格</legend>
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">用户姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">用户性别</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="sex" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">用户城市</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="city" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">用户职业</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="classify" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </fieldset>
 
-        <div class="layui-form">
-            <table class="layui-table">
-                <colgroup>
-                    <col width="150">
-                    <col width="150">
-                    <col width="200">
-                    <col>
-                </colgroup>
-                <thead>
-                <tr>
-                    <th>人物</th>
-                    <th>民族</th>
-                    <th>出场时间</th>
-                    <th>格言</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>贤心</td>
-                    <td>汉族</td>
-                    <td>1989-10-14</td>
-                    <td>人生似修行</td>
-                </tr>
-                <tr>
-                    <td>张爱玲</td>
-                    <td>汉族</td>
-                    <td>1920-09-30</td>
-                    <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
-                </tr>
-                <tr>
-                    <td>Helen Keller</td>
-                    <td>拉丁美裔</td>
-                    <td>1880-06-27</td>
-                    <td> Life is either a daring adventure or nothing.</td>
-                </tr>
-                <tr>
-                    <td>岳飞</td>
-                    <td>汉族</td>
-                    <td>1103-北宋崇宁二年</td>
-                    <td>教科书再滥改，也抹不去“民族英雄”的事实</td>
-                </tr>
-                <tr>
-                    <td>孟子</td>
-                    <td>华夏族（汉族）</td>
-                    <td>公元前-372年</td>
-                    <td>猿强，则国强。国强，则猿更强！</td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="layui-btn-group">
+            <button class="layui-btn data-add-btn">添加</button>
+            <button class="layui-btn layui-btn-danger data-delete-btn">删除</button>
         </div>
-
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-            <legend>行边框表格</legend>
-        </fieldset>
-
-        <table class="layui-table" lay-skin="line">
-            <colgroup>
-                <col width="150">
-                <col width="150">
-                <col width="200">
-                <col>
-            </colgroup>
-            <thead>
-            <tr>
-                <th>人物</th>
-                <th>民族</th>
-                <th>出场时间</th>
-                <th>格言</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>贤心</td>
-                <td>汉族</td>
-                <td>1989-10-14</td>
-                <td>人生似修行</td>
-            </tr>
-            <tr>
-                <td>张爱玲</td>
-                <td>汉族</td>
-                <td>1920-09-30</td>
-                <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
-            </tr>
-            <tr>
-                <td>Helen Keller</td>
-                <td>拉丁美裔</td>
-                <td>1880-06-27</td>
-                <td> Life is either a daring adventure or nothing.</td>
-            </tr>
-            <tr>
-                <td>岳飞</td>
-                <td>汉族</td>
-                <td>1103-北宋崇宁二年</td>
-                <td>教科书再滥改，也抹不去“民族英雄”的事实</td>
-            </tr>
-            <tr>
-                <td>孟子</td>
-                <td>华夏族（汉族）</td>
-                <td>公元前-372年</td>
-                <td>猿强，则国强。国强，则猿更强！</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-            <legend>列边框表格</legend>
-        </fieldset>
-
-        <table class="layui-table" lay-even="" lay-skin="row">
-            <colgroup>
-                <col width="150">
-                <col width="150">
-                <col width="200">
-                <col>
-            </colgroup>
-            <thead>
-            <tr>
-                <th>人物</th>
-                <th>民族</th>
-                <th>出场时间</th>
-                <th>格言</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>贤心</td>
-                <td>汉族</td>
-                <td>1989-10-14</td>
-                <td>人生似修行</td>
-            </tr>
-            <tr>
-                <td>张爱玲</td>
-                <td>汉族</td>
-                <td>1920-09-30</td>
-                <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
-            </tr>
-            <tr>
-                <td>Helen Keller</td>
-                <td>拉丁美裔</td>
-                <td>1880-06-27</td>
-                <td> Life is either a daring adventure or nothing.</td>
-            </tr>
-            <tr>
-                <td>岳飞</td>
-                <td>汉族</td>
-                <td>1103-北宋崇宁二年</td>
-                <td>教科书再滥改，也抹不去“民族英雄”的事实</td>
-            </tr>
-            <tr>
-                <td>孟子</td>
-                <td>华夏族（汉族）</td>
-                <td>公元前-372年</td>
-                <td>猿强，则国强。国强，则猿更强！</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-            <legend>无边框表格</legend>
-        </fieldset>
-
-        <table class="layui-table" lay-even="" lay-skin="nob">
-            <colgroup>
-                <col width="150">
-                <col width="150">
-                <col width="200">
-                <col>
-            </colgroup>
-            <thead>
-            <tr>
-                <th>人物</th>
-                <th>民族</th>
-                <th>出场时间</th>
-                <th>格言</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>贤心</td>
-                <td>汉族</td>
-                <td>1989-10-14</td>
-                <td>人生似修行</td>
-            </tr>
-            <tr>
-                <td>张爱玲</td>
-                <td>汉族</td>
-                <td>1920-09-30</td>
-                <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
-            </tr>
-            <tr>
-                <td>Helen Keller</td>
-                <td>拉丁美裔</td>
-                <td>1880-06-27</td>
-                <td> Life is either a daring adventure or nothing.</td>
-            </tr>
-            <tr>
-                <td>岳飞</td>
-                <td>汉族</td>
-                <td>1103-北宋崇宁二年</td>
-                <td>教科书再滥改，也抹不去“民族英雄”的事实</td>
-            </tr>
-            <tr>
-                <td>孟子</td>
-                <td>华夏族（汉族）</td>
-                <td>公元前-372年</td>
-                <td>猿强，则国强。国强，则猿更强！</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-            <legend>其它尺寸表格</legend>
-        </fieldset>
-
-        <table class="layui-table" lay-size="lg">
-            <colgroup>
-                <col width="150">
-                <col width="200">
-                <col>
-            </colgroup>
-            <thead>
-            <tr>
-                <th>昵称</th>
-                <th>加入时间</th>
-                <th>签名</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>贤心</td>
-                <td>2016-11-29</td>
-                <td>人生就像是一场修行</td>
-            </tr>
-            <tr>
-                <td>许闲心</td>
-                <td>2016-11-28</td>
-                <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
-            </tr>
-            <tr>
-                <td>sentsin</td>
-                <td>2016-11-27</td>
-                <td> Life is either a daring adventure or nothing.</td>
-            </tr>
-            </tbody>
-        </table>
-        <table class="layui-table" lay-size="sm">
-            <colgroup>
-                <col width="150">
-                <col width="200">
-                <col>
-            </colgroup>
-            <thead>
-            <tr>
-                <th>昵称</th>
-                <th>加入时间</th>
-                <th>签名</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>贤心</td>
-                <td>2016-11-29</td>
-                <td>人生就像是一场修行</td>
-            </tr>
-            <tr>
-                <td>许闲心</td>
-                <td>2016-11-28</td>
-                <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
-            </tr>
-            <tr>
-                <td>sentsin</td>
-                <td>2016-11-27</td>
-                <td> Life is either a daring adventure or nothing.</td>
-            </tr>
-            </tbody>
-        </table>
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
     </div>
 </div>
 <script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['form', 'table'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table;
+
+        table.render({
+            elem: '#currentTableId',
+            url: '../api/table.php',
+            cols: [[
+                {type: "checkbox", width: 50, fixed: "left"},
+                {field: 'id', width: 80, title: 'ID', sort: true},
+                {field: 'username', width: 80, title: '用户名'},
+                {field: 'sex', width: 80, title: '性别', sort: true},
+                {field: 'city', width: 80, title: '城市'},
+                {field: 'sign', title: '签名', minWidth: 150},
+                {field: 'experience', width: 80, title: '积分', sort: true},
+                {field: 'score', width: 80, title: '评分', sort: true},
+                {field: 'classify', width: 80, title: '职业'},
+                {field: 'wealth', width: 135, title: '财富', sort: true},
+                {title: '操作', minWidth: 50, templet: '#currentTableBar', fixed: "right", align: "center"}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = JSON.stringify(data.field);
+            layer.alert(result, {
+                title: '最终的搜索信息'
+            });
+
+            //执行搜索重载
+            table.reload('currentTableId', {
+                page: {
+                    curr: 1
+                }
+                , where: {
+                    searchParams: result
+                }
+            }, 'data');
+
+            return false;
+        });
+
+        // 监听添加操作
+        $(".data-add-btn").on("click", function () {
+            layer.msg('添加数据');
+        });
+
+        // 监听删除操作
+        $(".data-delete-btn").on("click", function () {
+            var checkStatus = table.checkStatus('currentTableId')
+                , data = checkStatus.data;
+            layer.alert(JSON.stringify(data));
+        });
+
+        //监听表格复选框选择
+        table.on('checkbox(currentTableFilter)', function (obj) {
+            console.log(obj)
+        });
+
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'edit') {
+                layer.alert('编辑行：<br>' + JSON.stringify(data))
+            } else if (obj.event === 'delete') {
+                layer.confirm('真的删除行么', function (index) {
+                    obj.del();
+                    layer.close(index);
+                });
+            }
+        });
+
+    });
+</script>
 <script>
 
 </script>

@@ -13,6 +13,12 @@
       "icon": "fa fa-address-book",
       "child": [
         {
+          "title": "表格示例",
+          "href": "page/table.html",
+          "icon": "fa fa-snowflake-o",
+          "target": "_self"
+        },
+        {
           "title": "icon列表",
           "href": "page/icon.html",
           "icon": "fa fa-dot-circle-o",
@@ -39,12 +45,6 @@
             {
               "title": "弹出层",
               "href": "page/layer.html",
-              "icon": "fa fa-snowflake-o",
-              "target": "_self"
-            },
-            {
-              "title": "静态表格",
-              "href": "page/table.html",
               "icon": "fa fa-snowflake-o",
               "target": "_self"
             },
