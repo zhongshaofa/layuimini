@@ -25,12 +25,6 @@
           "target": "",
           "child": [
             {
-              "title": "测试新窗口弹出",
-              "href": "page/form.html",
-              "icon": "fa fa-calendar",
-              "target": "_blank"
-            },
-            {
               "title": "表单",
               "href": "page/form.html",
               "icon": "fa fa-calendar",
@@ -53,6 +47,12 @@
               "href": "page/table.html",
               "icon": "fa fa-snowflake-o",
               "target": "_self"
+            },
+            {
+              "title": "弹出新窗口",
+              "href": "page/form.html",
+              "icon": "fa fa-calendar",
+              "target": "_blank"
             }
           ]
         },
