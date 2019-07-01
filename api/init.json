@@ -25,18 +25,6 @@
           "target": "_self"
         },
         {
-          "title": "登录页面",
-          "href": "page/login.html",
-          "icon": "fa fa-flag-o",
-          "target": "_blank"
-        },
-        {
-          "title": "失效菜单处理",
-          "href": "page/error.html",
-          "icon": "fa fa-superpowers",
-          "target": "_self"
-        },
-        {
           "title": "UI管理",
           "href": "",
           "icon": "fa fa-snowflake-o",
@@ -97,6 +85,18 @@
               ]
             }
           ]
+        },
+        {
+          "title": "登录页面",
+          "href": "page/login.html",
+          "icon": "fa fa-flag-o",
+          "target": "_blank"
+        },
+        {
+          "title": "失效菜单处理",
+          "href": "page/error.html",
+          "icon": "fa fa-superpowers",
+          "target": "_self"
         }
       ]
     },
