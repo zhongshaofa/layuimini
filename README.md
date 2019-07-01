@@ -17,6 +17,7 @@ layuimini后台模板
 * 一个接口`几行代码而已`直接初始化整个框架，无需复杂操作。
 * 支持多tab，可以打开多窗口。
 * 支持无限级菜单和对font-awesome图标库的完美支持。
+* 失效以及报错菜单无法直接打开，并给出弹出层提示`完美的线上用户体验`。
 * url地址hash定位，可以清楚看到当前tab的地址信息。
 * 刷新页面会保留当前的窗口，并且会定位当前窗口对应左侧菜单栏。
 * 移动端的友好支持。
@@ -25,6 +26,10 @@ layuimini后台模板
 ## 效果预览
 > 总体预览
 ![Image text](https://files.gitee.com/group1/M00/08/1B/PaAvDF0HLAGAdCe_AAHJ-SJxbfY063.png)
+
+> 登录界面
+
+![Image text](https://files.gitee.com/group1/M00/08/58/PaAvDF0ZpZKAbCaeAACF7ocsWZw912.jpg)
 
 > 1、多tab窗口
 
@@ -44,6 +49,7 @@ layuimini后台模板
 > 6、移动端的友好支持
 
 ![Image text](https://files.gitee.com/group1/M00/08/1B/PaAvDF0HLByAW8hJAACwEN4EWk8201.png)
+
 
 
 
@@ -184,3 +190,19 @@ layuimini后台模板
   }
 }
   ```
+  ## 备注信息
+  项目实际运用请删除 layuimini\index.html 文件内的百度统计代码。（下面的代码）
+  
+  ``` js
+<!--开始----百度统计代码，实际使用请删除-->
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d97abf6d61c21d773f97835defbdef4e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<!--结束----百度统计代码，实际使用请删除-->
+   ```
