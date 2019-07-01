@@ -43,10 +43,13 @@
                 <a href="javascript:;">admin </a>
                 <dl class="layui-nav-child">
                     <dd>
-                        <a href="javascript:;" onclick="addTab(this);" tab_url="http://www.llqqww.com">基本资料</a>
+                        <a href="javascript:;">基本资料</a>
                     </dd>
                     <dd>
-                        <a href="">安全设置</a>
+                        <a href="javascript:;">安全设置</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;" class="login-out">退出登录</a>
                     </dd>
                 </dl>
             </li>
@@ -107,6 +110,12 @@
             layer = layui.layer;
 
         layuimini.init('api/init.json');
+
+        $('.login-out').on("click", function () {
+            layer.msg('退出登录成功', function () {
+                window.location = '/page/login.html';
+            });
+        });
     });
 </script>
 </body>

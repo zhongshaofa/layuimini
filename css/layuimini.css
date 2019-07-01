@@ -59,6 +59,10 @@
     line-height: 50px !important;
 }
 
+.layui-nav.layui-layout-right{
+    margin-right: 25px!important;
+}
+
 .layui-layout-admin .layui-side {
     top: 50px !important;
 }
