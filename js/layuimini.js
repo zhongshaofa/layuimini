@@ -21,7 +21,7 @@ layui.define(["element", "jquery"], function (exports) {
             layuimini.initDevice();
             $.getJSON(url, function (data, status) {
                 if (data == null) {
-                    layer.msg('暂无菜单信息', {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+                    layuimini.msg_error('暂无菜单信息');
                 } else {
                     layuimini.initHome(data.homeInfo);
                     layuimini.initMenu(data.menuInfo);
@@ -29,7 +29,7 @@ layui.define(["element", "jquery"], function (exports) {
                     window.clearInfo = data.clearInfo;
                 }
             }).fail(function () {
-                layer.msg('菜单接口有误！', {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+                layuimini.msg_error('菜单接口有误');
             });
             layer.close(loading);
         };
@@ -130,8 +130,16 @@ layui.define(["element", "jquery"], function (exports) {
             var urlArr = locationHref.split("#");
             if (urlArr.length >= 2) {
                 var href = urlArr.pop();
-                var check = layuimini.checkTab(href);
-                if (!check) {
+
+                // 判断链接是否有效
+                var checkUrl = layuimini.checkUrl(href);
+                if (checkUrl != true) {
+                    return layuimini.msg_error(checkUrl);
+                }
+
+                // 判断tab是否存在
+                var checkTab = layuimini.checkTab(href);
+                if (!checkTab) {
                     var title = href,
                         tabId = href;
                     $("[data-tab]").each(function () {
@@ -289,6 +297,43 @@ layui.define(["element", "jquery"], function (exports) {
         };
 
         /**
+         * 判断链接是否有效
+         * @param url
+         * @returns {boolean}
+         */
+        this.checkUrl = function (url) {
+            var msg = true;
+            $.ajax({
+                url: url,
+                type: 'get',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                async: false,
+                error: function (xhr, textstatus, thrown) {
+                    msg = 'Status:' + xhr.status + '，' + xhr.statusText + '，请稍后再试！';
+                }
+            });
+            return msg;
+        };
+
+        /**
+         * 成功
+         * @param title
+         * @returns {*}
+         */
+        this.msg_success = function (title) {
+            return layer.msg(title, {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
+        };
+
+        /**
+         * 失败
+         * @param title
+         * @returns {*}
+         */
+        this.msg_error = function (title) {
+            return layer.msg(title, {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+        };
+
+        /**
          * 选项卡滚动
          */
         this.tabRoll = function () {
@@ -410,7 +455,7 @@ layui.define(["element", "jquery"], function (exports) {
             href = $(this).attr('data-tab'),
             title = $(this).html(),
             target = $(this).attr('target');
-        if(target == '_blank'){
+        if (target == '_blank') {
             layer.close(loading);
             window.open(href, "_blank");
             return false;
@@ -427,12 +472,18 @@ layui.define(["element", "jquery"], function (exports) {
             tabId = href;
         }
 
+        // 判断链接是否有效
+        var checkUrl = layuimini.checkUrl(href);
+        if (checkUrl != true) {
+            return layuimini.msg_error(checkUrl);
+        }
+
         if (tabId == null || tabId == undefined) {
             tabId = new Date().getTime();
         }
         // 判断该窗口是否已经打开过
-        check = layuimini.checkTab(tabId);
-        if (!check) {
+        var checkTab = layuimini.checkTab(tabId);
+        if (!checkTab) {
             layuimini.addTab(tabId, href, title, true);
         }
         element.tabChange('layuiminiTab', tabId);
@@ -472,18 +523,18 @@ layui.define(["element", "jquery"], function (exports) {
                 $.getJSON(clearInfo.clearUrl, function (data, status) {
                     layer.close(loading);
                     if (data.code != 1) {
-                        return layer.msg(data.msg, {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+                        return layuimini.msg_error(data.msg);
                     } else {
-                        return layer.msg(data.msg, {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
+                        return layuimini.msg_success(data.msg);
                     }
                 }).fail(function () {
                     layer.close(loading);
-                    return layer.msg('清理缓存接口有误！', {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
+                    return layuimini.msg_error('清理缓存接口有误');
                 });
             }
         } else {
             layer.close(loading);
-            layer.msg('清除缓存成功', {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
+            return layuimini.msg_success('清除缓存成功');
         }
     });
 
@@ -492,7 +543,7 @@ layui.define(["element", "jquery"], function (exports) {
      */
     $('body').on('click', '[data-refresh]', function () {
         $(".layui-tab-item.layui-show").find("iframe")[0].contentWindow.location.reload();
-        layer.msg('刷新成功', {icon: 1, shade: this.shade, scrollbar: false, time: 2000, shadeClose: true});
+        layuimini.msg_success('刷新成功');
     });
 
     /**

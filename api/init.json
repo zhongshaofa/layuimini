@@ -25,6 +25,18 @@
           "target": "_self"
         },
         {
+          "title": "失效菜单处理",
+          "href": "page/error.html",
+          "icon": "fa fa-dot-circle-o",
+          "target": "_self"
+        },
+        {
+          "title": "新窗口打开",
+          "href": "https://www.baidu.com",
+          "icon": "fa fa-calendar",
+          "target": "_blank"
+        },
+        {
           "title": "UI管理",
           "href": "",
           "icon": "fa fa-snowflake-o",
@@ -47,12 +59,6 @@
               "href": "page/layer.html",
               "icon": "fa fa-snowflake-o",
               "target": "_self"
-            },
-            {
-              "title": "弹出新窗口",
-              "href": "page/form.html",
-              "icon": "fa fa-calendar",
-              "target": "_blank"
             }
           ]
         },
