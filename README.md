@@ -29,7 +29,7 @@ layuimini后台模板
 
 > 登录界面
 
-![Image text](https://files.gitee.com/group1/M00/08/58/PaAvDF0ZpZKAbCaeAACF7ocsWZw912.jpg)
+![Image text](https://files.gitee.com/group1/M00/08/58/PaAvDF0ZpoqAc8FPAACr7Qev1R4238.jpg)
 
 > 1、多tab窗口
 
