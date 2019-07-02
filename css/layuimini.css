@@ -23,6 +23,9 @@
     height: 50px !important;
     line-height: 50px !important;
 }
+.layui-layout-left{
+    left: 250px!important;
+}
 
 
 /**
@@ -32,6 +35,36 @@ logo演示
     font-weight: bold;
     line-height: 50px !important;
     color: #ffffff!important;
+}
+
+/**
+缩放工具
+ */
+.layuimini-tool {
+    position: absolute!important;
+    left: 200px;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    line-height: 50px;
+    text-align: center;
+    color: #ffffff!important;
+}
+
+.layuimini-tool i {
+    display: block;
+    background-color: #197971;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 7px;
+    cursor: pointer;
+}
+.layuimini-tool i:hover {
+    background-color: #155f58;
 }
 
 /**
@@ -120,8 +153,14 @@ tab选项卡
 .layui-side.layui-bg-black>.layui-left-menu>ul{
     background-color: #2f4056!important;
 }
+.layui-side.layui-bg-black>.layui-left-menu > ul > .layui-nav-item:first-child {
+    border-top: 1px solid #4b5461;
+}
 .layui-side.layui-bg-black>.layui-left-menu > ul > .layui-nav-item {
     border-bottom: 1px solid #4b5461;
+}
+.layui-left-menu>.layui-nav-tree{
+    margin-top: 15px;
 }
 
 /**

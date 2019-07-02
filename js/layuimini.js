@@ -40,7 +40,8 @@ layui.define(["element", "jquery"], function (exports) {
         this.initDevice = function () {
             if (layuimini.checkMobile()) {
                 $('.clildFrame').attr('style', 'overflow-y:scroll; overflow-x:hidden;table-layout: fixed;word-wrap:break-word;word-break:break-all;-webkit-overflow-scrolling: touch!important;');
-                $('.layui-layout-left').css('left', 60 + 'px');
+                $('.layui-layout-left').attr('style','left:60px!important');
+                $('.layuimini-tool').attr('style','left:15px!important');
             } else {
                 $('.layui-logo').removeClass('layui-hide');
             }
@@ -68,16 +69,6 @@ layui.define(["element", "jquery"], function (exports) {
                 headerMenuCheckDefault = 'layui-this',
                 leftMenuCheckDefault = 'layui-this';
             window.menuParameId = 1;
-
-            // 缩放菜单
-            leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-nav-top" data-side-fold="1">\n' +
-                '<li class="layui-nav-item">\n' +
-                '<a class="text-center">\n' +
-                '<i class="nav-top fa fa-outdent">\n' +
-                '</i>\n' +
-                '</a>\n' +
-                '</li>\n' +
-                '</ul>';
 
             $.each(data, function (key, val) {
                 headerMenuHtml += '<li class="layui-nav-item ' + headerMenuCheckDefault + '" id="' + key + 'HeaderId" data-menu="' + key + '"> <a href="javascript:;"><i class="' + val.icon + '"></i> ' + val.title + '</a> </li>\n';
@@ -601,9 +592,10 @@ layui.define(["element", "jquery"], function (exports) {
             });
             //修改标志位
             $(this).attr('data-side-fold', 0);
-            $('.nav-top.fa.fa-outdent').attr('class', 'nav-top fa fa-indent');
+            $('.layuimini-tool i').attr('class', 'fa fa-indent');
             if (!layuimini.checkMobile()) {
-                $('.layui-layout-left').css('left', 60 + 'px');
+                $('.layui-layout-left').attr('style', 'left:110px!important;');
+                $('.layuimini-tool').attr('style', 'left:60px!important;');
                 $('.layui-logo').addClass('layui-hide');
             }
         } else {
@@ -617,9 +609,10 @@ layui.define(["element", "jquery"], function (exports) {
                 $(this).show();
             });
             $(this).attr('data-side-fold', 1);
-            $('.nav-top.fa.fa-indent').attr('class', 'nav-top fa fa-outdent');
+            $('.layuimini-tool i').attr('class', 'fa fa-outdent');
             if (!layuimini.checkMobile()) {
-                $('.layui-layout-left').css('left', 200 + 'px');
+                $('.layui-layout-left').attr('style', 'left:250px!important;');
+                $('.layuimini-tool').attr('style', 'left:200px!important;');
                 $('.layui-logo').removeClass('layui-hide');
             }
         }
@@ -634,13 +627,13 @@ layui.define(["element", "jquery"], function (exports) {
     $("body").on("mouseenter", ".layui-menu-tips", function () {
         var classInfo = $(this).attr('class'),
             tips = $(this).children('span').text(),
-            isShow = $('.layui-nav-top').attr('data-side-fold');
+            isShow = $('.layuimini-tool i').attr('data-side-fold');
         if (isShow == 0) {
             openTips = layer.tips(tips, $(this), {tips: [1, '#1E9FFF'], time: 30000});
         }
     });
     $("body").on("mouseleave", ".layui-menu-tips", function () {
-        var isShow = $('.layui-nav-top').attr('data-side-fold');
+        var isShow = $('.layuimini-tool i').attr('data-side-fold');
         if (isShow == 0) {
             layer.close(openTips);
         }
