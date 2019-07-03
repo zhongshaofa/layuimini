@@ -594,9 +594,9 @@ layui.define(["element", "jquery"], function (exports) {
             $(this).attr('data-side-fold', 0);
             $('.layuimini-tool i').attr('class', 'fa fa-indent');
             if (!layuimini.checkMobile()) {
-                $('.layui-layout-left').attr('style', 'left:110px!important;');
-                $('.layuimini-tool').attr('style', 'left:60px!important;');
-                $('.layui-logo').addClass('layui-hide');
+                $('.layui-header').attr('style', 'left:60px!important;');
+                $('.layui-logo').style('layui-hide');
+                $('.layui-logo h1').addClass('layui-hide');
             }
         } else {
             $('.layui-side.layui-bg-black').attr('style', ''); //设置宽度
@@ -611,8 +611,7 @@ layui.define(["element", "jquery"], function (exports) {
             $(this).attr('data-side-fold', 1);
             $('.layuimini-tool i').attr('class', 'fa fa-outdent');
             if (!layuimini.checkMobile()) {
-                $('.layui-layout-left').attr('style', 'left:250px!important;');
-                $('.layuimini-tool').attr('style', 'left:200px!important;');
+                $('.layui-header').attr('style', '');
                 $('.layui-logo').removeClass('layui-hide');
             }
         }
