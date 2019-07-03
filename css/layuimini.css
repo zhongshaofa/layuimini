@@ -9,19 +9,19 @@
     background-color: #197971!important;
 }
 .layui-header-menu {
-    height: 50px;
+    height: 60px;
 }
 .layui-header-menu > .layui-nav-item {
     color: #1b1d21;
-    height: 50px !important;
-    line-height: 50px !important;
+    height: 60px !important;
+    line-height: 60px !important;
 }
 .layui-header {
-    height: 50px !important;
+    height: 60px !important;
 }
 .layui-header > .layui-layout-right > .layui-nav-item {
-    height: 50px !important;
-    line-height: 50px !important;
+    height: 60px !important;
+    line-height: 60px !important;
 }
 .layui-layout-left{
     left: 95px!important;
@@ -31,10 +31,30 @@
 /**
 logo演示
  */
-.layui-logo {
+.layui-layout-admin .layui-logo{
+    background-color: #243346!important;
     font-weight: bold;
-    line-height: 85px !important;
     color: #ffffff!important;
+    height: 60px!important;
+    line-height: 60px !important;
+    overflow: hidden;
+    line-height: 64px;
+    transition: all .3s;
+}
+
+.layui-layout-admin  .layui-logo img {
+    display: inline-block;
+    height: 30px;
+    vertical-align: middle;
+}
+.layui-layout-admin  .layui-logo h1 {
+    display: inline-block;
+    margin: 0 0 0 12px;
+    color: #dadde2;
+    font-weight: 600;
+    font-size: 20px;
+    font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
+    vertical-align: middle;
 }
 
 /**
@@ -44,11 +64,11 @@ logo演示
     position: absolute!important;
     left: 30px;
     top: 0;
-    width: 50px;
+    width: 60px;
     height: 100%;
-    line-height: 50px;
+    line-height: 60px;
     text-align: center;
-    /*color: #ffffff!important;*/
+    color: #ffffff!important;
 }
 
 .layuimini-tool i {
@@ -60,7 +80,7 @@ logo演示
     line-height: 32px;
     border-radius: 3px;
     text-align: center;
-    margin-top: 7px;
+    margin-top: 15px;
     cursor: pointer;
 }
 .layuimini-tool i:hover {
@@ -75,7 +95,7 @@ tab选项卡
     padding-left: 5px;
 }
 .layui-tab-title .layui-this {
-    background-color: #5a708c;
+    background-color: #243346;
     color: #ffffff;
 }
 .layui-tab-title .layui-this:after {
@@ -163,7 +183,7 @@ tab选项卡
     border-bottom: 1px solid #4b5461;
 }
 .layui-left-menu>.layui-nav-tree{
-    margin-top: 85px;
+    margin-top: 60px;
 }
 
 /**
@@ -210,7 +230,7 @@ tab选项卡
     top: 0px !important;
 }
 .layui-layout-admin .layui-body {
-    top: 50px !important;
+    top: 60px !important;
 }
 .layui-tab-card {
     box-shadow: 0px 0px 0px #888888;
