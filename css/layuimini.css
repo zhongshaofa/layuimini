@@ -178,6 +178,33 @@ tab选项卡
 .layui-side.layui-bg-black>.layui-left-menu > ul > .layui-nav-item:first-child {
     border-top: 1px solid #4b5461;
 }
+.layui-left-menu .layui-nav .layui-nav-item a {
+    height: 40px;
+    line-height: 40px;
+    padding-right: 30px;
+}
+.layui-left-menu .layui-nav .layui-nav-item>a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.layui-nav-itemed .layui-nav-child a {
+    padding-left: 30px;
+}
+.layui-left-menu .layui-nav .layui-nav-child .layui-nav-child a {
+    padding-left: 40px;
+}
+.layui-left-menu .layui-nav .layui-nav-item a:hover {
+    background: 0 0!important;
+}
+.layui-left-menu .layui-nav .layui-nav-itemed>.layui-nav-child {
+    padding: 5px 0;
+}
+.layui-left-menu .layui-nav .layui-nav-child .layui-nav-child {
+    background: 0 0!important
+}
+.layui-left-menu .layui-nav .layui-nav-more {
+    right: 15px;
+}
 
 /**
 其它
