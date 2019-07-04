@@ -24,7 +24,10 @@
     line-height: 60px !important;
 }
 .layui-layout-left{
-    left: 95px!important;
+    left: 295px!important;
+}
+.layui-nav.layui-layout-left.layui-header-menu.mobile.layui-hide-xs{
+    font-weight: bold;
 }
 
 
@@ -62,7 +65,7 @@ logo演示
  */
 .layuimini-tool {
     position: absolute!important;
-    left: 30px;
+    left: 235px;
     top: 0;
     width: 60px;
     height: 100%;
@@ -73,7 +76,6 @@ logo演示
 
 .layuimini-tool i {
     display: block;
-    /*background-color: #197971;*/
     color: #fff;
     width: 32px;
     height: 32px;
@@ -169,21 +171,12 @@ tab选项卡
  */
 .layui-side.layui-bg-black{
     background-color: #2f4056!important;
-    top: 0px;
-    position: absolute!important;
-    left: 0px;
 }
 .layui-side.layui-bg-black>.layui-left-menu>ul{
     background-color: #2f4056!important;
 }
 .layui-side.layui-bg-black>.layui-left-menu > ul > .layui-nav-item:first-child {
     border-top: 1px solid #4b5461;
-}
-.layui-side.layui-bg-black>.layui-left-menu > ul > .layui-nav-item {
-    border-bottom: 1px solid #4b5461;
-}
-.layui-left-menu>.layui-nav-tree{
-    margin-top: 60px;
 }
 
 /**
@@ -220,14 +213,10 @@ tab选项卡
     height: 0 !important;
 }
 .layui-nav.layui-layout-right{
-    right: 200px!important;
     margin-right: 25px!important;
 }
-.layui-layout-admin .layui-header {
-    left: 200px !important;
-}
 .layui-layout-admin .layui-side {
-    top: 0px !important;
+    top: 60px !important;
 }
 .layui-layout-admin .layui-body {
     top: 60px !important;
