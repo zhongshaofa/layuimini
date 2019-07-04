@@ -191,6 +191,9 @@ tab选项卡
     padding-left: 30px;
 }
 .layui-left-menu .layui-nav .layui-nav-child .layui-nav-child a {
+     padding-left: 35px;
+ }
+.layui-left-menu .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child a {
     padding-left: 40px;
 }
 .layui-left-menu .layui-nav .layui-nav-item a:hover {
