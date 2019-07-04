@@ -196,9 +196,6 @@ tab选项卡
 .layui-left-menu .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child a {
     padding-left: 40px;
 }
-.layui-left-menu .layui-nav .layui-nav-item a:hover {
-    background: 0 0!important;
-}
 .layui-left-menu .layui-nav .layui-nav-itemed>.layui-nav-child {
     padding: 5px 0;
 }
