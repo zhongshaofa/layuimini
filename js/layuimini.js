@@ -42,8 +42,6 @@ layui.define(["element", "jquery"], function (exports) {
                 $('.clildFrame').attr('style', 'overflow-y:scroll; overflow-x:hidden;table-layout: fixed;word-wrap:break-word;word-break:break-all;-webkit-overflow-scrolling: touch!important;');
                 $('.layui-layout-left').attr('style','left:60px!important');
                 $('.layuimini-tool').attr('style','left:15px!important');
-            } else {
-                $('.layui-logo').removeClass('layui-hide');
             }
         };
 
@@ -595,8 +593,7 @@ layui.define(["element", "jquery"], function (exports) {
             $('.layuimini-tool i').attr('class', 'fa fa-indent');
             if (!layuimini.checkMobile()) {
                 $('.layui-header').attr('style', 'left:60px!important;');
-                $('.layui-logo').style('layui-hide');
-                $('.layui-logo h1').addClass('layui-hide');
+                $('.layui-logo').attr('style', 'width:60px!important;');
             }
         } else {
             $('.layui-side.layui-bg-black').attr('style', ''); //设置宽度
@@ -612,7 +609,7 @@ layui.define(["element", "jquery"], function (exports) {
             $('.layuimini-tool i').attr('class', 'fa fa-outdent');
             if (!layuimini.checkMobile()) {
                 $('.layui-header').attr('style', '');
-                $('.layui-logo').removeClass('layui-hide');
+                $('.layui-logo').attr('style', '');
             }
         }
         layuimini.tabRoll();
