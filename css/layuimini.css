@@ -190,9 +190,12 @@ tab选项卡
 .layui-nav-itemed .layui-nav-child a {
     padding-left: 30px;
 }
-.layui-left-menu .layui-nav .layui-nav-child .layui-nav-child a {
+.layui-left-menu .layui-nav .layui-nav-child a {
      padding-left: 35px;
  }
+.layui-left-menu .layui-nav .layui-nav-child a:hover {
+    background-color: #3b3f4b;
+}
 .layui-left-menu .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child a {
     padding-left: 40px;
 }
