@@ -13,6 +13,12 @@
       "icon": "fa fa-address-book",
       "child": [
         {
+          "title": "菜单管理",
+          "href": "page/menu.html",
+          "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+        {
           "title": "表格示例",
           "href": "page/table.html",
           "icon": "fa fa-snowflake-o",
