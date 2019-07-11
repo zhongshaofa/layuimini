@@ -105,16 +105,16 @@
           "target": "_self"
         },
         {
+          "title": "404页面",
+          "href": "page/404.html",
+          "icon": "fa fa-hourglass-end",
+          "target": "_self"
+        },
+        {
           "title": "失效菜单",
           "href": "page/error.html",
           "icon": "fa fa-superpowers",
           "target": "_self"
-        },
-        {
-          "title": "404页面",
-          "href": "page/404.html",
-          "icon": "fa fa-hourglass-end",
-          "target": "_blank"
         },
         {
           "title": "登录页面",
