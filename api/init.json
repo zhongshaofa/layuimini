@@ -91,18 +91,6 @@
               ]
             }
           ]
-        },
-        {
-          "title": "登录页面",
-          "href": "page/login.html",
-          "icon": "fa fa-flag-o",
-          "target": "_blank"
-        },
-        {
-          "title": "失效菜单处理",
-          "href": "page/error.html",
-          "icon": "fa fa-superpowers",
-          "target": "_self"
         }
       ]
     },
@@ -117,10 +105,22 @@
           "target": "_self"
         },
         {
-          "title": "按钮列表 [setting]",
-          "href": "page/button.html",
-          "icon": "fa fa-caret-square-o-left",
+          "title": "失效菜单",
+          "href": "page/error.html",
+          "icon": "fa fa-superpowers",
           "target": "_self"
+        },
+        {
+          "title": "404页面",
+          "href": "page/404.html",
+          "icon": "fa fa-hourglass-end",
+          "target": "_blank"
+        },
+        {
+          "title": "登录页面",
+          "href": "page/login.html",
+          "icon": "fa fa-flag-o",
+          "target": "_blank"
         }
       ]
     }
