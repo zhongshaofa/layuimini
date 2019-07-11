@@ -2,13 +2,35 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>layui</title>
+    <title>首页二</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
     <link rel="stylesheet" href="../css/public.css" media="all">
     <style>
+        .layui-card {border:1px solid #f2f2f2;border-radius:5px;}
+        .icon {margin-right:10px;color:#1aa094;}
+        .icon-cray {color:#ffb800!important;}
+        .icon-blue {color:#1e9fff!important;}
+        .icon-tip {color:#ff5722!important;}
+        .layuimini-qiuck-module {text-align:center;margin-top: 10px}
+        .layuimini-qiuck-module a i {display:inline-block;width:100%;height:60px;line-height:60px;text-align:center;border-radius:2px;font-size:30px;background-color:#F8F8F8;color:#333;transition:all .3s;-webkit-transition:all .3s;}
+        .layuimini-qiuck-module a cite {position:relative;top:2px;display:block;color:#666;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;font-size:14px;}
+        .welcome-module {width:100%;height:210px;}
+        .panel {background-color:#fff;border:1px solid transparent;border-radius:3px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+        .panel-body {padding:10px}
+        .panel-title {margin-top:0;margin-bottom:0;font-size:12px;color:inherit}
+        .label {display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em}
+        .layui-red {color:red}
+        .main_btn > p {height:40px;}
+        .layui-bg-number {background-color:#F8F8F8;}
+        .layuimini-cell:hover {background:#f6f6f6;}
+        .layuimini-cell {padding:7px 16px;clear:both;font-size:12px !important;cursor:pointer;position:relative;transition:background 0.2s ease-in-out;}
+        .layuimini-cell-title,.layuimini-cell-label {padding-right:70px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+        .layuimini-cell-title {line-height:28px;font-size:14px;}
+        .layuimini-cell-extra {position:absolute;top:50%;margin-top:-8px;right:16px;display:inline-block;height:16px;color:#999;}
     </style>
 </head>
 <body>
@@ -17,38 +39,138 @@
         <div class="layui-row layui-col-space15">
             <div class="layui-col-md8">
                 <div class="layui-row layui-col-space15">
-
                     <div class="layui-col-md6">
                         <div class="layui-card">
-                            <div class="layui-card-header">快捷方式</div>
+                            <div class="layui-card-header"><i class="fa fa-warning icon"></i>数据统计</div>
                             <div class="layui-card-body">
-                                <div class="layui-carousel" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 280px;">
-                                    快捷方式内容
+                                <div class="welcome-module">
+                                    <div class="layui-row layui-col-space10">
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-blue">实时</span>
+                                                        <h5>用户统计</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">1234</h1>
+                                                        <small>当前分类总记录数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-cyan">实时</span>
+                                                        <h5>商品统计</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">1234</h1>
+                                                        <small>当前分类总记录数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-orange">实时</span>
+                                                        <h5>浏览统计</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">1234</h1>
+                                                        <small>当前分类总记录数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-green">实时</span>
+                                                        <h5>订单统计</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">1234</h1>
+                                                        <small>当前分类总记录数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="layui-col-md6">
                         <div class="layui-card">
-                            <div class="layui-card-header">待办事项</div>
+                            <div class="layui-card-header"><i class="fa fa-credit-card icon icon-blue"></i>快捷入口</div>
                             <div class="layui-card-body">
-
-                                <div class="layui-carousel" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 280px;">
-                                    待办事项内容
+                                <div class="welcome-module">
+                                    <div class="layui-row layui-col-space10 layuimini-qiuck">
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a>
+                                                <i class="layui-icon layui-icon-console"></i>
+                                                <cite>主页一</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a>
+                                                <i class="layui-icon layui-icon-chart"></i>
+                                                <cite>主页二</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a>
+                                                <i class="layui-icon layui-icon-template-1"></i>
+                                                <cite>弹层</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a>
+                                                <i class="layui-icon layui-icon-chat"></i>
+                                                <cite>聊天</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a>
+                                                <i class="layui-icon layui-icon-find-fill"></i>
+                                                <cite>进度条</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a>
+                                                <i class="layui-icon layui-icon-survey"></i>
+                                                <cite>工单</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a>
+                                                <i class="layui-icon layui-icon-user"></i>
+                                                <cite>用户</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a>
+                                                <i class="layui-icon layui-icon-set"></i>
+                                                <cite>设置</cite>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="layui-col-md12">
                         <div class="layui-card">
-                            <div class="layui-card-header">数据概览</div>
+                            <div class="layui-card-header"><i class="fa fa-line-chart icon"></i>报表统计</div>
                             <div class="layui-card-body">
-
-                                <div class="layui-carousel" data-anim="fade" lay-filter="LAY-index-dataview" lay-anim="fade" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 280px;">
-                                    数据概览内容
-                                </div>
-
+                                <div id="echarts-records" style="width: 100%;min-height:500px"></div>
                             </div>
                         </div>
                     </div>
@@ -56,8 +178,39 @@
             </div>
 
             <div class="layui-col-md4">
+
                 <div class="layui-card">
-                    <div class="layui-card-header">版本信息</div>
+                    <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>系统公告</div>
+                    <div class="layui-card-body layui-text">
+                        <div class="layuimini-cell">
+                            <div class="layuimini-cell-title">修改选项卡样式</div>
+                            <div class="layuimini-cell-extra">2019-07-11 23:06</div>
+                        </div>
+                        <div class="layuimini-cell">
+                            <div class="layuimini-cell-title">新增系统404模板</div>
+                            <div class="layuimini-cell-extra">2019-07-11 12:57</div>
+                        </div>
+                        <div class="layuimini-cell">
+                            <div class="layuimini-cell-title">新增treetable插件和菜单管理样式</div>
+                            <div class="layuimini-cell-extra">2019-07-05 14:28</div>
+                        </div>
+                        <div class="layuimini-cell">
+                            <div class="layuimini-cell-title">修改logo缩放问题</div>
+                            <div class="layuimini-cell-extra">2019-07-04 11:02</div>
+                        </div>
+                        <div class="layuimini-cell">
+                            <div class="layuimini-cell-title">修复左侧菜单缩放tab选项卡无法移动的情况</div>
+                            <div class="layuimini-cell-extra">2019-06-17 11:55</div>
+                        </div>
+                        <div class="layuimini-cell">
+                            <div class="layuimini-cell-title">修复多模块菜单栏展开有问题</div>
+                            <div class="layuimini-cell-extra">2019-06-13 14:53</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-fire icon"></i>版本信息</div>
                     <div class="layui-card-body layui-text">
                         <table class="layui-table">
                             <colgroup>
@@ -66,27 +219,34 @@
                             </colgroup>
                             <tbody>
                             <tr>
-                                <td>当前版本</td>
+                                <td>框架名称</td>
                                 <td>
-                                    v1.2.1 std <a href="#" target="_blank" style="padding-left: 15px;">更新日志</a>
+                                    layuimini
                                 </td>
                             </tr>
                             <tr>
-                                <td>基于框架</td>
-                                <td>
-                                    layui-v2.4.5
-                                </td>
+                                <td>当前版本</td>
+                                <td>v1.0.4</td>
                             </tr>
                             <tr>
                                 <td>主要特色</td>
                                 <td>零门槛 / 响应式 / 清爽 / 极简</td>
                             </tr>
                             <tr>
-                                <td>获取渠道</td>
+                                <td>Gitee</td>
                                 <td style="padding-bottom: 0;">
                                     <div class="layui-btn-container">
-                                        <a href="http://www.layui.com/admin/" target="_blank" class="layui-btn layui-btn-danger">获取授权</a>
-                                        <a href="http://fly.layui.com/download/layuiAdmin/" target="_blank" class="layui-btn">立即下载</a>
+                                        <a href="https://gitee.com/zhongshaofa/layuimini" style="margin-right: 15px"><img src="https://gitee.com/zhongshaofa/layuimini/badge/star.svg?theme=dark" alt="star"></a>
+                                        <a href="https://gitee.com/zhongshaofa/layuimini"><img src="https://gitee.com/zhongshaofa/layuimini/badge/fork.svg?theme=dark" alt="fork"></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Github</td>
+                                <td style="padding-bottom: 0;">
+                                    <div class="layui-btn-container">
+                                        <iframe src="https://ghbtns.com/github-btn.html?user=zhongshaofa&repo=layuimini&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+                                        <iframe src="https://ghbtns.com/github-btn.html?user=zhongshaofa&repo=layuimini&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
                                     </div>
                                 </td>
                             </tr>
@@ -96,19 +256,11 @@
                 </div>
 
                 <div class="layui-card">
-                    <div class="layui-card-header">
-                        作者心语
-                        <i class="layui-icon layui-icon-tips" lay-tips="要支持的噢" lay-offset="5"></i>
-                    </div>
+                    <div class="layui-card-header"><i class="fa fa-paper-plane-o icon"></i>作者心语</div>
                     <div class="layui-card-body layui-text layadmin-text">
                         <p>本模板基于layui2.5.4以及font-awesome-4.7.0进行实现。layui开发文档地址：<a class="layui-btn layui-btn-xs layui-btn-danger" target="_blank" href="http://www.layui.com/doc">layui文档</a></p>
                         <p>技术交流QQ群：<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5JRGVfe"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="layuimini" title="layuimini"></a>（加群请备注来源：如gitee、github、官网等）</p>
                         <p>喜欢此后台模板的可以给我的GitHub和Gitee加个Star支持一下</p>
-                        <p>GitHub地址：
-                            <iframe src="https://ghbtns.com/github-btn.html?user=zhongshaofa&repo=layuimini&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-                            <iframe src="https://ghbtns.com/github-btn.html?user=zhongshaofa&repo=layuimini&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-                        </p>
-                        <p>Gitee地址：<a href="https://gitee.com/zhongshaofa/layuimini"><img src="https://gitee.com/zhongshaofa/layuimini/badge/star.svg?theme=dark" alt="star"></a> <a href="https://gitee.com/zhongshaofa/layuimini"><img src="https://gitee.com/zhongshaofa/layuimini/badge/fork.svg?theme=dark" alt="fork"></a></p>
                         <p class="layui-red">备注：此后台框架永久开源，但请勿进行出售或者上传到任何素材网站，否则将追究相应的责任。</p>
                     </div>
                 </div>
@@ -117,5 +269,85 @@
         </div>
     </div>
 </div>
+<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script src="../lib/echarts/echarts.min.js" charset="utf-8"></script>
+<script src="../lib/echarts/echarts-theme.js" charset="utf-8"></script>
+<script>
+    layui.config({
+        base: "../js/"
+    }).extend({
+        "layuimini": "layuimini"
+    });
+    layui.use(['layer', 'layuimini'], function () {
+        var $ = layui.jquery, layer = layui.layer;
+
+        var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
+
+        var colors = ['#5793f3', '#d14a61', '#675bba'];
+        option = {
+            title: {
+                text: '访问统计'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一','周二','周三','周四','周五','周六','周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name:'邮件营销',
+                    type:'line',
+                    stack: '总量',
+                    data:[120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name:'联盟广告',
+                    type:'line',
+                    stack: '总量',
+                    data:[220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name:'视频广告',
+                    type:'line',
+                    stack: '总量',
+                    data:[150, 232, 201, 154, 190, 330, 410]
+                },
+                {
+                    name:'直接访问',
+                    type:'line',
+                    stack: '总量',
+                    data:[320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name:'搜索引擎',
+                    type:'line',
+                    stack: '总量',
+                    data:[820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+        echartsRecords.setOption(option);
+    });
+</script>
 </body>
 </html>

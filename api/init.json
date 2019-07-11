@@ -5,17 +5,43 @@
   "homeInfo": {
     "title": "首页",
     "icon": "fa fa-home",
-    "href": "page/welcome.html"
+    "href": "page/welcome-2.html"
   },
   "menuInfo": {
-    "ceshi": {
-      "title": "测试管理",
+    "currency": {
+      "title": "常规管理",
       "icon": "fa fa-address-book",
       "child": [
+        {
+          "title": "主页模板",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "主页一",
+              "href": "page/welcome-2.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "主页二",
+              "href": "page/welcome-1.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
         {
           "title": "菜单管理",
           "href": "page/menu.html",
           "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+        {
+          "title": "系统设置",
+          "href": "page/setting.html",
+          "icon": "fa fa-gears",
           "target": "_self"
         },
         {
@@ -25,25 +51,25 @@
           "target": "_self"
         },
         {
-          "title": "icon列表",
+          "title": "图标列表",
           "href": "page/icon.html",
           "icon": "fa fa-dot-circle-o",
           "target": "_self"
         },
         {
-          "title": "UI管理",
+          "title": "其它界面",
           "href": "",
           "icon": "fa fa-snowflake-o",
           "target": "",
           "child": [
             {
-              "title": "表单",
+              "title": "表单示例",
               "href": "page/form.html",
               "icon": "fa fa-calendar",
               "target": "_self"
             },
             {
-              "title": "按钮",
+              "title": "按钮示例",
               "href": "page/button.html",
               "icon": "fa fa-snowflake-o",
               "target": "_self"
@@ -57,7 +83,33 @@
           ]
         },
         {
-          "title": "测试无限层",
+          "title": "异常页面",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "404页面",
+              "href": "page/404.html",
+              "icon": "fa fa-hourglass-end",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "登录页面",
+          "href": "page/login.html",
+          "icon": "fa fa-flag-o",
+          "target": "_blank"
+        }
+      ]
+    },
+    "other": {
+      "title": "其它管理",
+      "icon": "fa fa-slideshare",
+      "child": [
+        {
+          "title": "多级菜单",
           "href": "",
           "icon": "fa fa-meetup",
           "target": "",
@@ -91,36 +143,12 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    "setting": {
-      "title": "设置管理",
-      "icon": "fa fa-gears",
-      "child": [
-        {
-          "title": "系统设置",
-          "href": "page/setting.html",
-          "icon": "fa fa-asterisk",
-          "target": "_self"
-        },
-        {
-          "title": "404页面",
-          "href": "page/404.html",
-          "icon": "fa fa-hourglass-end",
-          "target": "_self"
         },
         {
           "title": "失效菜单",
           "href": "page/error.html",
           "icon": "fa fa-superpowers",
           "target": "_self"
-        },
-        {
-          "title": "登录页面",
-          "href": "page/login.html",
-          "icon": "fa fa-flag-o",
-          "target": "_blank"
         }
       ]
     }
