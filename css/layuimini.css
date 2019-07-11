@@ -103,6 +103,12 @@ tab选项卡
     color: #000000;
     background-color: #e7ebed;
 }
+#top_tabs_box .layui-tab-close{
+    font-size: 12px!important;
+    width: 14px!important;
+    height: 14px!important;
+    line-height: 16px!important;
+}
 #top_tabs_box .layui-tab-close:hover{
     border-radius: 4em;
     background: #ff5722;
