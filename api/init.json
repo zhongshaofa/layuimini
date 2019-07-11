@@ -111,9 +111,9 @@
       "icon": "fa fa-gears",
       "child": [
         {
-          "title": "icon列表 [setting]",
-          "href": "page/icon.html",
-          "icon": "fa fa-dot-circle-o",
+          "title": "系统设置",
+          "href": "page/setting.html",
+          "icon": "fa fa-asterisk",
           "target": "_self"
         },
         {
