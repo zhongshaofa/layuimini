@@ -103,6 +103,10 @@ tab选项卡
     color: #000000;
     background-color: #e7ebed;
 }
+#top_tabs_box .layui-tab-close:hover{
+    border-radius: 4em;
+    background: #ff5722;
+}
 #top_tabs_box>.layui-tab-title>.layui-this>i:first-child{
     color: #009688;
 }
