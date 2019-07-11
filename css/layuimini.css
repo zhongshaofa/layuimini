@@ -96,9 +96,21 @@ tab选项卡
     font-style: normal;
     padding-left: 5px;
 }
-.layui-tab-title .layui-this {
-    background-color: #243346;
-    color: #ffffff;
+#top_tabs_box>.layui-tab-title{
+    color: #acafb1;
+}
+#top_tabs_box>.layui-tab-title li:hover{
+    color: #000000;
+    background-color: #e7ebed;
+}
+#top_tabs_box>.layui-tab-title>.layui-this>i:first-child{
+    color: #009688;
+}
+#top_tabs_box>.layui-tab-title li{
+   border-right: 1px solid #e2e2e2;;
+}
+#top_tabs_box>.layui-tab-title .layui-this {
+    color: #000000;
 }
 .layui-tab-title .layui-this:after {
     border: none;
@@ -111,11 +123,9 @@ tab选项卡
 #top_tabs_box > .layui-tab-title {
     height: 35px !important;
 }
-
 #top_tabs_box > .layui-tab-title > li {
     line-height: 35px !important;
 }
-
 #top_tabs_box > .closeBox {
     height: 35px !important;
 }
