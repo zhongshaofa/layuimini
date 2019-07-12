@@ -5,7 +5,7 @@
   "homeInfo": {
     "title": "首页",
     "icon": "fa fa-home",
-    "href": "page/welcome-2.html"
+    "href": "page/welcome-2.html?mpi=m-p-i-0"
   },
   "menuInfo": {
     "currency": {

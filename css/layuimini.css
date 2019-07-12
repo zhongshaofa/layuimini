@@ -28,11 +28,19 @@
 }
 .layui-nav.layui-layout-left.layui-header-menu.mobile.layui-hide-xs{
     font-weight: bold;
+    transition: all .2s;
+}
+
+/**
+头部样式（缩放）
+ */
+.layuimini-mini .layui-layout-left.layui-header-menu.layui-hide-xs{
+    left: 155px!important;
 }
 
 
 /**
-logo演示
+logo演示（通用）
  */
 .layui-layout-admin .layui-logo{
     background-color: #243346!important;
@@ -42,7 +50,7 @@ logo演示
     line-height: 60px !important;
     overflow: hidden;
     line-height: 64px;
-    transition: all .3s;
+    transition: all .2s!important;
 }
 
 .layui-layout-admin  .layui-logo img {
@@ -61,17 +69,34 @@ logo演示
 }
 
 /**
-缩放工具
+logo演示（缩放）
+ */
+.layuimini-mini .layui-layout-admin .layui-logo{
+    width: 60px!important;
+}
+.layuimini-mini .layui-layout-admin .layui-logo h1{
+    display: none;
+}
+
+/**
+缩放工具（通用）
  */
 .layuimini-tool {
     position: absolute!important;
-    left: 235px;
     top: 0;
+    left: 235px;
     width: 60px;
     height: 100%;
     line-height: 60px;
     text-align: center;
     color: #ffffff!important;
+    transition: all .2s;
+}
+/**
+缩放工具（缩放）
+ */
+.layuimini-mini .layuimini-tool {
+    left: 95px!important;
 }
 
 .layuimini-tool i {
@@ -187,13 +212,15 @@ tab选项卡
 
 
 /**
-左侧菜单栏
+左侧菜单栏 (通用)
  */
 .layui-side.layui-bg-black{
     background-color: #2f4056!important;
+    transition: all .2s;
 }
 .layui-side.layui-bg-black>.layui-left-menu>ul{
     background-color: #2f4056!important;
+    transition: all .2s;
 }
 .layui-side.layui-bg-black>.layui-left-menu > ul > .layui-nav-item:first-child {
     border-top: 1px solid #4b5461;
@@ -207,26 +234,8 @@ tab选项卡
     padding-top: 5px;
     padding-bottom: 5px;
 }
-.layui-nav-itemed .layui-nav-child a {
-    padding-left: 30px;
-}
 .layui-left-menu .layui-nav .layui-nav-child a:hover {
     background-color: #3b3f4b;
-}
-.layui-left-menu .layui-nav .layui-nav-child a {
-    padding-left: 30px;
-}
-.layui-left-menu .layui-nav .layui-nav-child .layui-nav-child a {
-    padding-left: 35px;
-}
-.layui-left-menu .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child a {
-    padding-left: 40px;
-}
-.layui-left-menu .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child .layui-nav-child a {
-    padding-left: 45px;
-}
-.layui-left-menu .layui-nav .layui-nav-itemed>.layui-nav-child {
-    padding: 5px 0;
 }
 .layui-left-menu .layui-nav .layui-nav-child .layui-nav-child {
     background: 0 0!important
@@ -236,14 +245,73 @@ tab选项卡
 }
 
 /**
+左侧菜单栏 (正常)
+ */
+.layuimini-all .layui-nav-itemed .layui-nav-child a {
+    padding-left: 30px;
+}
+.layuimini-all .layui-left-menu .layui-nav .layui-nav-child a {
+    padding-left: 30px;
+}
+.layuimini-all .layui-left-menu .layui-nav .layui-nav-child .layui-nav-child a {
+    padding-left: 35px;
+}
+.layuimini-all .layui-left-menu .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child a {
+    padding-left: 40px;
+}
+.layuimini-all .layui-left-menu .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child .layui-nav-child a {
+    padding-left: 45px;
+}
+.layuimini-all .layui-left-menu .layui-nav .layui-nav-itemed>.layui-nav-child {
+    padding: 5px 0;
+}
+
+/**
+左侧菜单栏（缩放）
+ */
+.layuimini-mini .layui-side.layui-bg-black{
+    width: 60px!important;
+}
+.layuimini-mini .layui-left-menu{
+    width: 60px!important;
+}
+.layuimini-mini .layui-left-menu>ul{
+    width: 60px!important;
+}
+.layuimini-mini .layui-left-menu>ul li span{
+    display: none;
+}
+.layuimini-mini .layui-left-menu>ul li i{
+    width: 60px;
+}
+.layuimini-mini .layui-left-menu .layui-nav .layui-nav-item a {
+    height: 40px;
+    line-height: 40px;
+    padding-right: 0px!important;
+}
+
+/**
+内容主体（通用）
+ */
+.layui-layout-admin .layui-body {
+    overflow: hidden;
+    bottom: 0px !important;
+    top: 60px !important;
+    transition: all .2s;
+}
+/**
+内容主体（缩放）
+ */
+.layuimini-mini .layui-layout-admin .layui-body {
+    left: 60px!important;
+}
+
+/**
 其它
  */
 .layui-tab-item {
     width: 100% !important;
     height: 100% !important;
-}
-.layui-body {
-    bottom: 0px !important;
 }
 .layui-nav-item.layui-this {
     background-color: #1b1d21;
@@ -274,15 +342,10 @@ tab选项卡
 .layui-layout-admin .layui-side {
     top: 60px !important;
 }
-.layui-layout-admin .layui-body {
-    top: 60px !important;
-}
+
 .layui-tab-card {
     box-shadow: 0px 0px 0px #888888;
     border-bottom: 0;
-}
-.layui-body {
-    overflow: hidden;
 }
 .clildFrame.layui-tab-content {
     top: 35px;

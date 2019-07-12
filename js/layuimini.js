@@ -42,8 +42,6 @@ layui.define(["element", "jquery"], function (exports) {
                 $('.clildFrame').attr('style', 'overflow-y:scroll; overflow-x:hidden;table-layout: fixed;word-wrap:break-word;word-break:break-all;-webkit-overflow-scrolling: touch!important;');
                 $('.layui-layout-left').attr('style','left:60px!important');
                 $('.layuimini-tool').attr('style','left:15px!important');
-            } else {
-                $('.layui-logo').removeClass('layui-hide');
             }
         };
 
@@ -615,56 +613,14 @@ layui.define(["element", "jquery"], function (exports) {
     $('body').on('click', '[data-side-fold]', function () {
         var loading = layer.load(0, {shade: false, time: 2 * 1000});
         var isShow = $(this).attr('data-side-fold');
-        $('.layui-nav-top li').attr('class', 'layui-nav-item');
-        //选择出所有的span，并判断是不是hidden
-        $('.layui-nav-item span').each(function () {
-            if ($(this).attr('class') == 'layui-left-nav') {
-                if (isShow == 1) {
-                    $(this).attr('style', 'display: none;');
-                } else {
-                    $(this).attr('style', '');
-                }
-            }
-        });
-        //判断isshow的状态
-        if (isShow == 1) {
-            $('.layui-side.layui-bg-black').width(60); //设置宽度
-            $('.layui-side-scroll.layui-left-menu').width(60);
-            $('.layui-nav-top li i').css('margin-right', '90%');  //修改图标的位置
-            //将footer和body的宽度修改
-            $('.layui-body').css('left', 60 + 'px');
-            $('.layui-footer').css('left', 60 + 'px');
-            //将二级导航栏隐藏
-            $('.layui-left-menu>.layui-nav-tree >dd >span').each(function () {
-                $(this).hide();
-            });
-            //修改标志位
+        if (isShow == 1) { // 缩放
             $(this).attr('data-side-fold', 0);
             $('.layuimini-tool i').attr('class', 'fa fa-indent');
-            if (!layuimini.checkMobile()) {
-                $('.layui-layout-left').attr('style', 'left:155px!important;');
-                $('.layuimini-tool').attr('style', 'left:95px!important;');
-                $('.layui-logo').attr('style', 'width:60px!important;');
-                $('.layui-logo h1').addClass('layui-hide');
-            }
-        } else {
-            $('.layui-side.layui-bg-black').attr('style', ''); //设置宽度
-            $('.layui-side-scroll.layui-left-menu').attr('style', '');
-            $('.layui-nav-top li i').attr('style', '');   //修改图标的位置
-            //将footer和body的宽度修改
-            $('.layui-body').attr('style', '');
-            $('.layui-footer').attr('style', '');
-            $('.layui-left-menu>.layui-nav-tree> dd> span').each(function () {
-                $(this).show();
-            });
+            $('.layui-layout-body').attr('class','layui-layout-body layuimini-mini');
+        } else { // 正常
             $(this).attr('data-side-fold', 1);
             $('.layuimini-tool i').attr('class', 'fa fa-outdent');
-            if (!layuimini.checkMobile()) {
-                $('.layui-layout-left').attr('style', 'left:295px!important;');
-                $('.layuimini-tool').attr('style', 'left:235px!important;');
-                $('.layui-logo').attr('style', '');
-                $('.layui-logo h1').removeClass('layui-hide');
-            }
+            $('.layui-layout-body').attr('class','layui-layout-body layuimini-all');
         }
         layuimini.tabRoll();
         element.init();
