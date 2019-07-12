@@ -18,8 +18,7 @@
 <body class="layui-layout-body layuimini-all">
 <div class="layui-layout layui-layout-admin">
 
-    <!--电脑版-开始-->
-    <div class="layui-header header mobile layui-hide-xs">
+    <div class="layui-header header">
         <div class="layui-logo">
             <a href="">
                 <img src="images/logo.png" alt="logo">
@@ -29,45 +28,17 @@
         <a>
             <div class="layuimini-tool"><i title="展开" class="fa fa-outdent" data-side-fold="1"></i></div>
         </a>
-        <ul class="layui-nav layui-layout-left layui-header-menu layui-header-pc-menu">
-        </ul>
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item">
-                <a href="javascript:;" data-clear="清理"><i class="fa fa-trash-o"></i></a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">admin </a>
-                <dl class="layui-nav-child">
-                    <dd>
-                        <a href="javascript:;">基本资料</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;">安全设置</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" class="login-out">退出登录</a>
-                    </dd>
-                </dl>
-            </li>
-        </ul>
-    </div>
-    <!--电脑版-结束-->
 
-    <!--手机版-开始-->
-    <div class="layui-header header mobile layui-hide-sm">
-        <a>
-            <div class="layuimini-tool"><i title="展开" class="fa fa-outdent" data-side-fold="1"></i></div>
-        </a>
-        <ul class="layui-nav layui-layout-left layui-header-menu">
+        <ul class="layui-nav layui-layout-left layui-header-menu layui-header-pc-menu mobile layui-hide-xs">
+        </ul>
+        <ul class="layui-nav layui-layout-left layui-header-menu mobile layui-hide-sm">
             <li class="layui-nav-item">
                 <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块</a>
                 <dl class="layui-nav-child layui-header-mini-menu">
                 </dl>
             </li>
         </ul>
+
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;" data-clear="清理"><i class="fa fa-trash-o"></i></a>
@@ -91,12 +62,12 @@
             </li>
         </ul>
     </div>
-    <!--手机版-结束-->
 
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll layui-left-menu">
         </div>
     </div>
+
     <div class="layui-body">
         <div class="layui-tab" lay-filter="layuiminiTab" id="top_tabs_box">
             <!--选项卡列表-->
@@ -120,6 +91,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <!--开始----百度统计代码，实际使用请删除-->
