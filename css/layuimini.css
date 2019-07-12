@@ -357,3 +357,16 @@ tab选项卡
 * {
     touch-action: pan-y;
 }
+
+
+
+
+/**
+手机版
+ */
+.mobile.layui-hide-sm .layuimini-tool{
+    left: 15px!important;
+}
+.mobile.layui-hide-sm .layui-layout-left.layui-header-menu{
+    left: 60px!important;
+}
