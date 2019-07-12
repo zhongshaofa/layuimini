@@ -26,11 +26,11 @@
         .layui-red {color:red}
         .main_btn > p {height:40px;}
         .layui-bg-number {background-color:#F8F8F8;}
-        .layuimini-cell:hover {background:#f6f6f6;}
-        .layuimini-cell {padding:7px 16px;clear:both;font-size:12px !important;cursor:pointer;position:relative;transition:background 0.2s ease-in-out;}
-        .layuimini-cell-title,.layuimini-cell-label {padding-right:70px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
-        .layuimini-cell-title {line-height:28px;font-size:14px;}
-        .layuimini-cell-extra {position:absolute;top:50%;margin-top:-8px;right:16px;display:inline-block;height:16px;color:#999;}
+        .layuimini-notice:hover {background:#f6f6f6;}
+        .layuimini-notice {padding:7px 16px;clear:both;font-size:12px !important;cursor:pointer;position:relative;transition:background 0.2s ease-in-out;}
+        .layuimini-notice-title,.layuimini-notice-label {padding-right:70px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+        .layuimini-notice-title {line-height:28px;font-size:14px;}
+        .layuimini-notice-extra {position:absolute;top:50%;margin-top:-8px;right:16px;display:inline-block;height:16px;color:#999;}
     </style>
 </head>
 <body>
@@ -113,51 +113,51 @@
                                 <div class="welcome-module">
                                     <div class="layui-row layui-col-space10 layuimini-qiuck">
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a>
-                                                <i class="layui-icon layui-icon-console"></i>
-                                                <cite>主页一</cite>
+                                            <a data-iframe-tab="page/menu.html" data-title="菜单管理" data-icon="fa fa-window-maximize">
+                                                <i class="fa fa-window-maximize"></i>
+                                                <cite>菜单管理</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a>
-                                                <i class="layui-icon layui-icon-chart"></i>
-                                                <cite>主页二</cite>
+                                            <a data-iframe-tab="page/setting.html" data-title="系统设置" data-icon="fa fa-gears">
+                                                <i class="fa fa-gears"></i>
+                                                <cite>系统设置</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a>
-                                                <i class="layui-icon layui-icon-template-1"></i>
-                                                <cite>弹层</cite>
+                                            <a data-iframe-tab="page/table.html" data-title="表格示例" data-icon="fa fa-file-text">
+                                                <i class="fa fa-file-text"></i>
+                                                <cite>表格示例</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a>
-                                                <i class="layui-icon layui-icon-chat"></i>
-                                                <cite>聊天</cite>
+                                            <a data-iframe-tab="page/icon.html" data-title="图标列表" data-icon="fa fa-dot-circle-o">
+                                                <i class="fa fa-dot-circle-o"></i>
+                                                <cite>图标列表</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a>
-                                                <i class="layui-icon layui-icon-find-fill"></i>
-                                                <cite>进度条</cite>
+                                            <a data-iframe-tab="page/form.html" data-title="表单示例" data-icon="fa fa-calendar">
+                                                <i class="fa fa-calendar"></i>
+                                                <cite>表单示例</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a>
-                                                <i class="layui-icon layui-icon-survey"></i>
-                                                <cite>工单</cite>
+                                            <a data-iframe-tab="page/404.html" data-title="404页面" data-icon="fa fa-hourglass-end">
+                                                <i class="fa fa-hourglass-end"></i>
+                                                <cite>404页面</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a>
-                                                <i class="layui-icon layui-icon-user"></i>
-                                                <cite>用户</cite>
+                                            <a data-iframe-tab="page/button.html" data-title="按钮示例" data-icon="fa fa-snowflake-o">
+                                                <i class="fa fa-snowflake-o"></i>
+                                                <cite>按钮示例</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a>
-                                                <i class="layui-icon layui-icon-set"></i>
-                                                <cite>设置</cite>
+                                            <a data-iframe-tab="page/layer.html" data-title="弹出层" data-icon="fa fa-shield">
+                                                <i class="fa fa-shield"></i>
+                                                <cite>弹出层</cite>
                                             </a>
                                         </div>
                                     </div>
@@ -182,29 +182,89 @@
                 <div class="layui-card">
                     <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>系统公告</div>
                     <div class="layui-card-body layui-text">
-                        <div class="layuimini-cell">
-                            <div class="layuimini-cell-title">修改选项卡样式</div>
-                            <div class="layuimini-cell-extra">2019-07-11 23:06</div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">修改选项卡样式</div>
+                            <div class="layuimini-notice-extra">2019-07-11 23:06</div>
+                            <div class="layuimini-notice-content layui-hide">
+                                界面足够简洁清爽。<br>
+                                一个接口几行代码而已直接初始化整个框架，无需复杂操作。<br>
+                                支持多tab，可以打开多窗口。<br>
+                                支持无限级菜单和对font-awesome图标库的完美支持。<br>
+                                失效以及报错菜单无法直接打开，并给出弹出层提示完美的线上用户体验。<br>
+                                url地址hash定位，可以清楚看到当前tab的地址信息。<br>
+                                刷新页面会保留当前的窗口，并且会定位当前窗口对应左侧菜单栏。<br>
+                                移动端的友好支持。<br>
+                            </div>
                         </div>
-                        <div class="layuimini-cell">
-                            <div class="layuimini-cell-title">新增系统404模板</div>
-                            <div class="layuimini-cell-extra">2019-07-11 12:57</div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">新增系统404模板</div>
+                            <div class="layuimini-notice-extra">2019-07-11 12:57</div>
+                            <div class="layuimini-notice-content layui-hide">
+                                界面足够简洁清爽。<br>
+                                一个接口几行代码而已直接初始化整个框架，无需复杂操作。<br>
+                                支持多tab，可以打开多窗口。<br>
+                                支持无限级菜单和对font-awesome图标库的完美支持。<br>
+                                失效以及报错菜单无法直接打开，并给出弹出层提示完美的线上用户体验。<br>
+                                url地址hash定位，可以清楚看到当前tab的地址信息。<br>
+                                刷新页面会保留当前的窗口，并且会定位当前窗口对应左侧菜单栏。<br>
+                                移动端的友好支持。<br>
+                            </div>
                         </div>
-                        <div class="layuimini-cell">
-                            <div class="layuimini-cell-title">新增treetable插件和菜单管理样式</div>
-                            <div class="layuimini-cell-extra">2019-07-05 14:28</div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">新增treetable插件和菜单管理样式</div>
+                            <div class="layuimini-notice-extra">2019-07-05 14:28</div>
+                            <div class="layuimini-notice-content layui-hide">
+                                界面足够简洁清爽。<br>
+                                一个接口几行代码而已直接初始化整个框架，无需复杂操作。<br>
+                                支持多tab，可以打开多窗口。<br>
+                                支持无限级菜单和对font-awesome图标库的完美支持。<br>
+                                失效以及报错菜单无法直接打开，并给出弹出层提示完美的线上用户体验。<br>
+                                url地址hash定位，可以清楚看到当前tab的地址信息。<br>
+                                刷新页面会保留当前的窗口，并且会定位当前窗口对应左侧菜单栏。<br>
+                                移动端的友好支持。<br>
+                            </div>
                         </div>
-                        <div class="layuimini-cell">
-                            <div class="layuimini-cell-title">修改logo缩放问题</div>
-                            <div class="layuimini-cell-extra">2019-07-04 11:02</div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">修改logo缩放问题</div>
+                            <div class="layuimini-notice-extra">2019-07-04 11:02</div>
+                            <div class="layuimini-notice-content layui-hide">
+                                界面足够简洁清爽。<br>
+                                一个接口几行代码而已直接初始化整个框架，无需复杂操作。<br>
+                                支持多tab，可以打开多窗口。<br>
+                                支持无限级菜单和对font-awesome图标库的完美支持。<br>
+                                失效以及报错菜单无法直接打开，并给出弹出层提示完美的线上用户体验。<br>
+                                url地址hash定位，可以清楚看到当前tab的地址信息。<br>
+                                刷新页面会保留当前的窗口，并且会定位当前窗口对应左侧菜单栏。<br>
+                                移动端的友好支持。<br>
+                            </div>
                         </div>
-                        <div class="layuimini-cell">
-                            <div class="layuimini-cell-title">修复左侧菜单缩放tab选项卡无法移动的情况</div>
-                            <div class="layuimini-cell-extra">2019-06-17 11:55</div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">修复左侧菜单缩放tab选项卡无法移动的情况</div>
+                            <div class="layuimini-notice-extra">2019-06-17 11:55</div>
+                            <div class="layuimini-notice-content layui-hide">
+                                界面足够简洁清爽。<br>
+                                一个接口几行代码而已直接初始化整个框架，无需复杂操作。<br>
+                                支持多tab，可以打开多窗口。<br>
+                                支持无限级菜单和对font-awesome图标库的完美支持。<br>
+                                失效以及报错菜单无法直接打开，并给出弹出层提示完美的线上用户体验。<br>
+                                url地址hash定位，可以清楚看到当前tab的地址信息。<br>
+                                刷新页面会保留当前的窗口，并且会定位当前窗口对应左侧菜单栏。<br>
+                                移动端的友好支持。<br>
+                            </div>
                         </div>
-                        <div class="layuimini-cell">
-                            <div class="layuimini-cell-title">修复多模块菜单栏展开有问题</div>
-                            <div class="layuimini-cell-extra">2019-06-13 14:53</div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">修复多模块菜单栏展开有问题</div>
+                            <div class="layuimini-notice-extra">2019-06-13 14:53</div>
+                            <div class="layuimini-notice-content layui-hide">
+                                界面足够简洁清爽。<br>
+                                一个接口几行代码而已直接初始化整个框架，无需复杂操作。<br>
+                                支持多tab，可以打开多窗口。<br>
+                                支持无限级菜单和对font-awesome图标库的完美支持。<br>
+                                失效以及报错菜单无法直接打开，并给出弹出层提示完美的线上用户体验。<br>
+                                url地址hash定位，可以清楚看到当前tab的地址信息。<br>
+                                刷新页面会保留当前的窗口，并且会定位当前窗口对应左侧菜单栏。<br>
+                                移动端的友好支持。<br>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -279,12 +339,45 @@
         "layuimini": "layuimini"
     });
     layui.use(['layer', 'layuimini'], function () {
-        var $ = layui.jquery, layer = layui.layer;
+        var $ = layui.jquery,
+            layer = layui.layer;
 
+        /**
+         * 查看公告信息
+         **/
+        $('body').on('click', '.layuimini-notice', function () {
+            var title = $(this).children('.layuimini-notice-title').text(),
+                noticeTime = $(this).children('.layuimini-notice-extra').text(),
+                content = $(this).children('.layuimini-notice-content').html();
+            var html = '<div style="padding:15px 20px; text-align:justify; line-height: 22px;border-bottom:1px solid #e2e2e2;background-color: #2f4056;color: #ffffff">\n' +
+                '<div style="text-align: center;margin-bottom: 20px;font-weight: bold;border-bottom:1px solid #718fb5;padding-bottom: 5px"><h4 class="text-danger">' + title + '</h4></div>\n' +
+                '<div style="font-size: 12px">' + content + '</div>\n' +
+                '</div>\n';
+            layer.open({
+                type: 1,
+                title: '系统公告'+'<span style="float: right;right: 1px;font-size: 12px;color: #b1b3b9;margin-top: 1px">'+noticeTime+'</span>',
+                area: '300px;',
+                shade: 0.8,
+                id: 'layuimini-notice',
+                btn: ['查看', '取消'],
+                btnAlign: 'c',
+                moveType: 1,
+                content:html,
+                success: function (layero) {
+                    var btn = layero.find('.layui-layer-btn');
+                    btn.find('.layui-layer-btn0').attr({
+                        href: 'https://gitee.com/zhongshaofa/layuimini',
+                        target: '_blank'
+                    });
+                }
+            });
+        });
+
+        /**
+         * 报表功能
+         */
         var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
-
-        var colors = ['#5793f3', '#d14a61', '#675bba'];
-        option = {
+        var optionRecords = {
             title: {
                 text: '访问统计'
             },
@@ -346,7 +439,7 @@
                 }
             ]
         };
-        echartsRecords.setOption(option);
+        echartsRecords.setOption(optionRecords);
     });
 </script>
 </body>

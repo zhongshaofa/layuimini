@@ -47,7 +47,7 @@
         {
           "title": "表格示例",
           "href": "page/table.html",
-          "icon": "fa fa-snowflake-o",
+          "icon": "fa fa-file-text",
           "target": "_self"
         },
         {
@@ -77,7 +77,7 @@
             {
               "title": "弹出层",
               "href": "page/layer.html",
-              "icon": "fa fa-snowflake-o",
+              "icon": "fa fa-shield",
               "target": "_self"
             }
           ]

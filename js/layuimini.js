@@ -192,15 +192,24 @@ layui.define(["element", "jquery"], function (exports) {
          * 判断窗口是否已打开
          * @param tabId
          **/
-        this.checkTab = function (tabId) {
+        this.checkTab = function (tabId, isIframe) {
             // 判断选项卡上是否有
             var checkTab = false;
-            $(".layui-tab-title li").each(function () {
-                checkTabId = $(this).attr('lay-id');
-                if (checkTabId != null && checkTabId == tabId) {
-                    checkTab = true;
-                }
-            });
+            if (isIframe == undefined || isIframe == false) {
+                $(".layui-tab-title li").each(function () {
+                    checkTabId = $(this).attr('lay-id');
+                    if (checkTabId != null && checkTabId == tabId) {
+                        checkTab = true;
+                    }
+                });
+            } else {
+                parent.layui.$(".layui-tab-title li").each(function () {
+                    checkTabId = $(this).attr('lay-id');
+                    if (checkTabId != null && checkTabId == tabId) {
+                        checkTab = true;
+                    }
+                });
+            }
             if (checkTab == false) {
                 return false;
             }
@@ -478,6 +487,45 @@ layui.define(["element", "jquery"], function (exports) {
             layuimini.addTab(tabId, href, title, true);
         }
         element.tabChange('layuiminiTab', tabId);
+        layuimini.tabRoll();
+        layer.close(loading);
+    });
+
+    /**
+     * 在iframe子菜单上打开新窗口
+     */
+    $('body').on('click', '[data-iframe-tab]', function () {
+        var loading = layer.load(0, {shade: false, time: 2 * 1000});
+        var tabId = $(this).attr('data-iframe-tab'),
+            href = $(this).attr('data-iframe-tab'),
+            icon = $(this).attr('data-icon'),
+            title = $(this).attr('data-title'),
+            target = $(this).attr('target');
+        if (target == '_blank') {
+            layer.close(loading);
+            window.open(href, "_blank");
+            return false;
+        }
+        title = '<i class="'+icon+'"></i><span class="layui-left-nav"> '+title+'</span>';
+        if (tabId == null || tabId == undefined) {
+            tabId = new Date().getTime();
+        }
+        // 判断该窗口是否已经打开过
+        var checkTab = layuimini.checkTab(tabId, true);
+        if (!checkTab) {
+            var layuiminiTabInfo = JSON.parse(sessionStorage.getItem("layuiminiTabInfo"));
+            if (layuiminiTabInfo == null) {
+                layuiminiTabInfo = {};
+            }
+            layuiminiTabInfo[tabId] = {href: href, title: title}
+            sessionStorage.setItem("layuiminiTabInfo", JSON.stringify(layuiminiTabInfo));
+            parent.layui.element.tabAdd('layuiminiTab', {
+                title: title + '<i data-tab-close="" class="layui-icon layui-unselect layui-tab-close">ဆ</i>' //用于演示
+                , content: '<iframe width="100%" height="100%" frameborder="0"  src="' + href + '"></iframe>'
+                , id: tabId
+            });
+        }
+        parent.layui.element.tabChange('layuiminiTab', tabId);
         layuimini.tabRoll();
         layer.close(loading);
     });
