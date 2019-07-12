@@ -42,6 +42,9 @@ layui.define(["element", "jquery"], function (exports) {
                 $('.clildFrame').attr('style', 'overflow-y:scroll; overflow-x:hidden;table-layout: fixed;word-wrap:break-word;word-break:break-all;-webkit-overflow-scrolling: touch!important;');
                 $('.layui-layout-left').attr('style','left:60px!important');
                 $('.layuimini-tool').attr('style','left:15px!important');
+                $('.layuimini-tool i').attr('data-side-fold', 0);
+                $('.layuimini-tool i').attr('class', 'fa fa-indent');
+                $('.layui-layout-body').attr('class','layui-layout-body layuimini-mini');
             }
         };
 
