@@ -359,10 +359,8 @@ tab选项卡
 }
 
 
-
-
 /**
-手机自适应
+手机自适应样式
  */
 @media screen and (max-width: 768px){
     .layui-layout-admin .layui-logo{
@@ -370,6 +368,9 @@ tab选项卡
     }
     .layuimini-tool {
         left: 15px !important;
+    }
+    .layuimini-tool i:hover {
+        background-color: #1aa094;
     }
     .layuimini-mini .layuimini-tool{
         left: 15px !important;
@@ -385,5 +386,14 @@ tab选项卡
     }
     .layuimini-mini .layui-layout-admin .layui-body {
         left: 0px!important;
+    }
+    .layui-layout-admin .layui-body #top_tabs{
+        display: none!important;
+    }
+    .layui-layout-admin .layui-body .layui-nav.closeBox{
+        display: none!important;
+    }
+    .layui-layout-admin .layui-body .clildFrame.layui-tab-content {
+        top: 0px!important;
     }
 }
