@@ -638,7 +638,7 @@ layui.define(["element", "jquery"], function (exports) {
             tips = $(this).children('span').text(),
             isShow = $('.layuimini-tool i').attr('data-side-fold');
         if (isShow == 0) {
-            openTips = layer.tips(tips, $(this), {tips: [1, '#1E9FFF'], time: 30000});
+            openTips = layer.tips(tips, $(this), {tips: [2, '#2f4056'], time: 30000});
         }
     });
     $("body").on("mouseleave", ".layui-menu-tips", function () {
