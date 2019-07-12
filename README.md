@@ -25,7 +25,7 @@ layuimini后台模板
 
 ## 效果预览
 > 总体预览
-![Image text](https://files.gitee.com/group1/M00/08/67/PaAvDF0dhdiAWTCgAAHmtmcp-L4126.jpg)
+![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_1SARToJAAHs7bxh0y8359.jpg)
 
 > 登录界面
 
@@ -33,19 +33,19 @@ layuimini后台模板
 
 > 1、多tab窗口
 
-![Image text](https://files.gitee.com/group1/M00/08/67/PaAvDF0dhfmAau6tAAHUNwRWk04451.jpg)
+![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_zWAG1VIAAF0cP2C480497.jpg)
 > 2、无限级菜单
 
-![Image text](https://files.gitee.com/group1/M00/08/67/PaAvDF0dheKASvwFAAHOLpvWiTE942.jpg)
+![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_0uAcfnbAAIS_OqWabs466.jpg)
 > 3、菜单缩放并提示菜单标题
 
-![Image text](https://files.gitee.com/group1/M00/08/67/PaAvDF0dheqAXKy6AAHXgl26u6k538.jpg)
+![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_0SAVzSBAAIKBIZM5Yg263.jpg)
 > 4、url地址hash定位
 
-![Image text](https://files.gitee.com/group1/M00/08/67/PaAvDF0dhfKAEVweAAG44_pDrtE065.jpg)
+![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_y-AXNf1AAFmvHkGzCw201.jpg)
 > 5、刷新保留窗口，并对应菜单栏
 
-![Image text](https://files.gitee.com/group1/M00/08/67/PaAvDF0dhfKAEVweAAG44_pDrtE065.jpg)
+![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_z2AYnyiAAHKqQzvTXA710.jpg)
 > 6、移动端的友好支持
 
 ![Image text](https://files.gitee.com/group1/M00/08/5A/PaAvDF0Z4WiAMyC3AAU6IOjhneo574.png)
