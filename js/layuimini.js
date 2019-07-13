@@ -633,18 +633,22 @@ layui.define(["element", "jquery"], function (exports) {
      * 监听提示信息
      */
     $("body").on("mouseenter", ".layui-menu-tips", function () {
-        var classInfo = $(this).attr('class'),
-            tips = $(this).children('span').text(),
-            isShow = $('.layuimini-tool i').attr('data-side-fold');
-        if (isShow == 0) {
-            openTips = layer.tips(tips, $(this), {tips: [2, '#2f4056'], time: 30000});
-        }
+            var classInfo = $(this).attr('class'),
+                tips = $(this).children('span').text(),
+                isShow = $('.layuimini-tool i').attr('data-side-fold');
+            if (isShow == 0) {
+                openTips = layer.tips(tips, $(this), {tips: [2, '#2f4056'], time: 30000});
+            }
     });
     $("body").on("mouseleave", ".layui-menu-tips", function () {
-        var isShow = $('.layuimini-tool i').attr('data-side-fold');
-        if (isShow == 0) {
-            layer.close(openTips);
-        }
+            var isShow = $('.layuimini-tool i').attr('data-side-fold');
+            if (isShow == 0) {
+                try{
+                    layer.close(openTips);
+                }catch(e){
+                    console.log(e.message);
+                }
+            }
     });
 
     exports("layuimini", layuimini);
