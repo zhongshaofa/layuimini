@@ -363,20 +363,30 @@ tab选项卡
 手机自适应样式
  */
 @media screen and (max-width: 768px){
-    .layui-layout-admin .layui-logo{
+    .layuimini-mini .layui-layout-admin .layui-logo{
         display: none;
     }
-    .layuimini-tool {
+    .layuimini-mini .layuimini-tool {
         left: 15px !important;
     }
+
+    .layuimini-all .layui-nav.layui-layout-right{
+        transition: all .2s;
+        display: none;
+    }
+
     .layuimini-tool i:hover {
         background-color: #1aa094;
     }
     .layuimini-mini .layuimini-tool{
         left: 15px !important;
     }
-    .layui-layout-left.layui-header-menu{
-    left: 50px!important;
+    .layuimini-all .layui-layout-left.layui-header-menu {
+        transition: all .2s;
+    }
+    .layuimini-mini .layui-layout-left.layui-header-menu {
+        left: 50px !important;
+        transition: all .2s;
     }
     .layui-layout-admin .layui-nav.layui-layout-right{
         margin-right: 15px!important;
