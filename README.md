@@ -13,14 +13,13 @@ layuimini后台模板
  * Gitee仓库地址：[https://gitee.com/zhongshaofa/layuimini](https://gitee.com/zhongshaofa/layuimini)
 
 ## 主要特性
-* 界面足够简洁清爽。
+* 界面足够简洁清爽，响应式且适配手机端。
 * 一个接口`几行代码而已`直接初始化整个框架，无需复杂操作。
 * 支持多tab，可以打开多窗口。
 * 支持无限级菜单和对font-awesome图标库的完美支持。
 * 失效以及报错菜单无法直接打开，并给出弹出层提示`完美的线上用户体验`。
 * url地址hash定位，可以清楚看到当前tab的地址信息。
 * 刷新页面会保留当前的窗口，并且会定位当前窗口对应左侧菜单栏。
-* 移动端的友好支持。
 
 
 ## 效果预览
@@ -48,7 +47,7 @@ layuimini后台模板
 ![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_z2AYnyiAAHKqQzvTXA710.jpg)
 > 6、移动端的友好支持
 
-![Image text](https://files.gitee.com/group1/M00/08/5A/PaAvDF0Z4WiAMyC3AAU6IOjhneo574.png)
+![Image text](https://files.gitee.com/group1/M00/08/8F/PaAvDF0pYtyAJOjTAAIG4r6B8vA226.png)
 
 
 
