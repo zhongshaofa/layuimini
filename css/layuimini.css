@@ -381,6 +381,9 @@ tab选项卡
     .layui-layout-admin .layui-nav.layui-layout-right{
         margin-right: 15px!important;
     }
+    .layui-layout-admin .layui-nav.layui-layout-right>li:not(.layuimini-setting){
+       width: 40px!important;
+    }
     .layuimini-mini .layui-side.layui-bg-black{
         display: none!important;
     }
