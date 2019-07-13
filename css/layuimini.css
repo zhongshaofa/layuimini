@@ -372,12 +372,10 @@ tab选项卡
     .layuimini-mini .layuimini-tool {
         left: 15px !important;
     }
-
     .layuimini-all .layui-nav.layui-layout-right{
         transition: all .2s;
         display: none;
     }
-
     .layuimini-tool i:hover {
         background-color: #1aa094;
     }
@@ -386,6 +384,12 @@ tab选项卡
     }
     .layuimini-all .layui-layout-left.layui-header-menu {
         transition: all .2s;
+        float: right;
+        right: 5px;
+    }
+    .layuimini-all .layui-header-menu > .layui-nav-item {
+        float: right;
+        right: 0px;
     }
     .layuimini-mini .layui-layout-left.layui-header-menu {
         left: 50px !important;
