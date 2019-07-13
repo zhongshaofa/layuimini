@@ -107,7 +107,9 @@
 /**
  手机自适应样式
 */
-@media screen and (max-width:768px) {#top_tabs_box {border-bottom:0px!important;}
+@media screen and (max-width:768px) {
+    #top_tabs_box {border-bottom:0px!important;}
+    .layui-layout-admin .layui-body .layui-tab-item.layui-show{border-top:1px solid #e2e2e2;}
     .layuimini-mini .layuimini-tool {left:15px !important;}
     .layuimini-tool i:hover {background-color:transparent!important;}
     .layuimini-all .layui-layout-left.layui-header-menu {transition:all .2s;float:right;right:5px;}
