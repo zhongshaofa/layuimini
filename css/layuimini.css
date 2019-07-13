@@ -47,7 +47,7 @@
 #top_tabs_box .layui-tab-close {font-size:12px!important;width:14px!important;height:14px!important;line-height:16px!important;}
 #top_tabs_box .layui-tab-close:hover {border-radius:4em;background:#ff5722;}
 #top_tabs_box>.layui-tab-title>.layui-this>i:first-child {color:#009688;}
-#top_tabs_box>.layui-tab-title li {border-right:1px solid #e2e2e2;}
+#top_tabs_box>.layui-tab-title li {border-right:1px solid #e2e2e2;font-size: 12.5px!important;}
 #top_tabs_box>.layui-tab-title .layui-this {color:#000000;}
 .layui-tab-title .layui-this:after {border:none;}
 #top_tabs_box {padding-right:138px;height:34px;border-bottom:1px solid #e2e2e2;}
