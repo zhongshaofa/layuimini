@@ -376,7 +376,10 @@ tab选项卡
         left: 15px !important;
     }
     .layui-layout-left.layui-header-menu{
-    left: 60px!important;
+    left: 50px!important;
+    }
+    .layui-layout-admin .layui-nav.layui-layout-right{
+        margin-right: 15px!important;
     }
     .layuimini-mini .layui-side.layui-bg-black{
         display: none!important;
@@ -395,5 +398,13 @@ tab选项卡
     }
     .layui-layout-admin .layui-body .clildFrame.layui-tab-content {
         top: 0px!important;
+    }
+    .layui-layout-admin .layui-body .clildFrame.layui-tab-content{
+        overflow-y:scroll;
+        overflow-x:hidden;
+        table-layout: fixed;
+        word-wrap:break-word;
+        word-break:break-all;
+        -webkit-overflow-scrolling: touch!important;
     }
 }

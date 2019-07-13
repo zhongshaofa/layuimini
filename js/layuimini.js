@@ -485,6 +485,7 @@ layui.define(["element", "jquery"], function (exports) {
             layuimini.addTab(tabId, href, title, true);
         }
         element.tabChange('layuiminiTab', tabId);
+        layuimini.initDevice();
         layuimini.tabRoll();
         layer.close(loading);
     });
