@@ -287,7 +287,8 @@ layui.define(["element", "jquery"], function (exports) {
                 || (/ucweb.*linux/i.test(ua));
             var isIOS = (/iPhone|iPod|iPad/i).test(ua) && !isAndroid;
             var isWinPhone = (/Windows Phone|ZuneWP7/i).test(ua);
-            if (!isAndroid && !isIOS && !isWinPhone) {
+            var clientWidth = document.body.clientWidth;
+            if (!isAndroid && !isIOS && !isWinPhone && clientWidth > 768) {
                 return false;
             } else {
                 return true;
