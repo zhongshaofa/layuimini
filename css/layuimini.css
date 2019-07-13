@@ -363,6 +363,9 @@ tab选项卡
 手机自适应样式
  */
 @media screen and (max-width: 768px){
+    #top_tabs_box {
+        border-bottom: 0px!important;
+    }
     .layuimini-mini .layui-layout-admin .layui-logo{
         display: none;
     }
