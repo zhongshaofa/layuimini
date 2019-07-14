@@ -24,6 +24,7 @@ layui.define(["element", "jquery"], function (exports) {
                     layuimini.msg_error('暂无菜单信息');
                 } else {
                     layuimini.initHome(data.homeInfo);
+                    layuimini.initLogo(data.logoInfo);
                     layuimini.initMenu(data.menuInfo);
                     layuimini.initTab();
                     window.clearInfo = data.clearInfo;
@@ -54,6 +55,18 @@ layui.define(["element", "jquery"], function (exports) {
             $('#layuiminiHomeTabId').html('<i class="' + data.icon + '"></i> <span>' + data.title + '</span>');
             $('#layuiminiHomeTabId').attr('lay-id', data.href);
             $('#layuiminiHomeTabIframe').html('<iframe width="100%" height="100%" frameborder="0"  src="' + data.href + '"></iframe>');
+        };
+
+        /**
+         * 初始化logo信息
+         * @param data
+         */
+        this.initLogo = function (data) {
+            var html = '<a href="' + data.href + '">\n' +
+                '<img src="' + data.image + '" alt="logo">\n' +
+                '<h1>' + data.title + '</h1>\n' +
+                '</a>';
+            $('.layui-layout-admin .layui-logo').html(html);
         };
 
         /**
