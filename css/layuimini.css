@@ -91,6 +91,12 @@
 /**内容主体（缩放） */
 .layuimini-mini .layui-layout-admin .layui-body {left:60px!important;}
 
+/**选择配色方案 */
+.layuimini-color .color-title {padding: 10px 0 10px 20px;border-bottom: 1px solid #d9dada;margin-bottom: 8px;}
+.layuimini-color .color-content {padding: 0 5px 0 5px;}
+.layuimini-color .color-content ul {list-style: none;text-align: center;}
+.layuimini-color .color-content ul li {float: left;width: 32.3333%;padding: 5px 0.5% 5px 0.5%;}
+
 /**其它 */
 .layui-tab-item {width:100% !important;height:100% !important;}
 .layui-nav-item.layui-this {background-color:#1b1d21;}

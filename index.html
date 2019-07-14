@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
     <link rel="stylesheet" href="css/layuimini.css" media="all">
     <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <style id="layuimini-bg-color">
+    </style>
 </head>
 <body class="layui-layout-body layuimini-all">
 <div class="layui-layout layui-layout-admin">
@@ -37,10 +39,13 @@
 
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
-                <a href="javascript:;" data-clear="清理"><i class="fa fa-trash-o"></i></a>
+                <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
+                <a href="javascript:;" data-clear="清理"><i class="fa fa-trash-o"></i></a>
+            </li>
+            <li class="layui-nav-item mobile layui-hide-xs">
+                <a href="javascript:;" data-bgcolor="配色"><i class="layui-icon layui-icon-theme"></i></a>
             </li>
             <li class="layui-nav-item layuimini-setting">
                 <a href="javascript:;">admin </a>
