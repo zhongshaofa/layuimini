@@ -1,4 +1,7 @@
 {
+  "clearInfo": {
+    "clearUrl": "api/clear.json"
+  },
   "homeInfo": {
     "title": "首页",
     "icon": "fa fa-home",
@@ -8,9 +11,6 @@
     "title": "LayuiMini",
     "image": "images/logo.png",
     "href": ""
-  },
-  "clearInfo": {
-    "clearUrl": "api/clear.json"
   },
   "menuInfo": {
     "currency": {

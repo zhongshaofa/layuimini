@@ -60,7 +60,7 @@ layuimini后台模板
 
  * layuimini.init();  方法内的参数请填写动态api地址。（实际应用中建议后端api做缓存）
 
- * api地址返回的参数可以参考api目录下的init.json文件或者查看使用说明的第二点的参数说明
+ * 初始化api地址返回的参数可以参考api目录下的init.json文件或者查看使用说明的第二点的参数说明
 
  ``` js
     layui.config({
@@ -77,7 +77,7 @@ layuimini后台模板
     });
  ```
  
- > 二、api地址返回的参数说明
+ > 二、初始化api地址返回的参数说明
  
  * clearInfo是服务端清理缓存信息(clearInfo.clearUrl：服务端清理缓存接口地址，为空则不请求;)
  
@@ -90,101 +90,42 @@ layuimini后台模板
   }
    ```
  
- * homeInfo是首页信息
+ * homeInfo 是首页信息
  
- * menuInfo是头部模块和左侧菜单对应的信息
+ * logoInfo 是logo信息
  
- * module id必须唯一，例如 menuInfo.ceshi、menuInfo.setting对应的ceshi和setting就是模块id，他们的值必须唯一，否则模块切换会有冲突。
+ * menuInfo 是头部模块和左侧菜单对应的信息
+ 
+ * menuModule id必须唯一，例如 menuInfo.currency、menuInfo.other对应的currency和other就是模块id，他们的值必须唯一，否则模块切换会有冲突。
  
   ``` json
 {
+  "homeInfo": {
+    "title": "首页",
+    "icon": "fa fa-home",
+    "href": "page/welcome-2.html?mpi=m-p-i-0"
+  },
+  "logoInfo": {
+    "title": "LayuiMini",
+    "image": "images/logo.png",
+    "href": ""
+  },
   "clearInfo": {
     "clearUrl": "api/clear.json"
   },
-  "homeInfo": {
-    "title": "首页",
-    "icon": "fa fa-snowflake-o",
-    "href": "page/welcome.html"
-  },
   "menuInfo": {
-    "ceshi": {
-      "title": "测试管理",
-      "icon": "fa fa-address-book",
-      "child": [{
-        "title": "icon列表",
-        "href": "page/icon.html",
-        "icon": "fa fa-dot-circle-o",
-        "target": "_self"
-      }, {
-        "title": "UI管理",
-        "href": "",
-        "icon": "fa fa-snowflake-o",
-        "target": "",
-        "child": [ {
-          "title": "表单",
-          "href": "page/form.html",
-          "icon": "fa fa-calendar",
-          "target": "_self"
-        },{
-          "title": "按钮",
-          "href": "page/button.html",
-          "icon": "fa fa-snowflake-o",
-          "target": "_self"
-        }, {
-          "title": "弹出层",
-          "href": "page/layer.html",
-          "icon": "fa fa-snowflake-o",
-          "target": "_self"
-        }, {
-          "title": "静态表格",
-          "href": "page/table.html",
-          "icon": "fa fa-snowflake-o",
-          "target": "_self"
-        }]
-      }, {
-        "title": "测试无限层",
-        "href": "",
-        "icon": "fa fa-meetup",
-        "target": "",
-        "child": [{
-          "title": "按钮1",
-          "href": "page/button.html",
-          "icon": "fa fa-calendar",
-          "target": "_self",
-          "child": [{
-            "title": "按钮2",
-            "href": "page/button.html",
-            "icon": "fa fa-snowflake-o",
-            "target": "_self",
-            "child": [{
-              "title": "按钮3",
-              "href": "page/button.html",
-              "icon": "fa fa-snowflake-o",
-              "target": "_self"
-            }, {
-              "title": "表单4",
-              "href": "page/form.html",
-              "icon": "fa fa-calendar",
-              "target": "_self"
-            }]
-          }]
-        }]
-      }]
-    },
-    "setting": {
-      "title": "设置管理",
-      "icon": "fa fa-gears",
-      "child": [{
-        "title": "icon列表 [setting]",
-        "href": "page/icon.html",
-        "icon": "fa fa-dot-circle-o",
-        "target": "_self"
-      }, {
-        "title": "按钮列表 [setting]",
-        "href": "page/button.html",
-        "icon": "fa fa-caret-square-o-left",
-        "target": "_self"
-      }]
+      "currency": {
+        "title": "常规管理",
+        "icon": "fa fa-address-book",
+        "child": [
+            .......
+        ],
+      "other": {
+        "title": "其它管理",
+        "icon": "fa fa-slideshare",
+        "child": [
+            .......
+        ]
     }
   }
 }
