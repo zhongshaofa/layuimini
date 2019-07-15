@@ -344,10 +344,18 @@ layui.define(["element", "jquery"], function (exports) {
          */
         this.buildBgColorHtml = function () {
             var html = '';
+            var bgcolorId = sessionStorage.getItem('layuiminiBgcolorId');
+            if (bgcolorId == null || bgcolorId == undefined || bgcolorId == '') {
+                bgcolorId = 0;
+            }
             var bgColorConfig = layuimini.bgColorConfig();
             $.each(bgColorConfig, function (key, val) {
-                html += '<li data-select-bgcolor="' + key + '">\n' +
-                    '<a href="javascript:;" data-skin="skin-blue" style="" class="clearfix full-opacity-hover">\n' +
+                if (key == bgcolorId) {
+                    html += '<li class="layui-this" data-select-bgcolor="' + key + '">\n';
+                } else {
+                    html += '<li  data-select-bgcolor="' + key + '">\n';
+                }
+                html += '<a href="javascript:;" data-skin="skin-blue" style="" class="clearfix full-opacity-hover">\n' +
                     '<div><span style="display:block; width: 20%; float: left; height: 12px; background: ' + val.headerLogo + ';"></span><span style="display:block; width: 80%; float: left; height: 12px; background: ' + val.headerRight + ';"></span></div>\n' +
                     '<div><span style="display:block; width: 20%; float: left; height: 40px; background: ' + val.menuLeft + ';"></span><span style="display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;"></span></div>\n' +
                     '</a>\n' +
@@ -854,6 +862,8 @@ layui.define(["element", "jquery"], function (exports) {
      */
     $('body').on('click', '[data-select-bgcolor]', function () {
         var bgcolorId = $(this).attr('data-select-bgcolor');
+        $('.layuimini-color .color-content ul .layui-this').attr('class','');
+        $(this).attr('class','layui-this');
         sessionStorage.setItem('layuiminiBgcolorId', bgcolorId);
         layuimini.initBgColor();
     });
