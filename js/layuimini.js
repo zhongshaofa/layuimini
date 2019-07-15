@@ -241,6 +241,30 @@ layui.define(["element", "jquery"], function (exports) {
                     menuLeftHover: '#3b3f4b',
                 },
                 {
+                    headerRight: '#23262e',
+                    headerRightThis: '#0c0c0c',
+                    headerLogo: '#0c0c0c',
+                    menuLeft: '#23262e',
+                    menuLeftThis: '#1aa094',
+                    menuLeftHover: '#3b3f4b',
+                },
+                {
+                    headerRight: '#ffa4d1',
+                    headerRightThis: '#bf7b9d',
+                    headerLogo: '#e694bd',
+                    menuLeft: '#1f1f1f',
+                    menuLeftThis: '#ffa4d1',
+                    menuLeftHover: '#1f1f1f',
+                },
+                {
+                    headerRight: '#1aa094',
+                    headerRightThis: '#197971',
+                    headerLogo: '#0c0c0c',
+                    menuLeft: '#23262e',
+                    menuLeftThis: '#1aa094',
+                    menuLeftHover: '#3b3f4b',
+                },
+                {
                     headerRight: '#1e9fff',
                     headerRightThis: '#0069b7',
                     headerLogo: '#0c0c0c',
@@ -248,6 +272,7 @@ layui.define(["element", "jquery"], function (exports) {
                     menuLeftThis: '#1aa094',
                     menuLeftHover: '#3b3f4b',
                 },
+
                 {
                     headerRight: '#ffb800',
                     headerRightThis: '#d09600',
