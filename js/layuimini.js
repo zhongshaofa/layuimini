@@ -8,87 +8,6 @@ layui.define(["element", "jquery"], function (exports) {
         return layer.alert("请先将项目部署至web容器（Apache/Tomcat/Nginx/IIS/等），否则部分数据将无法显示");
     }
 
-    /**
-     * 背景颜色配置项
-     * @type {*[]}
-     */
-    window.bgColorConfig = [
-        {
-            headerRight: '#1aa094',
-            headerRightThis: '#197971',
-            headerLogo: '#243346',
-            menuLeft: '#2f4056',
-            menuLeftThis: '#1aa094',
-            menuLeftHover: '#3b3f4b',
-        },
-        {
-            headerRight: '#1e9fff',
-            headerRightThis: '#0069b7',
-            headerLogo: '#0c0c0c',
-            menuLeft: '#1f1f1f',
-            menuLeftThis: '#1aa094',
-            menuLeftHover: '#3b3f4b',
-        },
-        {
-            headerRight: '#ffb800',
-            headerRightThis: '#d09600',
-            headerLogo: '#243346',
-            menuLeft: '#2f4056',
-            menuLeftThis: '#1aa094',
-            menuLeftHover: '#3b3f4b',
-        },
-        {
-            headerRight: '#e82121',
-            headerRightThis: '#ae1919',
-            headerLogo: '#0c0c0c',
-            menuLeft: '#1f1f1f',
-            menuLeftThis: '#1aa094',
-            menuLeftHover: '#3b3f4b',
-        },
-        {
-            headerRight: '#963885',
-            headerRightThis: '#772c6a',
-            headerLogo: '#243346',
-            menuLeft: '#2f4056',
-            menuLeftThis: '#1aa094',
-            menuLeftHover: '#3b3f4b',
-        },
-        {
-            headerRight: '#1e9fff',
-            headerRightThis: '#0069b7',
-            headerLogo: '#0069b7',
-            menuLeft: '#1f1f1f',
-            menuLeftThis: '#1aa094',
-            menuLeftHover: '#3b3f4b',
-        },
-        {
-            headerRight: '#ffb800',
-            headerRightThis: '#d09600',
-            headerLogo: '#d09600',
-            menuLeft: '#2f4056',
-            menuLeftThis: '#1aa094',
-            menuLeftHover: '#3b3f4b',
-        },
-        {
-            headerRight: '#e82121',
-            headerRightThis: '#ae1919',
-            headerLogo: '#d91f1f',
-            menuLeft: '#1f1f1f',
-            menuLeftThis: '#1aa094',
-            menuLeftHover: '#3b3f4b',
-        },
-        {
-            headerRight: '#963885',
-            headerRightThis: '#772c6a',
-            headerLogo: '#772c6a',
-            menuLeft: '#2f4056',
-            menuLeftThis: '#1aa094',
-            menuLeftHover: '#3b3f4b',
-        }
-    ];
-
-    window.clearInfo = {};
-
     layuimini = new function () {
 
         /**
@@ -105,9 +24,9 @@ layui.define(["element", "jquery"], function (exports) {
                 } else {
                     layuimini.initHome(data.homeInfo);
                     layuimini.initLogo(data.logoInfo);
+                    layuimini.initClear(data.clearInfo);
                     layuimini.initMenu(data.menuInfo);
                     layuimini.initTab();
-                    window.clearInfo = data.clearInfo;
                 }
             }).fail(function () {
                 layuimini.msg_error('菜单接口有误');
@@ -150,24 +69,31 @@ layui.define(["element", "jquery"], function (exports) {
         };
 
         /**
+         * 初始化清理缓存
+         * @param data
+         */
+        this.initClear = function (data) {
+            $('.layuimini-clear').attr('data-href', data.clearUrl);
+        };
+
+        /**
          * 初始化背景色
          */
         this.initBgColor = function () {
             var bgcolorId = sessionStorage.getItem('layuiminiBgcolorId');
-            console.log('====bgcolorId==');
-            console.log(bgcolorId);
-            if (bgcolorId != null && bgcolorId != undefined && bgcolorId != '') {
-                var bgcolorData = bgColorConfig[bgcolorId];
-                var styleHtml = '.layui-layout-admin .layui-header{background-color:' + bgcolorData.headerRight + '!important;}\n' +
-                    '.layui-header>ul>.layui-nav-item.layui-this,.layuimini-tool i:hover{background-color:' + bgcolorData.headerRightThis + '!important;}\n' +
-                    '.layui-layout-admin .layui-logo {background-color:' + bgcolorData.headerLogo + '!important;}\n' +
-                    '.layui-side.layui-bg-black,.layui-side.layui-bg-black>.layui-left-menu>ul {background-color:' + bgcolorData.menuLeft + '!important;}\n' +
-                    '.layui-left-menu .layui-nav .layui-nav-child a:hover:not(.layui-this) {background-color:' + bgcolorData.menuLeftHover + ';}\n' +
-                    '.layui-layout-admin .layui-nav-tree .layui-this, .layui-layout-admin .layui-nav-tree .layui-this>a, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this a {\n' +
-                    '    background-color: ' + bgcolorData.menuLeftThis + ' !important;\n' +
-                    '}';
-                $('#layuimini-bg-color').html(styleHtml);
+            if (bgcolorId == null || bgcolorId == undefined || bgcolorId == '') {
+                bgcolorId = 0;
             }
+            var bgcolorData = layuimini.bgColorConfig(bgcolorId);
+            var styleHtml = '.layui-layout-admin .layui-header{background-color:' + bgcolorData.headerRight + '!important;}\n' +
+                '.layui-header>ul>.layui-nav-item.layui-this,.layuimini-tool i:hover{background-color:' + bgcolorData.headerRightThis + '!important;}\n' +
+                '.layui-layout-admin .layui-logo {background-color:' + bgcolorData.headerLogo + '!important;}\n' +
+                '.layui-side.layui-bg-black,.layui-side.layui-bg-black>.layui-left-menu>ul {background-color:' + bgcolorData.menuLeft + '!important;}\n' +
+                '.layui-left-menu .layui-nav .layui-nav-child a:hover:not(.layui-this) {background-color:' + bgcolorData.menuLeftHover + ';}\n' +
+                '.layui-layout-admin .layui-nav-tree .layui-this, .layui-layout-admin .layui-nav-tree .layui-this>a, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this a {\n' +
+                '    background-color: ' + bgcolorData.menuLeftThis + ' !important;\n' +
+                '}';
+            $('#layuimini-bg-color').html(styleHtml);
         };
 
         /**
@@ -301,11 +227,99 @@ layui.define(["element", "jquery"], function (exports) {
         };
 
         /**
+         * 配色方案配置项(默认选中第一个方案)
+         * @param bgcolorId
+         */
+        this.bgColorConfig = function (bgcolorId) {
+            var bgColorConfig = [
+                {
+                    headerRight: '#1aa094',
+                    headerRightThis: '#197971',
+                    headerLogo: '#243346',
+                    menuLeft: '#2f4056',
+                    menuLeftThis: '#1aa094',
+                    menuLeftHover: '#3b3f4b',
+                },
+                {
+                    headerRight: '#1e9fff',
+                    headerRightThis: '#0069b7',
+                    headerLogo: '#0c0c0c',
+                    menuLeft: '#1f1f1f',
+                    menuLeftThis: '#1aa094',
+                    menuLeftHover: '#3b3f4b',
+                },
+                {
+                    headerRight: '#ffb800',
+                    headerRightThis: '#d09600',
+                    headerLogo: '#243346',
+                    menuLeft: '#2f4056',
+                    menuLeftThis: '#1aa094',
+                    menuLeftHover: '#3b3f4b',
+                },
+                {
+                    headerRight: '#e82121',
+                    headerRightThis: '#ae1919',
+                    headerLogo: '#0c0c0c',
+                    menuLeft: '#1f1f1f',
+                    menuLeftThis: '#1aa094',
+                    menuLeftHover: '#3b3f4b',
+                },
+                {
+                    headerRight: '#963885',
+                    headerRightThis: '#772c6a',
+                    headerLogo: '#243346',
+                    menuLeft: '#2f4056',
+                    menuLeftThis: '#1aa094',
+                    menuLeftHover: '#3b3f4b',
+                },
+                {
+                    headerRight: '#1e9fff',
+                    headerRightThis: '#0069b7',
+                    headerLogo: '#0069b7',
+                    menuLeft: '#1f1f1f',
+                    menuLeftThis: '#1aa094',
+                    menuLeftHover: '#3b3f4b',
+                },
+                {
+                    headerRight: '#ffb800',
+                    headerRightThis: '#d09600',
+                    headerLogo: '#d09600',
+                    menuLeft: '#2f4056',
+                    menuLeftThis: '#1aa094',
+                    menuLeftHover: '#3b3f4b',
+                },
+                {
+                    headerRight: '#e82121',
+                    headerRightThis: '#ae1919',
+                    headerLogo: '#d91f1f',
+                    menuLeft: '#1f1f1f',
+                    menuLeftThis: '#1aa094',
+                    menuLeftHover: '#3b3f4b',
+                },
+                {
+                    headerRight: '#963885',
+                    headerRightThis: '#772c6a',
+                    headerLogo: '#772c6a',
+                    menuLeft: '#2f4056',
+                    menuLeftThis: '#1aa094',
+                    menuLeftHover: '#3b3f4b',
+                }
+            ];
+
+            if (bgcolorId == undefined) {
+                return bgColorConfig;
+            } else {
+                return bgColorConfig[bgcolorId];
+            }
+        };
+
+        /**
          * 构建背景颜色选择
          * @returns {string}
          */
         this.buildBgColorHtml = function () {
             var html = '';
+            var bgColorConfig = layuimini.bgColorConfig();
             $.each(bgColorConfig, function (key, val) {
                 html += '<li data-select-bgcolor="' + key + '">\n' +
                     '<a href="javascript:;" data-skin="skin-blue" style="" class="clearfix full-opacity-hover">\n' +
@@ -687,21 +701,19 @@ layui.define(["element", "jquery"], function (exports) {
         sessionStorage.clear();
 
         // 判断是否清理服务端
-        var clearInfo = window.clearInfo;
-        if (clearInfo != undefined && clearInfo != '') {
-            if (clearInfo.clearUrl != undefined && clearInfo.clearUrl != '') {
-                $.getJSON(clearInfo.clearUrl, function (data, status) {
-                    layer.close(loading);
-                    if (data.code != 1) {
-                        return layuimini.msg_error(data.msg);
-                    } else {
-                        return layuimini.msg_success(data.msg);
-                    }
-                }).fail(function () {
-                    layer.close(loading);
-                    return layuimini.msg_error('清理缓存接口有误');
-                });
-            }
+        var clearUrl = $(this).attr('data-href');
+        if (clearUrl != undefined && clearUrl != '' && clearUrl != null) {
+            $.getJSON(clearUrl, function (data, status) {
+                layer.close(loading);
+                if (data.code != 1) {
+                    return layuimini.msg_error(data.msg);
+                } else {
+                    return layuimini.msg_success(data.msg);
+                }
+            }).fail(function () {
+                layer.close(loading);
+                return layuimini.msg_error('清理缓存接口有误');
+            });
         } else {
             layer.close(loading);
             return layuimini.msg_success('清除缓存成功');
@@ -783,7 +795,7 @@ layui.define(["element", "jquery"], function (exports) {
     });
 
     /**
-     * 菜单栏缩放
+     * 弹出配色方案
      */
     $('body').on('click', '[data-bgcolor]', function () {
         var loading = layer.load(0, {shade: false, time: 2 * 1000});
