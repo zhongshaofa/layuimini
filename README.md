@@ -27,31 +27,6 @@ layuimini后台模板
 > 总体预览
 ![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_1SARToJAAHs7bxh0y8359.jpg)
 
-> 登录界面
-
-![Image text](https://files.gitee.com/group1/M00/08/58/PaAvDF0ZpoqAc8FPAACr7Qev1R4238.jpg)
-
-> 1、多tab窗口
-
-![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_zWAG1VIAAF0cP2C480497.jpg)
-> 2、无限级菜单
-
-![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_0uAcfnbAAIS_OqWabs466.jpg)
-> 3、菜单缩放并提示菜单标题
-
-![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_0SAVzSBAAIKBIZM5Yg263.jpg)
-> 4、url地址hash定位
-
-![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_y-AXNf1AAFmvHkGzCw201.jpg)
-> 5、刷新保留窗口，并对应菜单栏
-
-![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_z2AYnyiAAHKqQzvTXA710.jpg)
-> 6、移动端的友好支持
-
-![Image text](https://files.gitee.com/group1/M00/08/8F/PaAvDF0pYtyAJOjTAAIG4r6B8vA226.png)
-
-
-
 
 ## 使用说明
 
@@ -131,6 +106,15 @@ layuimini后台模板
   }
 }
   ```
+  
+> 三、在页面中弹出新的Tab窗口
+   
+ * 如需在页面中弹出新的Tab窗口，请参考下方代码。
+  * 参数说明（data-iframe-tab：页面链接，data-title：标题，data-icon：图标）
+``` html
+<a href="javascript:;" data-iframe-tab="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
+ ```
+   
   ## 备注信息
   * 菜单栏建议最多四级菜单，四级以后菜单显示并没有那么友好。
   * 项目实际运用请删除 layuimini\index.html 文件内的百度统计代码。（下面的代码）
