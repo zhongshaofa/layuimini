@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
     <link rel="stylesheet" href="css/layuimini.css" media="all">
     <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <style id="layuimini-bg-color">
     </style>
 </head>
@@ -71,12 +75,9 @@
 
     <div class="layui-body">
         <div class="layui-tab" lay-filter="layuiminiTab" id="top_tabs_box">
-
-            <!--选项卡列表-->
             <ul class="layui-tab-title" id="top_tabs">
                 <li class="layui-this" id="layuiminiHomeTabId" lay-id=""></li>
             </ul>
-            <!--选项卡操作-->
             <ul class="layui-nav closeBox">
                 <li class="layui-nav-item">
                     <a href="javascript:;"> <i class="fa fa-paper-plane"></i> 页面操作</a>
@@ -86,8 +87,6 @@
                     </dl>
                 </li>
             </ul>
-
-            <!--选项卡内容列表-->
             <div class="layui-tab-content clildFrame">
                 <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show">
                 </div>
