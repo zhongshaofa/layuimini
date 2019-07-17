@@ -673,14 +673,14 @@ layui.define(["element", "jquery"], function (exports) {
      * 在iframe子菜单上打开新窗口
      */
     $('body').on('click', '[data-iframe-tab]', function () {
-        var loading = layer.load(0, {shade: false, time: 2 * 1000});
+        var loading = parent.layer.load(0, {shade: false, time: 2 * 1000});
         var tabId = $(this).attr('data-iframe-tab'),
             href = $(this).attr('data-iframe-tab'),
             icon = $(this).attr('data-icon'),
             title = $(this).attr('data-title'),
             target = $(this).attr('target');
         if (target == '_blank') {
-            layer.close(loading);
+            parent.layer.close(loading);
             window.open(href, "_blank");
             return false;
         }
@@ -705,7 +705,7 @@ layui.define(["element", "jquery"], function (exports) {
         }
         parent.layui.element.tabChange('layuiminiTab', tabId);
         layuimini.tabRoll();
-        layer.close(loading);
+        parent.layer.close(loading);
     });
 
     /**
