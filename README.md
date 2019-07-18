@@ -114,7 +114,9 @@ layuimini后台模板
 ``` html
 <a href="javascript:;" data-iframe-tab="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
  ```
-   
+  ## 常见问题
+  * 修改js后刷新页面未生效，请尝试清除浏览器缓存。
+  
   ## 备注信息
   * 菜单栏建议最多四级菜单，四级以后菜单显示并没有那么友好。
   * 项目实际运用请删除 layuimini\index.html 文件内的百度统计代码。（下面的代码）
