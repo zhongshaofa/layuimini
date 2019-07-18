@@ -25,8 +25,8 @@ layuimini后台模板
 
 ## 效果预览
 > 总体预览
-![Image text](https://files.gitee.com/group1/M00/08/8C/PaAvDF0n_1SARToJAAHs7bxh0y8359.jpg)
 
+![Image text](./images/home.png)
 
 ## 使用说明
 
@@ -132,3 +132,5 @@ layuimini后台模板
 </script>
 <!--结束----百度统计代码，实际使用请删除-->
    ```
+ 
+   
