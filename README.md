@@ -32,7 +32,7 @@ layuimini后台模板
 
  > 一、默认配置说明
  
-* 默认配置在layuimini.config方法内，请自行修改
+* 默认配置在`layuimini.config`方法内，请自行修改
 * urlSuffixDefault：是否开启URL后缀，默认开启
 * BgColorDefault：系统默认皮肤，从0开始。
    ``` js
@@ -44,13 +44,13 @@ layuimini后台模板
 
 > 二、后台模板初始化
 
- * 在index.html文件内进行初始化
+ * 在`index.html`文件内进行初始化
 
- * base: "js/"  填写layuimini.js对应的目录。
+ * `base: "js/"`  填写layuimini.js对应的目录。
 
- * layuimini.init();  方法内的参数请填写动态api地址。（实际应用中建议后端api做缓存）
+ * `layuimini.init();` 方法内的参数请填写动态api地址。（实际应用中建议后端api做缓存）
 
- * 初始化api地址返回的参数可以参考api目录下的init.json文件或者查看使用说明的第二点的参数说明
+ * 初始化api地址返回的参数可以参考`api目录下的init.json文件`或者查看使用说明的第二点的参数说明
 
  ``` js
     layui.config({
@@ -69,7 +69,7 @@ layuimini后台模板
  
  > 三、初始化api地址返回的参数说明
  
- * clearInfo是服务端清理缓存信息(clearInfo.clearUrl：服务端清理缓存接口地址，为空则不请求;)
+ * `clearInfo`是服务端清理缓存信息(clearInfo.clearUrl：服务端清理缓存接口地址，为空则不请求;)
  
   ``` json
   返回参数对应的事例(code：0，清除缓存失败；code：1，表示清除缓存成功；)
@@ -80,13 +80,13 @@ layuimini后台模板
   }
    ```
  
- * homeInfo 是首页信息
+ * `homeInfo` 是首页信息
  
- * logoInfo 是logo信息
+ * `logoInfo` 是logo信息
  
- * menuInfo 是头部模块和左侧菜单对应的信息
+ * `menuInfo` 是头部模块和左侧菜单对应的信息
  
- * menuModule id必须唯一，例如 menuInfo.currency、menuInfo.other对应的currency和other就是模块id，他们的值必须唯一，否则模块切换会有冲突。
+ * `menuModule id`必须唯一，例如 menuInfo.currency、menuInfo.other对应的currency和other就是模块id，他们的值必须唯一，否则模块切换会有冲突。
  
   ``` json
 {
@@ -131,30 +131,30 @@ layuimini后台模板
   
   > 五、后台主题方案配色
   
- * 系统已内置12套主题配色，如果需要自定义皮肤配色，请在layuimini.bgColorConfig方法内按相同格式添加。
+ * 系统已内置12套主题配色，如果需要自定义皮肤配色，请在`layuimini.bgColorConfig`方法内按相同格式添加。
  ``` js
-             var bgColorConfig = [
-                 {
-                     headerRight: '#1aa094',
-                     headerRightThis: '#197971',
-                     headerLogo: '#243346',
-                     menuLeft: '#2f4056',
-                     menuLeftThis: '#1aa094',
-                     menuLeftHover: '#3b3f4b',
-                 },
-                 {
-                     headerRight: '#23262e',
-                     headerRightThis: '#0c0c0c',
-                     headerLogo: '#0c0c0c',
-                     menuLeft: '#23262e',
-                     menuLeftThis: '#1aa094',
-                     menuLeftHover: '#3b3f4b',
-                 }
-              ];
+    var bgColorConfig = [
+        {
+            headerRight: '#1aa094',
+            headerRightThis: '#197971',
+            headerLogo: '#243346',
+            menuLeft: '#2f4056',
+            menuLeftThis: '#1aa094',
+            menuLeftHover: '#3b3f4b',
+        },
+        {
+            headerRight: '#23262e',
+            headerRightThis: '#0c0c0c',
+            headerLogo: '#0c0c0c',
+            menuLeft: '#23262e',
+            menuLeftThis: '#1aa094',
+            menuLeftHover: '#3b3f4b',
+        }
+    ];
   ```
  
   ## 常见问题
-  * 修改js后刷新页面未生效，请尝试清除浏览器缓存。
+  * <font color=red>修改js后刷新页面未生效，请尝试清除浏览器缓存。</font>
   
   ## 备注信息
   * 菜单栏建议最多四级菜单，四级以后菜单显示并没有那么友好。
