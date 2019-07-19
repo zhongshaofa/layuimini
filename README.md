@@ -3,7 +3,7 @@ layuimini后台模板
 ## 项目介绍
 最简洁、清爽、易用的layui后台框架模板。
 
-项目会不定时进行更新，建议star和fork一份。
+项目会不定时进行更新，建议star和watch一份。
 
 技术交流QQ群：[561838086](https://jq.qq.com/?_wv=1027&k=5JRGVfe) `加群请备注来源：如gitee、github、官网等`。
 
@@ -34,7 +34,7 @@ layuimini后台模板
  
 * 默认配置在layuimini.config方法内，请自行修改
 * urlSuffixDefault：是否开启URL后缀，默认开启
-* BgColorDefault：系统默认皮肤，从0开始。（系统已内置12套皮肤配色，如果需要自定义皮肤配色，请在layuimini.bgColorConfig方法内按相同格式添加。）
+* BgColorDefault：系统默认皮肤，从0开始。
    ``` js
          var config = {
              urlSuffixDefault: true, // URL后缀
@@ -129,6 +129,30 @@ layuimini后台模板
 <a href="javascript:;" data-iframe-tab="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
  ```
   
+  > 五、后台主题方案配色
+  
+ * 系统已内置12套主题配色，如果需要自定义皮肤配色，请在layuimini.bgColorConfig方法内按相同格式添加。
+ ``` js
+             var bgColorConfig = [
+                 {
+                     headerRight: '#1aa094',
+                     headerRightThis: '#197971',
+                     headerLogo: '#243346',
+                     menuLeft: '#2f4056',
+                     menuLeftThis: '#1aa094',
+                     menuLeftHover: '#3b3f4b',
+                 },
+                 {
+                     headerRight: '#23262e',
+                     headerRightThis: '#0c0c0c',
+                     headerLogo: '#0c0c0c',
+                     menuLeft: '#23262e',
+                     menuLeftThis: '#1aa094',
+                     menuLeftHover: '#3b3f4b',
+                 }
+              ];
+  ```
+ 
   ## 常见问题
   * 修改js后刷新页面未生效，请尝试清除浏览器缓存。
   
