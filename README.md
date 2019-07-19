@@ -30,7 +30,21 @@ layuimini后台模板
 
 ## 使用说明
 
-> 一、在index.html文件内进行初始化
+ > 一、默认配置说明
+ 
+* 默认配置在layuimini.config方法内，请自行修改
+* urlSuffixDefault：是否开启URL后缀，默认开启
+* BgColorDefault：系统默认皮肤，从0开始。（系统已内置12套皮肤配色，如果需要自定义皮肤配色，请在layuimini.bgColorConfig方法内按相同格式添加。）
+   ``` js
+         var config = {
+             urlSuffixDefault: true, // URL后缀
+             BgColorDefault: 0       // 默认皮肤（0开始）
+          };
+    ```
+
+> 二、后台模板初始化
+
+ * 在index.html文件内进行初始化
 
  * base: "js/"  填写layuimini.js对应的目录。
 
@@ -53,7 +67,7 @@ layuimini后台模板
     });
  ```
  
- > 二、初始化api地址返回的参数说明
+ > 三、初始化api地址返回的参数说明
  
  * clearInfo是服务端清理缓存信息(clearInfo.clearUrl：服务端清理缓存接口地址，为空则不请求;)
  
@@ -107,13 +121,14 @@ layuimini后台模板
 }
   ```
   
-> 三、在页面中弹出新的Tab窗口
+> 四、在页面中弹出新的Tab窗口
    
- * 如需在页面中弹出新的Tab窗口，请参考下方代码。
+  * 如需在页面中弹出新的Tab窗口，请参考下方代码。
   * 参数说明（data-iframe-tab：页面链接，data-title：标题，data-icon：图标）
 ``` html
 <a href="javascript:;" data-iframe-tab="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
  ```
+  
   ## 常见问题
   * 修改js后刷新页面未生效，请尝试清除浏览器缓存。
   

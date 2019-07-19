@@ -11,6 +11,25 @@ layui.define(["element", "jquery"], function (exports) {
     layuimini = new function () {
 
         /**
+         *  系统配置
+         * @param name
+         * @returns {{BgColorDefault: number, urlSuffixDefault: boolean}|*}
+         */
+        this.config = function (name) {
+
+            var config = {
+                urlSuffixDefault: true, // URL后缀
+                BgColorDefault: 0       // 默认皮肤（0开始）
+            };
+
+            if (name == undefined) {
+                return config;
+            } else {
+                return config[name];
+            }
+        };
+
+        /**
          * 初始化
          * @param url
          */
@@ -82,7 +101,7 @@ layui.define(["element", "jquery"], function (exports) {
         this.initBgColor = function () {
             var bgcolorId = sessionStorage.getItem('layuiminiBgcolorId');
             if (bgcolorId == null || bgcolorId == undefined || bgcolorId == '') {
-                bgcolorId = 0;
+                bgcolorId = layuimini.config('BgColorDefault');
             }
             var bgcolorData = layuimini.bgColorConfig(bgcolorId);
             var styleHtml = '.layui-layout-admin .layui-header{background-color:' + bgcolorData.headerRight + '!important;}\n' +
@@ -173,15 +192,19 @@ layui.define(["element", "jquery"], function (exports) {
                         tabId = href;
                     $("[data-tab]").each(function () {
                         var checkHref = $(this).attr("data-tab");
+
                         // 判断是否带参数了
-                        if (href.indexOf("mpi=") > -1) {
-                            var menuParameId = $(this).attr('data-tab-mpi');
-                            if (checkHref.indexOf("?") > -1) {
-                                checkHref = checkHref + '&mpi=' + menuParameId;
-                            } else {
-                                checkHref = checkHref + '?mpi=' + menuParameId;
+                        if (layuimini.config('urlSuffixDefault')) {
+                            if (href.indexOf("mpi=") > -1) {
+                                var menuParameId = $(this).attr('data-tab-mpi');
+                                if (checkHref.indexOf("?") > -1) {
+                                    checkHref = checkHref + '&mpi=' + menuParameId;
+                                } else {
+                                    checkHref = checkHref + '?mpi=' + menuParameId;
+                                }
                             }
                         }
+
                         if (checkHref == tabId) {
                             title = $(this).html();
                             title = title.replace('style="display: none;"', '');
@@ -640,13 +663,15 @@ layui.define(["element", "jquery"], function (exports) {
         title = title.replace('style="display: none;"', '');
 
         // 拼接参数
-        var menuParameId = $(this).attr('data-tab-mpi');
-        if (href.indexOf("?") > -1) {
-            href = href + '&mpi=' + menuParameId;
-            tabId = href;
-        } else {
-            href = href + '?mpi=' + menuParameId;
-            tabId = href;
+        if (layuimini.config('urlSuffixDefault')) {
+            var menuParameId = $(this).attr('data-tab-mpi');
+            if (href.indexOf("?") > -1) {
+                href = href + '&mpi=' + menuParameId;
+                tabId = href;
+            } else {
+                href = href + '?mpi=' + menuParameId;
+                tabId = href;
+            }
         }
 
         // 判断链接是否有效
