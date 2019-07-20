@@ -62,6 +62,40 @@
           "target": "_self"
         },
         {
+          "title": "登录模板",
+          "href": "",
+          "icon": "fa fa-flag-o",
+          "target": "_self",
+          "child": [
+            {
+              "title": "登录-1",
+              "href": "page/login-1.html",
+              "icon": "fa fa-stumbleupon-circle",
+              "target": "_blank"
+            },
+            {
+              "title": "登录-2",
+              "href": "page/login-2.html",
+              "icon": "fa fa-viacoin",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+          "title": "异常页面",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "404页面",
+              "href": "page/404.html",
+              "icon": "fa fa-hourglass-end",
+              "target": "_self"
+            }
+          ]
+        },
+        {
           "title": "其它界面",
           "href": "",
           "icon": "fa fa-snowflake-o",
@@ -86,26 +120,6 @@
               "target": "_self"
             }
           ]
-        },
-        {
-          "title": "异常页面",
-          "href": "",
-          "icon": "fa fa-home",
-          "target": "_self",
-          "child": [
-            {
-              "title": "404页面",
-              "href": "page/404.html",
-              "icon": "fa fa-hourglass-end",
-              "target": "_self"
-            }
-          ]
-        },
-        {
-          "title": "登录页面",
-          "href": "page/login.html",
-          "icon": "fa fa-flag-o",
-          "target": "_blank"
         }
       ]
     },
