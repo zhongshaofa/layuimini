@@ -33,10 +33,12 @@ layuimini后台模板
  > 一、默认配置说明
  
 * 默认配置在`layuimini.config`方法内，请自行修改
-* urlSuffixDefault：是否开启URL后缀，默认开启
+* urlHashLocation：是否开启URL地址hash定位，默认开启。`关闭后，刷新页面后将定位不到当前页，只显示主页`
+* urlSuffixDefault：是否开启URL后缀，默认开启。
 * BgColorDefault：系统默认皮肤，从0开始。
    ``` js
-         var config = {
+       var config = {
+             urlHashLocation: true,   // URL地址hash定位
              urlSuffixDefault: true, // URL后缀
              BgColorDefault: 0       // 默认皮肤（0开始）
           };

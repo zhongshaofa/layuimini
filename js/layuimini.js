@@ -18,6 +18,7 @@ layui.define(["element", "jquery"], function (exports) {
         this.config = function (name) {
 
             var config = {
+                urlHashLocation: true,   // URL地址hash定位
                 urlSuffixDefault: true, // URL后缀
                 BgColorDefault: 0       // 默认皮肤（0开始）
             };
@@ -246,7 +247,9 @@ layui.define(["element", "jquery"], function (exports) {
                     }
                 }
             }
-            layuimini.hashTab();
+            if (layuimini.config('urlHashLocation')) {
+                layuimini.hashTab();
+            }
         };
 
         /**
