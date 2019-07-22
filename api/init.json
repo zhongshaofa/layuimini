@@ -62,6 +62,26 @@
           "target": "_self"
         },
         {
+          "title": "表单示例",
+          "href": "",
+          "icon": "fa fa-calendar",
+          "target": "_self",
+          "child": [
+            {
+              "title": "普通表单",
+              "href": "page/form.html",
+              "icon": "fa fa-list-alt",
+              "target": "_self"
+            },
+            {
+              "title": "分步表单",
+              "href": "page/form-step.html",
+              "icon": "fa fa-navicon",
+              "target": "_self"
+            }
+          ]
+        },
+        {
           "title": "登录模板",
           "href": "",
           "icon": "fa fa-flag-o",
@@ -101,12 +121,6 @@
           "icon": "fa fa-snowflake-o",
           "target": "",
           "child": [
-            {
-              "title": "表单示例",
-              "href": "page/form.html",
-              "icon": "fa fa-calendar",
-              "target": "_self"
-            },
             {
               "title": "按钮示例",
               "href": "page/button.html",
