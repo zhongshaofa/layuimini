@@ -239,8 +239,18 @@ layui.define(["element", "jquery"], function (exports) {
                             addMenuClass($(this).parent(), 1);
                         }
                     });
-                    layuiminiHomeTab = $('#layuiminiHomeTab').attr('lay-id');
-                    layuiminiHomeHref = sessionStorage.getItem('layuiminiHomeHref');
+                    var layuiminiHomeTab = $('#layuiminiHomeTab').attr('lay-id'),
+                        layuiminiHomeHref = sessionStorage.getItem('layuiminiHomeHref');
+
+                    // 非菜单打开的tab窗口
+                    if (href == title) {
+                        var layuiminiTabInfo = JSON.parse(sessionStorage.getItem("layuiminiTabInfo"));
+                        var check = layuiminiTabInfo[tabId];
+                        if (check != undefined || check != null) {
+                            title = check['title'];
+                        }
+                    }
+
                     if (layuiminiHomeTab != href && layuiminiHomeHref != href) {
                         layuimini.addTab(tabId, href, title, true);
                         layuimini.changeTab(tabId);
