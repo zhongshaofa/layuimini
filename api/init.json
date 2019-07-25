@@ -132,7 +132,7 @@
       ]
     },
     "icon": {
-      "title": "图标管理",
+      "title": "组件管理",
       "icon": "fa fa-lemon-o",
       "child": [
         {
@@ -144,7 +144,13 @@
         {
           "title": "图标选择",
           "href": "page/icon-picker.html",
-          "icon": "fa fa-cubes",
+          "icon": "fa fa-adn",
+          "target": "_self"
+        },
+        {
+          "title": "下拉选择",
+          "href": "page/table-select.html",
+          "icon": "fa fa-briefcase",
           "target": "_self"
         }
       ]

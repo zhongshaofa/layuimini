@@ -36,65 +36,89 @@
                     <input type="text" id="iconPicker1" value="fa-arrows" lay-filter="iconPicker2" class="hide">
                 </div>
             </div>
-
         </div>
+
+        <pre class="layui-code">
+        iconPickerFa.render({
+            // 选择器，推荐使用input
+            elem: '#iconPicker',
+            // fa 图标接口
+            url: "/lib/font-awesome-4.7.0/less/variables.less",
+            // 是否开启搜索：true/false，默认true
+            search: true,
+            // 是否开启分页：true/false，默认true
+            page: true,
+            // 每页显示数量，默认12
+            limit: 12,
+            // 点击回调
+            click: function (data) {
+                console.log(data);
+            },
+            // 渲染成功后的回调
+            success: function (d) {
+                console.log(d);
+            }
+        });
+        </pre>
+
     </div>
-    <script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
-    <script>
-        layui.config({
-            base: '../lib/lay-module/'
-        }).extend({
-            iconPickerFa: 'iconPicker/iconPickerFa'
-        }).use(['iconPickerFa', 'form', 'layer'], function () {
-            var iconPickerFa = layui.iconPickerFa,
-                form = layui.form,
-                layer = layui.layer,
-                $ = layui.$;
+</div>
+<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script>
+    layui.config({
+        base: '../lib/lay-module/'
+    }).extend({
+        iconPickerFa: 'iconPicker/iconPickerFa'
+    }).use(['iconPickerFa', 'form', 'layer'], function () {
+        var iconPickerFa = layui.iconPickerFa,
+            form = layui.form,
+            layer = layui.layer,
+            $ = layui.$;
 
-            iconPickerFa.render({
-                // 选择器，推荐使用input
-                elem: '#iconPicker',
-                // fa 图标接口
-                url: "/lib/font-awesome-4.7.0/less/variables.less",
-                // 是否开启搜索：true/false，默认true
-                search: true,
-                // 是否开启分页：true/false，默认true
-                page: true,
-                // 每页显示数量，默认12
-                limit: 12,
-                // 点击回调
-                click: function (data) {
-                    console.log(data);
-                },
-                // 渲染成功后的回调
-                success: function (d) {
-                    console.log(d);
-                }
-            });
-
-            iconPickerFa.render({
-                // 选择器，推荐使用input
-                elem: '#iconPicker1',
-                // fa 图标接口
-                url: "/lib/font-awesome-4.7.0/less/variables.less",
-                // 是否开启搜索：true/false
-                search: true,
-                // 是否开启分页
-                page: true,
-                // 每页显示数量，默认12
-                limit: 12,
-                // 点击回调
-                click: function (data) {
-                    console.log(data);
-                },
-                // 渲染成功后的回调
-                success: function (d) {
-                    console.log(d);
-                }
-            });
-
+        iconPickerFa.render({
+            // 选择器，推荐使用input
+            elem: '#iconPicker',
+            // fa 图标接口
+            url: "/lib/font-awesome-4.7.0/less/variables.less",
+            // 是否开启搜索：true/false，默认true
+            search: true,
+            // 是否开启分页：true/false，默认true
+            page: true,
+            // 每页显示数量，默认12
+            limit: 12,
+            // 点击回调
+            click: function (data) {
+                console.log(data);
+            },
+            // 渲染成功后的回调
+            success: function (d) {
+                console.log(d);
+            }
         });
 
-    </script>
+        iconPickerFa.render({
+            // 选择器，推荐使用input
+            elem: '#iconPicker1',
+            // fa 图标接口
+            url: "/lib/font-awesome-4.7.0/less/variables.less",
+            // 是否开启搜索：true/false
+            search: true,
+            // 是否开启分页
+            page: true,
+            // 每页显示数量，默认12
+            limit: 12,
+            // 点击回调
+            click: function (data) {
+                console.log(data);
+            },
+            // 渲染成功后的回调
+            success: function (d) {
+                console.log(d);
+            }
+        });
+
+    });
+
+</script>
 </body>
 </html>
