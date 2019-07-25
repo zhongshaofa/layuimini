@@ -56,12 +56,6 @@
           "target": "_self"
         },
         {
-          "title": "图标列表",
-          "href": "page/icon.html",
-          "icon": "fa fa-dot-circle-o",
-          "target": "_self"
-        },
-        {
           "title": "表单示例",
           "href": "",
           "icon": "fa fa-calendar",
@@ -134,6 +128,24 @@
               "target": "_self"
             }
           ]
+        }
+      ]
+    },
+    "icon": {
+      "title": "图标管理",
+      "icon": "fa fa-lemon-o",
+      "child": [
+        {
+          "title": "图标列表",
+          "href": "page/icon.html",
+          "icon": "fa fa-dot-circle-o",
+          "target": "_self"
+        },
+        {
+          "title": "图标选择",
+          "href": "page/icon-picker.html",
+          "icon": "fa fa-cubes",
+          "target": "_self"
         }
       ]
     },
