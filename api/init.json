@@ -164,6 +164,12 @@
           "href": "page/upload.html",
           "icon": "fa fa-arrow-up",
           "target": "_self"
+        },
+        {
+          "title": "文本编辑器",
+          "href": "page/editor.html",
+          "icon": "fa fa-edit",
+          "target": "_self"
         }
       ]
     },
