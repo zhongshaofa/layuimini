@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table下拉选择器</title>
+    <link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <blockquote class="layui-elem-quote">
+            颜色选择器使用开源项目：paigusu<br>
+            <a href="http://www.jq22.com/jquery-info20030" target="_blank" class="layui-btn layui-btn-danger">TableSelect</a>
+        </blockquote>
+
+        <button class="paigusu" style="padding:5px 20px;background: #fff;border: 1px solid #ccc;border-radius:4px;">调色板</button>
+
+        <form class="layui-form" action="" style="padding:20px;">
+            <div class="layui-form-item">
+                <label class="layui-form-label">多选</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="demo" value="刘晓军,张恒" ts-selected="002,003">
+                </div>
+            </div>
+        </form>
+
+        <pre class="layui-code">
+            //开始使用
+            var tableSelect = layui.tableSelect;
+            tableSelect.render({
+                elem: '#demo',	//定义输入框input对象 必填
+                checkedKey: 'id', //表格的唯一建值，非常重要，影响到选中状态 必填
+                searchKey: 'keyword',	//搜索输入框的name值 默认keyword
+                searchPlaceholder: '关键词搜索',	//搜索输入框的提示文字 默认关键词搜索
+                table: {	//定义表格参数，与LAYUI的TABLE模块一致，只是无需再定义表格elem
+                    url:'',
+                    cols: [[]]
+                },
+                done: function (elem, data) {
+                //选择完后的回调，包含2个返回值 elem:返回之前input对象；data:表格返回的选中的数据 []
+                //拿到data[]后 就按照业务需求做想做的事情啦~比如加个隐藏域放ID...
+                }
+            })
+            //默认值
+            只需要在触发input上添加 ts-selected="1,2,3" 属性即可 值需与checkedKey对应
+        </pre>
+
+    </div>
+</div>
+
+<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script src="../lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="../lib/jq-module/paigusu.min.js" charset="utf-8"></script>
+<script>
+    $('.paigusu').paigusu({
+        color : '#1926dc',//初始色  支持两种配置方案
+        recommend : '25,38,220,1|25,38,220,1|46,49,104,1|25,38,220,1|46,49,104,1|25,38,220,1|46,49,104,1|25,38,220,1|46,49,104,1|25,38,220,1|46,49,104,1'
+        ,color : '42,0,255'
+    },function(event,obj){
+        console.log(event);
+        console.log(obj);
+        $(event).css('color','#' + obj.hex)
+    });
+
+</script>
+</body>
+</html>
