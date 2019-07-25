@@ -245,9 +245,11 @@ layui.define(["element", "jquery"], function (exports) {
                     // 非菜单打开的tab窗口
                     if (href == title) {
                         var layuiminiTabInfo = JSON.parse(sessionStorage.getItem("layuiminiTabInfo"));
-                        var check = layuiminiTabInfo[tabId];
-                        if (check != undefined || check != null) {
-                            title = check['title'];
+                        if (layuiminiTabInfo != null) {
+                            var check = layuiminiTabInfo[tabId];
+                            if (check != undefined || check != null) {
+                                title = check['title'];
+                            }
                         }
                     }
 
@@ -900,8 +902,8 @@ layui.define(["element", "jquery"], function (exports) {
      */
     $('body').on('click', '[data-select-bgcolor]', function () {
         var bgcolorId = $(this).attr('data-select-bgcolor');
-        $('.layuimini-color .color-content ul .layui-this').attr('class','');
-        $(this).attr('class','layui-this');
+        $('.layuimini-color .color-content ul .layui-this').attr('class', '');
+        $(this).attr('class', 'layui-this');
         sessionStorage.setItem('layuiminiBgcolorId', bgcolorId);
         layuimini.initBgColor();
     });
