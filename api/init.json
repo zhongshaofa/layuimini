@@ -150,7 +150,13 @@
         {
           "title": "下拉选择",
           "href": "page/table-select.html",
-          "icon": "fa fa-briefcase",
+          "icon": "fa fa-angle-double-down",
+          "target": "_self"
+        },
+        {
+          "title": "文件上传",
+          "href": "page/upload.html",
+          "icon": "fa fa-arrow-up",
           "target": "_self"
         }
       ]
