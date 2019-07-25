@@ -148,6 +148,12 @@
           "target": "_self"
         },
         {
+          "title": "颜色选择",
+          "href": "page/color-select.html",
+          "icon": "fa fa-dashboard",
+          "target": "_self"
+        },
+        {
           "title": "下拉选择",
           "href": "page/table-select.html",
           "icon": "fa fa-angle-double-down",
