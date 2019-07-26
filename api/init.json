@@ -170,12 +170,6 @@
           "href": "page/editor.html",
           "icon": "fa fa-edit",
           "target": "_self"
-        },
-        {
-          "title": "Markdown编辑器",
-          "href": "page/editor-md.html",
-          "icon": "fa fa-edit",
-          "target": "_self"
         }
       ]
     },
