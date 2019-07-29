@@ -58,7 +58,7 @@ layuimini后台模板
  ``` js
     layui.config({
         base: "js/",
-        version: new Date().getTime()
+        version: true
     }).extend({
         layuimini: "layuimini"
     }).use(['element', 'layer', 'layuimini'], function () {
