@@ -111,11 +111,11 @@
 <script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
 <script>
     layui.config({
-        base: "js/"
+        base: "js/",
+        version: new Date().getTime()
     }).extend({
         layuimini: "layuimini"
-    });
-    layui.use(['element', 'layer', 'layuimini'], function () {
+    }).use(['element', 'layer', 'layuimini'], function () {
         var $ = layui.jquery,
             element = layui.element,
             layer = layui.layer;

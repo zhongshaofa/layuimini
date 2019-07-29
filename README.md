@@ -57,11 +57,11 @@ layuimini后台模板
 
  ``` js
     layui.config({
-        base: "js/"
+        base: "js/",
+        version: new Date().getTime()
     }).extend({
-        "layuimini": "layuimini"
-    });
-    layui.use(['element', 'layer', 'layuimini'], function () {
+        layuimini: "layuimini"
+    }).use(['element', 'layer', 'layuimini'], function () {
         var $ = layui.jquery,
             element = layui.element,
             layer = layui.layer;
