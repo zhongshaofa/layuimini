@@ -161,21 +161,6 @@ layuimini后台模板
   
   ## 备注信息
   * 菜单栏建议最多四级菜单，四级以后菜单显示并没有那么友好。
-  * 项目实际运用请删除 layuimini\index.html 文件内的百度统计代码。（下面的代码）
-  
-  ``` js
-<!--开始----百度统计代码，实际使用请删除-->
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?d97abf6d61c21d773f97835defbdef4e";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<!--结束----百度统计代码，实际使用请删除-->
-   ```
  
  ## 捐赠支持
  
