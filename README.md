@@ -126,10 +126,21 @@ layuimini后台模板
   
 > 四、在页面中弹出新的Tab窗口
    
-  * 如需在页面中弹出新的Tab窗口，请参考下方代码。
+  * 如需在页面中弹出新的Tab窗口，请参考下方代码。（备注：需要引入layuimini.js文件）
   * 参数说明（data-iframe-tab：页面链接，data-title：标题，data-icon：图标）
 ``` html
-<a href="javascript:;" data-iframe-tab="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
+     
+    <a href="javascript:;" data-iframe-tab="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
+    
+    <script>
+        layui.config({
+            base: "js/",
+            version: true
+        }).extend({
+            layuimini: "layuimini"
+        }).use(['layuimini'], function () {
+        });
+     </script>
  ```
   
   > 五、后台主题方案配色
