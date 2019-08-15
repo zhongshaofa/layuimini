@@ -73,7 +73,18 @@ layui.define(["element", "jquery"], function (exports) {
             sessionStorage.setItem('layuiminiHomeHref', data.href);
             $('#layuiminiHomeTabId').html('<i class="' + data.icon + '"></i> <span>' + data.title + '</span>');
             $('#layuiminiHomeTabId').attr('lay-id', data.href);
-            $('#layuiminiHomeTabIframe').html('<iframe width="100%" height="100%" frameborder="0"  src="' + data.href + '"></iframe>');
+
+            $.ajax({
+                type:"get",
+                url:data.href,
+                async:true,
+                success:function(data){
+                    console.log(data);
+                    $('.layuimini-content-page').html(data);
+                }
+            });
+
+            // $('.layuimini-content-page').html('<iframe width="100%" height="100%" frameborder="0"  src="' + data.href + '"></iframe>');
         };
 
         /**
@@ -698,12 +709,22 @@ layui.define(["element", "jquery"], function (exports) {
         if (tabId == null || tabId == undefined) {
             tabId = new Date().getTime();
         }
+
+        $.ajax({
+            type:"get",
+            url:href,
+            async:true,
+            success:function(data){
+                console.log(data);
+                $('.layuimini-content-page').html(data);
+            }
+        });
         // 判断该窗口是否已经打开过
-        var checkTab = layuimini.checkTab(tabId);
-        if (!checkTab) {
-            layuimini.addTab(tabId, href, title, true);
-        }
-        element.tabChange('layuiminiTab', tabId);
+        // var checkTab = layuimini.checkTab(tabId);
+        // if (!checkTab) {
+        //     layuimini.addTab(tabId, href, title, true);
+        // }
+        // element.tabChange('layuiminiTab', tabId);
         layuimini.initDevice();
         layuimini.tabRoll();
         layer.close(loading);
