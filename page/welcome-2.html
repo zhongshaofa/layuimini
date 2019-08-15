@@ -1,40 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>首页二</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
-    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
-    <link rel="stylesheet" href="../css/public.css" media="all">
-    <style>
-        .layui-card {border:1px solid #f2f2f2;border-radius:5px;}
-        .icon {margin-right:10px;color:#1aa094;}
-        .icon-cray {color:#ffb800!important;}
-        .icon-blue {color:#1e9fff!important;}
-        .icon-tip {color:#ff5722!important;}
-        .layuimini-qiuck-module {text-align:center;margin-top: 10px}
-        .layuimini-qiuck-module a i {display:inline-block;width:100%;height:60px;line-height:60px;text-align:center;border-radius:2px;font-size:30px;background-color:#F8F8F8;color:#333;transition:all .3s;-webkit-transition:all .3s;}
-        .layuimini-qiuck-module a cite {position:relative;top:2px;display:block;color:#666;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;font-size:14px;}
-        .welcome-module {width:100%;height:210px;}
-        .panel {background-color:#fff;border:1px solid transparent;border-radius:3px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
-        .panel-body {padding:10px}
-        .panel-title {margin-top:0;margin-bottom:0;font-size:12px;color:inherit}
-        .label {display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em;margin-top: .3em;}
-        .layui-red {color:red}
-        .main_btn > p {height:40px;}
-        .layui-bg-number {background-color:#F8F8F8;}
-        .layuimini-notice:hover {background:#f6f6f6;}
-        .layuimini-notice {padding:7px 16px;clear:both;font-size:12px !important;cursor:pointer;position:relative;transition:background 0.2s ease-in-out;}
-        .layuimini-notice-title,.layuimini-notice-label {
-            padding-right: 70px !important;text-overflow:ellipsis!important;overflow:hidden!important;white-space:nowrap!important;}
-        .layuimini-notice-title {line-height:28px;font-size:14px;}
-        .layuimini-notice-extra {position:absolute;top:50%;margin-top:-8px;right:16px;display:inline-block;height:16px;color:#999;}
-    </style>
-</head>
-<body>
+<style>
+    .layui-card {border:1px solid #f2f2f2;border-radius:5px;}
+    .icon {margin-right:10px;color:#1aa094;}
+    .icon-cray {color:#ffb800 !important;}
+    .icon-blue {color:#1e9fff !important;}
+    .icon-tip {color:#ff5722 !important;}
+    .layuimini-qiuck-module {text-align:center;margin-top:10px}
+    .layuimini-qiuck-module a i {display:inline-block;width:100%;height:60px;line-height:60px;text-align:center;border-radius:2px;font-size:30px;background-color:#F8F8F8;color:#333;transition:all .3s;-webkit-transition:all .3s;}
+    .layuimini-qiuck-module a cite {position:relative;top:2px;display:block;color:#666;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;font-size:14px;}
+    .welcome-module {width:100%;height:210px;}
+    .panel {background-color:#fff;border:1px solid transparent;border-radius:3px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+    .panel-body {padding:10px}
+    .panel-title {margin-top:0;margin-bottom:0;font-size:12px;color:inherit}
+    .label {display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em;margin-top:.3em;}
+    .layui-red {color:red}
+    .main_btn > p {height:40px;}
+    .layui-bg-number {background-color:#F8F8F8;}
+    .layuimini-notice:hover {background:#f6f6f6;}
+    .layuimini-notice {padding:7px 16px;clear:both;font-size:12px !important;cursor:pointer;position:relative;transition:background 0.2s ease-in-out;}
+    .layuimini-notice-title,.layuimini-notice-label {padding-right:70px !important;text-overflow:ellipsis !important;overflow:hidden !important;white-space:nowrap !important;}
+    .layuimini-notice-title {line-height:28px;font-size:14px;}
+    .layuimini-notice-extra {position:absolute;top:50%;margin-top:-8px;right:16px;display:inline-block;height:16px;color:#999;}
+</style>
+
 <div class="layuimini-container">
     <div class="layuimini-main">
         <div class="layui-row layui-col-space15">
@@ -356,14 +343,14 @@
                 '</div>\n';
             parent.layer.open({
                 type: 1,
-                title: '系统公告'+'<span style="float: right;right: 1px;font-size: 12px;color: #b1b3b9;margin-top: 1px">'+noticeTime+'</span>',
+                title: '系统公告' + '<span style="float: right;right: 1px;font-size: 12px;color: #b1b3b9;margin-top: 1px">' + noticeTime + '</span>',
                 area: '300px;',
                 shade: 0.8,
                 id: 'layuimini-notice',
                 btn: ['查看', '取消'],
                 btnAlign: 'c',
                 moveType: 1,
-                content:html,
+                content: html,
                 success: function (layero) {
                     var btn = layero.find('.layui-layer-btn');
                     btn.find('.layui-layer-btn0').attr({
@@ -383,7 +370,7 @@
                 trigger: 'axis'
             },
             legend: {
-                data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+                data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
             },
             grid: {
                 left: '3%',
@@ -399,52 +386,50 @@
             xAxis: {
                 type: 'category',
                 boundaryGap: false,
-                data: ['周一','周二','周三','周四','周五','周六','周日']
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
             },
             yAxis: {
                 type: 'value'
             },
             series: [
                 {
-                    name:'邮件营销',
-                    type:'line',
+                    name: '邮件营销',
+                    type: 'line',
                     stack: '总量',
-                    data:[120, 132, 101, 134, 90, 230, 210]
+                    data: [120, 132, 101, 134, 90, 230, 210]
                 },
                 {
-                    name:'联盟广告',
-                    type:'line',
+                    name: '联盟广告',
+                    type: 'line',
                     stack: '总量',
-                    data:[220, 182, 191, 234, 290, 330, 310]
+                    data: [220, 182, 191, 234, 290, 330, 310]
                 },
                 {
-                    name:'视频广告',
-                    type:'line',
+                    name: '视频广告',
+                    type: 'line',
                     stack: '总量',
-                    data:[150, 232, 201, 154, 190, 330, 410]
+                    data: [150, 232, 201, 154, 190, 330, 410]
                 },
                 {
-                    name:'直接访问',
-                    type:'line',
+                    name: '直接访问',
+                    type: 'line',
                     stack: '总量',
-                    data:[320, 332, 301, 334, 390, 330, 320]
+                    data: [320, 332, 301, 334, 390, 330, 320]
                 },
                 {
-                    name:'搜索引擎',
-                    type:'line',
+                    name: '搜索引擎',
+                    type: 'line',
                     stack: '总量',
-                    data:[820, 932, 901, 934, 1290, 1330, 1320]
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
                 }
             ]
         };
         echartsRecords.setOption(optionRecords);
 
         // echarts 窗口缩放自适应
-        window.onresize = function(){
+        window.onresize = function () {
             echartsRecords.resize();
         }
 
     });
 </script>
-</body>
-</html>
