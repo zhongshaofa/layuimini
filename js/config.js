@@ -1,3 +1,9 @@
+/**
+ * date:2019/08/16
+ * author:Mr.Chung
+ * description:此处放layui自定义扩展
+ */
+
 layui.config({
     base: "/lib/lay-module/",
     version: true
