@@ -1,4 +1,4 @@
-layuimini后台模板
+layuimini后台模板(onepage 单页版)
 ===============
 ## 项目介绍
 最简洁、清爽、易用的layui后台框架模板。
