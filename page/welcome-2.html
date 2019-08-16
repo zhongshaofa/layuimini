@@ -21,7 +21,6 @@
     .layuimini-notice-title {line-height:28px;font-size:14px;}
     .layuimini-notice-extra {position:absolute;top:50%;margin-top:-8px;right:16px;display:inline-block;height:16px;color:#999;}
 </style>
-
 <div class="layuimini-container">
     <div class="layuimini-main">
         <div class="layui-row layui-col-space15">
@@ -317,16 +316,10 @@
         </div>
     </div>
 </div>
-<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
 <script src="../lib/echarts/echarts.min.js" charset="utf-8"></script>
 <script src="../lib/echarts/echarts-theme.js" charset="utf-8"></script>
 <script>
-    layui.config({
-        base: "../js/"
-    }).extend({
-        "layuimini": "layuimini"
-    });
-    layui.use(['layer', 'layuimini'], function () {
+    layui.use(['layer'], function () {
         var $ = layui.jquery,
             layer = layui.layer;
 
@@ -334,6 +327,7 @@
          * 查看公告信息
          **/
         $('body').on('click', '.layuimini-notice', function () {
+            console.log('执行');
             var title = $(this).children('.layuimini-notice-title').text(),
                 noticeTime = $(this).children('.layuimini-notice-extra').text(),
                 content = $(this).children('.layuimini-notice-content').html();
@@ -430,6 +424,5 @@
         window.onresize = function () {
             echartsRecords.resize();
         }
-
     });
 </script>
