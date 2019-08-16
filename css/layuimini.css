@@ -118,8 +118,8 @@
     .layui-layout-admin .layui-nav.layui-layout-right>li:not(.layuimini-setting) {width:40px!important;}
     .layui-layout-admin .layui-nav.layui-layout-right>li:not(.layuimini-setting) a {padding:0 15px;}
     .layuimini-mini .layui-layout-admin .layui-body {left:0px!important;}
-    .layui-layout-admin .layui-body .clildFrame.layui-tab-content {top:0px!important;}
-    /*.layui-layout-admin .layui-body .clildFrame.layui-tab-content {overflow:scroll;able-layout:fixed;word-wrap:break-word;word-break:break-all;-webkit-overflow-scrolling:touch!important;}*/
+    .layui-layout-admin .layui-body .layuimini-content-page {top:0px!important;}
+    .layui-layout-admin .layui-body .layuimini-content-page {overflow:scroll;able-layout:fixed;word-wrap:break-word;word-break:break-all;-webkit-overflow-scrolling:touch!important;}
     .layuimini-all .layui-nav.layui-layout-right,.layuimini-mini .layui-layout-admin .layui-logo ,.layuimini-mini .layui-side.layui-bg-black,.layuimini-mini .layui-left-menu,.layui-layout-admin .layui-body #top_tabs,.layui-layout-admin .layui-body .layui-nav.closeBox{
         transition:all .2s;display:none;
     }
