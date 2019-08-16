@@ -52,11 +52,7 @@
     </div>
 </div>
 <script>
-    layui.config({
-        base: '../lib/lay-module/'
-    }).extend({
-        iconPickerFa: 'iconPicker/iconPickerFa'
-    }).use(['iconPickerFa', 'form', 'layer'], function () {
+    layui.use(['iconPickerFa', 'form', 'layer'], function () {
         var iconPickerFa = layui.iconPickerFa,
             form = layui.form,
             layer = layui.layer,

@@ -19,11 +19,7 @@
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 <script>
-    layui.config({
-        base: '../lib/lay-module/'
-    }).extend({
-        treetable: 'treetable-lay/treetable'
-    }).use(['table', 'treetable'], function () {
+    layui.use(['table', 'treetable'], function () {
         var $ = layui.jquery;
         var table = layui.table;
         var treetable = layui.treetable;

@@ -138,11 +138,7 @@
     </div>
 </div>
 <script>
-    layui.config({
-        base: '../lib/lay-module/',
-    }).extend({
-        step: 'step-lay/step'
-    }).use(['form', 'step'], function () {
+    layui.use(['form', 'step'], function () {
         var $ = layui.$,
             form = layui.form,
             step = layui.step;

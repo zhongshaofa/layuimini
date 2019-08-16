@@ -80,14 +80,10 @@
     </div>
 
 </div>
-<script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script src="lib/layui-v2.5.4/layui.js?v=1.0.4" charset="utf-8"></script>
+<script src="js/config.js?v=1.0.4" charset="utf-8"></script>
 <script>
-    layui.config({
-        base: "js/",
-        version: true
-    }).extend({
-        layuimini: "layuimini"
-    }).use(['element', 'layer', 'layuimini'], function () {
+    layui.use(['element', 'layer', 'layuimini'], function () {
         var $ = layui.jquery,
             element = layui.element,
             layer = layui.layer;
