@@ -197,13 +197,13 @@
                   "child": [
                     {
                       "title": "按钮3",
-                      "href": "page/button.html",
+                      "href": "page/button.html?v=3",
                       "icon": "fa fa-snowflake-o",
                       "target": "_self"
                     },
                     {
                       "title": "表单4",
-                      "href": "page/form.html",
+                      "href": "page/form.html?v=3",
                       "icon": "fa fa-calendar",
                       "target": "_self"
                     }
