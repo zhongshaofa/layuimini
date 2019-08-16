@@ -525,31 +525,16 @@ layui.define(["element", "jquery", "layer"], function (exports) {
          * 刷新
          */
         $('body').on('click', '[data-refresh]', function () {
-            element.init();
-            layuimini.msg_success('刷新成功');
-        });
-
-        /**
-         * 选项卡操作
-         */
-        $('body').on('click', '[data-page-close]', function () {
             var loading = layer.load(0, {shade: false, time: 2 * 1000});
-            var closeType = $(this).attr('data-page-close');
-            $(".layui-tab-title li").each(function () {
-                tabId = $(this).attr('lay-id');
-                var id = $(this).attr('id');
-                if (id != 'layuiminiHomeTabId') {
-                    var tabClass = $(this).attr('class');
-                    if (closeType == 'all') {
-                        layuimini.delTab(tabId);
-                    } else {
-                        if (tabClass != 'layui-this') {
-                            layuimini.delTab(tabId);
-                        }
-                    }
-                }
-            });
-            layer.close(loading);
+            var locationHref = window.location.href;
+            var urlArr = locationHref.split("#/");
+            if (urlArr.length >= 2) {
+                var href = urlArr.pop();
+                $('.layuimini-content-page').html('');
+                console.log('layuimini-content-page');
+                layuimini.initConten('.layuimini-content-page', href);
+            };
+            layuimini.msg_success('刷新成功');
         });
 
         /**
