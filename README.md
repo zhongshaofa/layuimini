@@ -7,10 +7,16 @@ layuimini后台模板(onepage 单页版)
 
 技术交流QQ群：[561838086](https://jq.qq.com/?_wv=1027&k=5JRGVfe) `加群请备注来源：如gitee、github、官网等`。
 
-## 代码仓库
+## 代码仓库(onepage 单页版)
+ * 在线预览地址：[http://layuimini-onepage.99php.cn](http://layuimini-onepage.99php.cn)
+ * GitHub仓库地址：[https://github.com/zhongshaofa/layuimini](https://github.com/zhongshaofa/layuimini/tree/onepage)
+ * Gitee仓库地址：[https://gitee.com/zhongshaofa/layuimini/tree/onepage](https://gitee.com/zhongshaofa/layuimini/tree/onepage)
+
+## 代码仓库(iframe 多tab版)
  * 在线预览地址：[http://layuimini.99php.cn](http://layuimini.99php.cn)
  * GitHub仓库地址：[https://github.com/zhongshaofa/layuimini](https://github.com/zhongshaofa/layuimini)
  * Gitee仓库地址：[https://gitee.com/zhongshaofa/layuimini](https://gitee.com/zhongshaofa/layuimini)
+
 
 ## 主要特性
 * 界面足够简洁清爽，响应式且适配手机端。
@@ -49,25 +55,22 @@ layuimini后台模板(onepage 单页版)
 
  * 在`index.html`文件内进行初始化
 
- * `base: "js/"`  填写layuimini.js对应的目录。
+ * 引入`lay-config.js`文件，请根据实际情况修改里面扩展的路径。
 
  * `layuimini.init();` 方法内的参数请填写动态api地址。（实际应用中建议后端api做缓存）
 
  * 初始化api地址返回的参数可以参考`api目录下的init.json文件`或者查看使用说明的第二点的参数说明
 
  ``` js
-    layui.config({
-        base: "js/",
-        version: true
-    }).extend({
-        layuimini: "layuimini"
-    }).use(['element', 'layer', 'layuimini'], function () {
+ 
+    layui.use(['element', 'layer', 'layuimini'], function () {
         var $ = layui.jquery,
             element = layui.element,
             layer = layui.layer;
 
         layuimini.init('api/init.json');
     });
+    
  ```
  
  > 三、初始化api地址返回的参数说明
@@ -124,23 +127,14 @@ layuimini后台模板(onepage 单页版)
 }
   ```
   
-> 四、在页面中弹出新的Tab窗口
+> 四、在页面中打开新页面
    
-  * 如需在页面中弹出新的Tab窗口，请参考下方代码。（备注：需要引入layuimini.js文件）
+  * 如需在页面中弹出新的Tab窗口，请参考下方代码。
   * 参数说明（data-iframe-tab：页面链接，data-title：标题，data-icon：图标）
 ``` html
      
-    <a href="javascript:;" data-iframe-tab="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
-    
-    <script>
-        layui.config({
-            base: "js/",
-            version: true
-        }).extend({
-            layuimini: "layuimini"
-        }).use(['layuimini'], function () {
-        });
-     </script>
+    <a href="javascript:;" data-content-href="page/user-setting.html" data-title="基本资料">基本资料</a>
+
  ```
   
   > 五、后台主题方案配色
