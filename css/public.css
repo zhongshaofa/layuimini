@@ -1,6 +1,7 @@
 .layuimini-content-page{background-color:#f2f2f2!important;}
 .layuimini-container {border:1px solid #f2f2f2;border-radius:5px;background-color:#f2f2f2}
 .layuimini-main {margin:10px 10px 10px 10px;border:5px solid #ffffff;border-radius:5px;background-color:#ffffff}
+.layui-breadcrumb>* {font-size: 13px;!important;}
 
 /**必填红点 */
 .layuimini-form>.layui-form-item>.required:after {content:'*';color:red;position:absolute;margin-left:4px;font-weight:bold;line-height:1.8em;top:6px;right:5px;}
