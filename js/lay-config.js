@@ -4,16 +4,13 @@
  * description:此处放layui自定义扩展
  */
 
-window.rootPath = (function () {
-    var curWwwPath = window.document.location.href,
-        pathName = window.document.location.pathname;
-    var localhostPaht = curWwwPath.substring(0, curWwwPath.indexOf(pathName)),
-        projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
-    return localhostPaht + projectName;
+window.rootPath = (function (src) {
+    src = document.scripts[document.scripts.length - 1].src;
+    return src.substring(0, src.lastIndexOf("/") + 1);
 })();
 
 layui.config({
-    base: rootPath + "/lib/lay-module/",
+    base: rootPath + "lay-module/",
     version: true
 }).extend({
     layuimini: "layuimini/layuimini", // layuimini扩展
