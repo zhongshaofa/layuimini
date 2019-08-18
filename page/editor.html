@@ -42,15 +42,15 @@
 
     </div>
 </div>
-<script type="text/javascript" src="../lib/wangEditor-3.1.1/wangEditor.js"></script>
+<!--<script type="text/javascript" src="../lib/wangEditor-3.1.1/wangEditor.js"></script>-->
 <script type="text/javascript">
-    layui.use('layer', function () {
+    layui.use(['layer','wangEditor'], function () {
         var $ = layui.jquery,
-            layer = layui.layer;
+            layer = layui.layer,
+            wangEditor = layui.wangEditor;
 
-        var E = window.wangEditor;
-        var editor = new E('#editor');
-        editor.customConfig.uploadImgServer = "../api/upload.json";
+        var editor = new wangEditor('#editor');
+        editor.customConfig.uploadImgServer = "api/upload.json";
         editor.customConfig.uploadFileName = 'image';
         editor.customConfig.pasteFilterStyle = false;
         editor.customConfig.uploadImgMaxLength = 5;

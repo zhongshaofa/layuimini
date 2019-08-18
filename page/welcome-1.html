@@ -316,12 +316,11 @@
         </div>
     </div>
 </div>
-<script src="../lib/echarts/echarts.min.js" charset="utf-8"></script>
-<script src="../lib/echarts/echarts-theme.js" charset="utf-8"></script>
 <script>
-    layui.use(['layer'], function () {
+    layui.use(['layer','echarts'], function () {
         var $ = layui.jquery,
-            layer = layui.layer;
+            layer = layui.layer,
+            echarts = layui.echarts;
 
         /**
          * 查看公告信息
