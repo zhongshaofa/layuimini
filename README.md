@@ -1,4 +1,4 @@
-layuimini后台模板
+layuimini后台模板(iframe 多tab版)
 ===============
 ## 项目介绍
 最简洁、清爽、易用的layui后台框架模板。
@@ -7,10 +7,16 @@ layuimini后台模板
 
 技术交流QQ群：[561838086](https://jq.qq.com/?_wv=1027&k=5JRGVfe) `加群请备注来源：如gitee、github、官网等`。
 
-## 代码仓库
+## 代码仓库(iframe 多tab版)
  * 在线预览地址：[http://layuimini.99php.cn](http://layuimini.99php.cn)
  * GitHub仓库地址：[https://github.com/zhongshaofa/layuimini](https://github.com/zhongshaofa/layuimini)
  * Gitee仓库地址：[https://gitee.com/zhongshaofa/layuimini](https://gitee.com/zhongshaofa/layuimini)
+ 
+ ## 代码仓库(onepage 单页版)
+  * 在线预览地址：[http://layuimini-onepage.99php.cn](http://layuimini-onepage.99php.cn)
+  * GitHub仓库地址：[https://github.com/zhongshaofa/layuimini/tree/onepage](https://github.com/zhongshaofa/layuimini/tree/onepage)
+  * Gitee仓库地址：[https://gitee.com/zhongshaofa/layuimini/tree/onepage](https://gitee.com/zhongshaofa/layuimini/tree/onepage)
+
 
 ## 主要特性
 * 界面足够简洁清爽，响应式且适配手机端。
@@ -49,25 +55,22 @@ layuimini后台模板
 
  * 在`index.html`文件内进行初始化
 
- * `base: "js/"`  填写layuimini.js对应的目录。
+ * 引入`lay-config.js`文件，请根据实际情况修改里面扩展的路径。
 
  * `layuimini.init();` 方法内的参数请填写动态api地址。（实际应用中建议后端api做缓存）
 
  * 初始化api地址返回的参数可以参考`api目录下的init.json文件`或者查看使用说明的第二点的参数说明
 
  ``` js
-    layui.config({
-        base: "js/",
-        version: true
-    }).extend({
-        layuimini: "layuimini"
-    }).use(['element', 'layer', 'layuimini'], function () {
+ 
+    layui.use(['element', 'layer', 'layuimini'], function () {
         var $ = layui.jquery,
             element = layui.element,
             layer = layui.layer;
 
         layuimini.init('api/init.json');
     });
+    
  ```
  
  > 三、初始化api地址返回的参数说明

@@ -59,15 +59,15 @@
 </div>
 
 <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
-<script type="text/javascript" src="../lib/wangEditor-3.1.1/wangEditor.js"></script>
 <script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script type="text/javascript">
-    layui.use('layer', function () {
+    layui.use(['layer','wangEditor'], function () {
         var $ = layui.jquery,
-            layer = layui.layer;
+            layer = layui.layer,
+            wangEditor = layui.wangEditor;
 
-        var E = window.wangEditor;
-        var editor = new E('#editor');
+        var editor = new wangEditor('#editor');
         editor.customConfig.uploadImgServer = "../api/upload.json";
         editor.customConfig.uploadFileName = 'image';
         editor.customConfig.pasteFilterStyle = false;

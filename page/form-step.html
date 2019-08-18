@@ -150,12 +150,9 @@
     </div>
 </div>
 <script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>
-    layui.config({
-        base: '../lib/lay-module/',
-    }).extend({
-        step: 'step-lay/step'
-    }).use([ 'form', 'step'], function () {
+    layui.use([ 'form', 'step'], function () {
         var $ = layui.$,
             form = layui.form,
             step = layui.step;

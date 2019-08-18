@@ -62,12 +62,9 @@
     </div>
 </div>
 <script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>
-    layui.config({
-        base: '../lib/lay-module/'
-    }).extend({
-        iconPickerFa: 'iconPicker/iconPickerFa'
-    }).use(['iconPickerFa', 'form', 'layer'], function () {
+    layui.use(['iconPickerFa', 'form', 'layer'], function () {
         var iconPickerFa = layui.iconPickerFa,
             form = layui.form,
             layer = layui.layer,
@@ -77,7 +74,7 @@
             // 选择器，推荐使用input
             elem: '#iconPicker',
             // fa 图标接口
-            url: "/lib/font-awesome-4.7.0/less/variables.less",
+            url: rootPath + "/lib/font-awesome-4.7.0/less/variables.less",
             // 是否开启搜索：true/false，默认true
             search: true,
             // 是否开启分页：true/false，默认true
@@ -98,7 +95,7 @@
             // 选择器，推荐使用input
             elem: '#iconPicker1',
             // fa 图标接口
-            url: "/lib/font-awesome-4.7.0/less/variables.less",
+            url: rootPath + "/lib/font-awesome-4.7.0/less/variables.less",
             // 是否开启搜索：true/false
             search: true,
             // 是否开启分页

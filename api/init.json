@@ -5,7 +5,7 @@
   "homeInfo": {
     "title": "首页",
     "icon": "fa fa-home",
-    "href": "page/welcome-2.html?mpi=m-p-i-0"
+    "href": "page/welcome-1.html?mpi=m-p-i-0"
   },
   "logoInfo": {
     "title": "LayuiMini",
@@ -25,13 +25,13 @@
           "child": [
             {
               "title": "主页一",
-              "href": "page/welcome-2.html",
+              "href": "page/welcome-1.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
               "title": "主页二",
-              "href": "page/welcome-1.html",
+              "href": "page/welcome-2.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }

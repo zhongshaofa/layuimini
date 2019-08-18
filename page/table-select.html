@@ -56,12 +56,9 @@
 </div>
 
 <script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>
-    layui.config({
-        base: '../lib/lay-module/'
-    }).extend({
-        tableSelect: 'tableSelect/tableSelect'
-    }).use(['table', 'form', 'tableSelect'], function () {
+    layui.use(['table', 'form', 'tableSelect'], function () {
         var $ = layui.jquery,
             table = layui.table,
             form = layui.form,
