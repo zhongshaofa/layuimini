@@ -762,11 +762,11 @@ layui.define(["element", "jquery"], function (exports) {
         $parent = $(this).parent();
         menuId = $(this).attr('data-menu');
         // header
-        $(".layui-nav-item.layui-this").removeClass('layui-this');
+        $(".layui-header-menu .layui-nav-item.layui-this").removeClass('layui-this');
         $(this).addClass('layui-this');
         // left
-        $(".layui-nav.layui-nav-tree.layui-this").addClass('layui-hide');
-        $(".layui-nav.layui-nav-tree.layui-this.layui-hide").removeClass('layui-this');
+        $(".layui-left-menu .layui-nav.layui-nav-tree.layui-this").addClass('layui-hide');
+        $(".layui-left-menu .layui-nav.layui-nav-tree.layui-this.layui-hide").removeClass('layui-this');
         $("#" + menuId).removeClass('layui-hide');
         $("#" + menuId).addClass('layui-this');
         layer.close(loading);
