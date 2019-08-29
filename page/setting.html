@@ -79,6 +79,11 @@
         var form = layui.form
             , layer = layui.layer;
 
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+
         //监听提交
         form.on('submit(setting)', function (data) {
             parent.layer.alert(JSON.stringify(data.field), {

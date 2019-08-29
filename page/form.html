@@ -435,6 +435,11 @@
             , layedit = layui.layedit
             , laydate = layui.laydate;
 
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+
         //日期
         laydate.render({
             elem: '#date'
