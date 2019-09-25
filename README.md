@@ -43,6 +43,7 @@ layuimini后台模板(iframe 多tab版)
 * urlHashLocation：是否开启URL地址hash定位，默认开启。`关闭后，刷新页面后将定位不到当前页，只显示主页`
 * urlSuffixDefault：是否开启URL后缀，默认开启。
 * BgColorDefault：系统默认皮肤，从0开始。
+* checkUrlDefault：是否判断URL有效，默认开启。
    ``` js
        var config = {
              urlHashLocation: true,  // URL地址hash定位
