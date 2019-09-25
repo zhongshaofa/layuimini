@@ -26,7 +26,8 @@ layui.define(["element", "jquery"], function (exports) {
             var config = {
                 urlHashLocation: true,   // URL地址hash定位
                 urlSuffixDefault: true, // URL后缀
-                BgColorDefault: 0       // 默认皮肤（0开始）
+                BgColorDefault: 0,       // 默认皮肤（0开始）
+                checkUrlDefault: true,   // 是否判断URL有效
             };
 
             if (name == undefined) {
@@ -523,6 +524,9 @@ layui.define(["element", "jquery"], function (exports) {
          * @returns {boolean}
          */
         this.checkUrl = function (url) {
+            if (!layuimini.config('checkUrlDefault')) {
+                return true;
+            }
             var msg = true;
             $.ajax({
                 url: url,

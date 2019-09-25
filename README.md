@@ -45,9 +45,10 @@ layuimini后台模板(iframe 多tab版)
 * BgColorDefault：系统默认皮肤，从0开始。
    ``` js
        var config = {
-             urlHashLocation: true,   // URL地址hash定位
+             urlHashLocation: true,  // URL地址hash定位
              urlSuffixDefault: true, // URL后缀
-             BgColorDefault: 0       // 默认皮肤（0开始）
+             BgColorDefault: 0,      // 默认皮肤（0开始）
+             checkUrlDefault: true,  // 是否判断URL有效
           };
     ```
 
