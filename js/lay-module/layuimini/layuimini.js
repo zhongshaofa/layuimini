@@ -899,6 +899,9 @@ layui.define(["element", "jquery"], function (exports) {
             area: ['340px', clientHeight + 'px'],
             offset: 'rb',
             content: html,
+            end:function () {
+                $('.layuimini-select-bgcolor').removeClass('layui-this');
+            }
         });
         layer.close(loading);
     });
