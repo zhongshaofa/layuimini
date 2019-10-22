@@ -35,7 +35,7 @@ layuimini后台模板
 
 ## 使用说明
 
-文档地址：[查看](https://github.com/zhongshaofa/layuimini/wiki) `iframe和onepage的使用说明都在这里`
+文档地址：[查看文档](https://github.com/zhongshaofa/layuimini/wiki)
  
  ## 捐赠支持
  
@@ -43,4 +43,4 @@ layuimini后台模板
 
  ![Image text](https://chung-common.oss-cn-beijing.aliyuncs.com/donate_qrcode.png)
 
-捐赠名单：[查看](https://github.com/zhongshaofa/layuimini/wiki/donate) 
+捐赠名单：[查看名单](https://github.com/zhongshaofa/layuimini/wiki/donate) 
