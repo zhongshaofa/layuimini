@@ -17,7 +17,7 @@
 
 /**头部样式 */
 .layui-layout-admin .header {position: fixed;left: 0;right: 0;top: 0;bottom: 0;}
-.layui-header-menu,.layui-header {height:60px;!important;}
+.layui-header-menu,.layui-header {height:60px!important;}
 .layui-header-menu > .layui-nav-item {color:#1b1d21;height:60px !important;line-height:60px !important;}
 .layui-header > .layui-layout-right > .layui-nav-item {height:60px !important;line-height:60px !important;}
 .layui-layout-left {left:295px!important;}
@@ -100,7 +100,7 @@
 .layui-nav .layui-this:after,.layui-nav-bar,.layui-nav-tree .layui-nav-itemed:after {width:0 !important;height:0 !important;}
 .layui-layout-admin .layui-side {top:60px !important;}
 .layui-tab-card {box-shadow:0px 0px 0px #888888;border-bottom:0;}
-.clildFrame.layui-tab-content {top:35px;position:absolute;bottom:5px;width:100%;padding:0;}
+.clildFrame.layui-tab-content {top:35px;position:absolute;bottom:0px;width:100%;padding:0;}
 * {touch-action:pan-y;}
 
 /**自定义滚动条样式 */
