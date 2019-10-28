@@ -87,7 +87,7 @@
 .layuimini-mini .layui-left-menu .layui-nav .layui-nav-item a {height:40px;line-height:40px;padding-right:0px!important;}
 
 /**内容主体（通用） */
-.layui-layout-admin .layui-body {overflow:hidden;bottom:0px !important;top:60px !important;transition:all .2s;}
+.layui-layout-admin .layui-body {overflow:hidden;bottom:1px !important;top:60px !important;transition:all .2s;}
 /**内容主体（缩放） */
 .layuimini-mini .layui-layout-admin .layui-body {left:60px!important;}
 
