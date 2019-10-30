@@ -21,7 +21,14 @@ layui.define(['table', 'jquery', 'form'], function (exports) {
         opt.searchPlaceholder = opt.searchPlaceholder || '关键词搜索';
         opt.checkedKey = opt.checkedKey;
         opt.table.page = opt.table.page || true;
-        opt.table.height = opt.table.height || 315;
+        opt.table.height = opt.height || 315;
+
+        //最小宽度
+        opt.width = opt.width || '530';
+
+        //多搜索条件
+        opt.searchType = opt.searchType || 'one';
+        opt.searchList = opt.searchList || [{key: opt.searchKey, placeholder: opt.searchPlaceholder}];
 
         elem.off('click').on('click', function(e) {
             e.stopPropagation();
@@ -33,10 +40,20 @@ layui.define(['table', 'jquery', 'form'], function (exports) {
             var t = elem.offset().top + elem.outerHeight()+"px";
             var l = elem.offset().left +"px";
             var tableName = "tableSelect_table_" + new Date().getTime();
-            var tableBox = '<div class="tableSelect layui-anim layui-anim-upbit" style="left:'+l+';top:'+t+';border: 1px solid #d2d2d2;background-color: #fff;box-shadow: 0 2px 4px rgba(0,0,0,.12);padding:10px 10px 0 10px;position: absolute;z-index:66666666;margin: 5px 0;border-radius: 2px;min-width:530px;">';
+            var tableBox = '<div class="tableSelect layui-anim layui-anim-upbit" style="left:'+l+';top:'+t+';border: 1px solid #d2d2d2;background-color: #fff;box-shadow: 0 2px 4px rgba(0,0,0,.12);padding:10px 10px 0 10px;position: absolute;z-index:66666666;margin: 5px 0;border-radius: 2px;min-width:'+opt.width+'px;">';
             tableBox += '<div class="tableSelectBar">';
             tableBox += '<form class="layui-form" action="" style="display:inline-block;">';
-            tableBox += '<input style="display:inline-block;width:190px;height:30px;vertical-align:middle;margin-right:-1px;border: 1px solid #C9C9C9;" type="text" name="'+opt.searchKey+'" placeholder="'+opt.searchPlaceholder+'" autocomplete="off" class="layui-input"><button class="layui-btn layui-btn-sm layui-btn-primary tableSelect_btn_search" lay-submit lay-filter="tableSelect_btn_search"><i class="layui-icon layui-icon-search"></i></button>';
+
+            //判断是否多搜索条件
+            if(opt.searchType == 'more'){
+                $.each(opt.searchList, function (index, item) {
+                    tableBox += '<input style="display:inline-block;width:190px;height:30px;vertical-align:middle;margin-right:-1px;border: 1px solid #C9C9C9;" type="text" name="'+item.searchKey+'" placeholder="'+item.searchPlaceholder+'" autocomplete="off" class="layui-input">';
+                });
+            }else{
+                tableBox += '<input style="display:inline-block;width:190px;height:30px;vertical-align:middle;margin-right:-1px;border: 1px solid #C9C9C9;" type="text" name="'+opt.searchKey+'" placeholder="'+opt.searchPlaceholder+'" autocomplete="off" class="layui-input">';
+            }
+
+            tableBox += '<button class="layui-btn layui-btn-sm layui-btn-primary tableSelect_btn_search" lay-submit lay-filter="tableSelect_btn_search"><i class="layui-icon layui-icon-search"></i></button>';
             tableBox += '</form>';
             tableBox += '<button style="float:right;" class="layui-btn layui-btn-sm tableSelect_btn_select">选择<span></span></button>';
             tableBox += '</div>';
