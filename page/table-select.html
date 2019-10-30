@@ -23,12 +23,21 @@
                 </div>
                 <div class="layui-form-mid layui-word-aux">本地演示数据，分页选中和其他页一样，这不是BUG</div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label">单选</label>
                 <div class="layui-input-inline">
                     <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="demo2">
                 </div>
             </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">自定义</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="demo3">
+                </div>
+            </div>
+
         </form>
 
         <pre class="layui-code">
@@ -90,6 +99,29 @@
 
         tableSelect.render({
             elem: '#demo2',
+            searchKey: 'name',
+            checkedKey: 'id',
+            searchPlaceholder: '自定义文字和name',
+            table: {
+                url: '../api/tableSelect.json',
+                cols: [[
+                    { type: 'radio' },
+                    { field: 'id', title: 'ID' },
+                    { field: 'username', title: '姓名' },
+                    { field: 'sex', title: '性别' }
+                ]]
+            },
+            done: function (elem, data) {
+                var NEWJSON = []
+                layui.each(data.data, function (index, item) {
+                    NEWJSON.push(item.username)
+                })
+                elem.val(NEWJSON.join(","))
+            }
+        })
+
+        tableSelect.render({
+            elem: '#demo3',
             checkedKey: 'id',
             table: {
                 url: '../api/tableSelect.json',
