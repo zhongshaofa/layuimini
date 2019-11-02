@@ -302,8 +302,11 @@
 }
 
 /**左侧菜单栏（缩放） */
+.layuimini-mini .layui-left-menu {
+    width: 80px !important;
+}
+
 .layuimini-mini .layui-side.layui-bg-black,
-.layuimini-mini .layui-left-menu,
 .layuimini-mini .layui-left-menu>ul,
 .layuimini-mini .layui-left-menu>ul li i {
     width: 60px !important;
