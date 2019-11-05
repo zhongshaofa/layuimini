@@ -50,7 +50,7 @@
 #top_tabs_box>.layui-tab-title>.layui-this>i:first-child {color:#009688;}
 #top_tabs_box>.layui-tab-title li {border-right:1px solid #e2e2e2;font-size: 12.5px!important;}
 #top_tabs_box>.layui-tab-title .layui-this {color:#000000;}
-.layui-tab-title .layui-this:after {border:none;}
+#top_tabs_box>.layui-tab-title .layui-this:after {margin-top:33px;width: 100%;border: none;height: 2px;background-color: #243346;}
 #top_tabs_box {padding-right:138px;height:34px;border-bottom:1px solid #e2e2e2;}
 #top_tabs_box > .layui-tab-title ,#top_tabs_box > .closeBox {height:35px !important;}
 #top_tabs_box > .layui-tab-title > li ,#top_tabs_box > .closeBox > li {line-height:35px !important;}
