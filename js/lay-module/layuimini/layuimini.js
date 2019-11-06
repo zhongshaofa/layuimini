@@ -27,7 +27,7 @@ layui.define(["element", "jquery"], function (exports) {
                 urlHashLocation: true,   // URL地址hash定位
                 urlSuffixDefault: true, // URL后缀
                 BgColorDefault: 0,       // 默认皮肤（0开始）
-                checkUrlDefault: true,   // 是否判断URL有效
+                checkUrlDefault: false,   // 是否判断URL有效
             };
 
             if (name == undefined) {
