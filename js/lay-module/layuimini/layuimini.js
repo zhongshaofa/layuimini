@@ -472,14 +472,27 @@ layui.define(["element", "jquery"], function (exports) {
         /**
          * 删除窗口
          * @param tabId
+         * @param isParent
          */
-        this.delTab = function (tabId) {
+        this.delTab = function (tabId, isParent) {
             var layuiminiTabInfo = JSON.parse(sessionStorage.getItem("layuiminiTabInfo"));
             if (layuiminiTabInfo != null) {
                 delete layuiminiTabInfo[tabId];
                 sessionStorage.setItem("layuiminiTabInfo", JSON.stringify(layuiminiTabInfo))
             }
-            element.tabDelete('layuiminiTab', tabId);
+            if (isParent === true) {
+                parent.layui.element.tabDelete('layuiminiTab', tabId);
+            } else {
+                element.tabDelete('layuiminiTab', tabId);
+            }
+        };
+
+        this.closeCurrentTab = function(){
+            var ele = $("#top_tabs li.layui-this", parent.document);
+            if (ele.length > 0) {
+                var layId = $(ele[0]).attr('lay-id');
+                layuimini.delTab(layId,true);
+            }
         };
 
         /**
