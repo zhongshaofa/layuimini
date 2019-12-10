@@ -114,6 +114,25 @@
 .clildFrame.layui-tab-content {top:35px;position:absolute;bottom:0px;width:100%;padding:0;}
 * {touch-action:pan-y;}
 
+/*打开页面动画*/
+.layui-tab-item.layui-show{ animation:moveTop 1s; -webkit-animation:moveTop 1s; animation-fill-mode:both; -webkit-animation-fill-mode:both; position:relative; height:100%; -webkit-overflow-scrolling: touch; overflow:auto; }
+@keyframes moveTop{
+    0% {opacity: 0;-webkit-transform: translateY(30px);-ms-transform: translateY(30px);transform: translateY(30px);}
+    100% {opacity: 1;-webkit-transform: translateY(0);-ms-transform: translateY(0);transform: translateY(0);}
+}
+@-o-keyframes moveTop{
+    0% {opacity: 0;-webkit-transform: translateY(30px);-ms-transform: translateY(30px);transform: translateY(30px);}
+    100% {opacity: 1;-webkit-transform: translateY(0);-ms-transform: translateY(0);transform: translateY(0);}
+}
+@-moz-keyframes moveTop{
+    0% {opacity: 0;-webkit-transform: translateY(30px);-ms-transform: translateY(30px);transform: translateY(30px);}
+    100% {opacity: 1;-webkit-transform: translateY(0);-ms-transform: translateY(0);transform: translateY(0);}
+}
+@-webkit-keyframes moveTop{
+    0% {opacity: 0;-webkit-transform: translateY(30px);-ms-transform: translateY(30px);transform: translateY(30px);}
+    100% {opacity: 1;-webkit-transform: translateY(0);-ms-transform: translateY(0);transform: translateY(0);}
+}
+
 
 /**
  手机自适应样式
