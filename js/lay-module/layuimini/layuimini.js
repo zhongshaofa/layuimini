@@ -487,6 +487,9 @@ layui.define(["element", "jquery"], function (exports) {
             }
         };
 
+        /**
+         * 在iframe层关闭当前tab方法
+         */
         this.closeCurrentTab = function(){
             var ele = $("#top_tabs li.layui-this", parent.document);
             if (ele.length > 0) {
