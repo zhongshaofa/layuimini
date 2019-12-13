@@ -102,6 +102,7 @@ layui.define(["element", "jquery", "layer"], function (exports) {
             this.initPageTitle = function (href, title) {
                 window.pageHeader = (title == undefined || title == '' || title == null) ? [] : [title];
                 $("[data-one-page]").each(function () {
+                    console.log(this);
                     if ($(this).attr("data-one-page") == href) {
                         var addMenuClass = function ($element, type) {
                             if (type == 1) {
@@ -154,7 +155,8 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                         }
                         $('.layuimini-page-header').removeClass('layui-hide');
                         $('#layuimini-page-header').empty().html(pageHeaderHtml);
-                        return false;
+                    } else {
+                        $(this).parent().removeClass('layui-this');
                     }
                 });
             };
@@ -187,9 +189,6 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                     type: 'get',
                     dataType: 'html',
                     success: function (data) {
-                        if (isHash == undefined || isHash == true) {
-                            window.location.hash = "/" + href;
-                        }
                         $(container).html(data);
                     },
                     error: function (xhr, textstatus, thrown) {
@@ -434,18 +433,20 @@ layui.define(["element", "jquery", "layer"], function (exports) {
              * 使用js打开新页面
              * @param href
              * @param title
-             * @param target
              * @returns {boolean}
              */
-            this.href = function (href, title, target) {
-                if (target == '_blank') {
-                    layer.close(loading);
-                    window.open(href, "_blank");
-                    return false;
-                }
-                layuimini.initPageTitle(href, title);
+            this.href = function (href, title) {
+                layuimini.initPageTitle(href,title);
                 layuimini.initConten(href);
                 layuimini.initDevice();
+            };
+
+            /**
+             * hash地址定位
+             * @param href
+             */
+            this.hash = function (href) {
+                window.location.hash = "/" + href;
             };
 
             /**
@@ -458,6 +459,21 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                     var href = urlArr.pop();
                     layuimini.initConten(href);
                 }
+            };
+
+            /**
+             * 监听hash地址变化
+             */
+            this.listen = function () {
+                window.onhashchange = function (hash) {
+                    var locationHref = window.location.href;
+                    var urlArr = locationHref.split("#/");
+                    if (urlArr.length >= 2) {
+                        var href = urlArr.pop();
+                        layuimini.initConten(href);
+                        layuimini.initPageTitle(href);
+                    }
+                };
             };
 
             /**
@@ -504,16 +520,13 @@ layui.define(["element", "jquery", "layer"], function (exports) {
         $('body').on('click', '[data-one-page]', function () {
             var loading = layer.load(0, {shade: false, time: 2 * 1000});
             var href = $(this).attr('data-one-page'),
-                title = $(this).text(),
                 target = $(this).attr('target');
             if (target == '_blank') {
                 layer.close(loading);
                 window.open(href, "_blank");
                 return false;
             }
-            layuimini.initPageTitle(href, title);
-            layuimini.initConten(href);
-            layuimini.initDevice();
+            layuimini.hash(href);
             layer.close(loading);
         });
 
@@ -523,9 +536,13 @@ layui.define(["element", "jquery", "layer"], function (exports) {
         $('body').on('click', '[data-content-href]', function () {
             var loading = layer.load(0, {shade: false, time: 2 * 1000});
             var href = $(this).attr('data-content-href'),
-                title = $(this).attr('data-title'),
                 target = $(this).attr('target');
-            layuimini.href(href, title, target);
+            if (target == '_blank') {
+                layer.close(loading);
+                window.open(href, "_blank");
+                return false;
+            }
+            layuimini.hash(href);
             layer.close(loading);
         });
 

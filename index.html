@@ -99,7 +99,8 @@
     layui.use(['element', 'layer', 'layuimini'], function () {
         var $ = layui.jquery,
             element = layui.element,
-            layer = layui.layer;
+            layer = layui.layer,
+            layuimini = layui.layuimini;
 
         layuimini.init('api/init.json');
 
@@ -110,9 +111,13 @@
         });
 
         // 监听浏览器前进后退
-        $(window).on('popstate', function () {
-            location.reload();
-        });
+        // if (window.history && window.history.pushState) {
+        //     $(window).on('popstate', function () {
+        //         layuimini.refresh();
+        //     });
+        // }
+
+        layuimini.listen();
 
     });
 </script>
