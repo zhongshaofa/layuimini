@@ -108,6 +108,12 @@
                 window.location = '/page/login-1.html';
             });
         });
+
+        // 监听浏览器前进后退
+        $(window).on('popstate', function () {
+            location.reload();
+        });
+
     });
 </script>
 </body>
