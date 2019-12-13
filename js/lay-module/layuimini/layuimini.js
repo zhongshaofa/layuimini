@@ -102,7 +102,6 @@ layui.define(["element", "jquery", "layer"], function (exports) {
             this.initPageTitle = function (href, title) {
                 window.pageHeader = (title == undefined || title == '' || title == null) ? [] : [title];
                 $("[data-one-page]").each(function () {
-                    console.log(this);
                     if ($(this).attr("data-one-page") == href) {
                         var addMenuClass = function ($element, type) {
                             if (type == 1) {
@@ -121,8 +120,9 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                                     pageHeader.push(moduleTile);
                                     $(".layui-header-menu li").attr('class', 'layui-nav-item');
                                     $("#" + moduleId + "HeaderId").addClass("layui-this");
-                                    $(".layui-left-nav-tree").attr('class', 'layui-nav layui-nav-tree layui-hide');
-                                    $("#" + moduleId).attr('class', 'layui-nav layui-nav-tree layui-this');
+                                    // $(".layuimini-left-ul").removeClass('layui-this');
+                                    $(".layui-left-nav-tree").attr('class', 'layui-nav layui-nav-tree layui-left-nav-tree layui-hide');
+                                    $("#" + moduleId).attr('class', 'layui-nav layui-nav-tree layui-left-nav-tree layui-this');
                                 }
                             } else {
                                 $element.addClass('layui-nav-itemed');
@@ -138,8 +138,8 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                                     pageHeader.push(moduleTile);
                                     $(".layui-header-menu li").attr('class', 'layui-nav-item');
                                     $("#" + moduleId + "HeaderId").addClass("layui-this");
-                                    $(".layui-left-nav-tree").attr('class', 'layui-nav layui-nav-tree layui-hide');
-                                    $("#" + moduleId).attr('class', 'layui-nav layui-nav-tree layui-this');
+                                    $(".layui-left-nav-tree").attr('class', 'layui-nav layui-nav-tree layui-left-nav-tree layui-hide');
+                                    $("#" + moduleId).attr('class', 'layui-nav layui-nav-tree layui-left-nav-tree layui-this');
                                 }
                             }
                         };
@@ -155,6 +155,7 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                         }
                         $('.layuimini-page-header').removeClass('layui-hide');
                         $('#layuimini-page-header').empty().html(pageHeaderHtml);
+                        element.render();
                     } else {
                         $(this).parent().removeClass('layui-this');
                     }
