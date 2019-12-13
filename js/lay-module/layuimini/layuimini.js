@@ -431,6 +431,36 @@ layui.define(["element", "jquery", "layer"], function (exports) {
             };
 
             /**
+             * 使用js打开新页面
+             * @param href
+             * @param title
+             * @param target
+             * @returns {boolean}
+             */
+            this.href = function (href, title, target) {
+                if (target == '_blank') {
+                    layer.close(loading);
+                    window.open(href, "_blank");
+                    return false;
+                }
+                layuimini.initPageTitle(href, title);
+                layuimini.initConten(href);
+                layuimini.initDevice();
+            };
+
+            /**
+             * 刷新事件
+             */
+            this.refresh = function () {
+                var locationHref = window.location.href;
+                var urlArr = locationHref.split("#/");
+                if (urlArr.length >= 2) {
+                    var href = urlArr.pop();
+                    layuimini.initConten(href);
+                }
+            };
+
+            /**
              * 判断是否为手机
              */
             this.checkMobile = function () {
@@ -495,14 +525,7 @@ layui.define(["element", "jquery", "layer"], function (exports) {
             var href = $(this).attr('data-content-href'),
                 title = $(this).attr('data-title'),
                 target = $(this).attr('target');
-            if (target == '_blank') {
-                layer.close(loading);
-                window.open(href, "_blank");
-                return false;
-            }
-            layuimini.initPageTitle(href, title);
-            layuimini.initConten(href);
-            layuimini.initDevice();
+            layuimini.href(href, title, target);
             layer.close(loading);
         });
 
@@ -556,12 +579,7 @@ layui.define(["element", "jquery", "layer"], function (exports) {
          */
         $('body').on('click', '[data-refresh]', function () {
             var loading = layer.load(0, {shade: false, time: 2 * 1000});
-            var locationHref = window.location.href;
-            var urlArr = locationHref.split("#/");
-            if (urlArr.length >= 2) {
-                var href = urlArr.pop();
-                layuimini.initConten(href);
-            }
+            layuimini.refresh();
             layer.close(loading);
             layuimini.msg_success('刷新成功');
         });
@@ -581,7 +599,6 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                 $('.layuimini-tool i').attr('class', 'fa fa-outdent');
                 $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-all');
             }
-
             element.init();
             layer.close(loading);
         });
@@ -634,7 +651,7 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                 area: ['340px', clientHeight + 'px'],
                 offset: 'rb',
                 content: html,
-                end:function () {
+                end: function () {
                     $('.layuimini-select-bgcolor').removeClass('layui-this');
                 }
             });

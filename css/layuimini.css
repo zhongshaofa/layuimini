@@ -66,7 +66,8 @@
 .layuimini-all .layui-left-menu .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child .layui-nav-child a {padding-left:65px;}
 .layuimini-all .layui-left-menu .layui-nav .layui-nav-itemed>.layui-nav-child {padding:5px 0;}
 /**左侧菜单栏（缩放） */
-.layuimini-mini .layui-side.layui-bg-black,.layuimini-mini .layui-left-menu,.layuimini-mini .layui-left-menu>ul ,.layuimini-mini .layui-left-menu>ul li i {width:60px!important;}
+.layuimini-mini .layui-left-menu {width: 80px !important;}
+.layuimini-mini .layui-side.layui-bg-black,.layuimini-mini .layui-left-menu>ul ,.layuimini-mini .layui-left-menu>ul li i {width:60px!important;}
 .layuimini-mini .layui-left-menu>ul li span:first-child {display:none;}
 .layuimini-mini .layui-left-menu>ul li span:last-child {float:right; right: 7px;}
 .layuimini-mini .layui-left-menu .layui-nav .layui-nav-item a {height:40px;line-height:40px;padding-right:0px!important;}
