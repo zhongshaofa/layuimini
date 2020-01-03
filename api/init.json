@@ -34,6 +34,12 @@
               "href": "page/welcome-2.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
+            },
+            {
+              "title": "主页三",
+              "href": "page/welcome-3.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
             }
           ]
         },
