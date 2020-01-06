@@ -202,14 +202,14 @@
                   "target": "_self",
                   "child": [
                     {
-                      "title": "按钮3",
-                      "href": "page/button.html?v=3",
+                      "title": "三级菜单1",
+                      "href": "page/button-1.html",
                       "icon": "fa fa-snowflake-o",
                       "target": "_self"
                     },
                     {
-                      "title": "表单4",
-                      "href": "page/form.html?v=3",
+                      "title": "三级菜单2",
+                      "href": "page/form-1.html",
                       "icon": "fa fa-calendar",
                       "target": "_self"
                     }
