@@ -100,6 +100,8 @@ layui.define(["element", "jquery", "layer"], function (exports) {
              * @param title 页面标题
              */
             this.initPageTitle = function (href, title) {
+                var hrefArr = href.split("?");
+                if (hrefArr.length >= 2) href = hrefArr[0];
                 window.pageHeader = (title == undefined || title == '' || title == null) ? [] : [title];
                 $("[data-one-page]").each(function () {
                     if ($(this).attr("data-one-page") == href) {
@@ -120,7 +122,6 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                                     pageHeader.push(moduleTile);
                                     $(".layui-header-menu li").attr('class', 'layui-nav-item');
                                     $("#" + moduleId + "HeaderId").addClass("layui-this");
-                                    // $(".layuimini-left-ul").removeClass('layui-this');
                                     $(".layui-left-nav-tree").attr('class', 'layui-nav layui-nav-tree layui-left-nav-tree layui-hide');
                                     $("#" + moduleId).attr('class', 'layui-nav layui-nav-tree layui-left-nav-tree layui-this');
                                 }
