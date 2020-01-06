@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>省市县区选择区</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+    <link rel="stylesheet" href="../lib/lay-module/step-lay/step.css" media="all">
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <blockquote class="layui-elem-quote">
+            省市县区三级联动下拉选择器使用开源项目：layarea<br>
+            <a href="https://github.com/fesiong/layarea" target="_blank" class="layui-btn layui-btn-danger">layarea</a>
+        </blockquote>
+        <form class="layui-form" action="" style="padding:20px;">
+            <div class="layui-form-item" id="area-picker">
+                <div class="layui-form-label">网点地址</div>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <select name="province" class="province-selector" data-value="广东省" lay-filter="province-1">
+                        <option value="">请选择省</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <select name="city" class="city-selector" data-value="深圳市" lay-filter="city-1">
+                        <option value="">请选择市</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <select name="county" class="county-selector" data-value="龙岗区" lay-filter="county-1">
+                        <option value="">请选择区</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <pre class="layui-code">
+layui.use(['layer', 'form', 'layarea'], function () {
+    var layer = layui.layer
+        , form = layui.form
+        , layarea = layui.layarea;
+
+    layarea.render({
+        elem: '#area-picker',
+        // data: {
+        //     province: '广东省',
+        //     city: '深圳市',
+        //     county: '龙岗区',
+        // },
+        change: function (res) {
+            //选择结果
+            console.log(res);
+        }
+    });
+});
+        </pre>
+    </div>
+</div>
+<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['layer', 'form', 'layarea'], function () {
+        var layer = layui.layer
+            , form = layui.form
+            , layarea = layui.layarea;
+
+        layarea.render({
+            elem: '#area-picker',
+            // data: {
+            //     province: '广东省',
+            //     city: '深圳市',
+            //     county: '龙岗区',
+            // },
+            change: function (res) {
+                //选择结果
+                console.log(res);
+            }
+        });
+    });
+</script>
+</body>
+</html>
