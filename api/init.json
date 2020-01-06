@@ -176,6 +176,12 @@
           "href": "page/editor.html",
           "icon": "fa fa-edit",
           "target": "_self"
+        },
+        {
+          "title": "省市县区选择器",
+          "href": "page/area.html",
+          "icon": "fa fa-rocket",
+          "target": "_self"
         }
       ]
     },
