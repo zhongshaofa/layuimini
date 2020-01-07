@@ -56,10 +56,11 @@
 </div>
 
 <script>
-    layui.use(['form', 'table'], function () {
+    layui.use(['form', 'table','layuimini','element'], function () {
         var $ = layui.jquery,
             form = layui.form,
-            table = layui.table;
+            table = layui.table,
+            layuimini = layui.layuimini;
 
         table.render({
             elem: '#currentTableId',
@@ -110,7 +111,25 @@
 
         // 监听添加操作
         $(".data-add-btn").on("click", function () {
-            layer.msg('添加数据');
+
+            var content = layuimini.getHrefContent('page/table/add.html');
+            var openWH = layuimini.getOpenWidthHeight();
+
+            var index = layer.open({
+                title: '添加用户',
+                type: 1,
+                shade: 0.2,
+                maxmin:true,
+                shadeClose: true,
+                area: [openWH[0] + 'px', openWH[1] + 'px'],
+                offset: [openWH[2] + 'px', openWH[3] + 'px'],
+                content: content,
+            });
+            $(window).on("resize", function () {
+                layer.full(index);
+            });
+
+            return false;
         });
 
         // 监听删除操作
@@ -128,7 +147,24 @@
         table.on('tool(currentTableFilter)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
-                layer.alert('编辑行：<br>' + JSON.stringify(data))
+
+                var content = layuimini.getHrefContent('page/table/add.html');
+                var openWH = layuimini.getOpenWidthHeight();
+
+                var index = layer.open({
+                    title: '编辑用户',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: [openWH[0] + 'px', openWH[1] + 'px'],
+                    offset: [openWH[2] + 'px', openWH[3] + 'px'],
+                    content: content,
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+                return false;
             } else if (obj.event === 'delete') {
                 layer.confirm('真的删除行么', function (index) {
                     obj.del();

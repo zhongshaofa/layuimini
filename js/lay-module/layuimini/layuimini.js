@@ -558,6 +558,48 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                 }
             };
 
+            /**
+             * 获取指定链接内容
+             * @param href
+             * @returns {string}
+             */
+            this.getHrefContent = function (href) {
+                var content = '';
+                var v = new Date().getTime();
+                $.ajax({
+                    url: href.indexOf("?") > -1 ? href + '&v=' + v : href + '?v=' + v,
+                    type: 'get',
+                    dataType: 'html',
+                    async: false,
+                    success: function (data) {
+                        content = data;
+                    },
+                    error: function (xhr, textstatus, thrown) {
+                        return layuimini.msg_error('Status:' + xhr.status + '，' + xhr.statusText + '，请稍后再试！');
+                    }
+                });
+                return content;
+            };
+
+            /**
+             * 获取弹出层的宽高
+             * @returns {*[]}
+             */
+            this.getOpenWidthHeight = function () {
+                if (layuimini.checkMobile()) {
+                    var clienWidth = $(".layuimini-content-page").outerWidth(true)-10;
+                    var clientHeight = (document.documentElement.clientHeight) - 60-10;
+                    var offsetLeft = 5;
+                    var offsetTop = 60+5;
+                } else {
+                    var clienWidth = $(".layuimini-content-page").outerWidth(true) - 10;
+                    var clientHeight = (document.documentElement.clientHeight) - 95 - 10;
+                    var offsetLeft = $(".layui-left-nav-tree").width() + 5;
+                    var offsetTop = 95 + 5;
+                }
+                return [clienWidth,clientHeight , offsetTop, offsetLeft];
+            }
+
         };
 
         /**
