@@ -256,7 +256,7 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                                         html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
                                         html = buildChildHtml(html, childMenu.child, menuParameId);
                                     } else {
-                                        html += '<a href="javascript:;" class="layui-menu-tips" data-type="tabAdd"  data-one-page-mpi="m-p-i-' + menuParameId + '" data-one-page="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
+                                        html += '<a href="javascript:;" class="layui-menu-tips" data-type="tabAdd"  data-mpi="m-p-i-' + menuParameId + '" data-one-page="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
                                         menuParameId++;
                                         window.menuParameId = menuParameId;
                                     }
@@ -267,7 +267,7 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                             };
                             leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child, menuParameId);
                         } else {
-                            leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  data-type="tabAdd" data-one-page-mpi="m-p-i-' + menuParameId + '" data-one-page="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
+                            leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  data-type="tabAdd" data-mpi="m-p-i-' + menuParameId + '" data-one-page="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
                             menuParameId++;
                         }
                         leftMenuHtml += '</li>\n';
@@ -572,6 +572,17 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                 window.open(href, "_blank");
                 return false;
             }
+
+            // 拼接参数
+            if (layuimini.config('urlSuffixDefault')) {
+                var menuParameId = $(this).attr('data-mpi');
+                if (href.indexOf("?") > -1) {
+                    href = href + '&mpi=' + menuParameId;
+                } else {
+                    href = href + '?mpi=' + menuParameId;
+                }
+            }
+
             layuimini.hash(href);
             layer.close(loading);
         });
