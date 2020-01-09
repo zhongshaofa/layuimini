@@ -14,3 +14,6 @@ body {margin:15px 15px 15px 15px;background:#f2f2f2;}
     ::-webkit-scrollbar-track {background-color: transparent;-webkit-border-radius: 2em;-moz-border-radius: 2em;border-radius: 2em;}
     ::-webkit-scrollbar-thumb {background-color: #9c9da0;-webkit-border-radius: 2em;-moz-border-radius: 2em;border-radius: 2em}
 }
+
+/**搜索框*/
+.layuimini-container .table-search-fieldset {margin: 0;border: 1px solid #e6e6e6;padding: 10px 20px 5px 20px;color: #6b6b6b;}
