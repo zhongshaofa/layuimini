@@ -746,7 +746,7 @@ layui.define(["element", "jquery", "layer"], function (exports) {
          */
         $('body').on('click', '[data-bgcolor]', function () {
             var loading = layer.load(0, {shade: false, time: 2 * 1000});
-            var clientHeight = (document.documentElement.clientHeight) - 95;
+            var clientHeight = (document.documentElement.clientHeight) - 60;
             var bgColorHtml = layuimini.buildBgColorHtml();
             var html = '<div class="layuimini-color">\n' +
                 '<div class="color-title">\n' +
