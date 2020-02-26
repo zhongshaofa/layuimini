@@ -11,8 +11,7 @@
 .layui-left-menu .layui-nav .layui-nav-child a:hover:not(.layui-this) {background-color:#3b3f4b;}
 /**左侧菜单选中-配色*/
 .layui-layout-admin .layui-nav-tree .layui-this, .layui-layout-admin .layui-nav-tree .layui-this>a, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this a {
-    background-color: #1aa094 !important;
-}
+    background-color: #1aa094 !important;}
 
 
 /**头部样式 */
@@ -74,6 +73,7 @@
 .layui-left-menu .layui-nav .layui-nav-item>a {padding-top:5px;padding-bottom:5px;}
 .layui-left-menu .layui-nav .layui-nav-child .layui-nav-child {background:0 0!important}
 .layui-left-menu .layui-nav .layui-nav-more {right:15px;}
+.layui-left-menu .layui-nav .layui-nav-item a:hover {background-color: transparent!important;}
 /**左侧菜单栏 (正常) */
 .layuimini-all .layui-nav-itemed .layui-nav-child a ,.layuimini-all .layui-left-menu .layui-nav .layui-nav-child a{padding-left:35px;}
 .layuimini-all .layui-left-menu .layui-nav .layui-nav-child .layui-nav-child a {padding-left:45px;}
