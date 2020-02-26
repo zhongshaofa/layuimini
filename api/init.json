@@ -5,10 +5,10 @@
   "homeInfo": {
     "title": "首页",
     "icon": "fa fa-home",
-    "href": "page/welcome-1.html?mpi=m-p-i-0"
+    "href": "page/welcome-1.html?t=1"
   },
   "logoInfo": {
-    "title": "LayuiMini",
+    "title": "LAYUI MINI",
     "image": "images/logo.png",
     "href": ""
   },
