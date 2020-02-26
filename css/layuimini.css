@@ -58,6 +58,7 @@
 .layui-left-menu .layui-nav .layui-nav-item>a {padding-top:5px;padding-bottom:5px;}
 .layui-left-menu .layui-nav .layui-nav-child .layui-nav-child {background:0 0!important}
 .layui-left-menu .layui-nav .layui-nav-more {right:15px;}
+.layui-left-menu .layui-nav .layui-nav-item a:hover {background-color: transparent!important;}
 /**左侧菜单栏 (正常) */
 .layuimini-all .layui-nav-itemed .layui-nav-child a ,.layuimini-all .layui-left-menu .layui-nav .layui-nav-child a{padding-left:35px;}
 .layuimini-all .layui-left-menu .layui-nav .layui-nav-child .layui-nav-child a {padding-left:45px;}
