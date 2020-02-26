@@ -28,9 +28,8 @@
 
 /**logo演示（通用） */
 .layui-layout-admin .layui-logo {font-weight:bold;color:#ffffff!important;height:60px!important;line-height:60px !important;overflow:hidden;line-height:64px;transition:all .2s!important;}
-.layui-layout-admin  .layui-logo img {display:inline-block;height:30px;vertical-align:middle;}
-.layui-layout-admin  .layui-logo h1 {display:inline-block;margin:0 0 0 12px;color:#dadde2;font-weight:600;font-size:20px;font-family:Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;vertical-align:middle;}
-
+.layui-layout-admin  .layui-logo img {display:inline-block;height:40px;vertical-align:middle;}
+.layui-layout-admin  .layui-logo h1 {display:inline-block;margin:0 0 0 12px;color:#dadde2;font-weight:600;font-size:20px;font-family:Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;vertical-align:middle;            background-image: -webkit-gradient(linear, 37.219838% 34.532506%, 36.425669% 93.178216%, from(#ffffff), to(#0a60ff), color-stop(.37, #0ec7b7));-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 /**logo演示（缩放） */
 .layuimini-mini .layui-layout-admin .layui-logo {width:60px!important;}
 .layuimini-mini .layui-layout-admin .layui-logo h1 {display:none;}
