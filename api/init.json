@@ -199,25 +199,25 @@
           "child": [
             {
               "title": "按钮1",
-              "href": "page/button.html",
+              "href": "page/button.html?v=1",
               "icon": "fa fa-calendar",
               "target": "_self",
               "child": [
                 {
                   "title": "按钮2",
-                  "href": "page/button.html",
+                  "href": "page/button.html?v=2",
                   "icon": "fa fa-snowflake-o",
                   "target": "_self",
                   "child": [
                     {
                       "title": "按钮3",
-                      "href": "page/button.html",
+                      "href": "page/button.html?v=3",
                       "icon": "fa fa-snowflake-o",
                       "target": "_self"
                     },
                     {
                       "title": "表单4",
-                      "href": "page/form.html",
+                      "href": "page/form.html?v=1",
                       "icon": "fa fa-calendar",
                       "target": "_self"
                     }

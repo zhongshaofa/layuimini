@@ -122,5 +122,6 @@ layui.define(["element", "jquery"], function (exports) {
 
     };
 
+
     exports("miniMenu", miniMenu);
 });

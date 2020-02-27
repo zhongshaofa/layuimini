@@ -45,6 +45,10 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
                         menuList: data.menuInfo,
                         multiModule: options.multiModule
                     });
+                    miniTab.listenSwitch({
+                        filter: 'layuiminiTab',
+                        multiModule: options.multiModule
+                    });
                     miniAdmin.renderLogo(data.logoInfo);
                     miniAdmin.renderHome(data.homeInfo);
                 }
@@ -169,6 +173,7 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
         }
 
     };
+
 
 
 
@@ -340,7 +345,7 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
         $('.layuimini-color .color-content ul .layui-this').attr('class', '');
         $(this).attr('class', 'layui-this');
         sessionStorage.setItem('layuiminiBgcolorId', bgcolorId);
-        layuimini.initBgColor();
+        miniAdmin.initBgColor();
     });
 
     /**
@@ -349,11 +354,11 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
     $('body').on('click', '[data-check-screen]', function () {
         var check = $(this).attr('data-check-screen');
         if (check == 'full') {
-            layuimini.fullScreen();
+            miniAdmin.fullScreen();
             $(this).attr('data-check-screen', 'exit');
             $(this).html('<i class="fa fa-compress"></i>');
         } else {
-            layuimini.exitFullScreen();
+            miniAdmin.exitFullScreen();
             $(this).attr('data-check-screen', 'full');
             $(this).html('<i class="fa fa-arrows-alt"></i>');
         }

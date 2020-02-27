@@ -66,22 +66,22 @@ layui.define(["element", "jquery"], function (exports) {
         check: function (tabId, isIframe) {
             // 判断选项卡上是否有
             var checkTab = false;
-            if (isIframe == undefined || isIframe == false) {
+            if (isIframe === undefined || isIframe === false) {
                 $(".layui-tab-title li").each(function () {
-                    checkTabId = $(this).attr('lay-id');
-                    if (checkTabId != null && checkTabId == tabId) {
+                    var checkTabId = $(this).attr('lay-id');
+                    if (checkTabId != null && checkTabId === tabId) {
                         checkTab = true;
                     }
                 });
             } else {
                 parent.layui.$(".layui-tab-title li").each(function () {
-                    checkTabId = $(this).attr('lay-id');
-                    if (checkTabId != null && checkTabId == tabId) {
+                    var checkTabId = $(this).attr('lay-id');
+                    if (checkTabId != null && checkTabId === tabId) {
                         checkTab = true;
                     }
                 });
             }
-            if (checkTab == false) {
+            if (checkTab === false) {
                 return false;
             }
 
@@ -91,11 +91,100 @@ layui.define(["element", "jquery"], function (exports) {
                 layuiminiTabInfo = {};
             }
             var check = layuiminiTabInfo[tabId];
-            if (check == undefined || check == null) {
+            if (check === undefined || check === null) {
                 return false;
             }
             return true;
-        }
+        },
+
+        /**
+         * 监听tab切换
+         * @param options
+         */
+        listenSwitch: function (options) {
+            options.filter = options.filter || null;
+            options.multiModule = options.multiModule || false;
+            if (options.multiModule) {
+                miniTab.listenSwitchMultiModule(options.filter);
+            } else {
+                miniTab.listenSwitchSingleModule(options.filter);
+            }
+        },
+
+        /**
+         * 单模块切换
+         * @param filter
+         */
+        listenSwitchSingleModule: function (filter) {
+            element.on('tab(' + filter + ')', function (data) {
+                var tabId = $(this).attr('lay-id');
+                $("[layuimini-tab-open]").parent().removeClass('layui-this');
+                $("[layuimini-tab-open]").each(function () {
+                    if ($(this).attr("layuimini-tab-open") === tabId) {
+                        // 自动展开菜单栏
+                        var addMenuClass = function ($element, type) {
+                            if (type === 1) {
+                                $element.addClass('layui-this');
+                                if ($element.attr('class') !== 'layui-nav-item layui-this') {
+                                    addMenuClass($element.parent().parent(), 2);
+                                }
+                            } else {
+                                $element.addClass('layui-nav-itemed');
+                                if ($element.attr('class') !== 'layui-nav-item layui-nav-itemed') {
+                                    addMenuClass($element.parent().parent(), 2);
+                                }
+                            }
+                        };
+                        addMenuClass($(this).parent(), 1);
+                        return false;
+                    }
+                });
+            });
+        },
+
+        /**
+         * 多模块切换
+         * @param filter
+         */
+        listenSwitchMultiModule: function (filter) {
+            element.on('tab(' + filter + ')', function (data) {
+                var tabId = $(this).attr('lay-id');
+                $("[layuimini-tab-open]").parent().removeClass('layui-this');
+                $("[layuimini-tab-open]").each(function () {
+                    if ($(this).attr("layuimini-tab-open") === tabId) {
+                        // 自动展开菜单栏
+                        var addMenuClass = function ($element, type) {
+                            if (type === 1) {
+                                $element.addClass('layui-this');
+                                if ($element.attr('class') !== 'layui-nav-item layui-this') {
+                                    addMenuClass($element.parent().parent(), 2);
+                                } else {
+                                    var moduleId = $element.parent().attr('id');
+                                    $(".layuimini-header-menu li").attr('class', 'layui-nav-item');
+                                    $("#" + moduleId + "HeaderId").addClass("layui-this");
+                                    $(".layuimini-menu-left .layui-nav.layui-nav-tree").attr('class', 'layui-nav layui-nav-tree layui-hide');
+                                    $("#" + moduleId).attr('class', 'layui-nav layui-nav-tree layui-this');
+                                }
+                            } else {
+                                $element.addClass('layui-nav-itemed');
+                                if ($element.attr('class') !== 'layui-nav-item layui-nav-itemed') {
+                                    addMenuClass($element.parent().parent(), 2);
+                                } else {
+                                    var moduleId = $element.parent().attr('id');
+                                    $(".layuimini-header-menu li").attr('class', 'layui-nav-item');
+                                    $("#" + moduleId + "HeaderId").addClass("layui-this");
+                                    $(".layuimini-menu-left .layui-nav.layui-nav-tree").attr('class', 'layui-nav layui-nav-tree layui-hide');
+                                    $("#" + moduleId).attr('class', 'layui-nav layui-nav-tree layui-this');
+                                }
+                            }
+                        };
+                        addMenuClass($(this).parent(), 1);
+                        return false;
+                    }
+                });
+            });
+        },
+
     };
 
     exports("miniTab", miniTab);
