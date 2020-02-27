@@ -1,7 +1,4 @@
 {
-  "clearInfo": {
-    "clearUrl": "api/clear.json"
-  },
   "homeInfo": {
     "title": "首页",
     "href": "page/welcome-1.html?t=1"
