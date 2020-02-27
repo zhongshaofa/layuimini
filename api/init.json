@@ -12,10 +12,12 @@
     "image": "images/logo.png",
     "href": ""
   },
-  "menuInfo": {
-    "currency": {
+  "menuInfo": [
+    {
       "title": "常规管理",
       "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
       "child": [
         {
           "title": "主页模板",
@@ -137,9 +139,11 @@
         }
       ]
     },
-    "component": {
+    {
       "title": "组件管理",
       "icon": "fa fa-lemon-o",
+      "href": "",
+      "target": "_self",
       "child": [
         {
           "title": "图标列表",
@@ -185,9 +189,11 @@
         }
       ]
     },
-    "other": {
+    {
       "title": "其它管理",
       "icon": "fa fa-slideshare",
+      "href": "",
+      "target": "_self",
       "child": [
         {
           "title": "多级菜单",
@@ -233,5 +239,5 @@
         }
       ]
     }
-  }
+  ]
 }

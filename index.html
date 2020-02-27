@@ -27,18 +27,20 @@
 <div class="layui-layout layui-layout-admin">
 
     <div class="layui-header header">
-        <div class="layui-logo">
-        </div>
+        <div class="layui-logo layuimini-logo"></div>
         <a>
             <div class="layuimini-tool"><i title="展开" class="fa fa-outdent" data-side-fold="1"></i></div>
         </a>
 
-        <ul class="layui-nav layui-layout-left layui-header-menu layui-header-pc-menu mobile layui-hide-xs">
+        <!--电脑端头部菜单-->
+        <ul class="layui-nav layui-layout-left layuimini-header-menu mobile layui-hide-xs layuimini-menu-header-pc">
         </ul>
-        <ul class="layui-nav layui-layout-left layui-header-menu mobile layui-hide-sm">
+
+        <!--手机端头部菜单-->
+        <ul class="layui-nav layui-layout-left layuimini-header-menu mobile layui-hide-sm">
             <li class="layui-nav-item">
                 <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块</a>
-                <dl class="layui-nav-child layui-header-mini-menu">
+                <dl class="layui-nav-child layuimini-menu-header-mobile">
                 </dl>
             </li>
         </ul>
@@ -74,9 +76,8 @@
         </ul>
     </div>
 
-    <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll layui-left-menu">
-        </div>
+    <!--无限极左侧菜单-->
+    <div class="layui-side layui-bg-black layuimini-menu-left">
     </div>
 
     <div class="layui-body">
@@ -105,19 +106,34 @@
 <!--百度统计代码-开始 正式使用请删除-->
 <script>
     var _hmt = _hmt || [];
-    (function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?d97abf6d61c21d773f97835defbdef4e";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm, s);})();
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d97abf6d61c21d773f97835defbdef4e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
 </script>
 <!--百度统计代码-结束-->
 
 <script src="lib/layui-v2.5.5/layui.js?v=1.0.4" charset="utf-8"></script>
 <script src="js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>
-    layui.use(['element', 'layer', 'layuimini'], function () {
+    layui.use(['element', 'layer', 'miniAdmin'], function () {
         var $ = layui.jquery,
             element = layui.element,
-            layer = layui.layer;
+            layer = layui.layer,
+            miniAdmin = layui.miniAdmin;
 
-        layuimini.init('api/init.json');
+        var options = {
+            iniUrl: "api/init.json",
+            clearUrl: "api/clear.json",
+            urlHashLocation: true,
+            urlSuffixDefault: false,
+            BgColorDefault: 0,
+            checkUrlDefault: false,
+            multiModule: true,
+        };
+        miniAdmin.render(options);
 
         $('.login-out').on("click", function () {
             layer.msg('退出登录成功', function () {
