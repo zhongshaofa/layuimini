@@ -1,0 +1,288 @@
+.layuimini-tab {
+    margin: 0px;
+    overflow: hidden;
+    height: 100% !important;
+}
+
+.layuimini-tab .layui-tab-content{
+    height: calc(100% - 42px) !important;
+}
+
+
+.layuimini-tab .layui-tab-content .layui-tab-item{
+    height: 100%;
+}
+
+.layuimini-tab .layui-tab-content {
+    padding: 0px;
+}
+
+.layuimini-tab .layui-tab-title {
+    border: none;
+    border: 1px solid whitesmoke;
+    background-color: white;
+}
+
+.layuimini-tab .layui-tab-title li {
+    border-right: 1px solid whitesmoke;
+    color: dimgray;
+}
+
+.layuimini-tab .layui-tab-title .layui-tab-bar {
+    display: none;
+}
+
+.layuimini-tab .layui-tab-title .layui-this:after {
+    display: none;
+}
+
+.layuimini-tab .layui-tab-title .layuimini-tab-active {
+    display: inline-block;
+    background-color: lightgray;
+    width: 9px;
+    height: 9px;
+    border-radius: 30px;
+    margin-right: 12px;
+}
+
+.layuimini-tab .layui-tab-title .layui-this .layuimini-tab-active {
+    background-color: #1aa094;
+}
+
+.layuimini-tab .layui-tab-title .layui-tab-close:hover {
+    border-radius: 50px;
+    background-color: lightgray;
+    line-height: 19px;
+}
+
+.layuimini-tab .layui-tab-title .disable-close+.layui-tab-close {
+    display: none;
+}
+
+.layuimini-tab .layui-tab-title .able-close+.layui-tab-close {
+    display: inline-block;
+}
+
+
+.layuimini-tab .layui-tab-control>li {
+    position: absolute;
+    top: 0px;
+    height: 40px;
+    line-height: 40px;
+    width: 40px;
+    text-align: center;
+    background-color: white;
+    border-top: whitesmoke 1px solid;
+    border-bottom: whitesmoke 1px solid;
+}
+
+.layuimini-tab .layui-tab-prev {
+    left: 0px;
+    border-right: whitesmoke 1px solid;
+    border-left: whitesmoke 1px solid;
+}
+
+.layuimini-tab .layui-tab-next {
+    right: 40px;
+    border-left: 1px solid whitesmoke;
+}
+
+.layuimini-tab .layui-tab-tool {
+    right: 0px;
+    border-left: 1px solid whitesmoke;
+}
+
+.layuimini-tab .layui-tab-control .layui-tab-tool,
+.layuimini-tab .layui-tab-control .layui-tab-prev,
+.layuimini-tab .layui-tab-control .layui-tab-next {
+    display: none;
+}
+
+
+.layuimini-tab.layui-tab-roll .layui-tab-control .layui-tab-prev,
+.layuimini-tab.layui-tab-roll .layui-tab-control .layui-tab-next {
+    display: block;
+}
+
+.layuimini-tab.layui-tab-roll .layui-tab-control .layui-tab-next {
+    right: 0px;
+    border-right: 1px solid whitesmoke;
+}
+
+.layuimini-tab.layui-tab-roll .layui-tab-title {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+
+.layuimini-tab.layui-tab-tool .layui-tab-control .layui-tab-tool {
+    display: block;
+}
+
+.layuimini-tab.layui-tab-tool .layui-tab-title {
+    padding-left: 0px;
+    padding-right: 40px;
+}
+
+
+.layuimini-tab.layui-tab-rollTool .layui-tab-title {
+    padding-left: 40px;
+    padding-right: 80px;
+}
+
+.layuimini-tab.layui-tab-rollTool .layui-tab-control .layui-tab-prev,
+.layuimini-tab.layui-tab-rollTool .layui-tab-control .layui-tab-next,
+.layuimini-tab.layui-tab-rollTool .layui-tab-control .layui-tab-tool {
+    display: block;
+}
+
+.layuimini-tab .layui-tab-tool .layui-nav {
+    position: absolute;
+    height: 43px !important;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background: 0 0;
+}
+
+.layuimini-tab .layui-tab-tool .layui-nav-item {
+    height: 40px;
+}
+
+.layuimini-tab .layui-tab-tool .layui-nav-bar {
+    display: none;
+}
+
+.layuimini-tab .layui-tab-tool .layui-nav-child {
+    left: auto;
+    top: 45px;
+    right: 3px;
+    width: 120px;
+    border: 1px solid whitesmoke;
+}
+
+.layuimini-tab .layui-tab-tool .layui-this a {
+    background-color: #009688;
+}
+
+.layuimini-tab-loading {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: calc(100% - 42px);
+    top: 42px;
+    z-index: 19;
+    background-color: #fff
+}
+
+.layuimini-tab-loading.close {
+    animation: close 1s;
+    -webkit-animation: close 1s;
+    animation-fill-mode: forwards;
+}
+
+.ball-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%)
+}
+
+.ball-loader>span,
+.signal-loader>span {
+    background-color: #4aca85!important;
+    display: inline-block
+}
+
+.ball-loader>span:nth-child(1),
+.ball-loader.sm>span:nth-child(1),
+.signal-loader>span:nth-child(1),
+.signal-loader.sm>span:nth-child(1) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s
+}
+
+.ball-loader>span:nth-child(2),
+.ball-loader.sm>span:nth-child(2),
+.signal-loader>span:nth-child(2),
+.signal-loader.sm>span:nth-child(2) {
+    -webkit-animation-delay: .1s;
+    animation-delay: .1s
+}
+
+.ball-loader>span:nth-child(3),
+.ball-loader.sm>span:nth-child(3),
+.signal-loader>span:nth-child(3),
+.signal-loader.sm>span:nth-child(3) {
+    -webkit-animation-delay: .15s;
+    animation-delay: .15s
+}
+
+.ball-loader>span:nth-child(4),
+.ball-loader.sm>span:nth-child(4),
+.signal-loader>span:nth-child(4),
+.signal-loader.sm>span:nth-child(4) {
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s
+}
+
+.ball-loader>span {
+    width: 20px;
+    height: 20px;
+    margin: 0 3px;
+    border-radius: 50%;
+    transform: scale(0);
+    -ms-transform: scale(0);
+    -webkit-transform: scale(0);
+    animation: ball-load 1s ease-in-out infinite;
+    -webkit-animation: 1s ball-load ease-in-out infinite
+}
+
+@-webkit-keyframes ball-load {
+    0% {
+        transform: scale(0);
+        -webkit-transform: scale(0)
+    }
+
+    50% {
+        transform: scale(1);
+        -webkit-transform: scale(1)
+    }
+
+    100% {
+        transform: scale(0);
+        -webkit-transform: scale(0)
+    }
+}
+
+@keyframes ball-load {
+    0% {
+        transform: scale(0);
+        -webkit-transform: scale(0)
+    }
+
+    50% {
+        transform: scale(1);
+        -webkit-transform: scale(1)
+    }
+
+    100% {
+        transform: scale(0);
+        -webkit-transform: scale(0)
+    }
+}
+
+@-webkit-keyframes close {
+    0% {
+        opacity: 1;
+        /*display: block;*/
+    }
+
+    100% {
+        opacity: 0;
+        /*display: none;*/
+    }
+}

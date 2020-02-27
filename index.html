@@ -15,6 +15,7 @@
     <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="css/layuimini.css" media="all">
+    <link rel="stylesheet" href="css/layuimini-tab.css" media="all">
     <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -81,24 +82,32 @@
     </div>
 
     <div class="layui-body">
-        <div class="layui-tab" lay-filter="layuiminiTab" id="top_tabs_box">
-            <ul class="layui-tab-title" id="top_tabs">
+
+        <div class="layuimini-tab layui-tab-rollTool layui-tab" lay-filter="content" lay-allowclose="true">
+            <ul class="layui-tab-title">
                 <li class="layui-this" id="layuiminiHomeTabId" lay-id=""></li>
             </ul>
-            <ul class="layui-nav closeBox">
-                <li class="layui-nav-item">
-                    <a href="javascript:;"> <i class="fa fa-dot-circle-o"></i> 页面操作</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-page-close="other"><i class="fa fa-window-close"></i> 关闭其他</a></dd>
-                        <dd><a href="javascript:;" data-page-close="all"><i class="fa fa-window-close-o"></i> 关闭全部</a></dd>
-                    </dl>
+            <div class="layui-tab-control">
+                <li class="layui-tab-prev layui-icon layui-icon-left"></li>
+                <li class="layui-tab-next layui-icon layui-icon-right"></li>
+                <li class="layui-tab-tool layui-icon layui-icon-down">
+                    <ul class="layui-nav">
+                        <li class="layui-nav-item">
+                            <a href="javascript:;"><span class="layui-nav-more"></span></a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="#">关 闭 当 前</a></dd>
+                                <dd><a href="#">关 闭 其 他</a></dd>
+                                <dd><a href="#">关 闭 全 部</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
                 </li>
-            </ul>
-            <div class="layui-tab-content clildFrame">
-                <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show">
-                </div>
+            </div>
+            <div class="layui-tab-content">
+                <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show"></div>
             </div>
         </div>
+
     </div>
 
 </div>

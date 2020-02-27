@@ -4,7 +4,6 @@
   },
   "homeInfo": {
     "title": "首页",
-    "icon": "fa fa-home",
     "href": "page/welcome-1.html?t=1"
   },
   "logoInfo": {
