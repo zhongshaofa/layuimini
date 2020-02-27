@@ -17,10 +17,8 @@ layui.define(["element", "jquery"], function (exports) {
          * @param options.multiModule 是否开启多模块
          */
         render: function (options) {
-
             options.menuList = options.menuList || [];
             options.multiModule = options.multiModule || false;
-            console.log(options)
             if (options.multiModule) {
                 miniMenu.renderMultiModule(options.menuList);
             } else {
@@ -50,7 +48,7 @@ layui.define(["element", "jquery"], function (exports) {
                                 html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
                                 html = buildChildHtml(html, childMenu.child);
                             } else {
-                                html += '<a href="javascript:;" class="layui-menu-tips" data-type="tabAdd"   data-tab="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
+                                html += '<a href="javascript:;" class="layui-menu-tips"  layuimini-tab-open="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
                             }
                             html += '</dd>\n';
                         });
@@ -59,7 +57,7 @@ layui.define(["element", "jquery"], function (exports) {
                     };
                     leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
                 } else {
-                    leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  data-type="tabAdd"  data-tab="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
+                    leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  layuimini-tab-open="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
                 }
                 leftMenuHtml += '</li>\n';
             });
@@ -99,7 +97,7 @@ layui.define(["element", "jquery"], function (exports) {
                                     html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
                                     html = buildChildHtml(html, childMenu.child);
                                 } else {
-                                    html += '<a href="javascript:;" class="layui-menu-tips" data-type="tabAdd"   data-tab="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
+                                    html += '<a href="javascript:;" class="layui-menu-tips"  layuimini-tab-open="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
                                 }
                                 html += '</dd>\n';
                             });
@@ -108,7 +106,7 @@ layui.define(["element", "jquery"], function (exports) {
                         };
                         leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
                     } else {
-                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  data-type="tabAdd"  data-tab="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
+                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  layuimini-tab-open="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
                     }
                     leftMenuHtml += '</li>\n';
                 });

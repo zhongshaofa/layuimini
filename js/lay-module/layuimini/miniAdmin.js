@@ -4,11 +4,12 @@
  * version:2.0
  * description:layuimini 框架扩展
  */
-layui.define(["element", "jquery", "miniMenu"], function (exports) {
+layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
     var element = layui.element,
         $ = layui.$,
         layer = layui.layer,
-        miniMenu = layui.miniMenu;
+        miniMenu = layui.miniMenu,
+        miniTab = layui.miniTab;
 
     if (!/http(s*):\/\//.test(location.href)) {
         var tips = "请先将项目部署至web容器（Apache/Tomcat/Nginx/IIS/等），否则部分数据将无法显示";
@@ -28,37 +29,93 @@ layui.define(["element", "jquery", "miniMenu"], function (exports) {
          * @param options.multiModule 是否开启多模块
          */
         render: function (options) {
-
-            options.iniUrl = options.iniUrl || null;  // 后台初始化接口地址
-            options.clearUrl = options.clearUrl || null;  // 后台清理缓存接口
-            options.urlHashLocation = options.urlHashLocation || false;  // URL地址hash定位
-            options.urlSuffixDefault = options.urlSuffixDefault || false;    // URL后缀
-            options.BgColorDefault = options.BgColorDefault || 0;   // 默认皮肤（0开始）
-            options.checkUrlDefault = options.checkUrlDefault || false; // 是否判断URL有效
-            options.multiModule = options.multiModule || false;  // 是否开启多模块
-
-            console.log(options);
-
+            options.iniUrl = options.iniUrl || null;
+            options.clearUrl = options.clearUrl || null;
+            options.urlHashLocation = options.urlHashLocation || false;
+            options.urlSuffixDefault = options.urlSuffixDefault || false;
+            options.BgColorDefault = options.BgColorDefault || 0;
+            options.checkUrlDefault = options.checkUrlDefault || false;
+            options.multiModule = options.multiModule || false;
             var loading = layer.load(0, {shade: false, time: 2 * 1000});
-            $.getJSON(options.iniUrl, function (data, status) {
+            $.getJSON(options.iniUrl, function (data) {
                 if (data == null) {
                     miniAdmin.error('暂无菜单信息')
                 } else {
-                    // 初始化菜单
-                    miniMenu.render({menuList: data.menuInfo, multiModule: options.multiModule});
-                    // 初始化LOGO
+                    miniMenu.render({
+                        menuList: data.menuInfo,
+                        multiModule: options.multiModule
+                    });
                     miniAdmin.renderLogo(data.logoInfo);
+                    miniAdmin.renderHome(data.homeInfo);
                 }
             }).fail(function () {
                 miniAdmin.error('菜单接口有误');
             });
             layer.close(loading)
-
         },
 
+        /**
+         * 初始化logo
+         * @param data
+         */
         renderLogo: function (data) {
             var html = '<a href="' + data.href + '"><img src="' + data.image + '" alt="logo"><h1>' + data.title + '</h1></a>';
             $('.layuimini-logo').html(html);
+        },
+
+        /**
+         * 初始化首页
+         * @param data
+         */
+        renderHome:function(data){
+            sessionStorage.setItem('layuiminiHomeHref', data.href);
+            $('#layuiminiHomeTabId').html('<i class="' + data.icon + '"></i> <span>' + data.title + '</span>');
+            $('#layuiminiHomeTabId').attr('lay-id', data.href);
+            $('#layuiminiHomeTabIframe').html('<iframe width="100%" height="100%" frameborder="0"  src="' + data.href + '"></iframe>');
+        },
+
+        /**
+         * 进入全屏
+         */
+        fullScreen:function(){
+            var el = document.documentElement;
+            var rfs = el.requestFullScreen || el.webkitRequestFullScreen;
+            if (typeof rfs != "undefined" && rfs) {
+                rfs.call(el);
+            } else if (typeof window.ActiveXObject != "undefined") {
+                var wscript = new ActiveXObject("WScript.Shell");
+                if (wscript != null) {
+                    wscript.SendKeys("{F11}");
+                }
+            } else if (el.msRequestFullscreen) {
+                el.msRequestFullscreen();
+            } else if (el.oRequestFullscreen) {
+                el.oRequestFullscreen();
+            } else {
+                miniAdmin.error('浏览器不支持全屏调用！');
+            }
+        },
+
+        /**
+         * 退出全屏
+         */
+        exitFullScreen:function(){
+            var el = document;
+            var cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.exitFullScreen;
+            if (typeof cfs != "undefined" && cfs) {
+                cfs.call(el);
+            } else if (typeof window.ActiveXObject != "undefined") {
+                var wscript = new ActiveXObject("WScript.Shell");
+                if (wscript != null) {
+                    wscript.SendKeys("{F11}");
+                }
+            } else if (el.msExitFullscreen) {
+                el.msExitFullscreen();
+            } else if (el.oRequestFullscreen) {
+                el.oCancelFullScreen();
+            } else {
+                miniAdmin.error('浏览器不支持全屏调用！');
+            }
         },
 
         /**
@@ -79,6 +136,11 @@ layui.define(["element", "jquery", "miniMenu"], function (exports) {
             return layer.msg(title, {icon: 2, shade: this.shade, scrollbar: false, time: 3000, shadeClose: true});
         },
 
+        /**
+         * 主题配置
+         * @param bgcolorId
+         * @returns {{headerLogo, menuLeftHover, headerRight, menuLeft, headerRightThis, menuLeftThis}|*|*[]}
+         */
         getBgColorConfig: function (bgcolorId) {
             var bgColorConfig = [
                 {
@@ -113,11 +175,41 @@ layui.define(["element", "jquery", "miniMenu"], function (exports) {
 
 
     /**
+     * 打开新窗口
+     */
+    $('body').on('click', '[layuimini-tab-open]', function () {
+        var loading = layer.load(0, {shade: false, time: 2 * 1000});
+        var tabId = $(this).attr('layuimini-tab-open'),
+            href = $(this).attr('layuimini-tab-open'),
+            title = $(this).html(),
+            target = $(this).attr('target');
+        if (target == '_blank') {
+            layer.close(loading);
+            window.open(href, "_blank");
+            return false;
+        }
+        title = title.replace('style="display: none;"', '');
+
+        if (tabId == null || tabId == undefined) {
+            tabId = new Date().getTime();
+        }
+        // 判断该窗口是否已经打开过
+        var checkTab = miniTab.check(tabId);
+        if (!checkTab) {
+            miniTab.create(tabId, href, title, true);
+        }
+        element.tabChange('layuiminiTab', tabId);
+        // layuimini.initDevice();
+        // layuimini.tabRoll();
+        layer.close(loading);
+    });
+
+
+    /**
      * 左侧菜单的切换
      */
     $('body').on('click', '[data-menu]', function () {
         var loading = layer.load(0, {shade: false, time: 2 * 1000});
-        var $parent = $(this).parent();
         var menuId = $(this).attr('data-menu');
         // header
         $(".layuimini-header-menu .layui-nav-item.layui-this").removeClass('layui-this');
