@@ -6,8 +6,7 @@
  */
 layui.define(["element", "jquery"], function (exports) {
     var element = layui.element,
-        $ = layui.$,
-        layer = layui.layer;
+        $ = layui.$;
 
 
     var miniTab = {
@@ -112,11 +111,25 @@ layui.define(["element", "jquery"], function (exports) {
         },
 
         /**
+         * 监听滚动
+         */
+        listenRoll: function () {
+            $(".layuimini-tab-roll-left").click(function () {
+                miniTab.rollClick("left");
+            });
+
+            $(".layuimini-tab-roll-right").click(function () {
+                miniTab.rollClick("right");
+            });
+        },
+
+        /**
          * 单模块切换
          * @param filter
          */
         listenSwitchSingleModule: function (filter) {
             element.on('tab(' + filter + ')', function (data) {
+                miniTab.rollPosition();
                 var tabId = $(this).attr('lay-id');
                 $("[layuimini-tab-open]").parent().removeClass('layui-this');
                 $("[layuimini-tab-open]").each(function () {
@@ -148,7 +161,10 @@ layui.define(["element", "jquery"], function (exports) {
          */
         listenSwitchMultiModule: function (filter) {
             element.on('tab(' + filter + ')', function (data) {
+                miniTab.rollPosition();
                 var tabId = $(this).attr('lay-id');
+                var left = $('.layuimini-tab  .layui-tab-title').scrollLeft();
+                console.log(left);
                 $("[layuimini-tab-open]").parent().removeClass('layui-this');
                 $("[layuimini-tab-open]").each(function () {
                     if ($(this).attr("layuimini-tab-open") === tabId) {
@@ -184,6 +200,43 @@ layui.define(["element", "jquery"], function (exports) {
                 });
             });
         },
+
+        /**
+         * 自动定位
+         */
+        rollPosition: function () {
+            var $tabTitle = $('.layuimini-tab  .layui-tab-title');
+            var autoLeft = 0;
+            $tabTitle.children("li").each(function () {
+                if ($(this).hasClass('layui-this')) {
+                    return false;
+                } else {
+                    autoLeft += $(this).outerWidth();
+                }
+            });
+            $tabTitle.animate({
+                scrollLeft: autoLeft - $tabTitle.width() / 3
+            }, 200);
+        },
+
+        /**
+         * 点击滚动
+         * @param direction
+         */
+        rollClick: function (direction) {
+            var $tabTitle = $('.layuimini-tab  .layui-tab-title');
+            var left = $tabTitle.scrollLeft();
+            console.log(left);
+            if ('left' === direction) {
+                $tabTitle.animate({
+                    scrollLeft: left - 450
+                }, 200);
+            } else {
+                $tabTitle.animate({
+                    scrollLeft: left + 450
+                }, 200);
+            }
+        }
 
     };
 

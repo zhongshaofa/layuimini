@@ -49,6 +49,7 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
                         filter: 'layuiminiTab',
                         multiModule: options.multiModule
                     });
+                    miniTab.listenRoll();
                     miniAdmin.renderLogo(data.logoInfo);
                     miniAdmin.renderHome(data.homeInfo);
                 }

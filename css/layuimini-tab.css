@@ -99,13 +99,13 @@
     border-bottom: whitesmoke 1px solid;
 }
 
-.layuimini-tab .layui-tab-prev {
+.layuimini-tab .layuimini-tab-roll-left {
     left: 0px;
     border-right: whitesmoke 1px solid;
     border-left: whitesmoke 1px solid;
 }
 
-.layuimini-tab .layui-tab-next {
+.layuimini-tab .layuimini-tab-roll-right {
     right: 35px;
     border-left: 1px solid whitesmoke;
 }
@@ -116,18 +116,18 @@
 }
 
 .layuimini-tab .layui-tab-control .layui-tab-tool,
-.layuimini-tab .layui-tab-control .layui-tab-prev,
-.layuimini-tab .layui-tab-control .layui-tab-next {
+.layuimini-tab .layui-tab-control .layuimini-tab-roll-left,
+.layuimini-tab .layui-tab-control .layuimini-tab-roll-right {
     display: none;
 }
 
 
-.layuimini-tab.layui-tab-roll .layui-tab-control .layui-tab-prev,
-.layuimini-tab.layui-tab-roll .layui-tab-control .layui-tab-next {
+.layuimini-tab.layui-tab-roll .layui-tab-control .layuimini-tab-roll-left,
+.layuimini-tab.layui-tab-roll .layui-tab-control .layuimini-tab-roll-right {
     display: block;
 }
 
-.layuimini-tab.layui-tab-roll .layui-tab-control .layui-tab-next {
+.layuimini-tab.layui-tab-roll .layui-tab-control .layuimini-tab-roll-right {
     right: 0px;
     border-right: 1px solid whitesmoke;
 }
@@ -153,8 +153,8 @@
     padding-right: 80px;
 }
 
-.layuimini-tab.layui-tab-rollTool .layui-tab-control .layui-tab-prev,
-.layuimini-tab.layui-tab-rollTool .layui-tab-control .layui-tab-next,
+.layuimini-tab.layui-tab-rollTool .layui-tab-control .layuimini-tab-roll-left,
+.layuimini-tab.layui-tab-rollTool .layui-tab-control .layuimini-tab-roll-right,
 .layuimini-tab.layui-tab-rollTool .layui-tab-control .layui-tab-tool {
     display: block;
 }
