@@ -181,7 +181,7 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
         var loading = layer.load(0, {shade: false, time: 2 * 1000});
         var tabId = $(this).attr('layuimini-tab-open'),
             href = $(this).attr('layuimini-tab-open'),
-            title = $(this).html(),
+            title = $(this).text(),
             target = $(this).attr('target');
         if (target == '_blank') {
             layer.close(loading);

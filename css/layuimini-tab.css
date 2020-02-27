@@ -5,7 +5,7 @@
 }
 
 .layuimini-tab .layui-tab-content{
-    height: calc(100% - 42px) !important;
+    height: calc(100% - 37px) !important;
 }
 
 
@@ -42,17 +42,40 @@
     width: 9px;
     height: 9px;
     border-radius: 30px;
-    margin-right: 12px;
+    margin-right: 5px;
 }
 
 .layuimini-tab .layui-tab-title .layui-this .layuimini-tab-active {
     background-color: #1aa094;
 }
 
+.layuimini-tab > .layui-tab-title, .layuimini-tab > .close-box {
+    height: 35px !important;
+}
+
+.layuimini-tab > .layui-tab-title li, .layuimini-tab > .close-box  li {
+    line-height: 35px !important;
+}
+
+
+.layuimini-tab .layui-tab-title span {
+    color: #acafb1;
+}
+
+.layuimini-tab .layui-tab-title .layui-this span {
+    color: dimgray;
+}
+
+.layuimini-tab .layui-tab-title .layui-tab-close {
+    font-size: 12px !important;
+    width: 14px !important;
+    height: 14px !important;
+    line-height: 16px !important;
+}
+
 .layuimini-tab .layui-tab-title .layui-tab-close:hover {
-    border-radius: 50px;
-    background-color: lightgray;
-    line-height: 19px;
+    border-radius: 4em;
+    background: #ff5722;
 }
 
 .layuimini-tab .layui-tab-title .disable-close+.layui-tab-close {
@@ -67,9 +90,9 @@
 .layuimini-tab .layui-tab-control>li {
     position: absolute;
     top: 0px;
-    height: 40px;
-    line-height: 40px;
-    width: 40px;
+    height: 35px;
+    line-height: 35px;
+    width: 35px;
     text-align: center;
     background-color: white;
     border-top: whitesmoke 1px solid;
@@ -83,7 +106,7 @@
 }
 
 .layuimini-tab .layui-tab-next {
-    right: 40px;
+    right: 35px;
     border-left: 1px solid whitesmoke;
 }
 
@@ -110,8 +133,8 @@
 }
 
 .layuimini-tab.layui-tab-roll .layui-tab-title {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 35px;
+    padding-right: 35px;
 }
 
 
@@ -121,12 +144,12 @@
 
 .layuimini-tab.layui-tab-tool .layui-tab-title {
     padding-left: 0px;
-    padding-right: 40px;
+    padding-right: 35px;
 }
 
 
 .layuimini-tab.layui-tab-rollTool .layui-tab-title {
-    padding-left: 40px;
+    padding-left: 35px;
     padding-right: 80px;
 }
 
@@ -147,7 +170,7 @@
 }
 
 .layuimini-tab .layui-tab-tool .layui-nav-item {
-    height: 40px;
+    height: 35px;
 }
 
 .layuimini-tab .layui-tab-tool .layui-nav-bar {
@@ -170,8 +193,8 @@
     position: absolute;
     display: none;
     width: 100%;
-    height: calc(100% - 42px);
-    top: 42px;
+    height: calc(100% - 37px);
+    top: 37px;
     z-index: 19;
     background-color: #fff
 }
