@@ -4,9 +4,8 @@
  * version:2.0
  * description:layuimini 主体框架扩展
  */
-layui.define(["element", "jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) {
-    var element = layui.element,
-        $ = layui.$,
+layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) {
+    var $ = layui.$,
         layer = layui.layer,
         miniMenu = layui.miniMenu,
         miniTheme = layui.miniTheme,
@@ -25,7 +24,6 @@ layui.define(["element", "jquery", "miniMenu", "miniTab", "miniTheme"], function
          * @param options.clearUrl   后台清理缓存接口
          * @param options.urlHashLocation URL地址hash定位
          * @param options.bgColorDefault 默认皮肤
-         * @param options.checkUrlDefault 是否判断URL有效
          * @param options.multiModule 是否开启多模块
          */
         render: function (options) {
@@ -33,7 +31,6 @@ layui.define(["element", "jquery", "miniMenu", "miniTab", "miniTheme"], function
             options.clearUrl = options.clearUrl || null;
             options.urlHashLocation = options.urlHashLocation || false;
             options.bgColorDefault = options.bgColorDefault || 0;
-            options.checkUrlDefault = options.checkUrlDefault || false;
             options.multiModule = options.multiModule || false;
             var loading = layer.load(0, {shade: false, time: 2 * 1000});
             $.getJSON(options.iniUrl, function (data) {

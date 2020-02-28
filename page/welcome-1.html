@@ -114,49 +114,49 @@
                                 <div class="welcome-module">
                                     <div class="layui-row layui-col-space10 layuimini-qiuck">
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="page/menu.html" data-title="菜单管理" data-icon="fa fa-window-maximize">
+                                            <a href="javascript:;" layuimini-content-href="page/menu.html" data-title="菜单管理" data-icon="fa fa-window-maximize">
                                                 <i class="fa fa-window-maximize"></i>
                                                 <cite>菜单管理</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="page/setting.html" data-title="系统设置" data-icon="fa fa-gears">
+                                            <a href="javascript:;" layuimini-content-href="page/setting.html" data-title="系统设置" data-icon="fa fa-gears">
                                                 <i class="fa fa-gears"></i>
                                                 <cite>系统设置</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="page/table.html" data-title="表格示例" data-icon="fa fa-file-text">
+                                            <a href="javascript:;" layuimini-content-href="page/table.html" data-title="表格示例" data-icon="fa fa-file-text">
                                                 <i class="fa fa-file-text"></i>
                                                 <cite>表格示例</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="page/icon.html" data-title="图标列表" data-icon="fa fa-dot-circle-o">
+                                            <a href="javascript:;" layuimini-content-href="page/icon.html" data-title="图标列表" data-icon="fa fa-dot-circle-o">
                                                 <i class="fa fa-dot-circle-o"></i>
                                                 <cite>图标列表</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="page/form.html" data-title="表单示例" data-icon="fa fa-calendar">
+                                            <a href="javascript:;" layuimini-content-href="page/form.html" data-title="表单示例" data-icon="fa fa-calendar">
                                                 <i class="fa fa-calendar"></i>
                                                 <cite>表单示例</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="page/404.html" data-title="404页面" data-icon="fa fa-hourglass-end">
+                                            <a href="javascript:;" layuimini-content-href="page/404.html" data-title="404页面" data-icon="fa fa-hourglass-end">
                                                 <i class="fa fa-hourglass-end"></i>
                                                 <cite>404页面</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="page/button.html" data-title="按钮示例" data-icon="fa fa-snowflake-o">
+                                            <a href="javascript:;" layuimini-content-href="page/button.html" data-title="按钮示例" data-icon="fa fa-snowflake-o">
                                                 <i class="fa fa-snowflake-o"></i>
                                                 <cite>按钮示例</cite>
                                             </a>
                                         </div>
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="page/layer.html" data-title="弹出层" data-icon="fa fa-shield">
+                                            <a href="javascript:;" layuimini-content-href="page/layer.html" data-title="弹出层" data-icon="fa fa-shield">
                                                 <i class="fa fa-shield"></i>
                                                 <cite>弹出层</cite>
                                             </a>
@@ -346,11 +346,13 @@
 <script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>
-    layui.use(['layer', 'miniAdmin','echarts'], function () {
+    layui.use(['layer', 'miniTab','echarts'], function () {
         var $ = layui.jquery,
             layer = layui.layer,
-            miniAdmin = layui.miniAdmin,
+            miniTab = layui.miniTab,
             echarts = layui.echarts;
+
+        miniTab.listen();
 
         /**
          * 查看公告信息

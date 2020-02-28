@@ -49,7 +49,7 @@ layui.define(["element", "jquery"], function (exports) {
                                 html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
                                 html = buildChildHtml(html, childMenu.child);
                             } else {
-                                html += '<a href="javascript:;" class="layui-menu-tips"  layuimini-tab-open="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
+                                html += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
                             }
                             html += '</dd>\n';
                         });
@@ -58,7 +58,7 @@ layui.define(["element", "jquery"], function (exports) {
                     };
                     leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
                 } else {
-                    leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  layuimini-tab-open="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
+                    leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
                 }
                 leftMenuHtml += '</li>\n';
             });
@@ -100,7 +100,7 @@ layui.define(["element", "jquery"], function (exports) {
                                     html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
                                     html = buildChildHtml(html, childMenu.child);
                                 } else {
-                                    html += '<a href="javascript:;" class="layui-menu-tips"  layuimini-tab-open="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
+                                    html += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
                                 }
                                 html += '</dd>\n';
                             });
@@ -109,7 +109,7 @@ layui.define(["element", "jquery"], function (exports) {
                         };
                         leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
                     } else {
-                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  layuimini-tab-open="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
+                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
                     }
                     leftMenuHtml += '</li>\n';
                 });
