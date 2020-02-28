@@ -278,7 +278,6 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
             $('.layuimini-tool i').attr('class', 'fa fa-outdent');
             $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-all');
         }
-        // layuimini.tabRoll();
         element.init();
         layer.close(loading);
     });

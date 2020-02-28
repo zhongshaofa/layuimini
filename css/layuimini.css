@@ -42,18 +42,6 @@
 
 /**tab选项卡 */
 .layui-tab-title li cite {font-style:normal;padding-left:5px;}
-#top_tabs_box>.layui-tab-title {color:#acafb1;}
-#top_tabs_box>.layui-tab-title li:hover {color:#000000;background-color:#e7ebed;}
-#top_tabs_box .layui-tab-close {font-size:12px!important;width:14px!important;height:14px!important;line-height:16px!important;}
-#top_tabs_box .layui-tab-close:hover {border-radius:4em;background:#ff5722;}
-#top_tabs_box>.layui-tab-title>.layui-this>i:first-child {color:#009688;}
-#top_tabs_box>.layui-tab-title li {border-right:1px solid #e2e2e2;font-size: 12.5px!important;}
-#top_tabs_box>.layui-tab-title .layui-this {color:#000000;}
-#top_tabs_box>.layui-tab-title .layui-this:after {margin-top:33px;width: 100%;border: none;height: 2px;background-color: #243346;}
-#top_tabs_box {padding-right:138px;height:34px;border-bottom:1px solid #e2e2e2;}
-#top_tabs_box > .layui-tab-title ,#top_tabs_box > .closeBox {height:35px !important;}
-#top_tabs_box > .layui-tab-title > li ,#top_tabs_box > .closeBox > li {line-height:35px !important;}
-#top_tabs {position:absolute;border-bottom:none;}
 
 /**多窗口页面操作下拉**/
 .closeBox {position:absolute;right:15px;background-color:#fff !important;color:#000;border-left:1px solid #e2e2e2;border-bottom:1px solid #e2e2e2;padding:0 10px !important;}
@@ -75,12 +63,15 @@
 .layuimini-menu-left .layui-nav .layui-nav-more {right:15px;}
 .layuimini-menu-left .layui-nav .layui-nav-item a:hover {background-color: transparent!important;}
 .layuimini-menu-left .layui-nav {background-color: transparent!important;}
+
+
 /**左侧菜单栏 (正常) */
 .layuimini-all .layui-nav-itemed .layui-nav-child a ,.layuimini-all .layuimini-menu-left .layui-nav .layui-nav-child a{padding-left:35px;}
 .layuimini-all .layuimini-menu-left .layui-nav .layui-nav-child .layui-nav-child a {padding-left:45px;}
 .layuimini-all .layuimini-menu-left .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child a {padding-left:55px;}
 .layuimini-all .layuimini-menu-left .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child .layui-nav-child a {padding-left:65px;}
 .layuimini-all .layuimini-menu-left .layui-nav .layui-nav-itemed>.layui-nav-child {padding:5px 0;}
+
 /**左侧菜单栏（缩放） */
 .layuimini-mini .layuimini-menu-left {width: 80px !important;}
 .layuimini-mini .layui-side.layui-bg-black,.layuimini-mini .layuimini-menu-left>ul ,.layuimini-mini .layuimini-menu-left>ul li i {width:60px!important;}
@@ -145,20 +136,22 @@
  手机自适应样式
 */
 @media screen and (max-width:768px) {
-    #top_tabs_box {border-bottom:0px!important;}
+
     .layui-layout-admin .layui-body .layui-tab-item.layui-show{border-top:1px solid #e2e2e2;}
-    .layuimini-mini .layuimini-tool {left:15px !important;}
+    .layuimini-all .layuimini-tool {left:15px !important;}
     .layuimini-tool i:hover {background-color:transparent!important;}
-    .layuimini-all .layui-layout-left.layuimini-header-menu {transition:all .2s;float:right;right:5px;}
-    .layuimini-all .layuimini-header-menu > .layui-nav-item {float:right;right:0px;}
-    .layuimini-mini .layui-layout-left.layuimini-header-menu {left:50px !important;transition:all .2s;}
+    .layuimini-mini .layui-layout-left.layuimini-header-menu {transition:all .2s;float:right;right:5px;}
+    .layuimini-mini .layuimini-header-menu > .layui-nav-item {float:right;right:0px;}
+    .layuimini-all .layui-layout-left.layuimini-header-menu {left:50px !important;transition:all .2s;}
     .layui-layout-admin .layui-nav.layui-layout-right {margin-right:15px!important;}
     .layui-layout-admin .layui-nav.layui-layout-right>li:not(.layuimini-setting) {width:40px!important;}
     .layui-layout-admin .layui-nav.layui-layout-right>li:not(.layuimini-setting) a {padding:0 15px;}
-    .layuimini-mini .layui-layout-admin .layui-body {left:0px!important;}
+    .layuimini-all .layui-layout-admin .layui-body {left:0px!important;}
     .layui-layout-admin .layui-body .clildFrame.layui-tab-content {top:0px!important;}
     .layui-layout-admin .layui-body .clildFrame.layui-tab-content {overflow:scroll;table-layout:fixed;word-wrap:break-word;word-break:break-all;-webkit-overflow-scrolling:touch!important;}
-    .layuimini-all .layui-nav.layui-layout-right,.layuimini-mini .layui-layout-admin .layuimini-logo ,.layuimini-mini .layui-side.layui-bg-black,.layuimini-mini .layuimini-menu-left,.layui-layout-admin .layui-body #top_tabs,.layui-layout-admin .layui-body .layui-nav.closeBox{
+    .layuimini-mini .layui-nav.layui-layout-right,.layuimini-all .layui-layout-admin .layuimini-logo ,.layuimini-all .layui-side.layui-bg-black,.layuimini-all .layuimini-menu-left,.layui-layout-admin .layui-body #top_tabs,.layui-layout-admin .layui-body .layui-nav.closeBox{
         transition:all .2s;display:none;
     }
+
+    /*重新自定义左侧菜单自适应*/
 }
