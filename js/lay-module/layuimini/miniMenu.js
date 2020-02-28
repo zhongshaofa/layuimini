@@ -80,7 +80,7 @@ layui.define(["element", "jquery"], function (exports) {
                 leftMenuCheckDefault = 'layui-this';
 
             $.each(menuList, function (key, val) {
-                key = 'multi_module_'+key;
+                key = 'multi_module_' + key;
                 headerMenuHtml += '<li class="layui-nav-item ' + headerMenuCheckDefault + '" id="' + key + 'HeaderId" data-menu="' + key + '"> <a href="javascript:;"><i class="' + val.icon + '"></i> ' + val.title + '</a> </li>\n';
                 headerMobileMenuHtml += '<dd><a href="javascript:;" id="' + key + 'HeaderId" data-menu="' + key + '"><i class="' + val.icon + '"></i> ' + val.title + '</a></dd>\n';
                 leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-left-nav-tree ' + leftMenuCheckDefault + '" id="' + key + '">\n';
@@ -118,6 +118,27 @@ layui.define(["element", "jquery"], function (exports) {
             $('.layuimini-menu-header-mobile').html(headerMobileMenuHtml); //手机
             $('.layuimini-menu-left').html(leftMenuHtml);
             element.init();
+        },
+
+        /**
+         * 监听菜单缩放
+         */
+        listenZoom: function () {
+            $('body').on('click', '[data-side-fold]', function () {
+                var loading = layer.load(0, {shade: false, time: 2 * 1000});
+                var isShow = $(this).attr('data-side-fold');
+                if (isShow == 1) { // 缩放
+                    $(this).attr('data-side-fold', 0);
+                    $('.layuimini-tool i').attr('class', 'fa fa-indent');
+                    $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-mini');
+                } else { // 正常
+                    $(this).attr('data-side-fold', 1);
+                    $('.layuimini-tool i').attr('class', 'fa fa-outdent');
+                    $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-all');
+                }
+                element.init();
+                layer.close(loading);
+            });
         },
 
     };

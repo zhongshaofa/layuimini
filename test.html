@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head><title>Simple jsp page</title>
+
+    <style type="text/css">
+
+        <!--
+
+        #div1 {
+
+            position: absolute;
+
+            left: 338px;
+
+            top: 91px;
+
+            width: 446px;
+
+            height: 294px;
+
+            z-index: 1;
+
+            border: solid #7A7A7A 4px;
+
+        }
+
+    </style>
+
+
+    <script src="./lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#div1").hide(); //先让div隐藏
+
+            $("#span1").click(function () {
+
+                $("#div1").fadeIn("slow");//淡入淡出效果 显示div
+
+            });
+
+            $("#span2").click(function () {
+
+                $("#div1").fadeOut("slow");//淡入淡出效果 隐藏div
+
+            })
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+1个简单弹出div的小例子 页面不是很美观 效果达到了<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+
+<span style="cursor:pointer" id="span1">点我弹出div</span>
+
+<div id="div1">
+
+    <div align="right" style="background-color:#CDCDCD;"><span id="span2" style="cursor:pointer">关闭</span>
+
+    </div>
+
+    <p>
+    <p>
+
+        <form>
+
+            username:<input type="text"/>
+    <p/>
+
+    age:<input type="text"/>
+    <p/>
+
+    <input type="submit" value="submit"/><br/>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

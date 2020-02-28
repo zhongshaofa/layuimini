@@ -113,7 +113,6 @@ layui.define(["element", "jquery"], function (exports) {
                     miniTab.listenSwitchSingleModule(tabId);
                 }
             });
-
         },
 
         /**

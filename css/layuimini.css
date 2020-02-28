@@ -22,22 +22,15 @@
 .layui-layout-left {left:295px!important;}
 .layui-nav.layui-layout-left.layuimini-header-menu.mobile.layui-hide-xs {font-weight:bold;transition:all .2s;}
 
-/**头部样式（缩放） */
-.layuimini-mini .layui-layout-left.layuimini-header-menu.layui-hide-xs {left:155px!important;}
 
 /**logo演示（通用） */
 .layui-layout-admin .layuimini-logo {font-weight:bold;color:#ffffff!important;height:60px!important;line-height:60px !important;overflow:hidden;line-height:64px;transition:all .2s!important;}
 .layui-layout-admin  .layuimini-logo img {display:inline-block;height:40px;vertical-align:middle;}
 .layui-layout-admin  .layuimini-logo h1 {display:inline-block;margin:0 0 0 12px;color:#dadde2;font-weight:600;font-size:20px;font-family:Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;vertical-align:middle;            background-image: -webkit-gradient(linear, 37.219838% 34.532506%, 36.425669% 93.178216%, from(#ffffff), to(#0a60ff), color-stop(.37, #0ec7b7));-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 
-/**logo演示（缩放） */
-.layuimini-mini .layui-layout-admin .layuimini-logo {width:60px!important;}
-.layuimini-mini .layui-layout-admin .layuimini-logo h1 {display:none;}
-
 /**缩放工具（通用） */
 .layuimini-tool {position:absolute!important;top:0;left:235px;width:60px;height:100%;line-height:60px;text-align:center;color:#ffffff!important;transition:all .2s;}
 /**缩放工具（缩放） */
-.layuimini-mini .layuimini-tool {left:95px!important;}
 .layuimini-tool i {display:block;color:#fff;width:32px;height:32px;line-height:32px;border-radius:3px;text-align:center;margin-top:15px;cursor:pointer;}
 
 /**tab选项卡 */
@@ -72,17 +65,8 @@
 .layuimini-all .layuimini-menu-left .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child .layui-nav-child a {padding-left:65px;}
 .layuimini-all .layuimini-menu-left .layui-nav .layui-nav-itemed>.layui-nav-child {padding:5px 0;}
 
-/**左侧菜单栏（缩放） */
-.layuimini-mini .layuimini-menu-left {width: 80px !important;}
-.layuimini-mini .layui-side.layui-bg-black,.layuimini-mini .layuimini-menu-left>ul ,.layuimini-mini .layuimini-menu-left>ul li i {width:60px!important;}
-.layuimini-mini .layuimini-menu-left>ul li span:first-child {display:none;}
-.layuimini-mini .layuimini-menu-left>ul li span:last-child {float:right; right: 7px;}
-.layuimini-mini .layuimini-menu-left .layui-nav .layui-nav-item a {height:40px;line-height:40px;padding-right:0px!important;}
-
 /**内容主体（通用） */
 .layui-layout-admin .layui-body {overflow:hidden;bottom:0px !important;top:60px !important;transition:all .2s;}
-/**内容主体（缩放） */
-.layuimini-mini .layui-layout-admin .layui-body {left:60px!important;}
 
 /**选择配色方案 */
 .layuimini-color .color-title {padding: 10px 0 10px 20px;border-bottom: 1px solid #d9dada;margin-bottom: 8px;}
@@ -133,10 +117,29 @@
 }
 
 /**
+ PC版样式
+ */
+@media screen and (min-width:768px) {
+    /**头部样式（缩放） */
+    .layuimini-mini .layui-layout-left.layuimini-header-menu.layui-hide-xs {left:155px!important;}
+    /**logo演示（缩放） */
+    .layuimini-mini .layui-layout-admin .layuimini-logo {width:60px!important;}
+    .layuimini-mini .layui-layout-admin .layuimini-logo h1 {display:none;}
+    /**左侧菜单栏（缩放） */
+    .layuimini-mini .layuimini-menu-left {width: 80px !important;}
+    .layuimini-mini .layui-side.layui-bg-black,.layuimini-mini .layuimini-menu-left>ul ,.layuimini-mini .layuimini-menu-left>ul li i {width:60px!important;}
+    .layuimini-mini .layuimini-menu-left>ul li span:first-child {display:none;}
+    .layuimini-mini .layuimini-menu-left>ul li span:last-child {float:right; right: 7px;}
+    .layuimini-mini .layuimini-menu-left .layui-nav .layui-nav-item a {height:40px;line-height:40px;padding-right:0px!important;}
+    /**内容主体（缩放） */
+    .layuimini-mini .layui-layout-admin .layui-body {left:60px!important;}
+    .layuimini-mini .layuimini-tool {left:95px!important;}
+}
+
+/**
  手机自适应样式
 */
 @media screen and (max-width:768px) {
-
     .layui-layout-admin .layui-body .layui-tab-item.layui-show{border-top:1px solid #e2e2e2;}
     .layuimini-all .layuimini-tool {left:15px !important;}
     .layuimini-tool i:hover {background-color:transparent!important;}
@@ -153,5 +156,4 @@
         transition:all .2s;display:none;
     }
 
-    /*重新自定义左侧菜单自适应*/
 }

@@ -4,7 +4,7 @@
  * version:2.0
  * description:layuimini 主体框架扩展
  */
-layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
+layui.define(["element", "jquery", "miniMenu", "miniTab"], function (exports) {
     var element = layui.element,
         $ = layui.$,
         layer = layui.layer,
@@ -72,7 +72,7 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
          * 初始化首页
          * @param data
          */
-        renderHome:function(data){
+        renderHome: function (data) {
             sessionStorage.setItem('layuiminiHomeHref', data.href);
             $('#layuiminiHomeTabId').html('<span class="layuimini-tab-active"></span><span class="disable-close">' + data.title + '</span><i class="layui-icon layui-unselect layui-tab-close">ဆ</i>');
             $('#layuiminiHomeTabId').attr('lay-id', data.href);
@@ -82,7 +82,7 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
         /**
          * 进入全屏
          */
-        fullScreen:function(){
+        fullScreen: function () {
             var el = document.documentElement;
             var rfs = el.requestFullScreen || el.webkitRequestFullScreen;
             if (typeof rfs != "undefined" && rfs) {
@@ -104,7 +104,7 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
         /**
          * 退出全屏
          */
-        exitFullScreen:function(){
+        exitFullScreen: function () {
             var el = document;
             var cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.exitFullScreen;
             if (typeof cfs != "undefined" && cfs) {
@@ -142,6 +142,25 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
         },
 
         /**
+         * 判断是否为手机
+         * @returns {boolean}
+         */
+        checkMobile: function () {
+            var ua = navigator.userAgent.toLocaleLowerCase();
+            var pf = navigator.platform.toLocaleLowerCase();
+            var isAndroid = (/android/i).test(ua) || ((/iPhone|iPod|iPad/i).test(ua) && (/linux/i).test(pf))
+                || (/ucweb.*linux/i.test(ua));
+            var isIOS = (/iPhone|iPod|iPad/i).test(ua) && !isAndroid;
+            var isWinPhone = (/Windows Phone|ZuneWP7/i).test(ua);
+            var clientWidth = document.documentElement.clientWidth;
+            if (!isAndroid && !isIOS && !isWinPhone && clientWidth > 768) {
+                return false;
+            } else {
+                return true;
+            }
+        },
+
+        /**
          * 主题配置
          * @param bgcolorId
          * @returns {{headerLogo, menuLeftHover, headerRight, menuLeft, headerRightThis, menuLeftThis}|*|*[]}
@@ -174,10 +193,6 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
         }
 
     };
-
-
-
-
 
 
     /**
@@ -263,29 +278,14 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
         miniAdmin.success('刷新成功');
     });
 
-    /**
-     * 菜单栏缩放
-     */
-    $('body').on('click', '[data-side-fold]', function () {
-        var loading = layer.load(0, {shade: false, time: 2 * 1000});
-        var isShow = $(this).attr('data-side-fold');
-        if (isShow == 1) { // 缩放
-            $(this).attr('data-side-fold', 0);
-            $('.layuimini-tool i').attr('class', 'fa fa-indent');
-            $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-mini');
-        } else { // 正常
-            $(this).attr('data-side-fold', 1);
-            $('.layuimini-tool i').attr('class', 'fa fa-outdent');
-            $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-all');
-        }
-        element.init();
-        layer.close(loading);
-    });
 
     /**
      * 监听提示信息
      */
     $("body").on("mouseenter", ".layui-menu-tips", function () {
+        if(miniAdmin.checkMobile()){
+            return false;
+        }
         var classInfo = $(this).attr('class'),
             tips = $(this).children('span').text(),
             isShow = $('.layuimini-tool i').attr('data-side-fold');
@@ -294,6 +294,9 @@ layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
         }
     });
     $("body").on("mouseleave", ".layui-menu-tips", function () {
+        if(miniAdmin.checkMobile()){
+            return false;
+        }
         var isShow = $('.layuimini-tool i').attr('data-side-fold');
         if (isShow == 0) {
             try {
