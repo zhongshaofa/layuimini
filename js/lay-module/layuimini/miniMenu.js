@@ -64,7 +64,9 @@ layui.define(["element", "jquery"], function (exports) {
             });
             leftMenuHtml += '</ul>\n';
 
+            $('.layuimini-header-menu').remove();
             $('.layuimini-menu-left').html(leftMenuHtml);
+
             element.init();
         },
 
