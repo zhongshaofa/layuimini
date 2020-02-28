@@ -18,11 +18,13 @@ layui.define(["element", "jquery"], function (exports) {
         render: function (options) {
             options.filter = options.filter || null;
             options.multiModule = options.multiModule || false;
+            options.urlHashLocation = options.urlHashLocation || false;
             options.listenSwichCallback = options.listenSwichCallback || function () {
             };
             miniTab.listen(options);
             miniTab.listenRoll();
             miniTab.listenSwitch(options);
+            miniTab.listenHash(options.urlHashLocation);
         },
 
         /**
@@ -35,10 +37,8 @@ layui.define(["element", "jquery"], function (exports) {
         create: function (tabId, href, title, addSession) {
             if (addSession === undefined || addSession === true) {
                 var layuiminiTabInfo = JSON.parse(sessionStorage.getItem("layuiminiTabInfo"));
-                if (layuiminiTabInfo == null) {
-                    layuiminiTabInfo = {};
-                }
-                layuiminiTabInfo[tabId] = {href: href, title: title}
+                if (layuiminiTabInfo == null) layuiminiTabInfo = {};
+                layuiminiTabInfo[tabId] = {href: href, title: title};
                 sessionStorage.setItem("layuiminiTabInfo", JSON.stringify(layuiminiTabInfo));
             }
             element.tabAdd('layuiminiTab', {
@@ -130,11 +130,9 @@ layui.define(["element", "jquery"], function (exports) {
                     window.open(href, "_blank");
                     return false;
                 }
-                title = title.replace('style="display: none;"', '');
                 if (tabId === null || tabId === undefined) {
                     tabId = new Date().getTime();
                 }
-                // 判断该窗口是否已经打开过
                 var checkTab = miniTab.check(tabId);
                 if (!checkTab) {
                     miniTab.create(tabId, href, title, true);
@@ -153,20 +151,44 @@ layui.define(["element", "jquery"], function (exports) {
         listenSwitch: function (options) {
             options.filter = options.filter || null;
             options.multiModule = options.multiModule || false;
+            options.urlHashLocation = options.urlHashLocation || false;
             options.listenSwichCallback = options.listenSwichCallback || function () {
 
             };
             element.on('tab(' + options.filter + ')', function (data) {
+                var tabId = $(this).attr('lay-id');
+                if (options.urlHashLocation) {
+                    location.hash = '/' + tabId;
+                }
                 if (typeof options.listenSwichCallback === 'function') {
                     options.listenSwichCallback();
                 }
-                miniTab.rollPosition();
-                var tabId = $(this).attr('lay-id');
                 $("[layuimini-tab-open]").parent().removeClass('layui-this');
                 if (options.multiModule) {
                     miniTab.listenSwitchMultiModule(tabId);
                 } else {
                     miniTab.listenSwitchSingleModule(tabId);
+                }
+                miniTab.rollPosition();
+            });
+        },
+
+        /**
+         * 监听hash变化
+         * @param urlHashLocation
+         * @returns {boolean}
+         */
+        listenHash: function (urlHashLocation) {
+            urlHashLocation = urlHashLocation || false;
+            if (!urlHashLocation) return false;
+            var tabId = location.hash.replace(/^#\//, '');
+            if (tabId === null || tabId === undefined) return false;
+            $("[layuimini-tab-open]").each(function () {
+                if ($(this).attr("layuimini-tab-open") === tabId) {
+                    var title = $(this).text();
+                    miniTab.create(tabId, tabId, title, true);
+                    element.tabChange('layuiminiTab', tabId);
+                    return false;
                 }
             });
         },

@@ -49,6 +49,7 @@ layui.define(["element", "jquery", "miniMenu", "miniTab", "miniTheme"], function
                     });
                     miniTab.render({
                         filter: 'layuiminiTab',
+                        urlHashLocation: options.urlHashLocation,
                         multiModule: options.multiModule,
                         listenSwichCallback: function () {
                             miniAdmin.renderDevice();
