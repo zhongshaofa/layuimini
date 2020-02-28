@@ -33,15 +33,19 @@ layui.define(["element", "jquery"], function (exports) {
          * @param href
          * @param title
          * @param addSession
+         * @param isIframe
          */
-        create: function (tabId, href, title, addSession) {
+        create: function (tabId, href, title, addSession, isIframe) {
+            isIframe = isIframe || false;
             if (addSession === undefined || addSession === true) {
                 var layuiminiTabInfo = JSON.parse(sessionStorage.getItem("layuiminiTabInfo"));
                 if (layuiminiTabInfo == null) layuiminiTabInfo = {};
                 layuiminiTabInfo[tabId] = {href: href, title: title};
                 sessionStorage.setItem("layuiminiTabInfo", JSON.stringify(layuiminiTabInfo));
             }
-            element.tabAdd('layuiminiTab', {
+            var ele = element;
+            if (isIframe) ele = parent.layui.element;
+            ele.tabAdd('layuiminiTab', {
                 title: '<span class="layuimini-tab-active"></span><span>' + title + '</span><i class="layui-icon layui-unselect layui-tab-close">ဆ</i>' //用于演示
                 , content: '<iframe width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0"   src="' + href + '"></iframe>'
                 , id: tabId
@@ -56,6 +60,14 @@ layui.define(["element", "jquery"], function (exports) {
         },
 
         /**
+         * 切换选项卡
+         * @param tabId
+         */
+        change: function (tabId) {
+            element.tabChange('layuiminiTab', tabId);
+        },
+
+        /**
          * 删除tab窗口
          * @param tabId
          * @param isParent
@@ -66,10 +78,25 @@ layui.define(["element", "jquery"], function (exports) {
                 delete layuiminiTabInfo[tabId];
                 sessionStorage.setItem("layuiminiTabInfo", JSON.stringify(layuiminiTabInfo))
             }
+
+            // todo 未知BUG，不知道是不是layui问题，必须先删除元素
+            $(".layuimini-tab .layui-tab-title .layui-unselect.layui-tab-bar").remove();
+
             if (isParent === true) {
                 parent.layui.element.tabDelete('layuiminiTab', tabId);
             } else {
                 element.tabDelete('layuiminiTab', tabId);
+            }
+        },
+
+        /**
+         * 在iframe层关闭当前tab方法
+         */
+        deleteCurrentByIframe: function () {
+            var ele = $(".layuimini-tab .layui-tab-title li.layui-this", parent.document);
+            if (ele.length > 0) {
+                var layId = $(ele[0]).attr('lay-id');
+                miniTab.delete(layId, true);
             }
         },
 
@@ -130,14 +157,69 @@ layui.define(["element", "jquery"], function (exports) {
                     window.open(href, "_blank");
                     return false;
                 }
-                if (tabId === null || tabId === undefined) {
-                    tabId = new Date().getTime();
-                }
+                if (tabId === null || tabId === undefined) tabId = new Date().getTime();
                 var checkTab = miniTab.check(tabId);
-                if (!checkTab) {
-                    miniTab.create(tabId, href, title, true);
-                }
+                if (!checkTab) miniTab.create(tabId, href, title, true);
                 element.tabChange('layuiminiTab', tabId);
+                layer.close(loading);
+            });
+
+            /**
+             * 在iframe子菜单上打开新窗口
+             */
+            $('body').on('click', '[layuimini-tab-iframe]', function () {
+                var loading = parent.layer.load(0, {shade: false, time: 2 * 1000});
+                var tabId = $(this).attr('layuimini-tab-iframe'),
+                    href = $(this).attr('layuimini-tab-iframe'),
+                    title = $(this).attr('data-title'),
+                    target = $(this).attr('target');
+                if (target === '_blank') {
+                    parent.layer.close(loading);
+                    window.open(href, "_blank");
+                    return false;
+                }
+                if (tabId === null || tabId === undefined) tabId = new Date().getTime();
+                var checkTab = miniTab.check(tabId, true);
+                if (!checkTab) miniTab.create(tabId, href, title, true, true);
+                parent.layui.element.tabChange('layuiminiTab', tabId);
+                parent.layer.close(loading);
+            });
+
+            /**
+             * 关闭选项卡
+             **/
+            $('body').on('click', '.layuimini-tab .layui-tab-title .layui-tab-close', function () {
+                var loading = layer.load(0, {shade: false, time: 2 * 1000});
+                var $parent = $(this).parent();
+                var tabId = $parent.attr('lay-id');
+                if (tabId !== undefined || tabId !== null) {
+                    miniTab.delete(tabId);
+                }
+                layer.close(loading);
+            });
+
+            /**
+             * 选项卡操作
+             */
+            $('body').on('click', '[layuimini-tab-close]', function () {
+                var loading = layer.load(0, {shade: false, time: 2 * 1000});
+                var closeType = $(this).attr('layuimini-tab-close');
+                $(".layuimini-tab .layui-tab-title li").each(function () {
+                    var tabId = $(this).attr('lay-id');
+                    var id = $(this).attr('id');
+                    var isCurrent = $(this).hasClass('layui-this');
+                    if (id !== 'layuiminiHomeTabId') {
+                        if (closeType === 'all') {
+                            miniTab.delete(tabId);
+                        } else {
+                            if (closeType === 'current' && isCurrent) {
+                                miniTab.delete(tabId);
+                            } else if (closeType === 'other' && !isCurrent) {
+                                miniTab.delete(tabId);
+                            }
+                        }
+                    }
+                });
                 layer.close(loading);
             });
 
