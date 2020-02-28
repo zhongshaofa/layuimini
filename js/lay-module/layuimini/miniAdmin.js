@@ -2,7 +2,7 @@
  * date:2020/02/27
  * author:Mr.Chung
  * version:2.0
- * description:layuimini 框架扩展
+ * description:layuimini 主体框架扩展
  */
 layui.define(["element", "jquery", "miniMenu","miniTab"], function (exports) {
     var element = layui.element,
