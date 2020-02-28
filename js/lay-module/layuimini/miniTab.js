@@ -12,6 +12,20 @@ layui.define(["element", "jquery"], function (exports) {
     var miniTab = {
 
         /**
+         * 初始化tab
+         * @param options
+         */
+        render: function (options) {
+            options.filter = options.filter || null;
+            options.multiModule = options.multiModule || false;
+            options.listenSwichCallback = options.listenSwichCallback || function () {
+            };
+            miniTab.listen(options);
+            miniTab.listenRoll();
+            miniTab.listenSwitch(options);
+        },
+
+        /**
          * 新建tab窗口
          * @param tabId
          * @param href
@@ -97,16 +111,54 @@ layui.define(["element", "jquery"], function (exports) {
         },
 
         /**
+         * 监听
+         * @param options
+         */
+        listen: function (options) {
+
+            /**
+             * 打开新窗口
+             */
+            $('body').on('click', '[layuimini-tab-open]', function () {
+                var loading = layer.load(0, {shade: false, time: 2 * 1000});
+                var tabId = $(this).attr('layuimini-tab-open'),
+                    href = $(this).attr('layuimini-tab-open'),
+                    title = $(this).text(),
+                    target = $(this).attr('target');
+                if (target === '_blank') {
+                    layer.close(loading);
+                    window.open(href, "_blank");
+                    return false;
+                }
+                title = title.replace('style="display: none;"', '');
+                if (tabId === null || tabId === undefined) {
+                    tabId = new Date().getTime();
+                }
+                // 判断该窗口是否已经打开过
+                var checkTab = miniTab.check(tabId);
+                if (!checkTab) {
+                    miniTab.create(tabId, href, title, true);
+                }
+                element.tabChange('layuiminiTab', tabId);
+                layer.close(loading);
+            });
+
+
+        },
+
+        /**
          * 监听tab切换
          * @param options
-         * @param callback
          */
-        listenSwitch: function (options, callback) {
+        listenSwitch: function (options) {
             options.filter = options.filter || null;
             options.multiModule = options.multiModule || false;
+            options.listenSwichCallback = options.listenSwichCallback || function () {
+
+            };
             element.on('tab(' + options.filter + ')', function (data) {
-                if (typeof callback === 'function') {
-                    callback();
+                if (typeof options.listenSwichCallback === 'function') {
+                    options.listenSwichCallback();
                 }
                 miniTab.rollPosition();
                 var tabId = $(this).attr('lay-id');

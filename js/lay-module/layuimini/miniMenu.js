@@ -24,7 +24,7 @@ layui.define(["element", "jquery"], function (exports) {
             } else {
                 miniMenu.renderSingleModule(options.menuList);
             }
-            miniMenu.listenZoom();
+            miniMenu.listen();
         },
 
         /**
@@ -122,9 +122,30 @@ layui.define(["element", "jquery"], function (exports) {
         },
 
         /**
-         * 监听菜单缩放
+         * 监听
          */
-        listenZoom: function () {
+        listen: function () {
+
+            /**
+             * 菜单模块切换
+             */
+            $('body').on('click', '[data-menu]', function () {
+                var loading = layer.load(0, {shade: false, time: 2 * 1000});
+                var menuId = $(this).attr('data-menu');
+                // header
+                $(".layuimini-header-menu .layui-nav-item.layui-this").removeClass('layui-this');
+                $(this).addClass('layui-this');
+                // left
+                $(".layuimini-menu-left .layui-nav.layui-nav-tree.layui-this").addClass('layui-hide');
+                $(".layuimini-menu-left .layui-nav.layui-nav-tree.layui-this.layui-hide").removeClass('layui-this');
+                $("#" + menuId).removeClass('layui-hide');
+                $("#" + menuId).addClass('layui-this');
+                layer.close(loading);
+            });
+
+            /**
+             * 菜单缩放
+             */
             $('body').on('click', '[data-side-fold]', function () {
                 var loading = layer.load(0, {shade: false, time: 2 * 1000});
                 var isShow = $(this).attr('data-side-fold');
