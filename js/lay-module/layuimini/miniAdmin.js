@@ -4,11 +4,12 @@
  * version:2.0
  * description:layuimini 主体框架扩展
  */
-layui.define(["element", "jquery", "miniMenu", "miniTab"], function (exports) {
+layui.define(["element", "jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) {
     var element = layui.element,
         $ = layui.$,
         layer = layui.layer,
         miniMenu = layui.miniMenu,
+        miniTheme = layui.miniTheme,
         miniTab = layui.miniTab;
 
     if (!/http(s*):\/\//.test(location.href)) {
@@ -54,6 +55,7 @@ layui.define(["element", "jquery", "miniMenu", "miniTab"], function (exports) {
                     miniTab.listenRoll();
                     miniAdmin.renderLogo(data.logoInfo);
                     miniAdmin.renderHome(data.homeInfo);
+                    miniTheme.render();
                 }
             }).fail(function () {
                 miniAdmin.error('菜单接口有误');
@@ -318,49 +320,7 @@ layui.define(["element", "jquery", "miniMenu", "miniTab"], function (exports) {
         }
     });
 
-    /**
-     * 弹出配色方案
-     */
-    $('body').on('click', '[data-bgcolor]', function () {
-        var loading = layer.load(0, {shade: false, time: 2 * 1000});
-        var clientHeight = (document.documentElement.clientHeight) - 95;
-        var bgColorHtml = miniAdmin.buildBgColorHtml();
-        var html = '<div class="layuimini-color">\n' +
-            '<div class="color-title">\n' +
-            '<span>配色方案</span>\n' +
-            '</div>\n' +
-            '<div class="color-content">\n' +
-            '<ul>\n' + bgColorHtml + '</ul>\n' +
-            '</div>\n' +
-            '</div>';
-        layer.open({
-            type: 1,
-            title: false,
-            closeBtn: 0,
-            shade: 0.2,
-            anim: 2,
-            shadeClose: true,
-            id: 'layuiminiBgColor',
-            area: ['340px', clientHeight + 'px'],
-            offset: 'rb',
-            content: html,
-            end: function () {
-                $('.layuimini-select-bgcolor').removeClass('layui-this');
-            }
-        });
-        layer.close(loading);
-    });
 
-    /**
-     * 选择配色方案
-     */
-    $('body').on('click', '[data-select-bgcolor]', function () {
-        var bgcolorId = $(this).attr('data-select-bgcolor');
-        $('.layuimini-color .color-content ul .layui-this').attr('class', '');
-        $(this).attr('class', 'layui-this');
-        sessionStorage.setItem('layuiminiBgcolorId', bgcolorId);
-        miniAdmin.initBgColor();
-    });
 
     /**
      * 全屏
