@@ -48,6 +48,8 @@ layui.define(["element", "jquery", "miniMenu", "miniTab"], function (exports) {
                     miniTab.listenSwitch({
                         filter: 'layuiminiTab',
                         multiModule: options.multiModule
+                    }, function () {
+                        miniAdmin.renderDevice();
                     });
                     miniTab.listenRoll();
                     miniAdmin.renderLogo(data.logoInfo);
@@ -120,6 +122,17 @@ layui.define(["element", "jquery", "miniMenu", "miniTab"], function (exports) {
                 el.oCancelFullScreen();
             } else {
                 miniAdmin.error('浏览器不支持全屏调用！');
+            }
+        },
+
+        /**
+         * 初始化设备端
+         */
+        renderDevice: function () {
+            if (miniAdmin.checkMobile()) {
+                $('.layuimini-tool i').attr('data-side-fold', 1);
+                $('.layuimini-tool i').attr('class', 'fa fa-outdent');
+                $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-all');
             }
         },
 
@@ -220,8 +233,6 @@ layui.define(["element", "jquery", "miniMenu", "miniTab"], function (exports) {
             miniTab.create(tabId, href, title, true);
         }
         element.tabChange('layuiminiTab', tabId);
-        // layuimini.initDevice();
-        // layuimini.tabRoll();
         layer.close(loading);
     });
 
@@ -283,7 +294,7 @@ layui.define(["element", "jquery", "miniMenu", "miniTab"], function (exports) {
      * 监听提示信息
      */
     $("body").on("mouseenter", ".layui-menu-tips", function () {
-        if(miniAdmin.checkMobile()){
+        if (miniAdmin.checkMobile()) {
             return false;
         }
         var classInfo = $(this).attr('class'),
@@ -294,7 +305,7 @@ layui.define(["element", "jquery", "miniMenu", "miniTab"], function (exports) {
         }
     });
     $("body").on("mouseleave", ".layui-menu-tips", function () {
-        if(miniAdmin.checkMobile()){
+        if (miniAdmin.checkMobile()) {
             return false;
         }
         var isShow = $('.layuimini-tool i').attr('data-side-fold');

@@ -24,6 +24,7 @@ layui.define(["element", "jquery"], function (exports) {
             } else {
                 miniMenu.renderSingleModule(options.menuList);
             }
+            miniMenu.listenZoom();
         },
 
         /**

@@ -99,11 +99,15 @@ layui.define(["element", "jquery"], function (exports) {
         /**
          * 监听tab切换
          * @param options
+         * @param callback
          */
-        listenSwitch: function (options) {
+        listenSwitch: function (options, callback) {
             options.filter = options.filter || null;
             options.multiModule = options.multiModule || false;
             element.on('tab(' + options.filter + ')', function (data) {
+                if (typeof callback === 'function') {
+                    callback();
+                }
                 miniTab.rollPosition();
                 var tabId = $(this).attr('lay-id');
                 $("[layuimini-tab-open]").parent().removeClass('layui-this');
