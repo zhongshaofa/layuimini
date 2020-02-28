@@ -258,6 +258,14 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
                     $(this).html('<i class="fa fa-arrows-alt"></i>');
                 }
             });
+
+            /**
+             * 点击遮罩层
+             */
+            $('body').on('click', '.layuimini-make', function () {
+                miniAdmin.renderDevice();
+            });
+
         }
     };
 

@@ -132,9 +132,12 @@ layui.define(["jquery", "layer"], function (exports) {
             if (bgcolorId === null || bgcolorId === undefined || bgcolorId === '') {
                 bgcolorId = options.bgColorDefault;
             }
+
+            console.log('执行一遍');
+            console.log(bgcolorId);
             var bgcolorData = miniTheme.config(bgcolorId);
             var styleHtml = '.layui-layout-admin .layui-header{background-color:' + bgcolorData.headerRight + '!important;}\n' +
-                '.layui-header>ul>.layui-nav-item.layui-this,.layuimini-tool i:hover{background-color:' + bgcolorData.headerRightThis + '!important;}\n' +
+                '.layui-header .layuimini-header-content>ul>.layui-nav-item.layui-this,.layuimini-tool i:hover{background-color:' + bgcolorData.headerRightThis + '!important;}\n' +
                 '.layui-layout-admin .layui-logo {background-color:' + bgcolorData.headerLogo + '!important;}\n' +
                 '.layui-side.layui-bg-black,.layui-side.layui-bg-black>.layui-left-menu>ul {background-color:' + bgcolorData.menuLeft + '!important;}\n' +
                 '.layui-left-menu .layui-nav .layui-nav-child a:hover:not(.layui-this) {background-color:' + bgcolorData.menuLeftHover + ';}\n' +
@@ -202,7 +205,9 @@ layui.define(["jquery", "layer"], function (exports) {
                 $('.layuimini-color .color-content ul .layui-this').attr('class', '');
                 $(this).attr('class', 'layui-this');
                 sessionStorage.setItem('layuiminiBgcolorId', bgcolorId);
-                miniTheme.render();
+                miniTheme.render({
+                    bgColorDefault: bgcolorId
+                });
             });
         }
     };

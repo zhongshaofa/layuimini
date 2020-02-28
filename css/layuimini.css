@@ -4,6 +4,7 @@
 /**头部-配色*/
 .layui-layout-admin .layui-header{background-color:#1aa094!important;}
 .layui-header>ul>.layui-nav-item.layui-this,.layuimini-tool i:hover{background-color:#197971!important;}
+.layui-header .layuimini-header-content>ul>.layui-nav-item.layui-this,.layuimini-tool i:hover{background-color:#197971!important;}
 /**logo-配色*/
 .layui-layout-admin .layuimini-logo {background-color:#243346!important;}
 /**左侧-配色*/
@@ -116,6 +117,22 @@
     ::-webkit-scrollbar-thumb {background-color: #9c9da0;-webkit-border-radius: 2em;-moz-border-radius: 2em;border-radius: 2em}
 }
 
+/*移动端遮罩层*/
+.layuimini-make {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, .5);
+    display: none;
+}
+
+.layuimini-mini .layui-header{
+    z-index: 1001;
+}
+
 /**
  PC版样式
  */
@@ -134,6 +151,9 @@
     /**内容主体（缩放） */
     .layuimini-mini .layui-layout-admin .layui-body {left:60px!important;}
     .layuimini-mini .layuimini-tool {left:95px!important;}
+    .layuimini-mini .layui-layout-admin .layui-side{
+        width: 200px!important;
+    }
 }
 
 /**
@@ -154,6 +174,29 @@
     .layui-layout-admin .layui-body .clildFrame.layui-tab-content {overflow:scroll;table-layout:fixed;word-wrap:break-word;word-break:break-all;-webkit-overflow-scrolling:touch!important;}
     .layuimini-mini .layui-nav.layui-layout-right,.layuimini-all .layui-layout-admin .layuimini-logo ,.layuimini-all .layui-side.layui-bg-black,.layuimini-all .layuimini-menu-left,.layui-layout-admin .layui-body #top_tabs,.layui-layout-admin .layui-body .layui-nav.closeBox{
         transition:all .2s;display:none;
+    }
+
+    .layuimini-mini .layui-layout-admin .layuimini-menu-left,.layuimini-mini .layui-header .layuimini-logo{
+        left: 0;
+        transition: left .5s;
+        z-index: 1001;
+    }
+
+    .layuimini-all .layui-layout-admin .layuimini-menu-left,.layuimini-all .layui-header .layuimini-logo{
+        left: -200px;
+        transition: left .5s;
+        top: 0;
+        z-index: 1002;
+    }
+    .layuimini-mini .layui-layout-admin .layui-body{
+        left: 0;
+        transition: left .5s;
+        top: 0;
+        z-index: 998;
+    }
+
+    .layuimini-mini .layuimini-make {
+        display: block;
     }
 
 }
