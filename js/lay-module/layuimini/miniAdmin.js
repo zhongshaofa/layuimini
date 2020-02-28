@@ -24,8 +24,7 @@ layui.define(["element", "jquery", "miniMenu", "miniTab", "miniTheme"], function
          * @param options.iniUrl   后台初始化接口地址
          * @param options.clearUrl   后台清理缓存接口
          * @param options.urlHashLocation URL地址hash定位
-         * @param options.urlSuffixDefault URL后缀
-         * @param options.BgColorDefault 默认皮肤
+         * @param options.bgColorDefault 默认皮肤
          * @param options.checkUrlDefault 是否判断URL有效
          * @param options.multiModule 是否开启多模块
          */
@@ -33,8 +32,7 @@ layui.define(["element", "jquery", "miniMenu", "miniTab", "miniTheme"], function
             options.iniUrl = options.iniUrl || null;
             options.clearUrl = options.clearUrl || null;
             options.urlHashLocation = options.urlHashLocation || false;
-            options.urlSuffixDefault = options.urlSuffixDefault || false;
-            options.BgColorDefault = options.BgColorDefault || 0;
+            options.bgColorDefault = options.bgColorDefault || 0;
             options.checkUrlDefault = options.checkUrlDefault || false;
             options.multiModule = options.multiModule || false;
             var loading = layer.load(0, {shade: false, time: 2 * 1000});
@@ -56,7 +54,9 @@ layui.define(["element", "jquery", "miniMenu", "miniTab", "miniTheme"], function
                             miniAdmin.renderDevice();
                         }
                     });
-                    miniTheme.render();
+                    miniTheme.render({
+                        bgColorDefault: options.bgColorDefault
+                    });
                 }
             }).fail(function () {
                 miniAdmin.error('菜单接口有误');

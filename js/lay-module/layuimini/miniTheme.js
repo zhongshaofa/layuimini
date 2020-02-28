@@ -121,13 +121,16 @@ layui.define(["jquery", "layer"], function (exports) {
                 return bgColorConfig[bgcolorId];
             }
         },
+
         /**
          * 初始化
+         * @param options
          */
-        render: function () {
+        render: function (options) {
+            options.bgColorDefault = options.bgColorDefault || 0;
             var bgcolorId = sessionStorage.getItem('layuiminiBgcolorId');
             if (bgcolorId === null || bgcolorId === undefined || bgcolorId === '') {
-                bgcolorId = miniTheme.config('BgColorDefault');
+                bgcolorId = options.bgColorDefault;
             }
             var bgcolorData = miniTheme.config(bgcolorId);
             var styleHtml = '.layui-layout-admin .layui-header{background-color:' + bgcolorData.headerRight + '!important;}\n' +
