@@ -35,17 +35,17 @@
 .layuimini-tool i {display:block;color:#fff;width:32px;height:32px;line-height:32px;border-radius:3px;text-align:center;margin-top:15px;cursor:pointer;}
 
 /**tab选项卡 */
-.layui-tab-title li cite {font-style:normal;padding-left:5px;}
+/*.layui-tab-title li cite {font-style:normal;padding-left:5px;}*/
 
 /**多窗口页面操作下拉**/
-.closeBox {position:absolute;right:15px;background-color:#fff !important;color:#000;border-left:1px solid #e2e2e2;border-bottom:1px solid #e2e2e2;padding:0 10px !important;}
-.closeBox .layui-nav-item {line-height:40px;}
-.closeBox .layui-nav-item > a,.closeBox .layui-nav-item > a:hover {color:#000;}
-.closeBox .layui-nav-child {top:40px;}
-.closeBox .layui-nav-bar {display:none;}
-.closeBox a i.caozuo {font-size:20px;position:absolute;top:1px;left:0;}
-.closeBox a span.layui-nav-more {border-color:#333 transparent transparent;}
-.closeBox a span.layui-nav-more.layui-nav-mored {border-color:transparent transparent #333;}
+/*.closeBox {position:absolute;right:15px;background-color:#fff !important;color:#000;border-left:1px solid #e2e2e2;border-bottom:1px solid #e2e2e2;padding:0 10px !important;}*/
+/*.closeBox .layui-nav-item {line-height:40px;}*/
+/*.closeBox .layui-nav-item > a,.closeBox .layui-nav-item > a:hover {color:#000;}*/
+/*.closeBox .layui-nav-child {top:40px;}*/
+/*.closeBox .layui-nav-bar {display:none;}*/
+/*.closeBox a i.caozuo {font-size:20px;position:absolute;top:1px;left:0;}*/
+/*.closeBox a span.layui-nav-more {border-color:#333 transparent transparent;}*/
+/*.closeBox a span.layui-nav-more.layui-nav-mored {border-color:transparent transparent #333;}*/
 
 /**左侧菜单栏 (通用) */
 .layui-side.layui-bg-black {transition:all .2s;}
@@ -88,7 +88,7 @@
 .layui-nav .layui-this:after,.layui-nav-bar,.layui-nav-tree .layui-nav-itemed:after {width:0 !important;height:0 !important;}
 .layui-layout-admin .layui-side {top:60px !important;}
 .layui-tab-card {box-shadow:0px 0px 0px #888888;border-bottom:0;}
-.clildFrame.layui-tab-content {top:35px;position:absolute;bottom:0px;width:100%;padding:0;}
+/*.clildFrame.layui-tab-content {top:35px;position:absolute;bottom:0px;width:100%;padding:0;}*/
 * {touch-action:pan-y;}
 
 /*打开页面动画*/
@@ -161,17 +161,17 @@
 */
 @media screen and (max-width:768px) {
     .layui-layout-admin .layui-body .layui-tab-item.layui-show{border-top:1px solid #e2e2e2;}
-    .layuimini-all .layuimini-tool {left:15px !important;}
-    .layuimini-tool i:hover {background-color:transparent!important;}
+    /*.layuimini-all .layuimini-tool {left:15px !important;}*/
+    /*.layuimini-tool i:hover {background-color:transparent!important;}*/
     .layuimini-mini .layui-layout-left.layuimini-header-menu {transition:all .2s;float:right;right:5px;}
-    .layuimini-mini .layuimini-header-menu > .layui-nav-item {float:right;right:0px;}
-    .layuimini-all .layui-layout-left.layuimini-header-menu {left:50px !important;transition:all .2s;}
+    .layuimini-mini .layuimini-header-menu > .layui-nav-item {float:right;right:10px;}
+    .layuimini-all .layui-layout-left.layuimini-header-menu {left:15px !important;transition:all .2s;}
     .layui-layout-admin .layui-nav.layui-layout-right {margin-right:15px!important;}
     .layui-layout-admin .layui-nav.layui-layout-right>li:not(.layuimini-setting) {width:40px!important;}
     .layui-layout-admin .layui-nav.layui-layout-right>li:not(.layuimini-setting) a {padding:0 15px;}
     .layuimini-all .layui-layout-admin .layui-body {left:0px!important;}
-    .layui-layout-admin .layui-body .clildFrame.layui-tab-content {top:0px!important;}
-    .layui-layout-admin .layui-body .clildFrame.layui-tab-content {overflow:scroll;table-layout:fixed;word-wrap:break-word;word-break:break-all;-webkit-overflow-scrolling:touch!important;}
+    /*.layui-layout-admin .layui-body .clildFrame.layui-tab-content {top:0px!important;}*/
+    /*.layui-layout-admin .layui-body .clildFrame.layui-tab-content {overflow:scroll;table-layout:fixed;word-wrap:break-word;word-break:break-all;-webkit-overflow-scrolling:touch!important;}*/
     .layuimini-mini .layui-nav.layui-layout-right,.layuimini-all .layui-layout-admin .layuimini-logo ,.layuimini-all .layui-side.layui-bg-black,.layuimini-all .layuimini-menu-left,.layui-layout-admin .layui-body #top_tabs,.layui-layout-admin .layui-body .layui-nav.closeBox{
         transition:all .2s;display:none;
     }
@@ -197,6 +197,29 @@
 
     .layuimini-mini .layuimini-make {
         display: block;
+    }
+
+    .layuimini-header-content .layuimini-tool{
+        display: none;
+    }
+
+    .layuimini-mini  .layuimini-site-mobile{
+        display: none!important;
+    }
+
+    .layuimini-site-mobile {
+        display: block!important;
+        position: fixed;
+        z-index: 100000;
+        bottom: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 2px;
+        text-align: center;
+        background-color: rgba(0,0,0,.7);
+        color: #fff;
     }
 
 }

@@ -323,8 +323,6 @@ layui.define(["element", "jquery"], function (exports) {
             $("[layuimini-href]").each(function () {
                 if ($(this).attr("layuimini-href") === tabId) {
 
-                    console.log(this);
-
                     // 自动展开菜单栏
                     var addMenuClass = function ($element, type) {
                         if (type === 1) {

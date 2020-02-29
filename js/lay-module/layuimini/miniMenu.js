@@ -158,18 +158,31 @@ layui.define(["element", "jquery"], function (exports) {
             /**
              * 菜单缩放
              */
-            $('body').on('click', '[data-side-fold]', function () {
+            $('body').on('click', '[data-side-fold],.layuimini-site-mobile', function () {
                 var loading = layer.load(0, {shade: false, time: 2 * 1000});
-                var isShow = $(this).attr('data-side-fold');
+                var isShow = $('.layuimini-tool [data-side-fold]').attr('data-side-fold');
                 if (isShow == 1) { // 缩放
-                    $(this).attr('data-side-fold', 0);
-                    $('.layuimini-tool i').attr('class', 'fa fa-indent');
+                    $('.layuimini-tool [data-side-fold]').attr('data-side-fold', 0);
+                    $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-indent');
                     $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-mini');
                 } else { // 正常
-                    $(this).attr('data-side-fold', 1);
-                    $('.layuimini-tool i').attr('class', 'fa fa-outdent');
+                    $('.layuimini-tool [data-side-fold]').attr('data-side-fold', 1);
+                    $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-outdent');
                     $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-all');
                 }
+                element.init();
+                layer.close(loading);
+            });
+
+            /**
+             * 手机端点开模块
+             */
+            $('body').on('click', '.layuimini-header-menu.mobile dd', function () {
+                var loading = layer.load(0, {shade: false, time: 2 * 1000});
+                $('.layuimini-tool [data-side-fold]').attr('data-side-fold', 0);
+                $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-indent');
+                $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-mini');
+                $('.layuimini-logo').trigger("click");
                 element.init();
                 layer.close(loading);
             });
