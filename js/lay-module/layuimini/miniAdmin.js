@@ -58,7 +58,8 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
                         }
                     });
                     miniTheme.render({
-                        bgColorDefault: options.bgColorDefault
+                        bgColorDefault: options.bgColorDefault,
+                        listen: true,
                     });
                     miniAdmin.deleteLoader(options.loadingTime);
                 }

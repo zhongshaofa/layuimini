@@ -128,6 +128,7 @@ layui.define(["jquery", "layer"], function (exports) {
          */
         render: function (options) {
             options.bgColorDefault = options.bgColorDefault || 0;
+            options.listen = options.listen || false;
             var bgcolorId = sessionStorage.getItem('layuiminiBgcolorId');
             if (bgcolorId === null || bgcolorId === undefined || bgcolorId === '') {
                 bgcolorId = options.bgColorDefault;
@@ -142,7 +143,7 @@ layui.define(["jquery", "layer"], function (exports) {
                 '    background-color: ' + bgcolorData.menuLeftThis + ' !important;\n' +
                 '}';
             $('#layuimini-bg-color').html(styleHtml);
-            miniTheme.listen();
+            if (options.listen) miniTheme.listen();
         },
         buildBgColorHtml: function () {
             var html = '';
@@ -203,7 +204,8 @@ layui.define(["jquery", "layer"], function (exports) {
                 $(this).attr('class', 'layui-this');
                 sessionStorage.setItem('layuiminiBgcolorId', bgcolorId);
                 miniTheme.render({
-                    bgColorDefault: bgcolorId
+                    bgColorDefault: bgcolorId,
+                    listen: false,
                 });
             });
         }
