@@ -88,14 +88,11 @@
 .layui-layout-admin .layuimini-logo h1 {
     display: inline-block;
     margin: 0 0 0 12px;
-    color: #dadde2;
+    color: #ffffff;
     font-weight: 600;
     font-size: 20px;
     font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
     vertical-align: middle;
-    background-image: -webkit-gradient(linear, 37.219838% 34.532506%, 36.425669% 93.178216%, from(#ffffff), to(#0a60ff), color-stop(.37, #0ec7b7));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 /**缩放工具（通用） */

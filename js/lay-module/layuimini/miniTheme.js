@@ -24,22 +24,25 @@ layui.define(["jquery", "layer"], function (exports) {
                     menuLeft: '#2f4056',
                     menuLeftThis: '#1aa094',
                     menuLeftHover: '#3b3f4b',
+                    tabActive: '#1aa094',
                 },
                 {
                     headerRight: '#23262e',
                     headerRightThis: '#0c0c0c',
                     headerLogo: '#0c0c0c',
                     menuLeft: '#23262e',
-                    menuLeftThis: '#1aa094',
+                    menuLeftThis: '#737373',
                     menuLeftHover: '#3b3f4b',
+                    tabActive: '#23262e',
                 },
                 {
                     headerRight: '#ffa4d1',
                     headerRightThis: '#bf7b9d',
                     headerLogo: '#e694bd',
                     menuLeft: '#1f1f1f',
-                    menuLeftThis: '#ffa4d1',
+                    menuLeftThis: '#737373',
                     menuLeftHover: '#1f1f1f',
+                    tabActive: '#ffa4d1',
                 },
                 {
                     headerRight: '#1aa094',
@@ -48,71 +51,79 @@ layui.define(["jquery", "layer"], function (exports) {
                     menuLeft: '#23262e',
                     menuLeftThis: '#1aa094',
                     menuLeftHover: '#3b3f4b',
+                    tabActive: '#1aa094',
                 },
                 {
                     headerRight: '#1e9fff',
                     headerRightThis: '#0069b7',
                     headerLogo: '#0c0c0c',
                     menuLeft: '#1f1f1f',
-                    menuLeftThis: '#1aa094',
+                    menuLeftThis: '#1e9fff',
                     menuLeftHover: '#3b3f4b',
+                    tabActive: '#1e9fff',
                 },
-
                 {
                     headerRight: '#ffb800',
                     headerRightThis: '#d09600',
                     headerLogo: '#243346',
                     menuLeft: '#2f4056',
-                    menuLeftThis: '#1aa094',
+                    menuLeftThis: '#8593a7',
                     menuLeftHover: '#3b3f4b',
+                    tabActive: '#ffb800',
                 },
                 {
                     headerRight: '#e82121',
                     headerRightThis: '#ae1919',
                     headerLogo: '#0c0c0c',
                     menuLeft: '#1f1f1f',
-                    menuLeftThis: '#1aa094',
+                    menuLeftThis: '#3b3f4b',
                     menuLeftHover: '#3b3f4b',
+                    tabActive: '#e82121',
                 },
                 {
                     headerRight: '#963885',
                     headerRightThis: '#772c6a',
                     headerLogo: '#243346',
                     menuLeft: '#2f4056',
-                    menuLeftThis: '#1aa094',
+                    menuLeftThis: '#586473',
                     menuLeftHover: '#3b3f4b',
+                    tabActive: '#963885',
                 },
                 {
-                    headerRight: '#1e9fff',
+                    headerRight: '#2D8CF0',
                     headerRightThis: '#0069b7',
                     headerLogo: '#0069b7',
                     menuLeft: '#1f1f1f',
-                    menuLeftThis: '#1aa094',
+                    menuLeftThis: '#2D8CF0',
                     menuLeftHover: '#3b3f4b',
+                    tabActive: '#2d8cf0',
                 },
                 {
                     headerRight: '#ffb800',
                     headerRightThis: '#d09600',
                     headerLogo: '#d09600',
                     menuLeft: '#2f4056',
-                    menuLeftThis: '#1aa094',
+                    menuLeftThis: '#3b3f4b',
                     menuLeftHover: '#3b3f4b',
+                    tabActive: '#ffb800',
                 },
                 {
                     headerRight: '#e82121',
                     headerRightThis: '#ae1919',
                     headerLogo: '#d91f1f',
                     menuLeft: '#1f1f1f',
-                    menuLeftThis: '#1aa094',
+                    menuLeftThis: '#3b3f4b',
                     menuLeftHover: '#3b3f4b',
+                    tabActive: '#e82121',
                 },
                 {
                     headerRight: '#963885',
                     headerRightThis: '#772c6a',
                     headerLogo: '#772c6a',
                     menuLeft: '#2f4056',
-                    menuLeftThis: '#1aa094',
+                    menuLeftThis: '#626f7f',
                     menuLeftHover: '#3b3f4b',
+                    tabActive: '#963885',
                 }
             ];
             if (bgcolorId === undefined) {
@@ -140,8 +151,8 @@ layui.define(["jquery", "layer"], function (exports) {
                 '.layui-side.layui-bg-black,.layui-side.layui-bg-black>.layui-left-menu>ul {background-color:' + bgcolorData.menuLeft + '!important;}\n' +
                 '.layui-left-menu .layui-nav .layui-nav-child a:hover:not(.layui-this) {background-color:' + bgcolorData.menuLeftHover + ';}\n' +
                 '.layui-layout-admin .layui-nav-tree .layui-this, .layui-layout-admin .layui-nav-tree .layui-this>a, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this a {\n' +
-                '    background-color: ' + bgcolorData.menuLeftThis + ' !important;\n' +
-                '}';
+                '    background-color: ' + bgcolorData.menuLeftThis + ' !important;\n}' +
+                '.layuimini-tab .layui-tab-title .layui-this .layuimini-tab-active {background-color:  ' + bgcolorData.tabActive + ' !important;\n}';
             $('#layuimini-bg-color').html(styleHtml);
             if (options.listen) miniTheme.listen();
         },

@@ -276,6 +276,7 @@ layui.define(["element", "jquery"], function (exports) {
                 if ($(this).attr("layuimini-href") === tabId) {
                     var title = $(this).text();
                     miniTab.create(tabId, tabId, title, true);
+                    $('.layuimini-menu-left').attr('layuimini-tab-tag','no');
                     element.tabChange('layuiminiTab', tabId);
                     return false;
                 }
