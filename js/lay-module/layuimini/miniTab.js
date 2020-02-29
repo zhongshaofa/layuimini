@@ -50,6 +50,7 @@ layui.define(["element", "jquery"], function (exports) {
                 , content: '<iframe width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0"   src="' + href + '"></iframe>'
                 , id: tabId
             });
+            $('.layuimini-menu-left').attr('layuimini-tab-tag','add');
         },
 
         /**
@@ -246,11 +247,16 @@ layui.define(["element", "jquery"], function (exports) {
                 if (typeof options.listenSwichCallback === 'function') {
                     options.listenSwichCallback();
                 }
-                $("[layuimini-href]").parent().removeClass('layui-this');
-                if (options.multiModule) {
-                    miniTab.listenSwitchMultiModule(tabId);
+                // 判断是否为新增窗口
+                if ($('.layuimini-menu-left').attr('layuimini-tab-tag') === 'add') {
+                    $('.layuimini-menu-left').attr('layuimini-tab-tag', 'no')
                 } else {
-                    miniTab.listenSwitchSingleModule(tabId);
+                    $("[layuimini-href]").parent().removeClass('layui-this');
+                    if (options.multiModule) {
+                        miniTab.listenSwitchMultiModule(tabId);
+                    } else {
+                        miniTab.listenSwitchSingleModule(tabId);
+                    }
                 }
                 miniTab.rollPosition();
             });

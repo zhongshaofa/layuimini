@@ -26,6 +26,7 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
          * @param options.bgColorDefault 默认皮肤
          * @param options.multiModule 是否开启多模块
          * @param options.menuChildOpen 是否展开子菜单
+         * @param options.loadingTime 初始化加载时间
          */
         render: function (options) {
             options.iniUrl = options.iniUrl || null;
@@ -34,7 +35,7 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
             options.bgColorDefault = options.bgColorDefault || 0;
             options.multiModule = options.multiModule || false;
             options.menuChildOpen = options.menuChildOpen || false;
-            var loading = layer.load(0, {shade: false, time: 2 * 1000});
+            options.loadingTime = options.loadingTime || 1;
             $.getJSON(options.iniUrl, function (data) {
                 if (data == null) {
                     miniAdmin.error('暂无菜单信息')
@@ -59,11 +60,11 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
                     miniTheme.render({
                         bgColorDefault: options.bgColorDefault
                     });
+                    miniAdmin.deleteLoader(options.loadingTime);
                 }
             }).fail(function () {
                 miniAdmin.error('菜单接口有误');
             });
-            layer.close(loading)
         },
 
         /**
@@ -139,6 +140,17 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
                 $('.layuimini-tool i').attr('class', 'fa fa-outdent');
                 $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-all');
             }
+        },
+
+
+        /**
+         * 初始化加载时间
+         * @param loadingTime
+         */
+        deleteLoader: function (loadingTime) {
+            setTimeout(function () {
+                $('.layuimini-loader').fadeOut();
+            }, loadingTime * 1000)
         },
 
         /**
