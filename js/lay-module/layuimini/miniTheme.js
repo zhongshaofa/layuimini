@@ -132,9 +132,6 @@ layui.define(["jquery", "layer"], function (exports) {
             if (bgcolorId === null || bgcolorId === undefined || bgcolorId === '') {
                 bgcolorId = options.bgColorDefault;
             }
-
-            console.log('执行一遍');
-            console.log(bgcolorId);
             var bgcolorData = miniTheme.config(bgcolorId);
             var styleHtml = '.layui-layout-admin .layui-header{background-color:' + bgcolorData.headerRight + '!important;}\n' +
                 '.layui-header .layuimini-header-content>ul>.layui-nav-item.layui-this,.layuimini-tool i:hover{background-color:' + bgcolorData.headerRightThis + '!important;}\n' +

@@ -25,6 +25,7 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
          * @param options.urlHashLocation URL地址hash定位
          * @param options.bgColorDefault 默认皮肤
          * @param options.multiModule 是否开启多模块
+         * @param options.menuChildOpen 是否展开子菜单
          */
         render: function (options) {
             options.iniUrl = options.iniUrl || null;
@@ -32,6 +33,7 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
             options.urlHashLocation = options.urlHashLocation || false;
             options.bgColorDefault = options.bgColorDefault || 0;
             options.multiModule = options.multiModule || false;
+            options.menuChildOpen = options.menuChildOpen || false;
             var loading = layer.load(0, {shade: false, time: 2 * 1000});
             $.getJSON(options.iniUrl, function (data) {
                 if (data == null) {
@@ -42,12 +44,14 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
                     miniAdmin.listen();
                     miniMenu.render({
                         menuList: data.menuInfo,
-                        multiModule: options.multiModule
+                        multiModule: options.multiModule,
+                        menuChildOpen: options.menuChildOpen
                     });
                     miniTab.render({
                         filter: 'layuiminiTab',
                         urlHashLocation: options.urlHashLocation,
                         multiModule: options.multiModule,
+                        menuChildOpen: options.menuChildOpen,
                         listenSwichCallback: function () {
                             miniAdmin.renderDevice();
                         }

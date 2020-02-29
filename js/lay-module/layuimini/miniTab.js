@@ -299,12 +299,12 @@ layui.define(["element", "jquery"], function (exports) {
                     var addMenuClass = function ($element, type) {
                         if (type === 1) {
                             $element.addClass('layui-this');
-                            if ($element.attr('class') !== 'layui-nav-item layui-this') {
+                            if ($element.hasClass('layui-nav-item') && $element.hasClass('layui-this') === false) {
                                 addMenuClass($element.parent().parent(), 2);
                             }
                         } else {
                             $element.addClass('layui-nav-itemed');
-                            if ($element.attr('class') !== 'layui-nav-item layui-nav-itemed') {
+                            if ($element.hasClass('layui-nav-item') && $element.hasClass('layui-nav-itemed') === false) {
                                 addMenuClass($element.parent().parent(), 2);
                             }
                         }
@@ -322,29 +322,32 @@ layui.define(["element", "jquery"], function (exports) {
         listenSwitchMultiModule: function (tabId) {
             $("[layuimini-href]").each(function () {
                 if ($(this).attr("layuimini-href") === tabId) {
+
+                    console.log(this);
+
                     // 自动展开菜单栏
                     var addMenuClass = function ($element, type) {
                         if (type === 1) {
                             $element.addClass('layui-this');
-                            if ($element.attr('class') !== 'layui-nav-item layui-this') {
-                                addMenuClass($element.parent().parent(), 2);
-                            } else {
+                            if ($element.hasClass('layui-nav-item') && $element.hasClass('layui-this')) {
                                 var moduleId = $element.parent().attr('id');
                                 $(".layuimini-header-menu li").attr('class', 'layui-nav-item');
                                 $("#" + moduleId + "HeaderId").addClass("layui-this");
                                 $(".layuimini-menu-left .layui-nav.layui-nav-tree").attr('class', 'layui-nav layui-nav-tree layui-hide');
                                 $("#" + moduleId).attr('class', 'layui-nav layui-nav-tree layui-this');
+                            } else {
+                                addMenuClass($element.parent().parent(), 2);
                             }
                         } else {
                             $element.addClass('layui-nav-itemed');
-                            if ($element.attr('class') !== 'layui-nav-item layui-nav-itemed') {
-                                addMenuClass($element.parent().parent(), 2);
-                            } else {
+                            if ($element.hasClass('layui-nav-item') && $element.hasClass('layui-nav-itemed')) {
                                 var moduleId = $element.parent().attr('id');
                                 $(".layuimini-header-menu li").attr('class', 'layui-nav-item');
                                 $("#" + moduleId + "HeaderId").addClass("layui-this");
                                 $(".layuimini-menu-left .layui-nav.layui-nav-tree").attr('class', 'layui-nav layui-nav-tree layui-hide');
                                 $("#" + moduleId).attr('class', 'layui-nav layui-nav-tree layui-this');
+                            } else {
+                                addMenuClass($element.parent().parent(), 2);
                             }
                         }
                     };

@@ -15,36 +15,42 @@ layui.define(["element", "jquery"], function (exports) {
          * 菜单初始化
          * @param options.menuList   菜单数据信息
          * @param options.multiModule 是否开启多模块
+         * @param options.menuChildOpen 是否展开子菜单
          */
         render: function (options) {
             options.menuList = options.menuList || [];
             options.multiModule = options.multiModule || false;
+            options.menuChildOpen = options.menuChildOpen || false;
             if (options.multiModule) {
-                miniMenu.renderMultiModule(options.menuList);
+                miniMenu.renderMultiModule(options.menuList, options.menuChildOpen);
             } else {
-                miniMenu.renderSingleModule(options.menuList);
+                miniMenu.renderSingleModule(options.menuList, options.menuChildOpen);
             }
             miniMenu.listen();
         },
 
         /**
          * 单模块
-         * @param menuList
+         * @param menuList 菜单数据
+         * @param menuChildOpen 是否默认展开
          */
-        renderSingleModule: function (menuList) {
+        renderSingleModule: function (menuList, menuChildOpen) {
             menuList = menuList || [];
             var leftMenuHtml = '',
+                childOpenClass = '',
                 leftMenuCheckDefault = 'layui-this';
+
+            if (menuChildOpen) childOpenClass = ' layui-nav-itemed';
 
             leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-left-nav-tree ' + leftMenuCheckDefault + '" >\n';
             $.each(menuList, function (index, menu) {
-                leftMenuHtml += '<li class="layui-nav-item">\n';
+                leftMenuHtml += '<li class="layui-nav-item ' + childOpenClass + '">\n';
                 if (menu.child != undefined && menu.child != []) {
                     leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span> </a>';
                     var buildChildHtml = function (html, child) {
                         html += '<dl class="layui-nav-child">\n';
                         $.each(child, function (childIndex, childMenu) {
-                            html += '<dd>\n';
+                            html += '<dd class="' + childOpenClass + '">\n';
                             if (childMenu.child != undefined && childMenu.child != []) {
                                 html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
                                 html = buildChildHtml(html, childMenu.child);
@@ -72,15 +78,19 @@ layui.define(["element", "jquery"], function (exports) {
 
         /**
          * 多模块
-         * @param menuList
+         * @param menuList 菜单数据
+         * @param menuChildOpen 是否默认展开
          */
-        renderMultiModule: function (menuList) {
+        renderMultiModule: function (menuList, menuChildOpen) {
             menuList = menuList || [];
             var headerMenuHtml = '',
                 headerMobileMenuHtml = '',
                 leftMenuHtml = '',
+                childOpenClass = '',
                 headerMenuCheckDefault = 'layui-this',
                 leftMenuCheckDefault = 'layui-this';
+
+            if (menuChildOpen) childOpenClass = ' layui-nav-itemed';
 
             $.each(menuList, function (key, val) {
                 key = 'multi_module_' + key;
@@ -89,13 +99,13 @@ layui.define(["element", "jquery"], function (exports) {
                 leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-left-nav-tree ' + leftMenuCheckDefault + '" id="' + key + '">\n';
                 var menuList = val.child;
                 $.each(menuList, function (index, menu) {
-                    leftMenuHtml += '<li class="layui-nav-item">\n';
+                    leftMenuHtml += '<li class="layui-nav-item ' + childOpenClass + '">\n';
                     if (menu.child != undefined && menu.child != []) {
                         leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span> </a>';
                         var buildChildHtml = function (html, child) {
                             html += '<dl class="layui-nav-child">\n';
                             $.each(child, function (childIndex, childMenu) {
-                                html += '<dd>\n';
+                                html += '<dd class="' + childOpenClass + '">\n';
                                 if (childMenu.child != undefined && childMenu.child != []) {
                                     html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
                                     html = buildChildHtml(html, childMenu.child);
