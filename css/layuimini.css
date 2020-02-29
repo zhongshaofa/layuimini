@@ -661,10 +661,6 @@
         border-top: 1px solid #e2e2e2;
     }
 
-    .layuimini-mini .layuimini-header-menu >li{
-        float: right;
-        right: 10px;
-    }
 
     .layuimini-mini .layuimini-header-content .layui-layout-right {
         display: none
@@ -672,6 +668,10 @@
 
     .layuimini-all .layui-layout-left.layuimini-header-menu {
         left: 15px !important
+    }
+
+    .layuimini-mini .layui-layout-left.layuimini-header-menu {
+        left: 205px !important
     }
 
     .layui-layout-admin .layui-nav.layui-layout-right {
