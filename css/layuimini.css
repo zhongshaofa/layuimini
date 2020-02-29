@@ -160,37 +160,41 @@
  手机自适应样式
 */
 @media screen and (max-width:768px) {
+    .layuimini-header-content{
+        left: 0;
+    }
     .layui-layout-admin .layui-body .layui-tab-item.layui-show{border-top:1px solid #e2e2e2;}
     /*.layuimini-all .layuimini-tool {left:15px !important;}*/
     /*.layuimini-tool i:hover {background-color:transparent!important;}*/
-    .layuimini-mini .layui-layout-left.layuimini-header-menu {transition:all .2s;float:right;right:5px;}
-    .layuimini-mini .layuimini-header-menu > .layui-nav-item {float:right;right:10px;}
-    .layuimini-all .layui-layout-left.layuimini-header-menu {left:15px !important;transition:all .2s;}
+    /*.layuimini-mini .layui-layout-left.layuimini-header-menu {transition:all .2s;float:right;right:5px;}*/
+    /*.layuimini-mini .layuimini-header-menu > .layui-nav-item {float:right;right:10px;}*/
+    .layuimini-all .layui-layout-left.layuimini-header-menu {left:15px !important}
+    .layuimini-mini .layui-layout-left.layuimini-header-menu {left:15px !important}
     .layui-layout-admin .layui-nav.layui-layout-right {margin-right:15px!important;}
     .layui-layout-admin .layui-nav.layui-layout-right>li:not(.layuimini-setting) {width:40px!important;}
     .layui-layout-admin .layui-nav.layui-layout-right>li:not(.layuimini-setting) a {padding:0 15px;}
     .layuimini-all .layui-layout-admin .layui-body {left:0px!important;}
     /*.layui-layout-admin .layui-body .clildFrame.layui-tab-content {top:0px!important;}*/
     /*.layui-layout-admin .layui-body .clildFrame.layui-tab-content {overflow:scroll;table-layout:fixed;word-wrap:break-word;word-break:break-all;-webkit-overflow-scrolling:touch!important;}*/
-    .layuimini-mini .layui-nav.layui-layout-right,.layuimini-all .layui-layout-admin .layuimini-logo ,.layuimini-all .layui-side.layui-bg-black,.layuimini-all .layuimini-menu-left,.layui-layout-admin .layui-body #top_tabs,.layui-layout-admin .layui-body .layui-nav.closeBox{
-        transition:all .2s;display:none;
-    }
+    /*.layuimini-mini .layui-nav.layui-layout-right,.layuimini-all .layui-layout-admin .layuimini-logo ,.layuimini-all .layui-side.layui-bg-black,.layuimini-all .layuimini-menu-left,.layui-layout-admin .layui-body #top_tabs,.layui-layout-admin .layui-body .layui-nav.closeBox{*/
+    /*    left: 0;*/
+    /*}*/
 
     .layuimini-mini .layui-layout-admin .layuimini-menu-left,.layuimini-mini .layui-header .layuimini-logo{
         left: 0;
-        transition: left .5s;
-        z-index: 1001;
+        transition: left .2s;
+        z-index: 1001!important;
     }
 
     .layuimini-all .layui-layout-admin .layuimini-menu-left,.layuimini-all .layui-header .layuimini-logo{
         left: -200px;
-        transition: left .5s;
+        transition: left .2s;
         top: 0;
         z-index: 1002;
     }
     .layuimini-mini .layui-layout-admin .layui-body{
         left: 0;
-        transition: left .5s;
+        transition: left .2s;
         top: 0;
         z-index: 998;
     }
@@ -220,6 +224,10 @@
         text-align: center;
         background-color: rgba(0,0,0,.7);
         color: #fff;
+    }
+
+    .layuimini-header-content{
+        z-index: 997;
     }
 
 }
