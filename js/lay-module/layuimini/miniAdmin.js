@@ -4,12 +4,12 @@
  * version:2.0
  * description:layuimini 主体框架扩展
  */
-layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) {
+layui.define(["jquery", "miniMenu", "miniPage", "miniTheme"], function (exports) {
     var $ = layui.$,
         layer = layui.layer,
         miniMenu = layui.miniMenu,
         miniTheme = layui.miniTheme,
-        miniTab = layui.miniTab;
+        miniPage = layui.miniPage;
 
     if (!/http(s*):\/\//.test(location.href)) {
         var tips = "请先将项目部署至web容器（Apache/Tomcat/Nginx/IIS/等），否则部分数据将无法显示";
@@ -48,15 +48,15 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
                         multiModule: options.multiModule,
                         menuChildOpen: options.menuChildOpen
                     });
-                    miniTab.render({
-                        filter: 'layuiminiTab',
-                        urlHashLocation: options.urlHashLocation,
-                        multiModule: options.multiModule,
-                        menuChildOpen: options.menuChildOpen,
-                        listenSwichCallback: function () {
-                            miniAdmin.renderDevice();
-                        }
-                    });
+                    // miniTab.render({
+                    //     filter: 'layuiminiTab',
+                    //     urlHashLocation: options.urlHashLocation,
+                    //     multiModule: options.multiModule,
+                    //     menuChildOpen: options.menuChildOpen,
+                    //     listenSwichCallback: function () {
+                    //         miniAdmin.renderDevice();
+                    //     }
+                    // });
                     miniTheme.render({
                         bgColorDefault: options.bgColorDefault,
                         listen: true,
@@ -82,10 +82,8 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
          * @param data
          */
         renderHome: function (data) {
-            sessionStorage.setItem('layuiminiHomeHref', data.href);
-            $('#layuiminiHomeTabId').html('<span class="layuimini-tab-active"></span><span class="disable-close">' + data.title + '</span><i class="layui-icon layui-unselect layui-tab-close">ဆ</i>');
-            $('#layuiminiHomeTabId').attr('lay-id', data.href);
-            $('#layuiminiHomeTabIframe').html('<iframe width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0"  src="' + data.href + '"></iframe>');
+            // data.href
+            miniPage.create(data.href);
         },
 
         /**

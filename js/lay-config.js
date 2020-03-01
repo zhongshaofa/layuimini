@@ -16,6 +16,7 @@ layui.config({
     miniAdmin: "layuimini/miniAdmin", // layuimini后台扩展
     miniMenu: "layuimini/miniMenu", // layuimini菜单扩展
     miniTab: "layuimini/miniTab", // layuimini tab扩展
+    miniPage: "layuimini/miniPage", // layuimini 单页扩展
     miniTheme: "layuimini/miniTheme", // layuimini 主题扩展
     miniTongji: "layuimini/miniTongji", // layuimini 统计扩展
     step: 'step-lay/step', // 分步表单扩展
