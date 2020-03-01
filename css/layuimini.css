@@ -403,7 +403,7 @@
 }
 
 .layuimini-color .color-content {
-    padding: 0 5px 0 5px;
+    padding: 10px 5px 0 5px;
 }
 
 .layuimini-color .color-content ul {
@@ -651,6 +651,58 @@
     to {
         transform: rotate(1turn);
     }
+}
+
+/*系统设置*/
+
+.layuimini-color .layui-word-aux {
+    position: absolute;
+    left: 60px;
+    top: 12px;
+    font-size: 12px;
+}
+
+.layuimini-color .layui-input-block {
+    margin-left: 15px;
+    min-height: 36px;
+}
+
+.layuimini-color .more-menu-list {
+    width: 100%;
+    margin-top: 30px;
+}
+
+
+.layuimini-color .more-menu-item:first-child {
+    border-top: 1px solid #e8e8e8;
+}
+
+.layuimini-color .more-menu-item .layui-icon {
+    font-size: 18px;
+    padding-right: 10px;
+}
+
+.layuimini-color .more-menu-item {
+    color: #595959;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    padding: 0 25px;
+    border-bottom: 1px solid #e8e8e8;
+    font-style: normal;
+    display: block;
+}
+
+.layuimini-color .more-menu-item:hover {
+    background-color: whitesmoke;
+}
+
+.layuimini-color .more-menu-item:after {
+    color: #8c8c8c;
+    right: 16px;
+    content: "\e602";
+    position: absolute;
+    font-family: layui-icon !important;
 }
 
 /**

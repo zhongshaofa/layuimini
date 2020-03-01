@@ -30,52 +30,55 @@
         <div class="layui-logo layuimini-logo"></div>
 
         <div class="layuimini-header-content">
-        <a>
-            <div class="layuimini-tool"><i title="展开" class="fa fa-outdent" data-side-fold="1"></i></div>
-        </a>
+            <a>
+                <div class="layuimini-tool"><i title="展开" class="fa fa-outdent" data-side-fold="1"></i></div>
+            </a>
 
-        <!--电脑端头部菜单-->
-        <ul class="layui-nav layui-layout-left layuimini-header-menu mobile layui-hide-xs layuimini-menu-header-pc">
-        </ul>
+            <!--电脑端头部菜单-->
+            <ul class="layui-nav layui-layout-left layuimini-header-menu mobile layui-hide-xs layuimini-menu-header-pc">
+            </ul>
 
-        <!--手机端头部菜单-->
-        <ul class="layui-nav layui-layout-left layuimini-header-menu mobile layui-hide-sm">
-            <li class="layui-nav-item">
-                <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块</a>
-                <dl class="layui-nav-child layuimini-menu-header-mobile">
-                </dl>
-            </li>
-        </ul>
+            <!--手机端头部菜单-->
+            <ul class="layui-nav layui-layout-left layuimini-header-menu mobile layui-hide-sm">
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块</a>
+                    <dl class="layui-nav-child layuimini-menu-header-mobile">
+                    </dl>
+                </li>
+            </ul>
 
-        <ul class="layui-nav layui-layout-right">
+            <ul class="layui-nav layui-layout-right">
 
-            <li class="layui-nav-item" lay-unselect>
-                <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
-            </li>
-            <li class="layui-nav-item" lay-unselect>
-                <a href="javascript:;" data-clear="清理" class="layuimini-clear"><i class="fa fa-trash-o"></i></a>
-            </li>
-            <li class="layui-nav-item mobile layui-hide-xs" lay-unselect>
-                <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
-            </li>
-            <li class="layui-nav-item layuimini-setting">
-                <a href="javascript:;">admin</a>
-                <dl class="layui-nav-child">
-                    <dd>
-                        <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" class="login-out">退出登录</a>
-                    </dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item layuimini-select-bgcolor mobile layui-hide-xs" lay-unselect>
-                <a href="javascript:;" data-bgcolor="配色方案"><i class="fa fa-ellipsis-v"></i></a>
-            </li>
-        </ul>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" data-clear="清理" class="layuimini-clear"><i class="fa fa-trash-o"></i></a>
+                </li>
+                <li class="layui-nav-item mobile layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
+                </li>
+                <li class="layui-nav-item layuimini-setting">
+                    <a href="javascript:;">admin</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
+                        </dd>
+                        <dd>
+                            <hr>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" class="login-out">退出登录</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layuimini-select-bgcolor mobile layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" data-bgcolor="配色方案"><i class="fa fa-ellipsis-v"></i></a>
+                </li>
+            </ul>
         </div>
     </div>
 
@@ -84,7 +87,9 @@
     </div>
 
     <!--初始化加载层-->
-    <div class="layuimini-loader"><div class="layuimini-loader-inner"></div></div>
+    <div class="layuimini-loader">
+        <div class="layuimini-loader-inner"></div>
+    </div>
 
     <!--手机端遮罩层-->
     <div class="layuimini-make"></div>
@@ -122,26 +127,14 @@
     </div>
 
 </div>
-
-<!--百度统计代码-开始 正式使用请删除-->
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?d97abf6d61c21d773f97835defbdef4e";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<!--百度统计代码-结束-->
-
 <script src="lib/layui-v2.5.5/layui.js?v=1.0.4" charset="utf-8"></script>
 <script src="js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>
-    layui.use(['jquery', 'layer', 'miniAdmin'], function () {
+    layui.use(['jquery', 'layer', 'miniAdmin', 'miniTongji'], function () {
         var $ = layui.jquery,
             layer = layui.layer,
-            miniAdmin = layui.miniAdmin;
+            miniAdmin = layui.miniAdmin,
+            miniTongji = layui.miniTongji;
 
         var options = {
             iniUrl: "api/init.json",    // 初始化接口
@@ -150,9 +143,19 @@
             bgColorDefault: 0,          // 主题默认配置
             multiModule: true,          // 是否开启多模块
             menuChildOpen: false,       // 是否默认展开菜单
-            loadingTime: 2,             // 初始化加载时间
+            loadingTime: 0,             // 初始化加载时间
         };
         miniAdmin.render(options);
+
+        // 百度统计代码，只统计指定域名
+        miniTongji.render({
+            specific: true,
+            domains: [
+                '99php.cn',
+                'layuimini.99php.cn',
+                'layuimini-onepage.99php.cn',
+            ],
+        });
 
         $('.login-out').on("click", function () {
             layer.msg('退出登录成功', function () {

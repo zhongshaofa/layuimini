@@ -154,15 +154,14 @@ layui.define(["jquery", "layer"], function (exports) {
                 '    background-color: ' + bgcolorData.menuLeftThis + ' !important;\n}' +
                 '.layuimini-tab .layui-tab-title .layui-this .layuimini-tab-active {background-color:  ' + bgcolorData.tabActive + ' !important;\n}';
             $('#layuimini-bg-color').html(styleHtml);
-            if (options.listen) miniTheme.listen();
+            if (options.listen) miniTheme.listen(options);
         },
-        buildBgColorHtml: function () {
-            var html = '';
-            var bgcolorId = sessionStorage.getItem('layuiminiBgcolorId');
-            if (bgcolorId === null || bgcolorId === undefined || bgcolorId === '') {
-                bgcolorId = 0;
-            }
+        buildBgColorHtml: function (options) {
+            options.bgColorDefault = options.bgColorDefault || 0;
+            var bgcolorId = parseInt(sessionStorage.getItem('layuiminiBgcolorId'));
+            if (isNaN(bgcolorId)) bgcolorId = options.bgColorDefault;
             var bgColorConfig = miniTheme.config();
+            var html = '';
             $.each(bgColorConfig, function (key, val) {
                 if (key === bgcolorId) {
                     html += '<li class="layui-this" data-select-bgcolor="' + key + '">\n';
@@ -177,12 +176,16 @@ layui.define(["jquery", "layer"], function (exports) {
             });
             return html;
         },
-        listen: function () {
 
+        /**
+         * 监听
+         * @param options
+         */
+        listen: function (options) {
             $('body').on('click', '[data-bgcolor]', function () {
                 var loading = layer.load(0, {shade: false, time: 2 * 1000});
-                var clientHeight = (document.documentElement.clientHeight) - 95;
-                var bgColorHtml = miniTheme.buildBgColorHtml();
+                var clientHeight = (document.documentElement.clientHeight) - 60;
+                var bgColorHtml = miniTheme.buildBgColorHtml(options);
                 var html = '<div class="layuimini-color">\n' +
                     '<div class="color-title">\n' +
                     '<span>配色方案</span>\n' +
@@ -190,6 +193,11 @@ layui.define(["jquery", "layer"], function (exports) {
                     '<div class="color-content">\n' +
                     '<ul>\n' + bgColorHtml + '</ul>\n' +
                     '</div>\n' +
+                    '<div class="more-menu-list">\n' +
+                    '<a class="more-menu-item" href="https://github.com/zhongshaofa/layuimini/wiki" target="_blank"><i class="layui-icon layui-icon-read" style="font-size: 19px;"></i> 开发文档</a>\n' +
+                    '<a class="more-menu-item" href="https://github.com/zhongshaofa/layuimini" target="_blank"><i class="layui-icon layui-icon-tabs" style="font-size: 16px;"></i> 开源地址</a>\n' +
+                    '<a class="more-menu-item" href="http://layuimini.99php.cn/iframe/v2" target="_blank"><i class="layui-icon layui-icon-theme"></i> 官方网站</a>\n' +
+                    '</div>' +
                     '</div>';
                 layer.open({
                     type: 1,
@@ -202,6 +210,8 @@ layui.define(["jquery", "layer"], function (exports) {
                     area: ['340px', clientHeight + 'px'],
                     offset: 'rb',
                     content: html,
+                    success: function (index, layero) {
+                    },
                     end: function () {
                         $('.layuimini-select-bgcolor').removeClass('layui-this');
                     }
