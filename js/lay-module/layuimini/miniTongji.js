@@ -17,9 +17,6 @@ layui.define(["jquery"], function (exports) {
             options.specific = options.specific || false;
             options.domains = options.domains || [];
             var domain = window.location.hostname;
-            console.log(options);
-            console.log(domain);
-            console.log( options.domains.indexOf(domain));
             if (options.specific === false || (options.specific === true && options.domains.indexOf(domain) >=0)) {
                 miniTongji.listen();
             }
@@ -29,7 +26,6 @@ layui.define(["jquery"], function (exports) {
          * 监听统计代码
          */
         listen: function () {
-            console.log('执行统计');
             var _hmt = _hmt || [];
             (function () {
                 var hm = document.createElement("script");
