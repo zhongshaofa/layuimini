@@ -69,9 +69,10 @@ layui.define(["element", "jquery"], function (exports) {
             options.homeInfo = options.homeInfo || {};
             options.homeInfo.title = options.homeInfo.title || '主页';
             options.menuList = options.menuList || [];
+            $('.layuimini-page-header').removeClass('layui-hide');
             var pageTitleHtml = '<a lay-href="" href="javascript:;" class="layuimini-back-home">' + options.homeInfo.title + '</a><span lay-separator="">/</span>\n';
             var pageTitleArray = miniPage.buildPageTitleArray(href, options.menuList);
-            if (pageTitleArray) {
+            if (pageTitleArray.length > 0) {
                 for (var key in pageTitleArray) {
                     key = parseInt(key);
                     if (key !== pageTitleArray.length - 1) {
@@ -80,8 +81,14 @@ layui.define(["element", "jquery"], function (exports) {
                         pageTitleHtml += '<a><cite>' + pageTitleArray[key] + '</cite></a>\n';
                     }
                 }
+            } else {
+                var title = sessionStorage.getItem('layuimini_page_title');
+                if (title === null || title === undefined || title === '') {
+                    $('.layuimini-page-header').addClass('layui-hide');
+                } else {
+                    pageTitleHtml += '<a><cite>' + title + '</cite></a>\n';
+                }
             }
-            $('.layuimini-page-header').removeClass('layui-hide');
             $('.layuimini-page-header .layuimini-page-title').empty().html(pageTitleHtml);
         },
 
@@ -231,6 +238,13 @@ layui.define(["element", "jquery"], function (exports) {
         },
 
         /**
+         * 修改hash地址为主页
+         */
+        hashHome: function () {
+            window.location.hash = "/";
+        },
+
+        /**
          * 监听
          * @param options
          */
@@ -259,12 +273,14 @@ layui.define(["element", "jquery"], function (exports) {
             $('body').on('click', '[layuimini-content-href]', function () {
                 var loading = parent.layer.load(0, {shade: false, time: 2 * 1000});
                 var href = $(this).attr('layuimini-content-href'),
+                    title = $(this).attr('data-title'),
                     target = $(this).attr('target');
                 if (target === '_blank') {
                     parent.layer.close(loading);
                     window.open(href, "_blank");
                     return false;
                 }
+                sessionStorage.setItem('layuimini_page_title', title);
                 miniPage.hashChange(href);
                 parent.layer.close(loading);
             });
@@ -273,7 +289,7 @@ layui.define(["element", "jquery"], function (exports) {
              * 返回主页
              */
             $('body').on('click', '.layuimini-back-home', function () {
-                window.location.hash = '/';
+                miniPage.hashHome();
             });
 
 

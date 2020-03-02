@@ -40,10 +40,10 @@
     </div>
 </div>
 <script>
-    layui.use(['form','layuimini'], function () {
+    layui.use(['form','miniPage'], function () {
         var form = layui.form,
             layer = layui.layer,
-            layuimini = layui.layuimini;
+            miniPage = layui.miniPage;
 
         /**
          * 初始化表单，要加上，不然刷新部分组件可能会不加载
@@ -56,7 +56,7 @@
                 title: '最终的提交信息'
             }, function () {
                 layer.close(index);
-                layuimini.hash('page/welcome-1.html?v');
+                miniPage.hashHome();
             });
             return false;
         });
