@@ -101,6 +101,19 @@ layui.define(["element", "jquery"], function (exports) {
         },
 
         /**
+         * 刷新页面内容
+         * @param options
+         */
+        refresh: function (options) {
+            var href = location.hash.replace(/^#\//, '');
+            if (href === null || href === undefined || href === '') {
+                miniPage.renderHome(options);
+            } else {
+                miniPage.renderPageContent(href, options);
+            }
+        },
+
+        /**
          * 单模块切换
          * @param tabId
          */
@@ -243,7 +256,7 @@ layui.define(["element", "jquery"], function (exports) {
                     $("[layuimini-href]").parent().removeClass('layui-this');
                     miniPage.renderHome(options);
                 } else {
-                    miniPage.renderPage(href,options);
+                    miniPage.renderPage(href, options);
                 }
                 if ($('.layuimini-menu-left').attr('layuimini-page-add') === 'yes') {
                     $('.layuimini-menu-left').attr('layuimini-page-add', 'no');
