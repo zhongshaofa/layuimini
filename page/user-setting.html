@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>基本资料</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
-    <link rel="stylesheet" href="../css/public.css" media="all">
-    <style>
-        .layui-form-item .layui-input-company {width: auto;padding-right: 10px;line-height: 38px;}
-    </style>
-</head>
-<body>
-<div class="layuimini-container">
+<style>
+    .layui-form-item .layui-input-company {width: auto;padding-right: 10px;line-height: 38px;}
+</style>
+<div class="layuimini-container layui-anim layui-anim-upbit">
     <div class="layuimini-main">
 
         <div class="layui-form layuimini-form">
@@ -51,13 +39,16 @@
         </div>
     </div>
 </div>
-<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
-<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>
-    layui.use(['form','miniTab'], function () {
+    layui.use(['form','layuimini'], function () {
         var form = layui.form,
             layer = layui.layer,
-            miniTab = layui.miniTab;
+            layuimini = layui.layuimini;
+
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
 
         //监听提交
         form.on('submit(saveBtn)', function (data) {
@@ -65,12 +56,10 @@
                 title: '最终的提交信息'
             }, function () {
                 layer.close(index);
-                miniTab.deleteCurrentByIframe();
+                layuimini.hash('page/welcome-1.html?v');
             });
             return false;
         });
 
     });
 </script>
-</body>
-</html>

@@ -14,8 +14,9 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="lib/layui-v2.5.5/css/layui.css" media="all">
-    <link rel="stylesheet" href="css/layuimini.css?v=2.0.0" media="all">
     <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="css/layuimini.css?v=2.0.0" media="all">
+    <link rel="stylesheet" href="css/public.css" media="all">
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
@@ -27,7 +28,7 @@
 <div class="layui-layout layui-layout-admin">
 
     <div class="layui-header header">
-        <div class="layui-logo layuimini-logo"></div>
+        <div class="layui-logo layuimini-logo layuimini-back-home"></div>
 
         <div class="layuimini-header-content">
             <a>
@@ -99,18 +100,15 @@
 
     <div class="layui-body">
 
-        <div class="layuimini-tab layui-tab-rollTool layui-tab" lay-filter="layuiminiTab" lay-allowclose="true">
-
-            <div class="layui-card layuimini-page-header">
-                <div class="layui-breadcrumb" id="layuimini-page-header" style="visibility: visible;"><a lay-href="" href="/">主页</a><span lay-separator="">/</span>
-                    <a><cite>常规管理</cite></a><span lay-separator="">/</span>
-                    <a><cite>系统设置</cite></a>
-                </div>
+        <div class="layui-card layuimini-page-header layui-hide">
+            <div class="layui-breadcrumb layuimini-page-title">
+                <a lay-href="" href="/">主页</a><span lay-separator="">/</span>
+                <a><cite>常规管理</cite></a><span lay-separator="">/</span>
+                <a><cite>系统设置</cite></a>
             </div>
+        </div>
 
-            <div class="layui-tab-content layuimini-content-page">
-
-            </div>
+        <div class="layuimini-content-page">
         </div>
 
     </div>

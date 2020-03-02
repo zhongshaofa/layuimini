@@ -41,22 +41,20 @@ layui.define(["jquery", "miniMenu", "miniPage", "miniTheme"], function (exports)
                     miniAdmin.error('暂无菜单信息')
                 } else {
                     miniAdmin.renderLogo(data.logoInfo);
-                    miniAdmin.renderHome(data.homeInfo);
                     miniAdmin.listen();
                     miniMenu.render({
                         menuList: data.menuInfo,
                         multiModule: options.multiModule,
                         menuChildOpen: options.menuChildOpen
                     });
-                    // miniTab.render({
-                    //     filter: 'layuiminiTab',
-                    //     urlHashLocation: options.urlHashLocation,
-                    //     multiModule: options.multiModule,
-                    //     menuChildOpen: options.menuChildOpen,
-                    //     listenSwichCallback: function () {
-                    //         miniAdmin.renderDevice();
-                    //     }
-                    // });
+                    miniPage.render({
+                        homeInfo:data.homeInfo,
+                        multiModule: options.multiModule,
+                        menuChildOpen: options.menuChildOpen,
+                        listenSwichCallback: function () {
+                            miniAdmin.renderDevice();
+                        }
+                    });
                     miniTheme.render({
                         bgColorDefault: options.bgColorDefault,
                         listen: true,
@@ -73,17 +71,8 @@ layui.define(["jquery", "miniMenu", "miniPage", "miniTheme"], function (exports)
          * @param data
          */
         renderLogo: function (data) {
-            var html = '<a href="' + data.href + '"><img src="' + data.image + '" alt="logo"><h1>' + data.title + '</h1></a>';
+            var html = '<a href="javascript:;"><img src="' + data.image + '" alt="logo"><h1>' + data.title + '</h1></a>';
             $('.layuimini-logo').html(html);
-        },
-
-        /**
-         * 初始化首页
-         * @param data
-         */
-        renderHome: function (data) {
-            // data.href
-            miniPage.create(data.href);
         },
 
         /**

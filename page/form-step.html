@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>分步表单</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
-    <link rel="stylesheet" href="../css/public.css" media="all">
-    <link rel="stylesheet" href="../js/lay-module/step-lay/step.css" media="all">
-</head>
-<body>
-<div class="layuimini-container">
+<link rel="stylesheet" href="../js/lay-module/step-lay/step.css" media="all">
+<div class="layuimini-container layui-anim layui-anim-upbit">
     <div class="layuimini-main">
 
         <div class="layui-fluid">
@@ -24,7 +12,7 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">游戏ID:</label>
                                         <div class="layui-input-block">
-                                            <input type="text" placeholder="请填写入款人游戏ID" class="layui-input" lay-verify="number" required />
+                                            <input type="text" placeholder="请填写入款人游戏ID" class="layui-input" lay-verify="number" required/>
 
                                         </div>
                                     </div>
@@ -149,13 +137,16 @@
 
     </div>
 </div>
-<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
-<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>
-    layui.use([ 'form', 'step'], function () {
+    layui.use(['form', 'step'], function () {
         var $ = layui.$,
             form = layui.form,
             step = layui.step;
+
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
 
         step.render({
             elem: '#stepForm',
@@ -192,5 +183,3 @@
         });
     })
 </script>
-</body>
-</html>

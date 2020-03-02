@@ -121,151 +121,6 @@
     cursor: pointer;
 }
 
-/**tab选项卡 */
-.layuimini-tab {
-    margin: 0px;
-    overflow: hidden;
-    height: 100% !important;
-}
-
-.layuimini-tab .layui-tab-content {
-    height: calc(100% - 37px) !important;
-}
-
-.layuimini-tab .layui-tab-content .layui-tab-item {
-    height: 100%;
-}
-
-.layuimini-tab .layui-tab-content {
-    padding: 0px;
-}
-
-.layuimini-tab .layui-tab-title {
-    border: none;
-    border: 1px solid whitesmoke;
-    background-color: white;
-}
-
-.layuimini-tab .layui-tab-title li {
-    border-right: 1px solid whitesmoke;
-    color: dimgray;
-}
-
-.layuimini-tab .layui-tab-title .layui-tab-bar {
-    display: none;
-}
-
-.layuimini-tab .layui-tab-title .layui-this:after {
-    display: none;
-}
-
-.layuimini-tab .layui-tab-title .layuimini-tab-active {
-    display: inline-block;
-    background-color: lightgray;
-    width: 9px;
-    height: 9px;
-    border-radius: 30px;
-    margin-right: 5px;
-}
-
-.layuimini-tab .layui-tab-title .layui-this .layuimini-tab-active {
-    background-color: #1aa094;
-}
-
-.layuimini-tab > .layui-tab-title, .layuimini-tab > .close-box {
-    height: 35px !important;
-}
-
-.layuimini-tab > .layui-tab-title li, .layuimini-tab > .close-box li {
-    line-height: 35px !important;
-}
-
-.layuimini-tab .layui-tab-title span {
-    color: #acafb1;
-}
-
-.layuimini-tab .layui-tab-title .layui-this span {
-    color: dimgray;
-}
-
-.layuimini-tab .layui-tab-title .layui-tab-close {
-    font-size: 12px !important;
-    width: 14px !important;
-    height: 14px !important;
-    line-height: 16px !important;
-}
-
-.layuimini-tab .layui-tab-title .layui-tab-close:hover {
-    border-radius: 4em;
-    background: #ff5722;
-}
-
-.layuimini-tab .layui-tab-title .disable-close + .layui-tab-close {
-    display: none;
-}
-
-.layuimini-tab .layui-tab-title .able-close + .layui-tab-close {
-    display: inline-block;
-}
-
-.layuimini-tab .layui-tab-control > li {
-    position: absolute;
-    top: 0px;
-    height: 35px;
-    line-height: 35px;
-    width: 35px;
-    text-align: center;
-    background-color: white;
-    border-top: whitesmoke 1px solid;
-    border-bottom: whitesmoke 1px solid;
-}
-
-.layuimini-tab .layuimini-tab-roll-left {
-    left: 0px;
-    border-right: whitesmoke 1px solid;
-    border-left: whitesmoke 1px solid;
-}
-
-.layuimini-tab .layuimini-tab-roll-right {
-    right: 35px;
-    border-left: 1px solid whitesmoke;
-}
-
-.layuimini-tab .layui-tab-tool {
-    right: 0px;
-    border-left: 1px solid whitesmoke;
-}
-
-.layuimini-tab .layui-tab-control .layui-tab-tool,
-.layuimini-tab .layui-tab-control .layuimini-tab-roll-left,
-.layuimini-tab .layui-tab-control .layuimini-tab-roll-right {
-    display: none;
-}
-
-.layuimini-tab.layui-tab-roll .layui-tab-control .layuimini-tab-roll-left,
-.layuimini-tab.layui-tab-roll .layui-tab-control .layuimini-tab-roll-right {
-    display: block;
-}
-
-.layuimini-tab.layui-tab-roll .layui-tab-control .layuimini-tab-roll-right {
-    right: 0px;
-    border-right: 1px solid whitesmoke;
-}
-
-.layuimini-tab.layui-tab-roll .layui-tab-title {
-    padding-left: 35px;
-    padding-right: 35px;
-}
-
-
-.layuimini-tab.layui-tab-tool .layui-tab-control .layui-tab-tool {
-    display: block;
-}
-
-.layuimini-tab.layui-tab-tool .layui-tab-title {
-    padding-left: 0px;
-    padding-right: 35px;
-}
 
 .layuimini-page-header {
     display: block;
@@ -282,57 +137,6 @@
     visibility: visible;
 }
 
-.layuimini-tab.layui-tab-rollTool .layui-tab-control .layuimini-tab-roll-left,
-.layuimini-tab.layui-tab-rollTool .layui-tab-control .layuimini-tab-roll-right,
-.layuimini-tab.layui-tab-rollTool .layui-tab-control .layui-tab-tool {
-    display: block;
-}
-
-.layuimini-tab .layui-tab-tool .layui-nav {
-    position: absolute;
-    height: 43px !important;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    background: 0 0;
-}
-
-.layuimini-tab .layui-tab-tool .layui-nav-item {
-    height: 35px;
-}
-
-.layuimini-tab .layui-tab-tool .layui-nav-bar {
-    display: none;
-}
-
-.layuimini-tab .layui-tab-tool .layui-nav-child {
-    left: auto;
-    top: 45px;
-    right: 3px;
-    width: 120px;
-    border: 1px solid whitesmoke;
-}
-
-.layuimini-tab .layui-tab-tool .layui-this a {
-    background-color: #009688;
-}
-
-.layuimini-tab-loading {
-    position: absolute;
-    display: none;
-    width: 100%;
-    height: calc(100% - 37px);
-    top: 37px;
-    z-index: 19;
-    background-color: #fff
-}
-
-.layuimini-tab-loading.close {
-    animation: close 1s;
-    -webkit-animation: close 1s;
-    animation-fill-mode: forwards;
-}
 
 /**左侧菜单栏 (通用) */
 .layui-side.layui-bg-black {
@@ -579,18 +383,38 @@
     }
 }
 
-* {touch-action:pan-y;}
+* {
+    touch-action: pan-y;
+}
 
 /**自定义滚动条样式 */
-::-webkit-scrollbar {width: 4px;height: 4px}
-::-webkit-scrollbar-track {background-color: transparent;-webkit-border-radius: 2em;-moz-border-radius: 2em;border-radius: 2em;}
-::-webkit-scrollbar-thumb {background-color: #9c9da0;-webkit-border-radius: 2em;-moz-border-radius: 2em;border-radius: 2em}
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #9c9da0;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em
+}
 
 .layuimini-content-page {
     width: 100%;
     height: 100%;
 }
-.layuimini-content-page{overflow:auto}
+
+.layuimini-content-page {
+    overflow: auto
+}
 
 /*移动端遮罩层*/
 .layuimini-make {

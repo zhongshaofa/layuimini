@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>图标选择器</title>
-    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
-    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
-    <link rel="stylesheet" href="../css/public.css" media="all">
-    <style>
-        .layui-iconpicker-body.layui-iconpicker-body-page .hide {display: none;}
-    </style>
-</head>
-<body>
-<div class="layuimini-container">
+<style>
+    .layui-iconpicker-body.layui-iconpicker-body-page .hide {display:none;}
+</style>
+<div class="layuimini-container layui-anim layui-anim-upbit">
     <div class="layuimini-main">
 
         <blockquote class="layui-elem-quote">
@@ -61,8 +51,6 @@
 
     </div>
 </div>
-<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
-<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>
     layui.use(['iconPickerFa', 'form', 'layer'], function () {
         var iconPickerFa = layui.iconPickerFa,
@@ -74,7 +62,7 @@
             // 选择器，推荐使用input
             elem: '#iconPicker',
             // fa 图标接口
-            url: "../lib/font-awesome-4.7.0/less/variables.less",
+            url: "lib/font-awesome-4.7.0/less/variables.less",
             // 是否开启搜索：true/false，默认true
             search: true,
             // 是否开启分页：true/false，默认true
@@ -95,7 +83,7 @@
             // 选择器，推荐使用input
             elem: '#iconPicker1',
             // fa 图标接口
-            url: "../lib/font-awesome-4.7.0/less/variables.less",
+            url: "lib/font-awesome-4.7.0/less/variables.less",
             // 是否开启搜索：true/false
             search: true,
             // 是否开启分页
@@ -113,7 +101,4 @@
         });
 
     });
-
 </script>
-</body>
-</html>
