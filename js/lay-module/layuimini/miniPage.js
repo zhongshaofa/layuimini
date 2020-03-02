@@ -69,7 +69,6 @@ layui.define(["element", "jquery"], function (exports) {
             options.homeInfo = options.homeInfo || {};
             options.homeInfo.title = options.homeInfo.title || '主页';
             options.menuList = options.menuList || [];
-            var test = miniPage.buildPageTitleHtml(href, options.menuList);
             var pageTitleHtml = '<a lay-href="" href="javascript:;" class="layuimini-back-home">' + options.homeInfo.title + '</a><span lay-separator="">/</span>\n' +
                 '<a><cite>常规管理</cite></a><span lay-separator="">/</span>\n' +
                 '<a><cite>系统设置</cite></a>';
@@ -118,50 +117,29 @@ layui.define(["element", "jquery"], function (exports) {
         },
 
         /**
-         * 构建页面标题html
+         * 构建页面标题数组
          * @param href
          * @param menuList
          */
-        buildPageTitleHtml: function (href, menuList) {
-            window.titleArray = [];
-            $.each(menuList, function (index, menu) {
-                window.titleArray = [];
-                if (menu.href !== undefined && menu.href === href) {
-                    titleArray.push(menu.title);
-                    return false;
+        buildPageTitleArray: function (href, menuList) {
+            var array = [],
+                newArray = [];
+            for (key in menuList) {
+                var item = menuList[key];
+                if (item.href === href) {
+                    array.push(item.title);
+                    break;
                 }
-                titleArray.push(menu.title);
-                var buildChild = function (childList, titleArray) {
-                    $.each(childList, function (index, child) {
-                        if (child.href !== undefined && child.href === href) {
-                            titleArray.push(child.title);
-                            console.log(titleArray);
-                            return false;
-                        }
-                        if (child.child !== undefined && child.child.length !== 0) {
-                            if (index !== 0) titleArray.pop();
-                            titleArray.push(child.title);
-                            var test = buildChild(child.child, titleArray);
-                            console.log(2);
-                            console.log(test);
-                            if (test == 1) {
-                                return 1;
-                            }
-                        }
-                    });
-                };
-                if (menu.child !== undefined && menu.child.length !== 0) {
-                    var asd =buildChild(menu.child, titleArray);
-                    console.log(1);
-                    console.log(asd);
-                    if (asd === false) {
-                        return false;
+                if (item.child) {
+                    newArray = miniPage.buildPageTitleArray(href, item.child);
+                    if (newArray.length > 0) {
+                        newArray.unshift(item.title);
+                        array = array.concat(newArray);
+                        break;
                     }
                 }
-            });
-
-            console.log(titleArray);
-
+            }
+            return array;
         },
 
         /**
