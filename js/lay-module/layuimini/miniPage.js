@@ -69,9 +69,18 @@ layui.define(["element", "jquery"], function (exports) {
             options.homeInfo = options.homeInfo || {};
             options.homeInfo.title = options.homeInfo.title || '主页';
             options.menuList = options.menuList || [];
-            var pageTitleHtml = '<a lay-href="" href="javascript:;" class="layuimini-back-home">' + options.homeInfo.title + '</a><span lay-separator="">/</span>\n' +
-                '<a><cite>常规管理</cite></a><span lay-separator="">/</span>\n' +
-                '<a><cite>系统设置</cite></a>';
+            var pageTitleHtml = '<a lay-href="" href="javascript:;" class="layuimini-back-home">' + options.homeInfo.title + '</a><span lay-separator="">/</span>\n';
+            var pageTitleArray = miniPage.buildPageTitleArray(href, options.menuList);
+            if (pageTitleArray) {
+                for (var key in pageTitleArray) {
+                    key = parseInt(key);
+                    if (key !== pageTitleArray.length - 1) {
+                        pageTitleHtml += '<a><cite>' + pageTitleArray[key] + '</cite></a><span lay-separator="">/</span>\n';
+                    } else {
+                        pageTitleHtml += '<a><cite>' + pageTitleArray[key] + '</cite></a>\n';
+                    }
+                }
+            }
             $('.layuimini-page-header').removeClass('layui-hide');
             $('.layuimini-page-header .layuimini-page-title').empty().html(pageTitleHtml);
         },
@@ -245,7 +254,7 @@ layui.define(["element", "jquery"], function (exports) {
             });
 
             /**
-             * 在iframe子菜单上打开新窗口
+             * 在子页面上打开新窗口
              */
             $('body').on('click', '[layuimini-content-href]', function () {
                 var loading = parent.layer.load(0, {shade: false, time: 2 * 1000});
