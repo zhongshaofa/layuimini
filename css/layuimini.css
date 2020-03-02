@@ -203,6 +203,8 @@
 
 /**内容主体（通用） */
 .layui-layout-admin .layui-body {
+    /*position: fixed;*/
+    overflow: hidden;
     bottom: 0px !important;
     top: 60px !important;
     transition: all .2s;
