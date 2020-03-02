@@ -124,12 +124,16 @@ layui.define(["element", "jquery"], function (exports) {
                     var addMenuClass = function ($element, type) {
                         if (type === 1) {
                             $element.addClass('layui-this');
-                            if ($element.hasClass('layui-nav-item') && $element.hasClass('layui-this') === false) {
+                            if ($element.hasClass('layui-nav-item') && $element.hasClass('layui-this')) {
+                                $(".layuimini-header-menu li").attr('class', 'layui-nav-item');
+                            } else {
                                 addMenuClass($element.parent().parent(), 2);
                             }
                         } else {
                             $element.addClass('layui-nav-itemed');
-                            if ($element.hasClass('layui-nav-item') && $element.hasClass('layui-nav-itemed') === false) {
+                            if ($element.hasClass('layui-nav-item') && $element.hasClass('layui-nav-itemed')) {
+                                $(".layuimini-header-menu li").attr('class', 'layui-nav-item');
+                            } else {
                                 addMenuClass($element.parent().parent(), 2);
                             }
                         }
