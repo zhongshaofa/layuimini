@@ -25,12 +25,19 @@ layuimini后台模板
  * 在线预览地址：[http://layuimini.99php.cn/iframe/v2](http://layuimini.99php.cn/iframe/v2)
  * GitHub仓库地址：[https://github.com/zhongshaofa/layuimini/tree/v2](https://github.com/zhongshaofa/layuimini/tree/v2)
  * Gitee仓库地址：[https://gitee.com/zhongshaofa/layuimini/tree/v2](https://gitee.com/zhongshaofa/layuimini/tree/v2)
- ##### v1版
+##### v1版
   * 在线预览地址：[http://layuimini.99php.cn](http://layuimini.99php.cn)
   * GitHub仓库地址：[https://github.com/zhongshaofa/layuimini/tree/master](https://github.com/zhongshaofa/layuimini/tree/master)
   * Gitee仓库地址：[https://gitee.com/zhongshaofa/layuimini/tree/master](https://gitee.com/zhongshaofa/layuimini/tree/master)
  
- ## 代码仓库(onepage 单页版)
+## 代码仓库(onepage 单页版)
+
+##### v2版
+ * 在线预览地址：[http://layuimini.99php.cn/onepage/v2](http://layuimini.99php.cn/onepage/v2)
+ * GitHub仓库地址：[https://github.com/zhongshaofa/layuimini/tree/v2-onepage](https://github.com/zhongshaofa/layuimini/tree/v2-onepage)
+ * Gitee仓库地址：[https://gitee.com/zhongshaofa/layuimini/tree/v2-onepage](https://gitee.com/zhongshaofa/layuimini/tree/v2-onepage)
+ 
+##### v1版
  * 在线预览地址：[http://layuimini-onepage.99php.cn](http://layuimini-onepage.99php.cn)
  * GitHub仓库地址：[https://github.com/zhongshaofa/layuimini/tree/onepage](https://github.com/zhongshaofa/layuimini/tree/onepage)
  * Gitee仓库地址：[https://gitee.com/zhongshaofa/layuimini/tree/onepage](https://gitee.com/zhongshaofa/layuimini/tree/onepage)
@@ -43,7 +50,10 @@ layuimini后台模板
 ##### iframe v1版
  * GitHub下载命令：`git clone https://github.com/zhongshaofa/layuimini -b master`
  * Gitee下载命令：`git clone https://gitee.com/zhongshaofa/layuimini -b master`
-##### 单页版
+##### 单页版 v2版
+ * GitHub下载命令：`git clone https://github.com/zhongshaofa/layuimini -b v2-onepage`
+ * Gitee下载命令：`git clone https://gitee.com/zhongshaofa/layuimini -b v2-onepage`
+##### 单页版 v1版
  * GitHub下载命令：`git clone https://github.com/zhongshaofa/layuimini -b onepage`
  * Gitee下载命令：`git clone https://gitee.com/zhongshaofa/layuimini -b onepage`
 ##### 发行版地址
