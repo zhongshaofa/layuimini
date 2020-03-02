@@ -309,9 +309,6 @@
     border-bottom: 0;
 }
 
-/** {*/
-/*    touch-action: pan-y;*/
-/*}*/
 
 /*打开页面动画*/
 .layui-tab-item.layui-show {
@@ -383,10 +380,6 @@
         -ms-transform: translateY(0);
         transform: translateY(0);
     }
-}
-
-* {
-    touch-action: pan-y;
 }
 
 /**自定义滚动条样式 */
