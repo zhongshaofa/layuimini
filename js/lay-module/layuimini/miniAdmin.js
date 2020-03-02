@@ -52,6 +52,7 @@ layui.define(["jquery", "miniMenu", "miniPage", "miniTheme"], function (exports)
                     });
                     miniPage.render({
                         homeInfo:data.homeInfo,
+                        menuList: data.menuInfo,
                         multiModule: options.multiModule,
                         renderPageVersion: options.renderPageVersion,
                         menuChildOpen: options.menuChildOpen,

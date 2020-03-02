@@ -18,6 +18,7 @@ layui.define(["element", "jquery"], function (exports) {
          */
         render: function (options) {
             options.homeInfo = options.homeInfo || {};
+            options.menuList = options.menuList || [];
             options.multiModule = options.multiModule || false;
             options.renderPageVersion = options.renderPageVersion || false;
             options.listenSwichCallback = options.listenSwichCallback || function () {
@@ -55,17 +56,20 @@ layui.define(["element", "jquery"], function (exports) {
          * @param options
          */
         renderPage: function (href, options) {
-            miniPage.renderPageTitle(options);
+            miniPage.renderPageTitle(href, options);
             miniPage.renderPageContent(href, options);
         },
 
         /**
          * 初始化页面标题
+         * @param href
          * @param options
          */
-        renderPageTitle: function (options) {
+        renderPageTitle: function (href, options) {
             options.homeInfo = options.homeInfo || {};
             options.homeInfo.title = options.homeInfo.title || '主页';
+            options.menuList = options.menuList || [];
+            var test = miniPage.buildPageTitleHtml(href, options.menuList);
             var pageTitleHtml = '<a lay-href="" href="javascript:;" class="layuimini-back-home">' + options.homeInfo.title + '</a><span lay-separator="">/</span>\n' +
                 '<a><cite>常规管理</cite></a><span lay-separator="">/</span>\n' +
                 '<a><cite>系统设置</cite></a>';
@@ -111,6 +115,53 @@ layui.define(["element", "jquery"], function (exports) {
             } else {
                 miniPage.renderPageContent(href, options);
             }
+        },
+
+        /**
+         * 构建页面标题html
+         * @param href
+         * @param menuList
+         */
+        buildPageTitleHtml: function (href, menuList) {
+            window.titleArray = [];
+            $.each(menuList, function (index, menu) {
+                window.titleArray = [];
+                if (menu.href !== undefined && menu.href === href) {
+                    titleArray.push(menu.title);
+                    return false;
+                }
+                titleArray.push(menu.title);
+                var buildChild = function (childList, titleArray) {
+                    $.each(childList, function (index, child) {
+                        if (child.href !== undefined && child.href === href) {
+                            titleArray.push(child.title);
+                            console.log(titleArray);
+                            return false;
+                        }
+                        if (child.child !== undefined && child.child.length !== 0) {
+                            if (index !== 0) titleArray.pop();
+                            titleArray.push(child.title);
+                            var test = buildChild(child.child, titleArray);
+                            console.log(2);
+                            console.log(test);
+                            if (test == 1) {
+                                return 1;
+                            }
+                        }
+                    });
+                };
+                if (menu.child !== undefined && menu.child.length !== 0) {
+                    var asd =buildChild(menu.child, titleArray);
+                    console.log(1);
+                    console.log(asd);
+                    if (asd === false) {
+                        return false;
+                    }
+                }
+            });
+
+            console.log(titleArray);
+
         },
 
         /**
@@ -265,7 +316,8 @@ layui.define(["element", "jquery"], function (exports) {
                 if ($('.layuimini-menu-left').attr('layuimini-page-add') === 'yes') {
                     $('.layuimini-menu-left').attr('layuimini-page-add', 'no');
                 } else {
-                    // 从页面中打开的话，需要重新定位菜单焦点
+                    // 从页面中打开的话，浏览器前进后退、需要重新定位菜单焦点
+                    $("[layuimini-href]").parent().removeClass('layui-this');
                     if (options.multiModule) {
                         miniPage.listenSwitchMultiModule(href);
                     } else {
