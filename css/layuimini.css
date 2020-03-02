@@ -111,7 +111,7 @@
 /**缩放工具（缩放） */
 .layuimini-tool i {
     display: block;
-    color: #fff;
+    color: #bbe3df;
     width: 32px;
     height: 32px;
     line-height: 32px;
@@ -771,7 +771,7 @@
     }
 
 
-    .layuimini-mini .layuimini-header-content .layui-layout-right {
+    .layuimini-multi-module.layuimini-mini .layuimini-header-content .layui-layout-right {
         display: none
     }
 
@@ -823,8 +823,12 @@
         display: block;
     }
 
-    .layuimini-header-content .layuimini-tool {
+    .layuimini-multi-module .layuimini-header-content .layuimini-tool {
         display: none;
+    }
+
+    .layuimini-single-module .layuimini-header-content .layuimini-tool {
+        left: 15px;
     }
 
     .layuimini-mini .layuimini-site-mobile {

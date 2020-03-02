@@ -70,6 +70,7 @@ layui.define(["element", "jquery"], function (exports) {
             });
             leftMenuHtml += '</ul>\n';
 
+            $('.layui-layout-body').addClass('layuimini-single-module'); //单模块标识
             $('.layuimini-header-menu').remove();
             $('.layuimini-menu-left').html(leftMenuHtml);
 
@@ -127,6 +128,7 @@ layui.define(["element", "jquery"], function (exports) {
                 headerMenuCheckDefault = '';
                 leftMenuCheckDefault = 'layui-hide';
             });
+            $('.layui-layout-body').addClass('layuimini-multi-module'); //多模块标识
             $('.layuimini-menu-header-pc').html(headerMenuHtml); //电脑
             $('.layuimini-menu-header-mobile').html(headerMobileMenuHtml); //手机
             $('.layuimini-menu-left').html(leftMenuHtml);
@@ -164,11 +166,13 @@ layui.define(["element", "jquery"], function (exports) {
                 if (isShow == 1) { // 缩放
                     $('.layuimini-tool [data-side-fold]').attr('data-side-fold', 0);
                     $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-indent');
-                    $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-mini');
+                    $('.layui-layout-body').removeClass('layuimini-all');
+                    $('.layui-layout-body').addClass('layuimini-mini');
                 } else { // 正常
                     $('.layuimini-tool [data-side-fold]').attr('data-side-fold', 1);
                     $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-outdent');
-                    $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-all');
+                    $('.layui-layout-body').removeClass('layuimini-mini');
+                    $('.layui-layout-body').addClass('layuimini-all');
                 }
                 element.init();
                 layer.close(loading);
@@ -181,7 +185,8 @@ layui.define(["element", "jquery"], function (exports) {
                 var loading = layer.load(0, {shade: false, time: 2 * 1000});
                 $('.layuimini-tool [data-side-fold]').attr('data-side-fold', 0);
                 $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-indent');
-                $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-mini');
+                $('.layui-layout-body').removeClass('layuimini-all');
+                $('.layui-layout-body').addClass('layuimini-mini');
                 $('.layuimini-logo').trigger("click");
                 element.init();
                 layer.close(loading);
