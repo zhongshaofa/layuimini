@@ -127,7 +127,8 @@ layui.define(["jquery", "miniMenu", "miniPage", "miniTheme"], function (exports)
             if (miniAdmin.checkMobile()) {
                 $('.layuimini-tool i').attr('data-side-fold', 1);
                 $('.layuimini-tool i').attr('class', 'fa fa-outdent');
-                $('.layui-layout-body').attr('class', 'layui-layout-body layuimini-all');
+                $('.layui-layout-body').removeClass('layuimini-mini');
+                $('.layui-layout-body').addClass('layuimini-all');
             }
         },
 
