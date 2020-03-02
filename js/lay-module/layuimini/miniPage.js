@@ -19,13 +19,14 @@ layui.define(["element", "jquery"], function (exports) {
         render: function (options) {
             options.homeInfo = options.homeInfo || {};
             options.multiModule = options.multiModule || false;
+            options.renderPageVersion = options.renderPageVersion || false;
             options.listenSwichCallback = options.listenSwichCallback || function () {
             };
             var href = location.hash.replace(/^#\//, '');
             if (href === null || href === undefined || href === '') {
-                miniPage.renderHome(options.homeInfo);
+                miniPage.renderHome(options);
             } else {
-                miniPage.renderPage(href, options.homeInfo.title);
+                miniPage.renderPage(href, options);
                 if (options.multiModule) {
                     miniPage.listenSwitchMultiModule(href);
                 } else {
@@ -41,26 +42,31 @@ layui.define(["element", "jquery"], function (exports) {
          * @param options
          */
         renderHome: function (options) {
+            options.homeInfo = options.homeInfo || {};
+            options.homeInfo.href = options.homeInfo.href || '';
+            options.renderPageVersion = options.renderPageVersion || false;
             $('.layuimini-page-header').addClass('layui-hide');
-            miniPage.renderPageContent(options.href);
+            miniPage.renderPageContent(options.homeInfo.href, options);
         },
 
         /**
          * 初始化页面
          * @param href
+         * @param options
          */
-        renderPage: function (href, homeTitle) {
-            miniPage.renderPageTitle(href, homeTitle);
-            miniPage.renderPageContent(href);
+        renderPage: function (href, options) {
+            miniPage.renderPageTitle(options);
+            miniPage.renderPageContent(href, options);
         },
 
         /**
          * 初始化页面标题
-         * @param href
-         * @param homeTitle
+         * @param options
          */
-        renderPageTitle: function (href, homeTitle) {
-            var pageTitleHtml = '<a lay-href="" href="javascript:;" class="layuimini-back-home">' + homeTitle + '</a><span lay-separator="">/</span>\n' +
+        renderPageTitle: function (options) {
+            options.homeInfo = options.homeInfo || {};
+            options.homeInfo.title = options.homeInfo.title || '主页';
+            var pageTitleHtml = '<a lay-href="" href="javascript:;" class="layuimini-back-home">' + options.homeInfo.title + '</a><span lay-separator="">/</span>\n' +
                 '<a><cite>常规管理</cite></a><span lay-separator="">/</span>\n' +
                 '<a><cite>系统设置</cite></a>';
             $('.layuimini-page-header').removeClass('layui-hide');
@@ -69,14 +75,19 @@ layui.define(["element", "jquery"], function (exports) {
 
         /**
          * 初始化页面内容
+         * @param options
          * @param href
          */
-        renderPageContent: function (href) {
+        renderPageContent: function (href, options) {
+            options.renderPageVersion = options.renderPageVersion || false;
             var container = '.layuimini-content-page';
-            var v = new Date().getTime();
+            if (options.renderPageVersion) {
+                var v = new Date().getTime();
+                href = href.indexOf("?") > -1 ? href + '&v=' + v : href + '?v=' + v;
+            }
             $(container).html('');
             $.ajax({
-                url: href.indexOf("?") > -1 ? href + '&v=' + v : href + '?v=' + v,
+                url: href,
                 type: 'get',
                 dataType: 'html',
                 success: function (data) {
@@ -219,6 +230,7 @@ layui.define(["element", "jquery"], function (exports) {
          * @returns {boolean}
          */
         listenHash: function (options) {
+            options.homeInfo = options.homeInfo || {};
             options.multiModule = options.multiModule || false;
             options.listenSwichCallback = options.listenSwichCallback || function () {
             };
@@ -229,9 +241,9 @@ layui.define(["element", "jquery"], function (exports) {
                 }
                 if (href === null || href === undefined || href === '') {
                     $("[layuimini-href]").parent().removeClass('layui-this');
-                    miniPage.renderHome(options.homeInfo);
+                    miniPage.renderHome(options);
                 } else {
-                    miniPage.renderPage(href, options.homeInfo.title);
+                    miniPage.renderPage(href,options);
                 }
                 if ($('.layuimini-menu-left').attr('layuimini-page-add') === 'yes') {
                     $('.layuimini-menu-left').attr('layuimini-page-add', 'no');
