@@ -27,6 +27,7 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
          * @param options.multiModule 是否开启多模块
          * @param options.menuChildOpen 是否展开子菜单
          * @param options.loadingTime 初始化加载时间
+         * @param options.iframeAnim iframe窗口动画
          */
         render: function (options) {
             options.iniUrl = options.iniUrl || null;
@@ -36,12 +37,14 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
             options.multiModule = options.multiModule || false;
             options.menuChildOpen = options.menuChildOpen || false;
             options.loadingTime = options.loadingTime || 1;
+            options.iframeAnim = options.iframeAnim || false;
             $.getJSON(options.iniUrl, function (data) {
                 if (data == null) {
                     miniAdmin.error('暂无菜单信息')
                 } else {
                     miniAdmin.renderLogo(data.logoInfo);
                     miniAdmin.renderHome(data.homeInfo);
+                    miniAdmin.renderAnim(options.iframeAnim);
                     miniAdmin.listen();
                     miniMenu.render({
                         menuList: data.menuInfo,
@@ -86,6 +89,28 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
             $('#layuiminiHomeTabId').html('<span class="layuimini-tab-active"></span><span class="disable-close">' + data.title + '</span><i class="layui-icon layui-unselect layui-tab-close">ဆ</i>');
             $('#layuiminiHomeTabId').attr('lay-id', data.href);
             $('#layuiminiHomeTabIframe').html('<iframe width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0"  src="' + data.href + '"></iframe>');
+        },
+
+        /**
+         * 初始化iframe窗口动画
+         * @param anim
+         */
+        renderAnim: function (anim) {
+            if (anim) {
+                $('#layuimini-bg-color').after('<style id="layuimini-iframe-anim">.layui-tab-item.layui-show {animation:moveTop 1s;-webkit-animation:moveTop 1s;animation-fill-mode:both;-webkit-animation-fill-mode:both;position:relative;height:100%;-webkit-overflow-scrolling:touch;overflow:auto;}\n' +
+                    '@keyframes moveTop {0% {opacity:0;-webkit-transform:translateY(30px);-ms-transform:translateY(30px);transform:translateY(30px);}\n' +
+                    '    100% {opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}\n' +
+                    '}\n' +
+                    '@-o-keyframes moveTop {0% {opacity:0;-webkit-transform:translateY(30px);-ms-transform:translateY(30px);transform:translateY(30px);}\n' +
+                    '    100% {opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}\n' +
+                    '}\n' +
+                    '@-moz-keyframes moveTop {0% {opacity:0;-webkit-transform:translateY(30px);-ms-transform:translateY(30px);transform:translateY(30px);}\n' +
+                    '    100% {opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}\n' +
+                    '}\n' +
+                    '@-webkit-keyframes moveTop {0% {opacity:0;-webkit-transform:translateY(30px);-ms-transform:translateY(30px);transform:translateY(30px);}\n' +
+                    '    100% {opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}\n' +
+                    '}</style>');
+            }
         },
 
         /**
