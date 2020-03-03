@@ -97,7 +97,8 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
          */
         renderAnim: function (anim) {
             if (anim) {
-                $('#layuimini-bg-color').after('<style id="layuimini-iframe-anim">.layui-tab-item.layui-show {animation:moveTop 1s;-webkit-animation:moveTop 1s;animation-fill-mode:both;-webkit-animation-fill-mode:both;position:relative;height:100%;-webkit-overflow-scrolling:touch;overflow:auto;}\n' +
+                $('#layuimini-bg-color').after('<style id="layuimini-page-anim">' +
+                    '.layui-tab-item.layui-show {animation:moveTop 1s;-webkit-animation:moveTop 1s;animation-fill-mode:both;-webkit-animation-fill-mode:both;position:relative;height:100%;-webkit-overflow-scrolling:touch;overflow:auto;}\n' +
                     '@keyframes moveTop {0% {opacity:0;-webkit-transform:translateY(30px);-ms-transform:translateY(30px);transform:translateY(30px);}\n' +
                     '    100% {opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}\n' +
                     '}\n' +
@@ -109,7 +110,8 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
                     '}\n' +
                     '@-webkit-keyframes moveTop {0% {opacity:0;-webkit-transform:translateY(30px);-ms-transform:translateY(30px);transform:translateY(30px);}\n' +
                     '    100% {opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}\n' +
-                    '}</style>');
+                    '}' +
+                    '</style>');
             }
         },
 
