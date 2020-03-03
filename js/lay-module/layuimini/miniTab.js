@@ -19,6 +19,7 @@ layui.define(["element", "jquery"], function (exports) {
             options.filter = options.filter || null;
             options.multiModule = options.multiModule || false;
             options.urlHashLocation = options.urlHashLocation || false;
+            options.maxTabNum = options.maxTabNum || 20;
             options.listenSwichCallback = options.listenSwichCallback || function () {
             };
             miniTab.listen(options);
@@ -29,28 +30,38 @@ layui.define(["element", "jquery"], function (exports) {
 
         /**
          * 新建tab窗口
-         * @param tabId
-         * @param href
-         * @param title
-         * @param addSession
-         * @param isIframe
+         * @param options.tabId
+         * @param options.href
+         * @param options.title
+         * @param options.addSession
+         * @param options.isIframe
+         * @param options.maxTabNum
          */
-        create: function (tabId, href, title, addSession, isIframe) {
-            isIframe = isIframe || false;
-            if (addSession === undefined || addSession === true) {
+        create: function (options) {
+            options.tabId = options.tabId || null;
+            options.href = options.href || null;
+            options.title = options.title || null;
+            options.addSession = options.addSession || undefined;
+            options.isIframe = options.isIframe || false;
+            options.maxTabNum = options.maxTabNum || 20;
+            if ($(".layuimini-tab .layui-tab-title li").length >= options.maxTabNum) {
+                layer.msg('Tab窗口已达到限定数量，请先关闭部分Tab');
+                return false;
+            }
+            if (options.addSession === undefined || options.addSession === true) {
                 var layuiminiTabInfo = JSON.parse(sessionStorage.getItem("layuiminiTabInfo"));
                 if (layuiminiTabInfo == null) layuiminiTabInfo = {};
-                layuiminiTabInfo[tabId] = {href: href, title: title};
+                layuiminiTabInfo[options.tabId] = {href: options.href, title: options.title};
                 sessionStorage.setItem("layuiminiTabInfo", JSON.stringify(layuiminiTabInfo));
             }
             var ele = element;
-            if (isIframe) ele = parent.layui.element;
+            if (options.isIframe) ele = parent.layui.element;
             ele.tabAdd('layuiminiTab', {
-                title: '<span class="layuimini-tab-active"></span><span>' + title + '</span><i class="layui-icon layui-unselect layui-tab-close">ဆ</i>' //用于演示
-                , content: '<iframe width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0"   src="' + href + '"></iframe>'
-                , id: tabId
+                title: '<span class="layuimini-tab-active"></span><span>' + options.title + '</span><i class="layui-icon layui-unselect layui-tab-close">ဆ</i>' //用于演示
+                , content: '<iframe width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0"   src="' + options.href + '"></iframe>'
+                , id: options.tabId
             });
-            $('.layuimini-menu-left').attr('layuimini-tab-tag','add');
+            $('.layuimini-menu-left').attr('layuimini-tab-tag', 'add');
         },
 
         /**
@@ -143,6 +154,8 @@ layui.define(["element", "jquery"], function (exports) {
          * @param options
          */
         listen: function (options) {
+            options = options || {};
+            options.maxTabNum = options.maxTabNum || 20;
 
             /**
              * 打开新窗口
@@ -160,7 +173,16 @@ layui.define(["element", "jquery"], function (exports) {
                 }
                 if (tabId === null || tabId === undefined) tabId = new Date().getTime();
                 var checkTab = miniTab.check(tabId);
-                if (!checkTab) miniTab.create(tabId, href, title, true);
+                if (!checkTab) {
+                    miniTab.create({
+                        tabId: tabId,
+                        href: href,
+                        title: title,
+                        addSession: true,
+                        isIframe: false,
+                        maxTabNum: options.maxTabNum,
+                    });
+                }
                 element.tabChange('layuiminiTab', tabId);
                 layer.close(loading);
             });
@@ -181,7 +203,16 @@ layui.define(["element", "jquery"], function (exports) {
                 }
                 if (tabId === null || tabId === undefined) tabId = new Date().getTime();
                 var checkTab = miniTab.check(tabId, true);
-                if (!checkTab) miniTab.create(tabId, href, title, true, true);
+                if (!checkTab) {
+                    miniTab.create({
+                        tabId: tabId,
+                        href: href,
+                        title: title,
+                        addSession: true,
+                        isIframe: true,
+                        maxTabNum: options.maxTabNum,
+                    });
+                }
                 parent.layui.element.tabChange('layuiminiTab', tabId);
                 parent.layer.close(loading);
             });
@@ -275,7 +306,7 @@ layui.define(["element", "jquery"], function (exports) {
                 if ($(this).attr("layuimini-href") === tabId) {
                     var title = $(this).text();
                     miniTab.create(tabId, tabId, title, true);
-                    $('.layuimini-menu-left').attr('layuimini-tab-tag','no');
+                    $('.layuimini-menu-left').attr('layuimini-tab-tag', 'no');
                     element.tabChange('layuiminiTab', tabId);
                     return false;
                 }

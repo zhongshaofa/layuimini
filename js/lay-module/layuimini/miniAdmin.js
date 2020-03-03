@@ -28,6 +28,7 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
          * @param options.menuChildOpen 是否展开子菜单
          * @param options.loadingTime 初始化加载时间
          * @param options.pageAnim iframe窗口动画
+         * @param options.maxTabNum 最大的tab打开数量
          */
         render: function (options) {
             options.iniUrl = options.iniUrl || null;
@@ -38,6 +39,7 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
             options.menuChildOpen = options.menuChildOpen || false;
             options.loadingTime = options.loadingTime || 1;
             options.pageAnim = options.pageAnim || false;
+            options.maxTabNum = options.maxTabNum || 20;
             $.getJSON(options.iniUrl, function (data) {
                 if (data == null) {
                     miniAdmin.error('暂无菜单信息')
@@ -56,6 +58,7 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
                         urlHashLocation: options.urlHashLocation,
                         multiModule: options.multiModule,
                         menuChildOpen: options.menuChildOpen,
+                        maxTabNum: options.maxTabNum,
                         listenSwichCallback: function () {
                             miniAdmin.renderDevice();
                         }
