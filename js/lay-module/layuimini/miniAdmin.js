@@ -27,7 +27,7 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
          * @param options.multiModule 是否开启多模块
          * @param options.menuChildOpen 是否展开子菜单
          * @param options.loadingTime 初始化加载时间
-         * @param options.iframeAnim iframe窗口动画
+         * @param options.pageAnim iframe窗口动画
          */
         render: function (options) {
             options.iniUrl = options.iniUrl || null;
@@ -37,14 +37,14 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
             options.multiModule = options.multiModule || false;
             options.menuChildOpen = options.menuChildOpen || false;
             options.loadingTime = options.loadingTime || 1;
-            options.iframeAnim = options.iframeAnim || false;
+            options.pageAnim = options.pageAnim || false;
             $.getJSON(options.iniUrl, function (data) {
                 if (data == null) {
                     miniAdmin.error('暂无菜单信息')
                 } else {
                     miniAdmin.renderLogo(data.logoInfo);
                     miniAdmin.renderHome(data.homeInfo);
-                    miniAdmin.renderAnim(options.iframeAnim);
+                    miniAdmin.renderAnim(options.pageAnim);
                     miniAdmin.listen();
                     miniMenu.render({
                         menuList: data.menuInfo,
