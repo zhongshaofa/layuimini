@@ -38,7 +38,6 @@ layui.define(["jquery", "miniMenu", "miniPage", "miniTheme"], function (exports)
             options.menuChildOpen = options.menuChildOpen || false;
             options.loadingTime = options.loadingTime || 1;
             options.pageAnim = options.pageAnim || false;
-            console.log(options);
             $.getJSON(options.iniUrl, function (data) {
                 if (data == null) {
                     miniAdmin.error('暂无菜单信息')
