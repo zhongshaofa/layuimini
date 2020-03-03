@@ -27,6 +27,7 @@ layui.define(["jquery", "miniMenu", "miniPage", "miniTheme"], function (exports)
          * @param options.multiModule 是否开启多模块
          * @param options.menuChildOpen 是否展开子菜单
          * @param options.loadingTime 初始化加载时间
+         * @param options.pageAnim 切换菜单动画
          */
         render: function (options) {
             options.iniUrl = options.iniUrl || null;
@@ -36,11 +37,14 @@ layui.define(["jquery", "miniMenu", "miniPage", "miniTheme"], function (exports)
             options.multiModule = options.multiModule || false;
             options.menuChildOpen = options.menuChildOpen || false;
             options.loadingTime = options.loadingTime || 1;
+            options.pageAnim = options.pageAnim || false;
+            console.log(options);
             $.getJSON(options.iniUrl, function (data) {
                 if (data == null) {
                     miniAdmin.error('暂无菜单信息')
                 } else {
                     miniAdmin.renderLogo(data.logoInfo);
+                    miniAdmin.renderAnim(options.pageAnim);
                     miniAdmin.listen({
                         homeInfo:data.homeInfo,
                         multiModule: options.multiModule,
@@ -78,6 +82,21 @@ layui.define(["jquery", "miniMenu", "miniPage", "miniTheme"], function (exports)
         renderLogo: function (data) {
             var html = '<a href="javascript:;"><img src="' + data.image + '" alt="logo"><h1>' + data.title + '</h1></a>';
             $('.layuimini-logo').html(html);
+        },
+
+        /**
+         * 切换菜单动画
+         * @param anim
+         */
+        renderAnim: function (anim) {
+            if (anim) {
+                $('#layuimini-bg-color').after('<style id="layuimini-page-anim">' +
+                    '.layuimini-page-anim {-webkit-animation-name:layuimini-upbit;-webkit-animation-duration:.3s;-webkit-animation-fill-mode:both;}\n' +
+                    '@keyframes layuimini-upbit {0% {transform:translate3d(0,30px,0);opacity:.3;}\n' +
+                    '100% {transform:translate3d(0,0,0);opacity:1;}\n' +
+                    '}\n' +
+                    '</style>');
+            }
         },
 
         /**
