@@ -25,7 +25,7 @@ layui.define(["element", "jquery"], function (exports) {
             miniTab.listen(options);
             miniTab.listenRoll();
             miniTab.listenSwitch(options);
-            miniTab.listenHash(options.urlHashLocation);
+            miniTab.listenHash(options);
         },
 
         /**
@@ -294,18 +294,26 @@ layui.define(["element", "jquery"], function (exports) {
 
         /**
          * 监听hash变化
-         * @param urlHashLocation
+         * @param options
          * @returns {boolean}
          */
-        listenHash: function (urlHashLocation) {
-            urlHashLocation = urlHashLocation || false;
-            if (!urlHashLocation) return false;
+        listenHash: function (options) {
+            options.urlHashLocation = options.urlHashLocation || false;
+            options.maxTabNum = options.maxTabNum || 20;
+            if (!options.urlHashLocation) return false;
             var tabId = location.hash.replace(/^#\//, '');
             if (tabId === null || tabId === undefined) return false;
             $("[layuimini-href]").each(function () {
                 if ($(this).attr("layuimini-href") === tabId) {
                     var title = $(this).text();
-                    miniTab.create(tabId, tabId, title, true);
+                    miniTab.create({
+                        tabId: tabId,
+                        href: tabId,
+                        title: title,
+                        addSession: true,
+                        isIframe: false,
+                        maxTabNum: options.maxTabNum,
+                    });
                     $('.layuimini-menu-left').attr('layuimini-tab-tag', 'no');
                     element.tabChange('layuiminiTab', tabId);
                     return false;
