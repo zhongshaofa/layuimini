@@ -630,6 +630,22 @@
 }
 
 /**
+鼠标右键
+ */
+.layuimini-tab-mousedown {
+    display: none;
+    width: 80px;
+    position: absolute;
+    top: 0px !important;
+    left: 0px !important;
+}
+
+.layuimini-tab-mousedown dd a {
+    padding: 0 15px;
+    color: #484545;
+}
+
+/**
  PC版样式
  */
 @media screen and (min-width: 768px) {

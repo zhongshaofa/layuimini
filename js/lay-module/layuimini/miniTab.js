@@ -149,6 +149,17 @@ layui.define(["element", "jquery"], function (exports) {
             return true;
         },
 
+        buildMousedown: function (tabId, left) {
+            var html = '<div class="layui-unselect layui-form-select layui-form-selected layuimini-tab-mousedown layui-show" data-tab-id="' + tabId + '" style="left: ' + left + 'px!important">\n' +
+                '<dl>\n' +
+                '<dd><a href="javascript:;" layuimini-tab-close="current">关 闭 当 前</a></dd>\n' +
+                '<dd><a href="javascript:;" layuimini-tab-close="other">关 闭 其 他</a></dd>\n' +
+                '<dd><a href="javascript:;" layuimini-tab-close="all">关 闭 全 部</a></dd>\n' +
+                '</dl>\n' +
+                '</div>';
+            $('.layuimini-tab .layui-tab-title').after(html);
+        },
+
         /**
          * 监听
          * @param options
@@ -253,6 +264,31 @@ layui.define(["element", "jquery"], function (exports) {
                     }
                 });
                 layer.close(loading);
+            });
+
+            /**
+             * 禁用网页右键
+             */
+            $(".layuimini-tab .layui-tab-title").unbind("mousedown").bind("contextmenu", function (e) {
+                e.preventDefault();
+                return false;
+            });
+
+            /**
+             * 注册鼠标右键
+             */
+            $('body').on('mousedown', '.layuimini-tab .layui-tab-title li', function (event) {
+                return false;
+                miniTab.buildMousedown(12, 100);
+                setTimeout(function () {
+                    $('.layuimini-tab-mousedown').remove();
+                }, 5 * 1000)
+            });
+
+            $(document).on("click", function (e) {
+                if ($(e.target).closest('.layuimini-tab-mousedown').length <= 0) {
+                    $('.layuimini-tab-mousedown').remove();
+                }
             });
 
 
