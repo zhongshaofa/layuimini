@@ -804,4 +804,13 @@
         z-index: 997;
     }
 
+    /*修复UC之类的浏览器点击无效*/
+    .layuimini-make {
+        cursor: pointer;
+    }
+
+    .layuimini-site-mobile {
+        cursor: pointer;
+    }
+
 }
