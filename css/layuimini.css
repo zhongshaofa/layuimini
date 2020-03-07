@@ -645,6 +645,16 @@
     color: #484545;
 }
 
+.layuimini-tab-make{
+    position: absolute;
+    top: 36px;
+    bottom: 0px;
+    width: 100%;
+    background: rgb(255, 255, 255,0);
+    padding: 0px;
+    overflow: hidden;
+}
+
 /**
  PC版样式
  */

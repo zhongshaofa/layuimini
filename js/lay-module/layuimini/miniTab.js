@@ -149,15 +149,31 @@ layui.define(["element", "jquery"], function (exports) {
             return true;
         },
 
-        buildMousedown: function (tabId, left) {
-            var html = '<div class="layui-unselect layui-form-select layui-form-selected layuimini-tab-mousedown layui-show" data-tab-id="' + tabId + '" style="left: ' + left + 'px!important">\n' +
+        /**
+         * 开启tab右键菜单
+         * @param tabId
+         * @param left
+         */
+        openTabRignMenu: function (tabId, left) {
+            miniTab.closeTabRignMenu();
+            var menuHtml = '<div class="layui-unselect layui-form-select layui-form-selected layuimini-tab-mousedown layui-show" data-tab-id="' + tabId + '" style="left: ' + left + 'px!important">\n' +
                 '<dl>\n' +
-                '<dd><a href="javascript:;" layuimini-tab-close="current">关 闭 当 前</a></dd>\n' +
-                '<dd><a href="javascript:;" layuimini-tab-close="other">关 闭 其 他</a></dd>\n' +
-                '<dd><a href="javascript:;" layuimini-tab-close="all">关 闭 全 部</a></dd>\n' +
+                '<dd><a href="javascript:;" layuimini-tab-menu-close="current">关 闭 当 前</a></dd>\n' +
+                '<dd><a href="javascript:;" layuimini-tab-menu-close="other">关 闭 其 他</a></dd>\n' +
+                '<dd><a href="javascript:;" layuimini-tab-menu-close="all">关 闭 全 部</a></dd>\n' +
                 '</dl>\n' +
                 '</div>';
-            $('.layuimini-tab .layui-tab-title').after(html);
+            var makeHtml = '<div class="layuimini-tab-make"></div>';
+            $('.layuimini-tab .layui-tab-title').after(menuHtml);
+            $('.layuimini-tab .layui-tab-content').after(makeHtml);
+        },
+
+        /**
+         * 关闭tab右键菜单
+         */
+        closeTabRignMenu: function () {
+            $('.layuimini-tab-mousedown').remove();
+            $('.layuimini-tab-make').remove();
         },
 
         /**
@@ -277,18 +293,45 @@ layui.define(["element", "jquery"], function (exports) {
             /**
              * 注册鼠标右键
              */
-            $('body').on('mousedown', '.layuimini-tab .layui-tab-title li', function (event) {
-                return false;
-                miniTab.buildMousedown(12, 100);
-                setTimeout(function () {
-                    $('.layuimini-tab-mousedown').remove();
-                }, 5 * 1000)
+            $('body').on('mousedown', '.layuimini-tab .layui-tab-title li', function (e) {
+                var left = $(this).offset().left - $('.layuimini-tab ').offset().left + ($(this).width() / 2),
+                    tabId = $(this).attr('lay-id');
+                if (e.which === 3) {
+                    miniTab.openTabRignMenu(tabId, left);
+                }
             });
 
-            $(document).on("click", function (e) {
-                if ($(e.target).closest('.layuimini-tab-mousedown').length <= 0) {
-                    $('.layuimini-tab-mousedown').remove();
-                }
+            /**
+             * 关闭tab右键菜单
+             */
+            $('body').on('click', '.layui-body,.layui-header,.layuimini-menu-left,.layuimini-tab-make', function () {
+                miniTab.closeTabRignMenu();
+            });
+
+            /**
+             * tab右键选项卡操作
+             */
+            $('body').on('click', '[layuimini-tab-menu-close]', function () {
+                var loading = layer.load(0, {shade: false, time: 2 * 1000});
+                var closeType = $(this).attr('layuimini-tab-menu-close'),
+                    currentTabId = $('.layuimini-tab-mousedown').attr('data-tab-id');
+                $(".layuimini-tab .layui-tab-title li").each(function () {
+                    var tabId = $(this).attr('lay-id');
+                    var id = $(this).attr('id');
+                    if (id !== 'layuiminiHomeTabId') {
+                        if (closeType === 'all') {
+                            miniTab.delete(tabId);
+                        } else {
+                            if (closeType === 'current' && currentTabId === tabId) {
+                                miniTab.delete(tabId);
+                            } else if (closeType === 'other' && currentTabId !== tabId) {
+                                miniTab.delete(tabId);
+                            }
+                        }
+                    }
+                });
+                miniTab.closeTabRignMenu();
+                layer.close(loading);
             });
 
 
