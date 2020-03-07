@@ -595,6 +595,7 @@
  手机自适应样式
 */
 @media screen and (max-width: 768px) {
+
     .layuimini-header-content {
         left: 0;
     }
@@ -685,6 +686,19 @@
 
     .layuimini-header-content {
         z-index: 997;
+    }
+
+    .layuimini-content-page {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /*修复UC之类的浏览器点击无效*/
+    .layuimini-make {
+        cursor: pointer;
+    }
+
+    .layuimini-site-mobile {
+        cursor: pointer;
     }
 
 }
