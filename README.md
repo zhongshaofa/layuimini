@@ -38,7 +38,7 @@ layuimini后台模板
  * Gitee仓库地址：[https://gitee.com/zhongshaofa/layuimini/tree/v2-onepage](https://gitee.com/zhongshaofa/layuimini/tree/v2-onepage)
  
 ### v1版
- * 在线预览地址：[http://layuimini-onepage.99php.cn/onepage/v1/index.html](http://layuimini-onepage.99php.cn/onepage/v1/index.html)
+ * 在线预览地址：[http://layuimini.99php.cn/onepage/v1/index.html](http://layuimini.99php.cn/onepage/v1/index.html)
  * GitHub仓库地址：[https://github.com/zhongshaofa/layuimini/tree/onepage](https://github.com/zhongshaofa/layuimini/tree/onepage)
  * Gitee仓库地址：[https://gitee.com/zhongshaofa/layuimini/tree/onepage](https://gitee.com/zhongshaofa/layuimini/tree/onepage)
 
