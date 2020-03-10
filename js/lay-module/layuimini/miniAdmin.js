@@ -43,6 +43,7 @@ layui.define(["jquery", "miniMenu", "miniPage", "miniTheme"], function (exports)
                     miniAdmin.error('暂无菜单信息')
                 } else {
                     miniAdmin.renderLogo(data.logoInfo);
+                    miniAdmin.renderClear(options.clearUrl);
                     miniAdmin.renderAnim(options.pageAnim);
                     miniAdmin.listen({
                         homeInfo:data.homeInfo,
@@ -81,6 +82,14 @@ layui.define(["jquery", "miniMenu", "miniPage", "miniTheme"], function (exports)
         renderLogo: function (data) {
             var html = '<a href="javascript:;"><img src="' + data.image + '" alt="logo"><h1>' + data.title + '</h1></a>';
             $('.layuimini-logo').html(html);
+        },
+
+        /**
+         * 初始化缓存地址
+         * @param clearUrl
+         */
+        renderClear: function (clearUrl) {
+            $('.layuimini-clear').attr('data-href',clearUrl);
         },
 
         /**
