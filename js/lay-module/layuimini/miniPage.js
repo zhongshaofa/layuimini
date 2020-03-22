@@ -105,6 +105,11 @@ layui.define(["element", "jquery"], function (exports) {
                 var v = new Date().getTime();
                 href = href.indexOf("?") > -1 ? href + '&v=' + v : href + '?v=' + v;
             }
+            if ($(".layuimini-page-header").hasClass("layui-hide")) {
+                $(container).removeAttr("style");
+            } else {
+                $(container).attr("style", "height: calc(100% - 36px)");
+            }
             $(container).html('');
             $.ajax({
                 url: href,
