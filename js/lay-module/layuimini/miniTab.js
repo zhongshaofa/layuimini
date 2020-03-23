@@ -64,12 +64,6 @@ layui.define(["element", "jquery"], function (exports) {
             $('.layuimini-menu-left').attr('layuimini-tab-tag', 'add');
         },
 
-        /**
-         * 刷新tab窗口
-         */
-        refresh: function () {
-
-        },
 
         /**
          * 切换选项卡
@@ -99,6 +93,28 @@ layui.define(["element", "jquery"], function (exports) {
             } else {
                 element.tabDelete('layuiminiTab', tabId);
             }
+        },
+
+        /**
+         * 在iframe层打开新tab方法
+         */
+        openNewTabByIframe: function (options) {
+            options.href = options.href || null;
+            options.title = options.title || null;
+            var loading = parent.layer.load(0, {shade: false, time: 2 * 1000});
+            if (options.href === null || options.href === undefined) options.href = new Date().getTime();
+            var checkTab = miniTab.check(options.href, true);
+            if (!checkTab) {
+                miniTab.create({
+                    tabId: options.href,
+                    href: options.href,
+                    title: options.title,
+                    addSession: true,
+                    isIframe: true,
+                });
+            }
+            parent.layui.element.tabChange('layuiminiTab', options.href);
+            parent.layer.close(loading);
         },
 
         /**
