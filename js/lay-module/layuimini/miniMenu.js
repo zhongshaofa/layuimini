@@ -45,13 +45,13 @@ layui.define(["element", "jquery"], function (exports) {
             leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-left-nav-tree ' + leftMenuCheckDefault + '" >\n';
             $.each(menuList, function (index, menu) {
                 leftMenuHtml += '<li class="layui-nav-item ' + childOpenClass + '">\n';
-                if (menu.child != undefined && menu.child != []) {
+                if (menu.child != undefined && menu.child != [] && menu.child.length > 0) {
                     leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span> </a>';
                     var buildChildHtml = function (html, child) {
                         html += '<dl class="layui-nav-child">\n';
                         $.each(child, function (childIndex, childMenu) {
                             html += '<dd class="' + childOpenClass + '">\n';
-                            if (childMenu.child != undefined && childMenu.child != []) {
+                            if (childMenu.child != undefined && childMenu.child != [] && childMenu.child.length > 0) {
                                 html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
                                 html = buildChildHtml(html, childMenu.child);
                             } else {
