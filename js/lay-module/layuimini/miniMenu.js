@@ -4,9 +4,10 @@
  * version:2.0
  * description:layuimini 菜单框架扩展
  */
-layui.define(["element", "jquery"], function (exports) {
+layui.define(["element","laytpl" ,"jquery"], function (exports) {
     var element = layui.element,
         $ = layui.$,
+        laytpl = layui.laytpl,
         layer = layui.layer;
 
     var miniMenu = {
@@ -78,60 +79,121 @@ layui.define(["element", "jquery"], function (exports) {
         },
 
         /**
+         * 渲染一级菜单
+         */
+        compileFistMenu: function(menu){
+            return laytpl('<li {{#if( d.menu){ }}  data-menu="{{d.menu}}" {{#}}} class="layui-nav-item {{d.className}}"  {{#if( d.id){ }}  id="{{d.id}}" {{#}}}> <a {{#if( d.href){ }} layuimini-href="{{d.href}}" {{#}}} {{#if( d.target){ }}  target="{{d.target}}" {{#}}} href="javascript:;"><i class="{{d.icon}}"></i> {{d.title}}</a>{{d.children}}</li>').render(menu);
+        },
+        compileLeftMenuContainer :function(menu){
+            return laytpl('<ul class="layui-nav layui-nav-tree layui-left-nav-tree {{d.className}}" id="{{d.id}}">{{d.children}}</ul>').render(menu);
+        },
+        each:function(list,callback){
+            var _list = [];
+            for(var i = 0 ,length = list.length ; i<length ;i++ ){
+                _list[i] = callback(i,list[i]) ;
+            }
+            return _list ;
+        },
+        renderLeftSubMenu:function(){
+
+        },
+        renderLeftMenu :function(leftMenus,options){
+            var me = this ;
+            var leftMenusHtml =  me.each(leftMenus || [],function (idx,leftMenu) { // 左侧菜单遍历
+                var leftMenuHtml = me.compileFistMenu({
+                    href:leftMenu.href,
+                    target:leftMenu.target,
+                    className:"",
+                    icon:leftMenu.icon,
+                    title:leftMenu.title,
+                    children:""
+                });
+                return leftMenuHtml ;
+            }).join("");
+            leftMenusHtml = me.compileLeftMenuContainer({ id:options.parentMenuId,className:options.leftMenuCheckDefault,children:leftMenusHtml }) ;
+            return leftMenusHtml ;
+        },
+        /**
          * 多模块
          * @param menuList 菜单数据
          * @param menuChildOpen 是否默认展开
          */
         renderMultiModule: function (menuList, menuChildOpen) {
             menuList = menuList || [];
+            var me = this ;
             var headerMenuHtml = '',
                 headerMobileMenuHtml = '',
                 leftMenuHtml = '',
+                leftMenuCheckDefault = 'layui-this',
                 childOpenClass = '',
-                headerMenuCheckDefault = 'layui-this',
-                leftMenuCheckDefault = 'layui-this';
+                headerMenuCheckDefault = 'layui-this';
 
             if (menuChildOpen) childOpenClass = ' layui-nav-itemed';
-
-            $.each(menuList, function (key, val) {
-                key = 'multi_module_' + key;
-                headerMenuHtml += '<li class="layui-nav-item ' + headerMenuCheckDefault + '" id="' + key + 'HeaderId" data-menu="' + key + '"> <a href="javascript:;"><i class="' + val.icon + '"></i> ' + val.title + '</a> </li>\n';
-                headerMobileMenuHtml += '<dd><a href="javascript:;" id="' + key + 'HeaderId" data-menu="' + key + '"><i class="' + val.icon + '"></i> ' + val.title + '</a></dd>\n';
-                leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-left-nav-tree ' + leftMenuCheckDefault + '" id="' + key + '">\n';
-                var menuList = val.child;
-                $.each(menuList, function (index, menu) {
-                    leftMenuHtml += '<li class="layui-nav-item ' + childOpenClass + '">\n';
-                    if (menu.child != undefined && menu.child != []) {
-                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span> </a>';
-                        var buildChildHtml = function (html, child) {
-                            html += '<dl class="layui-nav-child">\n';
-                            $.each(child, function (childIndex, childMenu) {
-                                html += '<dd class="' + childOpenClass + '">\n';
-                                if (childMenu.child != undefined && childMenu.child != []) {
-                                    html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
-                                    html = buildChildHtml(html, childMenu.child);
-                                } else {
-                                    html += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
-                                }
-                                html += '</dd>\n';
-                            });
-                            html += '</dl>\n';
-                            return html;
-                        };
-                        leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
-                    } else {
-                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
-                    }
-                    leftMenuHtml += '</li>\n';
+            var headerMenuHtml = this.each(menuList, function (index, val) { //顶部菜单渲染
+                var menu = 'multi_module_' + index ;
+                var id = menu+"HeaderId";
+                var topMenuItemHtml = "" ;
+                topMenuItemHtml = me.compileFistMenu({
+                    className:headerMenuCheckDefault,
+                    menu:menu,
+                    id:id,
+                    icon:val.icon,
+                    href:"",
+                    target:"",
+                    title:val.title,
+                    children:""
                 });
-                leftMenuHtml += '</ul>\n';
-                headerMenuCheckDefault = '';
-                leftMenuCheckDefault = 'layui-hide';
-            });
-            $('.layui-layout-body').addClass('layuimini-multi-module'); //多模块标识
+                leftMenuHtml+=me.renderLeftMenu(val.child,{
+                    parentMenuId:menu,
+                    leftMenuCheckDefault:leftMenuCheckDefault
+                });
+                headerMenuCheckDefault = "";
+                leftMenuCheckDefault = "layui-hide" ;
+                return topMenuItemHtml ;
+            }).join("");
+
             $('.layuimini-menu-header-pc').html(headerMenuHtml); //电脑
-            $('.layuimini-menu-header-mobile').html(headerMobileMenuHtml); //手机
             $('.layuimini-menu-left').html(leftMenuHtml);
+            element.init();
+            // $.each(menuList, function (key, val) {
+            //     key = 'multi_module_' + key;
+            //     headerMenuHtml += '<li class="layui-nav-item ' + headerMenuCheckDefault + '" id="' + key + 'HeaderId" data-menu="' + key + '"> <a href="javascript:;"><i class="' + val.icon + '"></i> ' + val.title + '</a> </li>\n';
+            //     headerMobileMenuHtml += '<dd><a href="javascript:;" id="' + key + 'HeaderId" data-menu="' + key + '"><i class="' + val.icon + '"></i> ' + val.title + '</a></dd>\n';
+            //     leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-left-nav-tree ' + leftMenuCheckDefault + '" id="' + key + '">\n';
+            //     var menuList = val.child;
+            //     $.each(menuList, function (index, menu) { // 遍历左侧菜单
+            //         leftMenuHtml += '<li class="layui-nav-item ' + childOpenClass + '">\n';
+            //         if (menu.child != undefined && menu.child != []) {
+            //             leftMenuHtml += '<a href="javascript:;" laymini-type="0" class="layui-menu-tips" ><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span> </a>';
+            //             var buildChildHtml = function (html, child) {
+            //                 html += '<dl class="layui-nav-child">\n';
+            //                 $.each(child, function (childIndex, childMenu) {
+            //                     html += '<dd class="' + childOpenClass + '">\n';
+            //                     if (childMenu.child != undefined && childMenu.child != []) {
+            //                         html += '<a href="javascript:;" laymini-type="1" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
+            //                         html = buildChildHtml(html, childMenu.child);
+            //                     } else {
+            //                         html += '<a href="javascript:;" laymini-type="1" class="layui-menu-tips"  layuimini-href="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
+            //                     }
+            //                     html += '</dd>\n';
+            //                 });
+            //                 html += '</dl>\n';
+            //                 return html;
+            //             };
+            //             leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
+            //         } else {
+            //             leftMenuHtml += '<a href="javascript:;" laymini-type="0" class="layui-menu-tips"  layuimini-href="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
+            //         }
+            //         leftMenuHtml += '</li>\n';
+            //     });
+            //     leftMenuHtml += '</ul>\n';
+            //     headerMenuCheckDefault = '';
+            //     leftMenuCheckDefault = 'layui-hide';
+            // });
+            // $('.layui-layout-body').addClass('layuimini-multi-module'); //多模块标识
+            // $('.layuimini-menu-header-pc').html(headerMenuHtml); //电脑
+            // $('.layuimini-menu-header-mobile').html(headerMobileMenuHtml); //手机
+            // $('.layuimini-menu-left').html(leftMenuHtml);
             element.init();
         },
 
