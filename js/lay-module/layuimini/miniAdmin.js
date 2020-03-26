@@ -4,11 +4,12 @@
  * version:2.0
  * description:layuimini 主体框架扩展
  */
-layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) {
+layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function (exports) {
     var $ = layui.$,
         layer = layui.layer,
         miniMenu = layui.miniMenu,
         miniTheme = layui.miniTheme,
+        element = layui.element ,
         miniTab = layui.miniTab;
 
     if (!/http(s*):\/\//.test(location.href)) {
@@ -274,15 +275,25 @@ layui.define(["jquery", "miniMenu", "miniTab", "miniTheme"], function (exports) 
             /**
              * 监听提示信息
              */
-            $("body").on("mouseenter", ".layui-menu-tips", function () {
+            $("body").on("mouseenter", ".menu-li", function () {
                 if (miniAdmin.checkMobile()) {
                     return false;
                 }
                 var classInfo = $(this).attr('class'),
-                    tips = $(this).children('span').text(),
-                    isShow = $('.layuimini-tool i').attr('data-side-fold');
+                    tips = $(this).prop("innerHTML"),
+                    isShow = 0;//$('.layuimini-tool i').attr('data-side-fold');
                 if (isShow == 0) {
-                    openTips = layer.tips(tips, $(this), {tips: [2, '#2f4056'], time: 30000});
+                    tips = "<ul class='layui-nav layui-nav-tree layui-this'><li class='layui-nav-item '>"+tips+"</li></ul>" ;
+                    openTips = layer.tips(tips, $(this), {
+                        tips: [2, '#2f4056'],
+                        time: 30000,
+                        skin:"popup-tips",
+                        success:function (el) {
+                            var left = $(el).position().left - 10 ;
+                            $(el).css({ left:left });
+                            element.render();
+                        }
+                    });
                 }
             });
             $("body").on("mouseleave", ".layui-menu-tips", function () {

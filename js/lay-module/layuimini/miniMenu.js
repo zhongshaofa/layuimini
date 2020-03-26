@@ -82,9 +82,9 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
          * 渲染一级菜单
          */
         compileMenu: function(menu,isSub){
-            var menuHtml = '<li {{#if( d.menu){ }}  data-menu="{{d.menu}}" {{#}}} class="layui-nav-item {{d.className}}"  {{#if( d.id){ }}  id="{{d.id}}" {{#}}}> <a {{#if( d.href){ }} layuimini-href="{{d.href}}" {{#}}} {{#if( d.target){ }}  target="{{d.target}}" {{#}}} href="javascript:;"><i class="{{d.icon}}"></i> {{d.title}}</a>  {{# if(d.children){}} {{d.children}} {{#}}} </li>' ;
+            var menuHtml = '<li {{#if( d.menu){ }}  data-menu="{{d.menu}}" {{#}}} class="layui-nav-item menu-li {{d.className}}"  {{#if( d.id){ }}  id="{{d.id}}" {{#}}}> <a {{#if( d.href){ }} layuimini-href="{{d.href}}" {{#}}} {{#if( d.target){ }}  target="{{d.target}}" {{#}}} href="javascript:;"><i class="{{d.icon}}"></i> <span class="layui-left-nav">{{d.title}}</span></a>  {{# if(d.children){}} {{d.children}} {{#}}} </li>' ;
             if(isSub){
-                menuHtml = '<dd class="{{d.className }}"> <a href="javascript:;"  {{#if(( !d.child || !d.child.length ) && d.href){ }} layuimini-href="{{d.href}}" {{#}}} {{#if( d.target){ }}  target="{{d.target}}" {{#}}}><i class="{{d.icon}}"></i> {{d.title}}</a> {{# if(d.children){}} {{d.children}} {{#}}}</dd>'
+                menuHtml = '<dd class="menu-dd {{d.className }}"> <a href="javascript:;"  {{#if(( !d.child || !d.child.length ) && d.href){ }} layuimini-href="{{d.href}}" {{#}}} {{#if( d.target){ }}  target="{{d.target}}" {{#}}}><i class="{{d.icon}}"></i><span class="layui-left-nav"> {{d.title}}</span></a> {{# if(d.children){}} {{d.children}} {{#}}}</dd>'
             }
             return laytpl(menuHtml).render(menu);
         },
@@ -160,23 +160,24 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
                     className:headerMenuCheckDefault,
                     menu:menu,
                     id:id,
-                    icon:val.icon,
+                    title:val.title,
                     href:"",
                     target:"",
-                    title:val.title,
                     children:""
                 });
                 leftMenuHtml+=me.renderLeftMenu(val.child,{
                     parentMenuId:menu,
                     leftMenuCheckDefault:leftMenuCheckDefault
                 });
+                headerMobileMenuHtml +=me.compileMenu({ id:id,menu:menu,icon:val.icon, title:val.title, });
                 headerMenuCheckDefault = "";
                 leftMenuCheckDefault = "layui-hide" ;
                 return topMenuItemHtml ;
             }).join("");
-
+            $('.layui-layout-body').addClass('layuimini-multi-module'); //多模块标识
             $('.layuimini-menu-header-pc').html(headerMenuHtml); //电脑
             $('.layuimini-menu-left').html(leftMenuHtml);
+            $('.layuimini-menu-header-mobile').html(headerMobileMenuHtml); //手机
             element.init();
             // $.each(menuList, function (key, val) {
             //     key = 'multi_module_' + key;

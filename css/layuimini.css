@@ -813,4 +813,9 @@
         cursor: pointer;
     }
 }
-
+.popup-tips .layui-layer-TipsG{
+    display: none;
+}
+.popup-tips.layui-layer-tips .layui-layer-content{
+    padding: 0;
+}
