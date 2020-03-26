@@ -81,12 +81,24 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
         /**
          * 渲染一级菜单
          */
-        compileFistMenu: function(menu){
-            return laytpl('<li {{#if( d.menu){ }}  data-menu="{{d.menu}}" {{#}}} class="layui-nav-item {{d.className}}"  {{#if( d.id){ }}  id="{{d.id}}" {{#}}}> <a {{#if( d.href){ }} layuimini-href="{{d.href}}" {{#}}} {{#if( d.target){ }}  target="{{d.target}}" {{#}}} href="javascript:;"><i class="{{d.icon}}"></i> {{d.title}}</a>{{d.children}}</li>').render(menu);
+        compileMenu: function(menu,isSub){
+            var menuHtml = '<li {{#if( d.menu){ }}  data-menu="{{d.menu}}" {{#}}} class="layui-nav-item {{d.className}}"  {{#if( d.id){ }}  id="{{d.id}}" {{#}}}> <a {{#if( d.href){ }} layuimini-href="{{d.href}}" {{#}}} {{#if( d.target){ }}  target="{{d.target}}" {{#}}} href="javascript:;"><i class="{{d.icon}}"></i> {{d.title}}</a>  {{# if(d.children){}} {{d.children}} {{#}}} </li>' ;
+            if(isSub){
+                menuHtml = '<dd class="{{d.className }}"> <a href="javascript:;"  {{#if(( !d.child || !d.child.length ) && d.href){ }} layuimini-href="{{d.href}}" {{#}}} {{#if( d.target){ }}  target="{{d.target}}" {{#}}}><i class="{{d.icon}}"></i> {{d.title}}</a> {{# if(d.children){}} {{d.children}} {{#}}}</dd>'
+            }
+            return laytpl(menuHtml).render(menu);
         },
-        compileLeftMenuContainer :function(menu){
-            return laytpl('<ul class="layui-nav layui-nav-tree layui-left-nav-tree {{d.className}}" id="{{d.id}}">{{d.children}}</ul>').render(menu);
+        compileMenuContainer :function(menu,isSub){
+            var wrapperHtml = '<ul class="layui-nav layui-nav-tree layui-left-nav-tree {{d.className}}" id="{{d.id}}">{{d.children}}</ul>' ;
+            if(isSub){
+                wrapperHtml = '<dl class="layui-nav-child ">{{d.children}}</dl>' ;
+            }
+            if(!menu.children){
+                return "";
+            }
+            return laytpl(wrapperHtml).render(menu);
         },
+
         each:function(list,callback){
             var _list = [];
             for(var i = 0 ,length = list.length ; i<length ;i++ ){
@@ -94,23 +106,34 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
             }
             return _list ;
         },
-        renderLeftSubMenu:function(){
-
+        renderChildrenMenu:function(menuList){
+            var me = this ;
+            menuList = menuList || [] ;
+            var html = this.each(menuList,function (idx,menu) {
+                if(menu.child && menu.child.length){
+                    menu.children = me.renderChildrenMenu(menu.child,true);
+                }
+                menu.className = "" ;
+                return me.compileMenu(menu,true)
+            }).join("");
+            return me.compileMenuContainer({ children:html },true)
         },
         renderLeftMenu :function(leftMenus,options){
             var me = this ;
             var leftMenusHtml =  me.each(leftMenus || [],function (idx,leftMenu) { // 左侧菜单遍历
-                var leftMenuHtml = me.compileFistMenu({
+                var children = me.renderChildrenMenu(leftMenu.child);
+                var leftMenuHtml = me.compileMenu({
                     href:leftMenu.href,
                     target:leftMenu.target,
                     className:"",
                     icon:leftMenu.icon,
                     title:leftMenu.title,
-                    children:""
+                    children:children
                 });
                 return leftMenuHtml ;
             }).join("");
-            leftMenusHtml = me.compileLeftMenuContainer({ id:options.parentMenuId,className:options.leftMenuCheckDefault,children:leftMenusHtml }) ;
+
+            leftMenusHtml = me.compileMenuContainer({ id:options.parentMenuId,className:options.leftMenuCheckDefault,children:leftMenusHtml }) ;
             return leftMenusHtml ;
         },
         /**
@@ -133,7 +156,7 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
                 var menu = 'multi_module_' + index ;
                 var id = menu+"HeaderId";
                 var topMenuItemHtml = "" ;
-                topMenuItemHtml = me.compileFistMenu({
+                topMenuItemHtml = me.compileMenu({
                     className:headerMenuCheckDefault,
                     menu:menu,
                     id:id,
