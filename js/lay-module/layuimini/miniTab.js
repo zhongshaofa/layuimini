@@ -216,7 +216,7 @@ layui.define(["element","layer", "jquery"], function (exports) {
                 layer.close(window.openTips);
                 if(el.length){
                     $(el).closest(".layui-nav-tree").find(".layui-this").removeClass("layui-this");
-                    $(el).addClass("layui-this");
+                    $(el).parent().addClass("layui-this");
                 }
 
                 if (target === '_blank') {

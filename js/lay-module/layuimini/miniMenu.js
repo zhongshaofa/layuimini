@@ -40,36 +40,39 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
             var leftMenuHtml = '',
                 childOpenClass = '',
                 leftMenuCheckDefault = 'layui-this';
-
+            var me = this ;
             if (menuChildOpen) childOpenClass = ' layui-nav-itemed';
+            leftMenuHtml = this.renderLeftMenu(menuList) ;
 
-            leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-left-nav-tree ' + leftMenuCheckDefault + '" >\n';
-            $.each(menuList, function (index, menu) {
-                leftMenuHtml += '<li class="layui-nav-item ' + childOpenClass + '">\n';
-                if (menu.child != undefined && menu.child != [] && menu.child.length > 0) {
-                    leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span> </a>';
-                    var buildChildHtml = function (html, child) {
-                        html += '<dl class="layui-nav-child">\n';
-                        $.each(child, function (childIndex, childMenu) {
-                            html += '<dd class="' + childOpenClass + '">\n';
-                            if (childMenu.child != undefined && childMenu.child != [] && childMenu.child.length > 0) {
-                                html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
-                                html = buildChildHtml(html, childMenu.child);
-                            } else {
-                                html += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
-                            }
-                            html += '</dd>\n';
-                        });
-                        html += '</dl>\n';
-                        return html;
-                    };
-                    leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
-                } else {
-                    leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
-                }
-                leftMenuHtml += '</li>\n';
-            });
-            leftMenuHtml += '</ul>\n';
+            // leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-left-nav-tree ' + leftMenuCheckDefault + '" >\n';
+            // $.each(menuList, function (index, menu) {
+            //     leftMenuHtml += '<li class="layui-nav-item ' + childOpenClass + '">\n';
+            //     if (menu.child != undefined && menu.child != [] && menu.child.length > 0) {
+            //         leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span> </a>';
+            //         var buildChildHtml = function (html, child) {
+            //             html += '<dl class="layui-nav-child">\n';
+            //             $.each(child, function (childIndex, childMenu) {
+            //                 html += '<dd class="' + childOpenClass + '">\n';
+            //                 if (childMenu.child != undefined && childMenu.child != [] && childMenu.child.length > 0) {
+            //                     html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
+            //                     html = buildChildHtml(html, childMenu.child);
+            //                 } else {
+            //                     html += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
+            //                 }
+            //                 html += '</dd>\n';
+            //             });
+            //             html += '</dl>\n';
+            //             return html;
+            //         };
+            //         leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
+            //     } else {
+            //         leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
+            //     }
+            //     leftMenuHtml += '</li>\n';
+            // });
+            // leftMenuHtml += '</ul>\n';
+
+
 
             $('.layui-layout-body').addClass('layuimini-single-module'); //单模块标识
             $('.layuimini-header-menu').remove();
@@ -119,6 +122,7 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
             return me.compileMenuContainer({ children:html },true)
         },
         renderLeftMenu :function(leftMenus,options){
+            options = options || {};
             var me = this ;
             var leftMenusHtml =  me.each(leftMenus || [],function (idx,leftMenu) { // 左侧菜单遍历
                 var children = me.renderChildrenMenu(leftMenu.child);
@@ -218,7 +222,6 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
             // $('.layuimini-menu-header-pc').html(headerMenuHtml); //电脑
             // $('.layuimini-menu-header-mobile').html(headerMobileMenuHtml); //手机
             // $('.layuimini-menu-left').html(leftMenuHtml);
-            element.init();
         },
 
         /**
