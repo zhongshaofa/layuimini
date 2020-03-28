@@ -254,11 +254,19 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
                     $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-indent');
                     $('.layui-layout-body').removeClass('layuimini-all');
                     $('.layui-layout-body').addClass('layuimini-mini');
+                    $(".menu-li").each(function (idx,el) {
+                        $(el).addClass("hidden-sub-menu");
+                    });
+
                 } else { // 正常
                     $('.layuimini-tool [data-side-fold]').attr('data-side-fold', 1);
                     $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-outdent');
                     $('.layui-layout-body').removeClass('layuimini-mini');
                     $('.layui-layout-body').addClass('layuimini-all');
+                    $(".menu-li").each(function (idx,el) {
+                        $(el).removeClass("hidden-sub-menu");
+                    });
+                    layer.close(window.openTips);
                 }
                 element.init();
                 layer.close(loading);
