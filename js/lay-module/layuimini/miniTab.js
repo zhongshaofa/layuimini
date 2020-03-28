@@ -209,6 +209,13 @@ layui.define(["element", "jquery"], function (exports) {
                     href = $(this).attr('layuimini-href'),
                     title = $(this).text(),
                     target = $(this).attr('target');
+                if(!href) return  ;
+                var me = this ;
+                if($('[layuimini-href="'+href+'"]').length == 2){
+                    $('[layuimini-href="'+href+'"]').each(function (idx,ele) {
+                        console.log( $(ele) == me )
+                    })
+                }
                 if (target === '_blank') {
                     layer.close(loading);
                     window.open(href, "_blank");
