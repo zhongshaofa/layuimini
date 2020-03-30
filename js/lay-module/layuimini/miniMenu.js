@@ -142,7 +142,7 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
                     parentMenuId:menu,
                     leftMenuCheckDefault:leftMenuCheckDefault
                 });
-                headerMobileMenuHtml +=me.compileMenu({ id:id,menu:menu,icon:val.icon, title:val.title, });
+                headerMobileMenuHtml +=me.compileMenu({ id:id,menu:menu,icon:val.icon, title:val.title, },true);
                 headerMenuCheckDefault = "";
                 leftMenuCheckDefault = "layui-hide" ;
                 return topMenuItemHtml ;

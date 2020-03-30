@@ -823,4 +823,7 @@
 .hidden-sub-menu .layui-nav-child{
     display: none;!important;
 }
+.popup-tips .layui-nav-tree{
+    width: 150px;
+}
 

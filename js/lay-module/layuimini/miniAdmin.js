@@ -280,11 +280,10 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                     return false;
                 }
                 var classInfo = $(this).attr('class'),
-                    tips = $(this).children("dl").prop("outerHTML"),
+                    tips = $(this).prop("innerHTML"),
                     isShow = $('.layuimini-tool i').attr('data-side-fold');
                 if (isShow == 0 && tips) {
                     tips = "<ul class='layui-nav layui-nav-tree layui-this'><li class='layui-nav-item '>"+tips+"</li></ul>" ;
-                    console.log(tips)
                     window.openTips = layer.tips(tips, $(this), {
                         tips: [2, '#2f4056'],
                         time: 300000,
