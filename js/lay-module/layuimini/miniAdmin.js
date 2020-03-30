@@ -275,15 +275,16 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
             /**
              * 监听提示信息
              */
-            $("body").on("mouseenter", ".menu-li", function () {
+            $("body").on("mouseenter", ".layui-nav-tree .menu-li", function () {
                 if (miniAdmin.checkMobile()) {
                     return false;
                 }
                 var classInfo = $(this).attr('class'),
-                    tips = $(this).prop("innerHTML"),
+                    tips = $(this).children("dl").prop("outerHTML"),
                     isShow = $('.layuimini-tool i').attr('data-side-fold');
                 if (isShow == 0 && tips) {
                     tips = "<ul class='layui-nav layui-nav-tree layui-this'><li class='layui-nav-item '>"+tips+"</li></ul>" ;
+                    console.log(tips)
                     window.openTips = layer.tips(tips, $(this), {
                         tips: [2, '#2f4056'],
                         time: 300000,
