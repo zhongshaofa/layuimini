@@ -283,7 +283,7 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                     tips = $(this).prop("innerHTML"),
                     isShow = $('.layuimini-tool i').attr('data-side-fold');
                 if (isShow == 0 && tips) {
-                    tips = "<ul class='layui-nav layui-nav-tree layui-this'><li class='layui-nav-item '>"+tips+"</li></ul>" ;
+                    tips = "<ul class='layui-nav layui-nav-tree layui-this'><li class='layui-nav-item layui-nav-itemed'>"+tips+"</li></ul>" ;
                     window.openTips = layer.tips(tips, $(this), {
                         tips: [2, '#2f4056'],
                         time: 300000,
