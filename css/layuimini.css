@@ -825,5 +825,6 @@
 }
 .popup-tips .layui-nav-tree{
     width: 150px;
+    border-radius: 10px;
 }
 
