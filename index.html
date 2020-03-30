@@ -125,17 +125,15 @@
         </div>
 
     </div>
-
 </div>
 <script src="lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="js/lay-config.js?v=2.0.0" charset="utf-8"></script>
 <script>
-    layui.use(['jquery', 'layer', 'miniAdmin', 'miniTongji'], function () {
+    layui.use(['jquery', 'layer', 'miniAdmin','miniTongji'], function () {
         var $ = layui.jquery,
             layer = layui.layer,
             miniAdmin = layui.miniAdmin,
             miniTongji = layui.miniTongji;
-
         var options = {
             iniUrl: "api/init.json",    // 初始化接口
             clearUrl: "api/clear.json", // 缓存清理接口

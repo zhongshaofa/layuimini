@@ -4,8 +4,9 @@
  * version:2.0
  * description:layuimini tab框架扩展
  */
-layui.define(["element", "jquery"], function (exports) {
+layui.define(["element","layer", "jquery"], function (exports) {
     var element = layui.element,
+        layer = layui.layer,
         $ = layui.$;
 
 
@@ -209,11 +210,23 @@ layui.define(["element", "jquery"], function (exports) {
                     href = $(this).attr('layuimini-href'),
                     title = $(this).text(),
                     target = $(this).attr('target');
+                if(!href) return  ;
+                var me = this ;
+                var el = $("[layuimini-href='"+href+"']",".layuimini-menu-left") ;
+                layer.close(window.openTips);
+                if(el.length){
+                    $(el).closest(".layui-nav-tree").find(".layui-this").removeClass("layui-this");
+                    $(el).parent().addClass("layui-this");
+                }
+
                 if (target === '_blank') {
                     layer.close(loading);
                     window.open(href, "_blank");
                     return false;
                 }
+
+
+
                 if (tabId === null || tabId === undefined) tabId = new Date().getTime();
                 var checkTab = miniTab.check(tabId);
                 if (!checkTab) {
