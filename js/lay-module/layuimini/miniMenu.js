@@ -4,9 +4,10 @@
  * version:2.0
  * description:layuimini 菜单框架扩展
  */
-layui.define(["element", "jquery"], function (exports) {
+layui.define(["element", "laytpl","jquery"], function (exports) {
     var element = layui.element,
         $ = layui.$,
+        laytpl = layui.laytpl,
         layer = layui.layer;
 
     var miniMenu = {
@@ -29,6 +30,7 @@ layui.define(["element", "jquery"], function (exports) {
             miniMenu.listen();
         },
 
+
         /**
          * 单模块
          * @param menuList 菜单数据
@@ -39,37 +41,9 @@ layui.define(["element", "jquery"], function (exports) {
             var leftMenuHtml = '',
                 childOpenClass = '',
                 leftMenuCheckDefault = 'layui-this';
-
+            var me = this ;
             if (menuChildOpen) childOpenClass = ' layui-nav-itemed';
-
-            leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-left-nav-tree ' + leftMenuCheckDefault + '" >\n';
-            $.each(menuList, function (index, menu) {
-                leftMenuHtml += '<li class="layui-nav-item ' + childOpenClass + '">\n';
-                if (menu.child != undefined && menu.child != [] && menu.child.length > 0) {
-                    leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span> </a>';
-                    var buildChildHtml = function (html, child) {
-                        html += '<dl class="layui-nav-child">\n';
-                        $.each(child, function (childIndex, childMenu) {
-                            html += '<dd class="' + childOpenClass + '">\n';
-                            if (childMenu.child != undefined && childMenu.child != [] && childMenu.child.length > 0) {
-                                html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
-                                html = buildChildHtml(html, childMenu.child);
-                            } else {
-                                html += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
-                            }
-                            html += '</dd>\n';
-                        });
-                        html += '</dl>\n';
-                        return html;
-                    };
-                    leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
-                } else {
-                    leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
-                }
-                leftMenuHtml += '</li>\n';
-            });
-            leftMenuHtml += '</ul>\n';
-
+            leftMenuHtml = this.renderLeftMenu(menuList) ;
             $('.layui-layout-body').addClass('layuimini-single-module'); //单模块标识
             $('.layuimini-header-menu').remove();
             $('.layuimini-menu-left').html(leftMenuHtml);
@@ -78,61 +52,106 @@ layui.define(["element", "jquery"], function (exports) {
         },
 
         /**
+         * 渲染一级菜单
+         */
+        compileMenu: function(menu,isSub){
+            var menuHtml = '<li {{#if( d.menu){ }}  data-menu="{{d.menu}}" {{#}}} class="layui-nav-item menu-li {{d.className}}"  {{#if( d.id){ }}  id="{{d.id}}" {{#}}}> <a {{#if( d.href){ }} layuimini-href="{{d.href}}" {{#}}} {{#if( d.target){ }}  target="{{d.target}}" {{#}}} href="javascript:;">{{#if( d.icon){ }}  <i class="{{d.icon}}"></i> {{#}}} <span class="layui-left-nav">{{d.title}}</span></a>  {{# if(d.children){}} {{d.children}} {{#}}} </li>' ;
+            if(isSub){
+                menuHtml = '<dd class="menu-dd {{d.className }}"> <a href="javascript:;"  {{#if( d.menu){ }}  data-menu="{{d.menu}}" {{#}}} {{#if( d.id){ }}  id="{{d.id}}" {{#}}} {{#if(( !d.child || !d.child.length ) && d.href){ }} layuimini-href="{{d.href}}" {{#}}} {{#if( d.target){ }}  target="{{d.target}}" {{#}}}> {{#if( d.icon){ }}  <i class="{{d.icon}}"></i> {{#}}} <span class="layui-left-nav"> {{d.title}}</span></a> {{# if(d.children){}} {{d.children}} {{#}}}</dd>'
+            }
+            return laytpl(menuHtml).render(menu);
+        },
+        compileMenuContainer :function(menu,isSub){
+            var wrapperHtml = '<ul class="layui-nav layui-nav-tree layui-left-nav-tree {{d.className}}" id="{{d.id}}">{{d.children}}</ul>' ;
+            if(isSub){
+                wrapperHtml = '<dl class="layui-nav-child ">{{d.children}}</dl>' ;
+            }
+            if(!menu.children){
+                return "";
+            }
+            return laytpl(wrapperHtml).render(menu);
+        },
+
+        each:function(list,callback){
+            var _list = [];
+            for(var i = 0 ,length = list.length ; i<length ;i++ ){
+                _list[i] = callback(i,list[i]) ;
+            }
+            return _list ;
+        },
+        renderChildrenMenu:function(menuList){
+            var me = this ;
+            menuList = menuList || [] ;
+            var html = this.each(menuList,function (idx,menu) {
+                if(menu.child && menu.child.length){
+                    menu.children = me.renderChildrenMenu(menu.child,true);
+                }
+                menu.className = "" ;
+                return me.compileMenu(menu,true)
+            }).join("");
+            return me.compileMenuContainer({ children:html },true)
+        },
+        renderLeftMenu :function(leftMenus,options){
+            options = options || {};
+            var me = this ;
+            var leftMenusHtml =  me.each(leftMenus || [],function (idx,leftMenu) { // 左侧菜单遍历
+                var children = me.renderChildrenMenu(leftMenu.child);
+                var leftMenuHtml = me.compileMenu({
+                    href:leftMenu.href,
+                    target:leftMenu.target,
+                    className:"",
+                    icon:leftMenu.icon,
+                    title:leftMenu.title,
+                    children:children
+                });
+                return leftMenuHtml ;
+            }).join("");
+
+            leftMenusHtml = me.compileMenuContainer({ id:options.parentMenuId,className:options.leftMenuCheckDefault,children:leftMenusHtml }) ;
+            return leftMenusHtml ;
+        },
+        /**
          * 多模块
          * @param menuList 菜单数据
          * @param menuChildOpen 是否默认展开
          */
         renderMultiModule: function (menuList, menuChildOpen) {
             menuList = menuList || [];
+            var me = this ;
             var headerMenuHtml = '',
                 headerMobileMenuHtml = '',
                 leftMenuHtml = '',
+                leftMenuCheckDefault = 'layui-this',
                 childOpenClass = '',
-                headerMenuCheckDefault = 'layui-this',
-                leftMenuCheckDefault = 'layui-this';
+                headerMenuCheckDefault = 'layui-this';
 
             if (menuChildOpen) childOpenClass = ' layui-nav-itemed';
-
-            $.each(menuList, function (key, val) {
-                key = 'multi_module_' + key;
-                headerMenuHtml += '<li class="layui-nav-item ' + headerMenuCheckDefault + '" id="' + key + 'HeaderId" data-menu="' + key + '"> <a href="javascript:;"><i class="' + val.icon + '"></i> ' + val.title + '</a> </li>\n';
-                headerMobileMenuHtml += '<dd><a href="javascript:;" id="' + key + 'HeaderId" data-menu="' + key + '"><i class="' + val.icon + '"></i> ' + val.title + '</a></dd>\n';
-                leftMenuHtml += '<ul class="layui-nav layui-nav-tree layui-left-nav-tree ' + leftMenuCheckDefault + '" id="' + key + '">\n';
-                var menuList = val.child;
-                $.each(menuList, function (index, menu) {
-                    leftMenuHtml += '<li class="layui-nav-item ' + childOpenClass + '">\n';
-                    if (menu.child != undefined && menu.child != []) {
-                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span> </a>';
-                        var buildChildHtml = function (html, child) {
-                            html += '<dl class="layui-nav-child">\n';
-                            $.each(child, function (childIndex, childMenu) {
-                                html += '<dd class="' + childOpenClass + '">\n';
-                                if (childMenu.child != undefined && childMenu.child != []) {
-                                    html += '<a href="javascript:;" class="layui-menu-tips" ><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>';
-                                    html = buildChildHtml(html, childMenu.child);
-                                } else {
-                                    html += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + childMenu.href + '" target="' + childMenu.target + '"><i class="' + childMenu.icon + '"></i><span class="layui-left-nav"> ' + childMenu.title + '</span></a>\n';
-                                }
-                                html += '</dd>\n';
-                            });
-                            html += '</dl>\n';
-                            return html;
-                        };
-                        leftMenuHtml = buildChildHtml(leftMenuHtml, menu.child);
-                    } else {
-                        leftMenuHtml += '<a href="javascript:;" class="layui-menu-tips"  layuimini-href="' + menu.href + '" target="' + menu.target + '"><i class="' + menu.icon + '"></i><span class="layui-left-nav"> ' + menu.title + '</span></a>\n';
-                    }
-                    leftMenuHtml += '</li>\n';
+            var headerMenuHtml = this.each(menuList, function (index, val) { //顶部菜单渲染
+                var menu = 'multi_module_' + index ;
+                var id = menu+"HeaderId";
+                var topMenuItemHtml = "" ;
+                topMenuItemHtml = me.compileMenu({
+                    className:headerMenuCheckDefault,
+                    menu:menu,
+                    id:id,
+                    title:val.title,
+                    href:"",
+                    target:"",
+                    children:""
                 });
-                leftMenuHtml += '</ul>\n';
-                headerMenuCheckDefault = '';
-                leftMenuCheckDefault = 'layui-hide';
-            });
-
+                leftMenuHtml+=me.renderLeftMenu(val.child,{
+                    parentMenuId:menu,
+                    leftMenuCheckDefault:leftMenuCheckDefault
+                });
+                headerMobileMenuHtml +=me.compileMenu({ id:id,menu:menu,id:id,icon:val.icon, title:val.title, },true);
+                headerMenuCheckDefault = "";
+                leftMenuCheckDefault = "layui-hide" ;
+                return topMenuItemHtml ;
+            }).join("");
             $('.layui-layout-body').addClass('layuimini-multi-module'); //多模块标识
             $('.layuimini-menu-header-pc').html(headerMenuHtml); //电脑
-            $('.layuimini-menu-header-mobile').html(headerMobileMenuHtml); //手机
             $('.layuimini-menu-left').html(leftMenuHtml);
+            $('.layuimini-menu-header-mobile').html(headerMobileMenuHtml); //手机
             element.init();
         },
 
@@ -169,11 +188,19 @@ layui.define(["element", "jquery"], function (exports) {
                     $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-indent');
                     $('.layui-layout-body').removeClass('layuimini-all');
                     $('.layui-layout-body').addClass('layuimini-mini');
+                    $(".menu-li").each(function (idx,el) {
+                        $(el).addClass("hidden-sub-menu");
+                    });
+
                 } else { // 正常
                     $('.layuimini-tool [data-side-fold]').attr('data-side-fold', 1);
                     $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-outdent');
                     $('.layui-layout-body').removeClass('layuimini-mini');
                     $('.layui-layout-body').addClass('layuimini-all');
+                    $(".menu-li").each(function (idx,el) {
+                        $(el).removeClass("hidden-sub-menu");
+                    });
+                    layer.close(window.openTips);
                 }
                 element.init();
                 layer.close(loading);
