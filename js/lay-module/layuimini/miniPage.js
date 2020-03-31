@@ -298,6 +298,14 @@ layui.define(["element", "jquery"], function (exports) {
                 var loading = layer.load(0, {shade: false, time: 2 * 1000});
                 var href = $(this).attr('layuimini-href'),
                     target = $(this).attr('target');
+                if(!href) return  ;
+                var me = this ;
+                var el = $("[layuimini-href='"+href+"']",".layuimini-menu-left") ;
+                layer.close(window.openTips);
+                if(el.length){
+                    $(el).closest(".layui-nav-tree").find(".layui-this").removeClass("layui-this");
+                    $(el).parent().addClass("layui-this");
+                }
                 if (target === '_blank') {
                     layer.close(loading);
                     window.open(href, "_blank");
@@ -316,6 +324,14 @@ layui.define(["element", "jquery"], function (exports) {
                 var href = $(this).attr('layuimini-content-href'),
                     title = $(this).attr('data-title'),
                     target = $(this).attr('target');
+                if(!href) return  ;
+                var me = this ;
+                var el = $("[layuimini-href='"+href+"']",".layuimini-menu-left") ;
+                layer.close(window.openTips);
+                if(el.length){
+                    $(el).closest(".layui-nav-tree").find(".layui-this").removeClass("layui-this");
+                    $(el).parent().addClass("layui-this");
+                }
                 if (target === '_blank') {
                     parent.layer.close(loading);
                     window.open(href, "_blank");
