@@ -150,8 +150,8 @@ layui.define(["element","layer", "jquery"], function (exports) {
                     }
                 });
             }
-            if (checkTab === false) {
-                return false;
+            if (checkTab === true) {
+                return true;
             }
 
             // 判断sessionStorage是否有
@@ -210,8 +210,7 @@ layui.define(["element","layer", "jquery"], function (exports) {
                     href = $(this).attr('layuimini-href'),
                     title = $(this).text(),
                     target = $(this).attr('target');
-                if(!href) return  ;
-                var me = this ;
+
                 var el = $("[layuimini-href='"+href+"']",".layuimini-menu-left") ;
                 layer.close(window.openTips);
                 if(el.length){
@@ -224,8 +223,6 @@ layui.define(["element","layer", "jquery"], function (exports) {
                     window.open(href, "_blank");
                     return false;
                 }
-
-
 
                 if (tabId === null || tabId === undefined) tabId = new Date().getTime();
                 var checkTab = miniTab.check(tabId);
