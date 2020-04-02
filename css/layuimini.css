@@ -705,22 +705,6 @@
     .layuimini-mini .layuimini-tool {
         left: 95px !important;
     }
-
-    /**手机缩放*/
-    .popup-tips .layui-layer-TipsG{
-        display: none;
-    }
-    .popup-tips.layui-layer-tips .layui-layer-content{
-        padding: 0;
-    }
-    .hidden-sub-menu .layui-nav-more,
-    .hidden-sub-menu .layui-nav-child{
-        display: none;!important;
-    }
-    .popup-tips .layui-nav-tree{
-        width: 150px;
-        border-radius: 10px;
-    }
 }
 
 /**
@@ -827,6 +811,24 @@
     .layuimini-site-mobile {
         cursor: pointer;
     }
+}
+
+.popup-tips .layui-layer-TipsG{
+    display: none;
+}
+.popup-tips.layui-layer-tips .layui-layer-content{
+    padding: 0;
+}
+
+@media screen and (min-width: 768px){
+    .layuimini-mini .layuimini-menu-left .layui-nav-more,
+    .layuimini-mini .layuimini-menu-left .layui-nav-child{
+        display: none;!important;
+    }
+}
+.popup-tips .layui-nav-tree{
+    width: 150px;
+    border-radius: 10px;
 }
 
 
