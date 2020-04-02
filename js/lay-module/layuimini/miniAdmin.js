@@ -61,6 +61,8 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                         multiModule: options.multiModule,
                         menuChildOpen: options.menuChildOpen,
                         maxTabNum: options.maxTabNum,
+                        menuList: data.menuInfo,
+                        homeInfo: data.homeInfo,
                         listenSwichCallback: function () {
                             miniAdmin.renderDevice();
                         }
