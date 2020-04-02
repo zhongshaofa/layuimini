@@ -819,9 +819,12 @@
 .popup-tips.layui-layer-tips .layui-layer-content{
     padding: 0;
 }
-.hidden-sub-menu .layui-nav-more,
-.hidden-sub-menu .layui-nav-child{
-    display: none;!important;
+
+@media screen and (min-width: 768px){
+    .layuimini-mini .layuimini-menu-left .layui-nav-more,
+    .layuimini-mini .layuimini-menu-left .layui-nav-child{
+        display: none;!important;
+    }
 }
 .popup-tips .layui-nav-tree{
     width: 150px;

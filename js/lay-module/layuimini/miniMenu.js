@@ -179,7 +179,7 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
             /**
              * 菜单缩放
              */
-            $('body').on('click', '[data-side-fold],.layuimini-site-mobile', function () {
+            $('body').on('click', '.layuimini-site-mobile', function () {
                 var loading = layer.load(0, {shade: false, time: 2 * 1000});
                 var isShow = $('.layuimini-tool [data-side-fold]').attr('data-side-fold');
                 if (isShow == 1) { // 缩放
@@ -187,18 +187,39 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
                     $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-indent');
                     $('.layui-layout-body').removeClass('layuimini-all');
                     $('.layui-layout-body').addClass('layuimini-mini');
-                    $(".menu-li").each(function (idx,el) {
-                        $(el).addClass("hidden-sub-menu");
-                    });
+                } else { // 正常
+                    $('.layuimini-tool [data-side-fold]').attr('data-side-fold', 1);
+                    $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-outdent');
+                    $('.layui-layout-body').removeClass('layuimini-mini');
+                    $('.layui-layout-body').addClass('layuimini-all');
+                    layer.close(window.openTips);
+                }
+                element.init();
+                layer.close(loading);
+            });
+            /**
+             * 菜单缩放
+             */
+            $('body').on('click', '[data-side-fold]', function () {
+                var loading = layer.load(0, {shade: false, time: 2 * 1000});
+                var isShow = $('.layuimini-tool [data-side-fold]').attr('data-side-fold');
+                if (isShow == 1) { // 缩放
+                    $('.layuimini-tool [data-side-fold]').attr('data-side-fold', 0);
+                    $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-indent');
+                    $('.layui-layout-body').removeClass('layuimini-all');
+                    $('.layui-layout-body').addClass('layuimini-mini');
+                    // $(".menu-li").each(function (idx,el) {
+                    //     $(el).addClass("hidden-sub-menu");
+                    // });
 
                 } else { // 正常
                     $('.layuimini-tool [data-side-fold]').attr('data-side-fold', 1);
                     $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-outdent');
                     $('.layui-layout-body').removeClass('layuimini-mini');
                     $('.layui-layout-body').addClass('layuimini-all');
-                    $(".menu-li").each(function (idx,el) {
-                        $(el).removeClass("hidden-sub-menu");
-                    });
+                    // $(".menu-li").each(function (idx,el) {
+                    //     $(el).removeClass("hidden-sub-menu");
+                    // });
                     layer.close(window.openTips);
                 }
                 element.init();
