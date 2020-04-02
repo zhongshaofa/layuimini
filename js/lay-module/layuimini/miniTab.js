@@ -378,7 +378,7 @@ layui.define(["element", "layer", "jquery"], function (exports) {
             options.homeInfo = options.homeInfo || {};
             if (!options.urlHashLocation) return false;
             var tabId = location.hash.replace(/^#\//, '');
-            if (tabId === null || tabId === undefined) return false;
+            if (tabId === null || tabId === undefined || tabId ==='') return false;
 
             // 判断是否为首页
             if(tabId ===options.homeInfo.href) return false;
