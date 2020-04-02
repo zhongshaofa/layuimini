@@ -168,6 +168,30 @@ layui.define(["element", "layer", "jquery"], function (exports) {
         },
 
         /**
+         * 查询菜单信息
+         * @param href
+         * @param menuList
+         */
+        searchMenu: function (href, menuList) {
+            var menu;
+            for (key in menuList) {
+                var item = menuList[key];
+                if (item.href === href) {
+                    menu = item;
+                    break;
+                }
+                if (item.child) {
+                    newMenu = miniTab.searchMenu(href, item.child);
+                    if (newMenu) {
+                        menu = newMenu;
+                        break;
+                    }
+                }
+            }
+            return menu;
+        },
+
+        /**
          * 监听
          * @param options
          */
@@ -376,6 +400,7 @@ layui.define(["element", "layer", "jquery"], function (exports) {
             options.urlHashLocation = options.urlHashLocation || false;
             options.maxTabNum = options.maxTabNum || 20;
             options.homeInfo = options.homeInfo || {};
+            options.menuList = options.menuList || [];
             if (!options.urlHashLocation) return false;
             var tabId = location.hash.replace(/^#\//, '');
             if (tabId === null || tabId === undefined || tabId ==='') return false;
@@ -383,30 +408,23 @@ layui.define(["element", "layer", "jquery"], function (exports) {
             // 判断是否为首页
             if(tabId ===options.homeInfo.href) return false;
 
-            // 判断是否查找到菜单的dom
-            var isSearchMenu = false;
-
             // 判断是否为右侧菜单
-            $("[layuimini-href]").each(function () {
-                if ($(this).attr("layuimini-href") === tabId) {
-                    var title = $(this).text();
-                    miniTab.create({
-                        tabId: tabId,
-                        href: tabId,
-                        title: title,
-                        isIframe: false,
-                        maxTabNum: options.maxTabNum,
-                    });
-                    $('.layuimini-menu-left').attr('layuimini-tab-tag', 'no');
-                    element.tabChange('layuiminiTab', tabId);
-                    isSearchMenu = true;
-                    return false;
-                }
-            });
-            if (isSearchMenu) return false;
-
+            var menu = miniTab.searchMenu(tabId, options.menuList);
+            if (menu !== undefined) {
+                miniTab.create({
+                    tabId: tabId,
+                    href: tabId,
+                    title: menu.title,
+                    isIframe: false,
+                    maxTabNum: options.maxTabNum,
+                });
+                $('.layuimini-menu-left').attr('layuimini-tab-tag', 'no');
+                element.tabChange('layuiminiTab', tabId);
+                return false;
+            }
 
             // 判断是否为快捷菜单
+            var isSearchMenu = false;
             $("[layuimini-content-href]").each(function () {
                 if ($(this).attr("layuimini-content-href") === tabId) {
                     var title = $(this).attr("data-title");
