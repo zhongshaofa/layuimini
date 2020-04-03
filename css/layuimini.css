@@ -62,7 +62,7 @@
     left: 295px !important;
 }
 
-.layui-nav.layui-layout-left.layuimini-header-menu.mobile.layui-hide-xs {
+.layui-nav.layui-layout-left.layuimini-header-menu.layuimini-pc-show {
     font-weight: bold;
     transition: all .2s;
 }
@@ -539,11 +539,30 @@
 }
 
 /**
+菜单缩放
+ */
+.popup-tips .layui-layer-TipsG{
+    display: none;
+}
+.popup-tips.layui-layer-tips .layui-layer-content{
+    padding: 0;
+}
+.hidden-sub-menu .layui-nav-more,
+.hidden-sub-menu .layui-nav-child{
+    display: none;!important;
+}
+.popup-tips .layui-nav-tree{
+    width: 150px;
+    border-radius: 10px;
+}
+
+
+/**
  PC版样式
  */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     /**头部样式（缩放） */
-    .layuimini-mini .layui-layout-left.layuimini-header-menu.layui-hide-xs {
+    .layuimini-mini .layui-layout-left.layuimini-header-menu.layuimini-pc-show {
         left: 155px !important;
     }
 
@@ -589,12 +608,26 @@
         left: 95px !important;
     }
 
+    .layuimini-pc-show{
+        display: block;
+    }
+    .layuimini-mobile-show{
+        display: none;
+    }
+
 }
 
 /**
  手机自适应样式
 */
 @media screen and (max-width: 768px) {
+
+    .layuimini-pc-show{
+        display: none;
+    }
+    .layuimini-mobile-show{
+        display: block;
+    }
 
     .layuimini-header-content {
         left: 0;
@@ -647,7 +680,7 @@
     }
 
     .layuimini-mini .layui-layout-admin .layui-body {
-        left: 0;
+        left: 0!important;
         transition: left .2s;
         top: 0;
         z-index: 998;
@@ -701,18 +734,4 @@
         cursor: pointer;
     }
 
-}
-.popup-tips .layui-layer-TipsG{
-    display: none;
-}
-.popup-tips.layui-layer-tips .layui-layer-content{
-    padding: 0;
-}
-.hidden-sub-menu .layui-nav-more,
-.hidden-sub-menu .layui-nav-child{
-    display: none;!important;
-}
-.popup-tips .layui-nav-tree{
-    width: 150px;
-    border-radius: 10px;
 }
