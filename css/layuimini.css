@@ -560,7 +560,7 @@
 /**
  PC版样式
  */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1025px) {
     /**头部样式（缩放） */
     .layuimini-mini .layui-layout-left.layuimini-header-menu.layuimini-pc-show {
         left: 155px !important;
@@ -620,7 +620,7 @@
 /**
  手机自适应样式
 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
 
     .layuimini-pc-show{
         display: none;

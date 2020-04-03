@@ -205,7 +205,7 @@ layui.define(["jquery", "miniMenu", "element","miniPage", "miniTheme"], function
             var isIOS = (/iPhone|iPod|iPad/i).test(ua) && !isAndroid;
             var isWinPhone = (/Windows Phone|ZuneWP7/i).test(ua);
             var clientWidth = document.documentElement.clientWidth;
-            if (!isAndroid && !isIOS && !isWinPhone && clientWidth > 768) {
+            if (!isAndroid && !isIOS && !isWinPhone && clientWidth > 1024) {
                 return false;
             } else {
                 return true;
