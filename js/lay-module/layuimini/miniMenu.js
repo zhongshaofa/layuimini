@@ -232,8 +232,11 @@ layui.define(["element", "laytpl","jquery"], function (exports) {
              */
             $('body').on('click', '.layuimini-header-menu.layuimini-mobile-show dd', function () {
                 var loading = layer.load(0, {shade: false, time: 2 * 1000});
-                $('.layuimini-site-mobile').trigger("click");
-                element.init();
+                var check = $('.layuimini-tool [data-side-fold]').attr('data-side-fold');
+                if(check === "1"){
+                    $('.layuimini-site-mobile').trigger("click");
+                    element.init();
+                }
                 layer.close(loading);
             });
         },
