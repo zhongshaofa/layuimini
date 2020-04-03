@@ -229,7 +229,7 @@ layui.define(["element","laytpl" ,"jquery"], function (exports) {
             /**
              * 手机端点开模块
              */
-            $('body').on('click', '.layuimini-header-menu.mobile dd', function () {
+            $('body').on('click', '.layuimini-header-menu.layuimini-mobile-show dd', function () {
                 var loading = layer.load(0, {shade: false, time: 2 * 1000});
                 $('.layuimini-tool [data-side-fold]').attr('data-side-fold', 0);
                 $('.layuimini-tool [data-side-fold]').attr('class', 'fa fa-indent');
