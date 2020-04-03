@@ -367,23 +367,23 @@
 
 
 /**左侧菜单栏 (正常) */
-.layuimini-all .layui-nav-itemed .layui-nav-child a, .layuimini-all .layuimini-menu-left .layui-nav .layui-nav-child a {
+.layui-layout-body .layui-nav-itemed .layui-nav-child a, .layui-layout-body .layuimini-menu-left .layui-nav .layui-nav-child a {
     padding-left: 35px;
 }
 
-.layuimini-all .layuimini-menu-left .layui-nav .layui-nav-child .layui-nav-child a {
+.layui-layout-body .layuimini-menu-left .layui-nav .layui-nav-child .layui-nav-child a {
     padding-left: 45px;
 }
 
-.layuimini-all .layuimini-menu-left .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child a {
+.layui-layout-body .layuimini-menu-left .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child a {
     padding-left: 55px;
 }
 
-.layuimini-all .layuimini-menu-left .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child .layui-nav-child a {
+.layui-layout-body .layuimini-menu-left .layui-nav .layui-nav-child .layui-nav-child .layui-nav-child .layui-nav-child a {
     padding-left: 65px;
 }
 
-.layuimini-all .layuimini-menu-left .layui-nav .layui-nav-itemed > .layui-nav-child {
+.layui-layout-body .layuimini-menu-left .layui-nav .layui-nav-itemed > .layui-nav-child {
     padding: 5px 0;
 }
 
