@@ -3,11 +3,6 @@
     background-color: rgb(245, 245, 245) !important;
 }
 
-/**pc头部菜单间距*/
-.layui-layout-admin .layui-header .layuimini-header-menu.layuimini-pc-show,.layui-layout-admin .layui-header .layuimini-header-menu.layuimini-mobile-show {
-    letter-spacing: 1px;
-}
-
 /*头部选中背景色*/
 .layui-layout-admin .layui-header .layuimini-header-content > ul > .layui-nav-item.layui-this, .layuimini-tool i:hover {
     background-color: #e4e4e4 !important;
@@ -48,9 +43,20 @@
     border-color: transparent transparent rgba(160, 160, 160, 0.7) !important;
 }
 
-.layui-header .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this {
+/**头部下拉配置色*/
+.layui-header .layui-nav .layui-nav-child dd.layui-this a,.layui-header .layui-nav-child dd.layui-this {
     background-color: #1E9FFF !important;
     color: #ffffff !important;
+}
+
+/*左侧菜单下拉更多样式*/
+.layuimini-menu-left .layui-nav .layui-nav-more{
+    border-top-color: rgb(191, 187, 187);
+}
+
+/*左侧菜单下拉更多样式*/
+.layuimini-menu-left .layui-nav .layui-nav-mored, .layuimini-menu-left .layui-nav-itemed > a .layui-nav-more {
+    border-color: transparent transparent rgb(191, 187, 187) !important;
 }
 
 /*左侧菜单背景*/
@@ -76,15 +82,6 @@
 /*左侧菜单子菜单背景*/
 .layuimini-menu-left .layui-nav-itemed > .layui-nav-child {
     background-color: #000000 !important;
-}
-
-/*左侧菜单更多颜色*/
-.layuimini-menu-left .layui-nav .layui-nav-more {
-    /*border-top-color: rgba(107, 107, 107, 0.7);*/
-}
-
-.layuimini-menu-left .layui-nav-item a span {
-    letter-spacing: 1px;
 }
 
 .layuimini-tab .layui-tab-title .layui-this .layuimini-tab-active {

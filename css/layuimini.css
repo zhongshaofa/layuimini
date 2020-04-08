@@ -669,6 +669,16 @@
     border-radius: 10px;
 }
 
+/**左侧菜单字体间距*/
+.layuimini-menu-left .layui-nav-item a span {
+    letter-spacing: 1px;
+}
+
+/**头部菜单字体间距*/
+.layui-layout-admin .layui-header .layuimini-header-menu.layuimini-pc-show,.layui-layout-admin .layui-header .layuimini-header-menu.layuimini-mobile-show {
+    letter-spacing: 1px;
+}
+
 /**
  PC版样式
  */
