@@ -1,11 +1,11 @@
 /*头部背景色*/
 .layui-layout-admin .layui-header {
-    background-color: #ffffff !important;
+    background-color: rgb(245, 245, 245) !important;
 }
 
 /*头部选中背景色*/
 .layui-layout-admin .layui-header .layuimini-header-content > ul > .layui-nav-item.layui-this, .layuimini-tool i:hover {
-    background-color: #ececec !important;
+    background-color: #e4e4e4 !important;
 }
 
 /*头部字体颜色*/
@@ -30,13 +30,23 @@
 
 /*logo背景颜色*/
 .layui-layout-admin .layuimini-logo {
-    background-color: #28333E !important;
+    background-color: #192027 !important;
 }
 
 /*logo字体颜色*/
 .layui-layout-admin .layuimini-logo h1 {
     color: rgb(191, 187, 187);
 }
+
+/*.layui-nav .layui-nav-mored, .layui-nav-itemed>a .layui-nav-more {*/
+/*    margin-top: -9px;*/
+/*    border-style: dashed dashed solid;*/
+/*    border-color: transparent transparent rgba(160, 160, 160, 0.7);*/
+/*}*/
+
+/*.layui-nav .layui-nav-more {*/
+/*    border-top-color: rgba(160, 160, 160, 0.7);*/
+/*}*/
 
 /*左侧菜单背景*/
 .layui-side.layui-bg-black, .layui-side.layui-bg-black > .layuimini-menu-left > ul {
