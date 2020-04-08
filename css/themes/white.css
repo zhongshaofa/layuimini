@@ -3,6 +3,11 @@
     background-color: rgb(245, 245, 245) !important;
 }
 
+/**pc头部菜单间距*/
+.layui-layout-admin .layui-header .layuimini-header-menu.layuimini-pc-show,.layui-layout-admin .layui-header .layuimini-header-menu.layuimini-mobile-show {
+    letter-spacing: 1px;
+}
+
 /*头部选中背景色*/
 .layui-layout-admin .layui-header .layuimini-header-content > ul > .layui-nav-item.layui-this, .layuimini-tool i:hover {
     background-color: #e4e4e4 !important;
@@ -14,18 +19,13 @@
 }
 
 /*头部鼠标选中*/
-.layui-layout-admin .layui-header .layui-nav .layui-nav-item a:hover, .layui-layout-admin .layui-header .layui-nav .layui-this a {
-    color: #565656!important;
+.layui-header .layuimini-menu-header-pc.layui-nav .layui-nav-item a:hover, .layui-header .layuimini-header-menu.layuimini-pc-show.layui-nav .layui-this a {
+    color: #565656 !important;
 }
 
 /*头部缩放样式*/
 .layui-layout-admin .layui-header .layuimini-tool i {
     color: #565656;
-}
-
-/*头部下拉更多样式*/
-.layui-layout-admin .layui-header .layui-nav .layui-nav-more {
-    /*border-top-color: rgba(107, 107, 107, 0.7);*/
 }
 
 /*logo背景颜色*/
@@ -38,15 +38,20 @@
     color: rgb(191, 187, 187);
 }
 
-/*.layui-nav .layui-nav-mored, .layui-nav-itemed>a .layui-nav-more {*/
-/*    margin-top: -9px;*/
-/*    border-style: dashed dashed solid;*/
-/*    border-color: transparent transparent rgba(160, 160, 160, 0.7);*/
-/*}*/
+/*头部下拉更多样式*/
+.layui-header .layui-nav .layui-nav-more {
+    border-top-color: rgba(160, 160, 160, 0.7) !important;
+}
 
-/*.layui-nav .layui-nav-more {*/
-/*    border-top-color: rgba(160, 160, 160, 0.7);*/
-/*}*/
+/*头部下拉更多样式*/
+.layui-header .layui-nav .layui-nav-mored, .layui-header .layui-nav-itemed > a .layui-nav-more {
+    border-color: transparent transparent rgba(160, 160, 160, 0.7) !important;
+}
+
+.layui-header .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this {
+    background-color: #1E9FFF !important;
+    color: #ffffff !important;
+}
 
 /*左侧菜单背景*/
 .layui-side.layui-bg-black, .layui-side.layui-bg-black > .layuimini-menu-left > ul {
@@ -60,11 +65,11 @@
 
 /*左侧菜单选中字体颜色*/
 .layuimini-menu-left .layui-nav .layui-nav-item a:hover, .layuimini-menu-left .layui-nav .layui-this a {
-    color:#ffffff !important;
+    color: #ffffff !important;
 }
 
 /*左侧菜单选中背景*/
-.layui-layout-admin .layui-nav-tree .layui-this, .layui-layout-admin .layui-nav-tree .layui-this > a, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this a {
+.layuimini-menu-left .layui-nav-tree .layui-this, .layuimini-menu-left .layui-nav-tree .layui-this > a, .layuimini-menu-left .layui-nav-tree .layui-nav-child dd.layui-this, .layuimini-menu-left .layui-nav-tree .layui-nav-child dd.layui-this a {
     background-color: #1E9FFF !important
 }
 
