@@ -299,19 +299,19 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                 }
             });
 
-            $("body").on("mouseleave", ".popup-tips", function () {
-                if (miniAdmin.checkMobile()) {
-                    return false;
-                }
-                var isShow = $('.layuimini-tool i').attr('data-side-fold');
-                if (isShow == 0) {
-                    try {
-                        layer.close(window.openTips);
-                    } catch (e) {
-                        console.log(e.message);
-                    }
-                }
-            });
+            // $("body").on("mouseleave", ".popup-tips", function () {
+            //     if (miniAdmin.checkMobile()) {
+            //         return false;
+            //     }
+            //     var isShow = $('.layuimini-tool i').attr('data-side-fold');
+            //     if (isShow == 0) {
+            //         try {
+            //             layer.close(window.openTips);
+            //         } catch (e) {
+            //             console.log(e.message);
+            //         }
+            //     }
+            // });
 
 
             /**
