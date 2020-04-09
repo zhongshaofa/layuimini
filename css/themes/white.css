@@ -81,9 +81,55 @@
 
 /*左侧菜单子菜单背景*/
 .layuimini-menu-left .layui-nav-itemed > .layui-nav-child {
-    background-color: #000000 !important;
+    background-color: #0c0f13 !important;
 }
 
+/**tab选项卡选中颜色*/
 .layuimini-tab .layui-tab-title .layui-this .layuimini-tab-active {
     background-color: #1e9fff;
+}
+
+
+.layuimini-menu-left .layui-nav-more {
+    font-family: layui-icon !important;
+    font-size: 12px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    border: none;
+    display: inline-block;
+    margin-top: -6px !important;
+}
+
+.layuimini-menu-left .layui-nav-child .layui-nav-more {
+    margin-top: -6px !important;
+}
+
+.layuimini-menu-left .layui-nav .layui-nav-mored,.layuimini-menu-left .layui-nav-itemed>a .layui-nav-more{
+    margin-top: -9px!important;
+}
+
+.layuimini-menu-left .layui-nav-more:before {
+    content: "\e61a";
+}
+.layuimini-menu-left .layui-nav-itemed > a > .layui-nav-more {
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    width: 12px;
+    text-align: center;
+    border-style:none;
+}
+
+.layuimini-menu-left .layui-nav-itemed > a > .layui-nav-more:before {
+    content: '\e61a';
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: middle;
 }
