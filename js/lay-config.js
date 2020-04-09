@@ -2,6 +2,7 @@
  * date:2019/08/16
  * author:Mr.Chung
  * description:此处放layui自定义扩展
+ * version:2.0.4
  */
 
 window.rootPath = (function (src) {
