@@ -254,6 +254,9 @@ layui.define(["jquery", "miniMenu", "element","miniPage", "miniTheme"], function
                 miniAdmin.success('刷新成功');
             });
 
+            /**
+             * 监听提示信息
+             */
             $("body").on("mouseenter", ".layui-nav-tree .menu-li", function () {
                 if (miniAdmin.checkMobile()) {
                     return false;
@@ -262,7 +265,7 @@ layui.define(["jquery", "miniMenu", "element","miniPage", "miniTheme"], function
                     tips = $(this).prop("innerHTML"),
                     isShow = $('.layuimini-tool i').attr('data-side-fold');
                 if (isShow == 0 && tips) {
-                    tips = "<ul class='layui-nav layui-nav-tree layui-this'><li class='layui-nav-item layui-nav-itemed'>"+tips+"</li></ul>" ;
+                    tips = "<ul class='layuimini-menu-left-zoom layui-nav layui-nav-tree layui-this'><li class='layui-nav-item layui-nav-itemed'>"+tips+"</li></ul>" ;
                     window.openTips = layer.tips(tips, $(this), {
                         tips: [2, '#2f4056'],
                         time: 300000,

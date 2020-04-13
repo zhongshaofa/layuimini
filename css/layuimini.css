@@ -547,14 +547,71 @@
 .popup-tips.layui-layer-tips .layui-layer-content{
     padding: 0;
 }
-.hidden-sub-menu .layui-nav-more,
-.hidden-sub-menu .layui-nav-child{
-    display: none;!important;
-}
 .popup-tips .layui-nav-tree{
     width: 150px;
     border-radius: 10px;
 }
+
+/**左侧菜单字体间距*/
+.layuimini-menu-left .layui-nav-item a span {
+    letter-spacing: 1px;
+}
+
+/**头部菜单字体间距*/
+.layui-layout-admin .layui-header .layuimini-header-menu.layuimini-pc-show,.layui-layout-admin .layui-header .layuimini-header-menu.layuimini-mobile-show {
+    letter-spacing: 1px;
+}
+
+
+/**左侧菜单更多下拉样式*/
+.layuimini-menu-left .layui-nav-more,.layuimini-menu-left-zoom .layui-nav-more {
+    font-family: layui-icon !important;
+    font-size: 12px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    border: none;
+    display: inline-block;
+    margin-top: -6px !important;
+}
+
+.layuimini-menu-left .layui-nav-child .layui-nav-more {
+    margin-top: -6px !important;
+}
+
+.layuimini-menu-left .layui-nav .layui-nav-mored,.layuimini-menu-left .layui-nav-itemed>a .layui-nav-more{
+    margin-top: -9px!important;
+}
+
+.layuimini-menu-left-zoom.layui-nav .layui-nav-mored,.layuimini-menu-left-zoom.layui-nav-itemed>a .layui-nav-more{
+    margin-top: -9px!important;
+}
+
+.layuimini-menu-left .layui-nav-more:before,.layuimini-menu-left-zoom .layui-nav-more:before {
+    content: "\e61a";
+}
+.layuimini-menu-left .layui-nav-itemed > a > .layui-nav-more,.layuimini-menu-left-zoom .layui-nav-itemed > a > .layui-nav-more {
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    width: 12px;
+    text-align: center;
+    border-style:none;
+}
+
+.layuimini-menu-left .layui-nav-itemed > a > .layui-nav-more:before,.layuimini-menu-left-zoom .layui-nav-itemed > a > .layui-nav-more:before {
+    content: '\e61a';
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: middle;
+}
+
 
 
 /**
@@ -613,6 +670,11 @@
     }
     .layuimini-mobile-show{
         display: none;
+    }
+
+    /**菜单缩放*/
+    .layuimini-mini .layuimini-menu-left .layui-nav-more,.layuimini-mini .layuimini-menu-left .layui-nav-child{
+        display: none!important;
     }
 
 }
