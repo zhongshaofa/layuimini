@@ -130,9 +130,6 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
             }
         },
 
-        /**
-         * 进入全屏
-         */
         fullScreen: function () {
             var el = document.documentElement;
             var rfs = el.requestFullScreen || el.webkitRequestFullScreen;
@@ -147,6 +144,10 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                 el.msRequestFullscreen();
             } else if (el.oRequestFullscreen) {
                 el.oRequestFullscreen();
+            } else if (el.webkitRequestFullscreen) {
+                el.webkitRequestFullscreen();
+            } else if (el.mozRequestFullScreen) {
+                el.mozRequestFullScreen();
             } else {
                 miniAdmin.error('浏览器不支持全屏调用！');
             }
@@ -169,6 +170,10 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                 el.msExitFullscreen();
             } else if (el.oRequestFullscreen) {
                 el.oCancelFullScreen();
+            }else if (el.mozCancelFullScreen) {
+                el.mozCancelFullScreen();
+            } else if (el.webkitCancelFullScreen) {
+                el.webkitCancelFullScreen();
             } else {
                 miniAdmin.error('浏览器不支持全屏调用！');
             }
