@@ -612,6 +612,11 @@
     vertical-align: middle;
 }
 
+/**修复左侧菜单字体不对齐的问题*/
+.layuimini-menu-left .layui-nav-item a .fa,.layuimini-menu-left .layui-nav-item a .layui-icon{
+    width: 20px;
+}
+
 
 
 /**
