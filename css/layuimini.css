@@ -140,21 +140,6 @@
     padding: 0px;
 }
 
-/**
-todo 修复低版本IOS不能滑动问题, 但还是有问题, 低版本IOS部分情况下子页面无法自适应
- */
-.layuimini-tab .layui-tab-content .layui-tab-item{
-    -webkit-overflow-scrolling: touch;
-    overflow: scroll;
-    width:100%;
-    height:100%;
-}
-
-.layuimini-tab .layui-tab-content .layui-tab-item iframe {
-    height: 100%;
-    width: 100%;
-}
-
 .layuimini-tab .layui-tab-title {
     border: none;
     border: 1px solid whitesmoke;
@@ -818,6 +803,22 @@ todo 修复低版本IOS不能滑动问题, 但还是有问题, 低版本IOS部�
  手机自适应样式
 */
 @media screen and (max-width: 1024px) {
+
+    /**
+    todo 修复低版本IOS不能滑动问题, 但还是有问题, 低版本IOS部分情况下子页面无法自适应
+     */
+    .layuimini-tab .layui-tab-content .layui-tab-item {
+        -webkit-overflow-scrolling: touch;
+        overflow: scroll;
+        width: 100%;
+        height: 100%;
+    }
+
+    .layuimini-tab .layui-tab-content .layui-tab-item iframe {
+        height: 100%;
+        width: 100%;
+    }
+
     .layuimini-pc-show{
         display: none;
     }
