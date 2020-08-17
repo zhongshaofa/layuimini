@@ -96,6 +96,12 @@
               "href": "page/login-2.html",
               "icon": "fa fa-viacoin",
               "target": "_blank"
+            },
+            {
+              "title": "登录-3",
+              "href": "page/login-3.html",
+              "icon": "fa fa-tags",
+              "target": "_blank"
             }
           ]
         },
