@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>table下拉选择器</title>
-    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all">
     <link rel="stylesheet" href="../css/public.css" media="all">
 </head>
+
 <body>
-<div class="layuimini-container">
-    <div class="layuimini-main">
+    <div class="layuimini-container">
+        <div class="layuimini-main">
 
-        <blockquote class="layui-elem-quote">
-            table下拉选择器使用开源项目：TableSelect<br>
-            在开源的基础上修改支持多条件搜索、宽以及高的自定义<br>
-            <a href="https://gitee.com/lolicode/layui_component_tableselect" target="_blank" class="layui-btn layui-btn-danger">TableSelect</a>
-        </blockquote>
+            <blockquote class="layui-elem-quote">
+                table下拉选择器使用开源项目：TableSelect<br> 在开源的基础上修改支持多条件搜索、宽以及高的自定义
+                <br>
+                <a href="https://gitee.com/lolicode/layui_component_tableselect" target="_blank" class="layui-btn layui-btn-danger">TableSelect</a>
+            </blockquote>
 
-        <form class="layui-form" action="" style="padding:20px;">
-            <div class="layui-form-item">
-                <label class="layui-form-label">多选</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="demo" value="刘晓军,张恒" ts-selected="002,003">
+            <form class="layui-form" action="" style="padding:20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">多选</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="demo" value="刘晓军,张恒" ts-selected="002,003">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">本地演示数据，分页选中和其他页一样，这不是BUG</div>
                 </div>
-                <div class="layui-form-mid layui-word-aux">本地演示数据，分页选中和其他页一样，这不是BUG</div>
-            </div>
 
-            <div class="layui-form-item">
-                <label class="layui-form-label">单选</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="demo2">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">单选</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="demo2">
+                    </div>
                 </div>
-            </div>
 
-            <div class="layui-form-item">
-                <label class="layui-form-label">多搜索条件</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="demo3">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">多搜索条件</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="demo3">
+                    </div>
                 </div>
-            </div>
 
-        </form>
+            </form>
 
-        <pre class="layui-code">
+            <pre class="layui-code">
 
             //开始使用
             var tableSelect = layui.tableSelect;
@@ -90,93 +92,124 @@
             })
         </pre>
 
+        </div>
     </div>
-</div>
 
-<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
-<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
-<script>
-    layui.use(['table', 'form', 'tableSelect'], function () {
-        var $ = layui.jquery,
-            table = layui.table,
-            form = layui.form,
-            tableSelect = layui.tableSelect;
+    <script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+    <script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+    <script>
+        layui.use(['table', 'form', 'tableSelect'], function() {
+            var $ = layui.jquery,
+                table = layui.table,
+                form = layui.form,
+                tableSelect = layui.tableSelect;
 
-        tableSelect.render({
-            elem: '#demo',
-            searchKey: 'my',
-            checkedKey: 'id',
-            searchPlaceholder: '自定义文字和name',
-            table: {
-                url: '../api/tableSelect.json',
-                cols: [[
-                    { type: 'checkbox' },
-                    { field: 'id', title: 'ID', width: 100 },
-                    { field: 'username', title: '姓名', width: 300 },
-                    { field: 'sex', title: '性别', width: 100 }
-                ]]
-            },
-            done: function (elem, data) {
-                var NEWJSON = []
-                layui.each(data.data, function (index, item) {
-                    NEWJSON.push(item.username)
-                })
-                elem.val(NEWJSON.join(","))
-            }
-        })
-
-
-        tableSelect.render({
-            elem: '#demo2',
-            checkedKey: 'id',
-            table: {
-                url: '../api/tableSelect.json',
-                cols: [[
-                    { type: 'radio' },
-                    { field: 'id', title: 'ID' },
-                    { field: 'username', title: '姓名' },
-                    { field: 'sex', title: '性别' }
-                ]]
-            },
-            done: function (elem, data) {
-                var NEWJSON = []
-                layui.each(data.data, function (index, item) {
-                    NEWJSON.push(item.username)
-                })
-                elem.val(NEWJSON.join(","))
-            }
-        })
+            tableSelect.render({
+                elem: '#demo',
+                searchKey: 'my',
+                checkedKey: 'id',
+                searchPlaceholder: '自定义文字和name',
+                table: {
+                    url: '../api/tableSelect.json',
+                    cols: [
+                        [{
+                            type: 'checkbox'
+                        }, {
+                            field: 'id',
+                            title: 'ID',
+                            width: 100
+                        }, {
+                            field: 'username',
+                            title: '姓名',
+                            width: 300
+                        }, {
+                            field: 'sex',
+                            title: '性别',
+                            width: 100
+                        }]
+                    ]
+                },
+                done: function(elem, data) {
+                    var NEWJSON = []
+                    layui.each(data.data, function(index, item) {
+                        NEWJSON.push(item.username)
+                    })
+                    elem.val(NEWJSON.join(","))
+                }
+            })
 
 
-        tableSelect.render({
-            elem: '#demo3',
-            checkedKey: 'id',
-            height:'400',
-            width:'900',
-            searchType: 'more',
-            searchList: [
-                {searchKey: 'name', searchPlaceholder: '搜索用户姓名'},
-                {searchKey: 'sex', searchPlaceholder: '搜索用户性别'},
-            ],
-            table: {
-                url: '../api/tableSelect.json',
-                cols: [[
-                    { type: 'radio' },
-                    { field: 'id', title: 'ID' },
-                    { field: 'username', title: '姓名' },
-                    { field: 'sex', title: '性别' }
-                ]]
-            },
-            done: function (elem, data) {
-                var NEWJSON = []
-                layui.each(data.data, function (index, item) {
-                    NEWJSON.push(item.username)
-                })
-                elem.val(NEWJSON.join(","))
-            }
-        })
+            tableSelect.render({
+                elem: '#demo2',
+                checkedKey: 'id',
+                table: {
+                    url: '../api/tableSelect.json',
+                    cols: [
+                        [{
+                            type: 'radio'
+                        }, {
+                            field: 'id',
+                            title: 'ID'
+                        }, {
+                            field: 'username',
+                            title: '姓名'
+                        }, {
+                            field: 'sex',
+                            title: '性别'
+                        }]
+                    ]
+                },
+                done: function(elem, data) {
+                    var NEWJSON = []
+                    layui.each(data.data, function(index, item) {
+                        NEWJSON.push(item.username)
+                    })
+                    elem.val(NEWJSON.join(","))
+                }
+            })
 
-    });
-</script>
+
+            tableSelect.render({
+                elem: '#demo3',
+                checkedKey: 'id',
+                height: '400',
+                width: '900',
+                searchType: 'more',
+                searchList: [{
+                    searchKey: 'name',
+                    searchPlaceholder: '搜索用户姓名'
+                }, {
+                    searchKey: 'sex',
+                    searchPlaceholder: '搜索用户性别'
+                }, ],
+                table: {
+                    url: '../api/tableSelect.json',
+                    cols: [
+                        [{
+                            type: 'radio'
+                        }, {
+                            field: 'id',
+                            title: 'ID'
+                        }, {
+                            field: 'username',
+                            title: '姓名'
+                        }, {
+                            field: 'sex',
+                            title: '性别'
+                        }]
+                    ]
+                },
+                done: function(elem, data) {
+                    var NEWJSON = []
+                    layui.each(data.data, function(index, item) {
+                        NEWJSON.push(item.username)
+                    })
+                    elem.val(NEWJSON.join(","))
+                }
+            })
+
+        });
+    </script>
 </body>
+
 </html>
