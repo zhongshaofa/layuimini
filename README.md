@@ -5,7 +5,7 @@ layuimini后台模板
 
 项目会不定时进行更新，建议star和watch一份。
 
-技术交流QQ群：[1165301500](https://jq.qq.com/?_wv=1027&k=eUm5xKG1)、[667813249🈵](https://jq.qq.com/?_wv=1027&k=5lyiE2Q)、[561838086🈵](https://jq.qq.com/?_wv=1027&k=5JRGVfe) 
+技术交流QQ群：[716235988](https://jq.qq.com/?_wv=1027&k=7TMTuAJv)、[1165301500🈵](https://jq.qq.com/?_wv=1027&k=TYKWy5Oo)、[667813249🈵](https://jq.qq.com/?_wv=1027&k=5lyiE2Q)、[561838086🈵](https://jq.qq.com/?_wv=1027&k=5JRGVfe) `加群请备注来源：如gitee、github、官网等`。
 
 # 主要特性
 * 界面足够简洁清爽，响应式且适配手机端。
